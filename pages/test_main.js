@@ -6,6 +6,9 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import Nav from "../components/nav";
 
+import { fetchAPI } from "../lib/api";
+import Mission from "../components/mission";
+
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
 const pluginWrapper = () => {
@@ -24,6 +27,10 @@ const originalColors = [
   "purple",
   "yellow",
 ];
+
+const missionData = (mission) => {
+  mission.content.tw;
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -72,6 +79,19 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+export async function getServerSideProps() {
+  // Run API calls in parallel
+  const [mission, aboutPublic] = await Promise.all([
+    fetchAPI("/mission"),
+    fetchAPI("/about-public"),
+  ]);
+
+  return {
+    props: { mission, aboutPublic },
+    //revalidate: 1,
+  };
 }
 
 export default App;

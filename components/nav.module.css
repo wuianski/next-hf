@@ -1,0 +1,46 @@
+.menuOpen {
+	position: fixed;
+	top: 41px;
+	right: 32px;
+  z-index:99;
+}
+.menuClose{
+  padding: 18px;
+}
+.menuTitleBlk{
+  cursor: pointer;
+}
+.menuTitleBlk:hover{
+  color:#545454;
+}
+.menuTitleList:hover{
+  color:#fff;
+}
+.highlightD{
+  color:#545454;
+}
+.highlightL{
+  color:#fff;
+}
+.menuTitle{
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 48px;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  width: 130px;
+}
+.menuTitleEn{
+  font-family: Helvetica Neue;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 48px;
+  align-items: center;
+}
+.menuBack{
+  padding: 18px;
+  position: relative;
+  right: 38vw;
+  bottom: -86vh;
+}

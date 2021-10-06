@@ -1,0 +1,15 @@
+.logoFixed{
+  position:fixed;
+  z-index:8;
+  left: 36px;
+  top: 36px;
+}
+.main {
+  display: flex;
+  height: calc(100vh - 64px);
+  background-color: white;
+}
+
+.main > section {
+  padding: 130px 32px;
+}

@@ -5,6 +5,11 @@ const Events = ({ events, eventsId, eventsTitleTw, eventsTitleDate }) => {
   return (
     <div>
       <div>{eventsId}</div>
+      <div>
+        {events.map((e) => (
+          <div>{e.id}</div>
+        ))}
+      </div>
     </div>
   );
 };

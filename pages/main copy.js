@@ -38,22 +38,22 @@ class App extends React.Component {
       sectionsColor: [...originalColors],
       fullpages: [
         {
-          sec1: "specail events",
+          text: "specail events",
           events: events,
           eventsId: events.map((event) => event.id),
           //eventsTitleTw: events.map((event) => event.title.tw),
           //eventsTitleDate: events.map((event) => event.date),
         },
         {
-          sec2: "mission",
+          text: "mission",
           missionSloganTw: mission.slogan.tw,
           missionSloganEn: mission.slogan.en,
         },
         {
-          sec3: "project",
+          text: "project",
         },
         {
-          sec4: "chronicle",
+          text: "chronicle",
         },
       ],
     };
@@ -74,23 +74,31 @@ class App extends React.Component {
           render={(comp) =>
             console.log("render prop change") || (
               <ReactFullpage.Wrapper>
-                <div className="section">
-                  {fullpages.map(({ sec1, events, eventsId }) => (
-                    <div>
-                      <h1>{sec1}</h1>
+                {fullpages.map(
+                  ({
+                    text,
+                    events,
+                    eventsId,
+                    //eventsTitleTw,
+                    //eventsTitleDate,
+                    missionSloganTw,
+                    missionSloganEn,
+                  }) => (
+                    <div key={text} className="section">
+                      <h1>{text}</h1>
                       <Events
                         events={events}
                         eventsId={eventsId}
                         //eventsTitleTw={eventsTitleTw}
                         //eventsTitleDate={eventsTitleDate}
                       />
+                      <Mission
+                        missionSloganTw={missionSloganTw}
+                        missionSloganEn={missionSloganEn}
+                      />
                     </div>
-                  ))}
-                  <p>section1</p>
-                </div>
-                <div className="section">
-                  <p>section2</p>
-                </div>
+                  )
+                )}
               </ReactFullpage.Wrapper>
             )
           }

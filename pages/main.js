@@ -75,6 +75,7 @@ class App extends React.Component {
             console.log("render prop change") || (
               <ReactFullpage.Wrapper>
                 <div className="section">
+                  <p>section1</p>
                   {fullpages.map(({ sec1, events, eventsId }) => (
                     <div>
                       <h1>{sec1}</h1>
@@ -86,10 +87,20 @@ class App extends React.Component {
                       />
                     </div>
                   ))}
-                  <p>section1</p>
                 </div>
                 <div className="section">
                   <p>section2</p>
+                  {fullpages.map(
+                    ({ sec2, missionSloganTw, missionSloganEn }) => (
+                      <div>
+                        <h1>{sec2}</h1>
+                        <Mission
+                          missionSloganTw={missionSloganTw}
+                          missionSloganEn={missionSloganEn}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               </ReactFullpage.Wrapper>
             )

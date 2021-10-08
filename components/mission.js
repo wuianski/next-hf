@@ -3,8 +3,8 @@ import React from "react";
 const Mission = ({ missionSloganTw, missionSloganEn }) => {
   return (
     <div>
-      {missionSloganTw}
-      {missionSloganEn}
+      <div>{missionSloganTw}</div>
+      <div>{missionSloganEn}</div>
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import React from "react";
 
-const Mission = ({ mission }) => {
-  return <div>{mission.content.tw}</div>;
+const Mission = ({ missionSloganTw, missionSloganEn }) => {
+  return (
+    <div>
+      {missionSloganTw}
+      {missionSloganEn}
+    </div>
+  );
 };
 
 export default Mission;

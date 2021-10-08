@@ -1,13 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactFullpage from "@fullpage/react-fullpage";
-import Head from "next/head";
 
 import Layout from "../components/layout";
 import Nav from "../components/nav";
 
 import { fetchAPI } from "../lib/api";
 import Mission from "../components/mission";
+import Events from "../components/events";
+//import dynamic from "next/dynamic";
+//const Events = dynamic(() => import("../components/events"));
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -28,24 +29,31 @@ const originalColors = [
   "yellow",
 ];
 
-const missionData = (mission) => {
-  mission.content.tw;
-};
-
 class App extends React.Component {
   constructor(props) {
     super(props);
+    let { events, mission } = props;
+
     this.state = {
       sectionsColor: [...originalColors],
       fullpages: [
         {
-          text: "Section 1",
+          text: "specail events",
+          events: events,
+          eventsId: events.map((event) => event.id),
+          //eventsTitleTw: events.map((event) => event.title.tw),
+          //eventsTitleDate: events.map((event) => event.date),
         },
         {
-          text: "Section 2",
+          text: "mission",
+          missionSloganTw: mission.slogan.tw,
+          missionSloganEn: mission.slogan.en,
         },
         {
-          text: "Section 3",
+          text: "project",
+        },
+        {
+          text: "chronicle",
         },
       ],
     };
@@ -53,7 +61,6 @@ class App extends React.Component {
 
   render() {
     const { fullpages } = this.state;
-
     if (!fullpages.length) {
       return null;
     }
@@ -67,11 +74,31 @@ class App extends React.Component {
           render={(comp) =>
             console.log("render prop change") || (
               <ReactFullpage.Wrapper>
-                {fullpages.map(({ text }) => (
-                  <div key={text} className="section">
-                    <h1>{text}</h1>
-                  </div>
-                ))}
+                {fullpages.map(
+                  ({
+                    text,
+                    events,
+                    eventsId,
+                    //eventsTitleTw,
+                    //eventsTitleDate,
+                    missionSloganTw,
+                    missionSloganEn,
+                  }) => (
+                    <div key={text} className="section">
+                      <h1>{text}</h1>
+                      <Events
+                        events={events}
+                        eventsId={eventsId}
+                        //eventsTitleTw={eventsTitleTw}
+                        //eventsTitleDate={eventsTitleDate}
+                      />
+                      <Mission
+                        missionSloganTw={missionSloganTw}
+                        missionSloganEn={missionSloganEn}
+                      />
+                    </div>
+                  )
+                )}
               </ReactFullpage.Wrapper>
             )
           }
@@ -83,13 +110,13 @@ class App extends React.Component {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [mission, aboutPublic] = await Promise.all([
-    fetchAPI("/mission"),
-    fetchAPI("/about-public"),
+  const [events, mission] = await Promise.all([
+    await fetchAPI("/events"),
+    await fetchAPI("/mission"),
   ]);
 
   return {
-    props: { mission, aboutPublic },
+    props: { events, mission },
     //revalidate: 1,
   };
 }

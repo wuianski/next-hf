@@ -6,7 +6,7 @@ import { fetchAPI } from "../lib/api";
 
 import Mission from "../components/mission";
 
-function Index2({ mission, aboutPublic }) {
+function Index2({ mission }) {
   return (
     <div>
       <Layout>
@@ -21,13 +21,10 @@ function Index2({ mission, aboutPublic }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [mission, aboutPublic] = await Promise.all([
-    fetchAPI("/mission"),
-    fetchAPI("/about-public"),
-  ]);
+  const [mission] = await Promise.all([fetchAPI("/mission")]);
 
   return {
-    props: { mission, aboutPublic },
+    props: { mission },
     //revalidate: 1,
   };
 }

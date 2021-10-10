@@ -36,35 +36,39 @@ class App extends React.Component {
 
     this.state = {
       sectionsColor: [...originalColors],
-      fullpages: [
-        {
-          sec1: "specail events",
-          events: events,
-          eventsId: events.map((event) => event.id),
-          //eventsTitleTw: events.map((event) => event.title.tw),
-          //eventsTitleDate: events.map((event) => event.date),
-        },
-        {
-          sec2: "mission",
-          missionSloganTw: mission.slogan.tw,
-          missionSloganEn: mission.slogan.en,
-        },
-        {
-          sec3: "project",
-        },
-        {
-          sec4: "chronicle",
-        },
-      ],
+      events: {
+        title: "specail events",
+        data: events,
+      },
+      mission: {
+        title: "mission",
+        data: mission,
+      },
+      // fullpages: [
+      //   {
+      //     sec1: "specail events",
+      //     events: events,
+      //     eventsId: events.map((event) => event.id),
+      //     //eventsTitleTw: events.map((event) => event.title.tw),
+      //     //eventsTitleDate: events.map((event) => event.date),
+      //   },
+      //   {
+      //     sec2: "mission",
+      //     missionSloganTw: mission.slogan.tw,
+      //     missionSloganEn: mission.slogan.en,
+      //   },
+      //   {
+      //     sec3: "project",
+      //   },
+      //   {
+      //     sec4: "chronicle",
+      //   },
+      // ],
     };
   }
 
   render() {
-    const { fullpages } = this.state;
-    if (!fullpages.length) {
-      return null;
-    }
-
+    const { events, mission } = this.state;
     return (
       <div className="App">
         <ReactFullpage
@@ -74,34 +78,21 @@ class App extends React.Component {
           render={(comp) =>
             console.log("render prop change") || (
               <ReactFullpage.Wrapper>
-                <div className="section">
+                {events && <div className="section">
                   <p>section1</p>
-                  {fullpages.map(({ sec1, events, eventsId }) => (
-                    <div>
-                      <h1>{sec1}</h1>
-                      <Events
-                        events={events}
-                        eventsId={eventsId}
-                        //eventsTitleTw={eventsTitleTw}
-                        //eventsTitleDate={eventsTitleDate}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="section">
+                  <div>
+                    <h1>{events.title}</h1>
+                    <Events events={events.data} />
+                  </div>
+                </div>}
+
+                {mission && <div className="section">
                   <p>section2</p>
-                  {fullpages.map(
-                    ({ sec2, missionSloganTw, missionSloganEn }) => (
-                      <div>
-                        <h1>{sec2}</h1>
-                        <Mission
-                          missionSloganTw={missionSloganTw}
-                          missionSloganEn={missionSloganEn}
-                        />
-                      </div>
-                    )
-                  )}
-                </div>
+                  <div>
+                    <h1>{mission.title}</h1>
+                    <Mission mission={mission.data} />
+                  </div>
+                </div>}
               </ReactFullpage.Wrapper>
             )
           }

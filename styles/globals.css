@@ -13,3 +13,51 @@ a {
 * {
   box-sizing: border-box;
 }
+/* Section Name */
+#myMenu{
+  position: absolute;
+  bottom: 68px;
+  z-index: 999;
+  height: 68vh;
+  width:93px;
+  border-right: 1px solid #000;
+}
+div.secName{
+  color: #000;
+  display: none;
+}
+.secName.active{
+  color: #000;
+  display: block;
+  position: absolute;
+  bottom: calc(50vh - 59px);
+}
+.secName_en{
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  width: 118px;
+  height: 27px;
+  position: absolute;
+  left: 0px;
+  margin-left: -20px;
+  margin-top: 48px;
+  text-align: left;
+}
+.secName_tw{
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.5em;
+  width: 15px;
+  height: 118px;
+  position: absolute;
+  left: 0px;
+  margin-left: 60px;
+}
+/* /Section Name */
+
+

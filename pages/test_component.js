@@ -4,7 +4,7 @@ import Nav from "../components/nav";
 import React from "react";
 import { fetchAPI } from "../lib/api";
 
-import Mission from "../components/mission";
+import Mission from "../components/MissionSlogan";
 
 function Index2({ mission }) {
   return (

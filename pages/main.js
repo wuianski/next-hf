@@ -10,6 +10,8 @@ import MissionTW from "../components/MissionTW";
 import MissionEN from "../components/MissionEN";
 import Events from "../components/events";
 import Projects from "../components/projects";
+import Chronicle from "../components/chronicle";
+import Leadership from "../components/leadership";
 //import dynamic from "next/dynamic";
 //const Events = dynamic(() => import("../components/events"));
 import Box from "@mui/material/Box";
@@ -26,7 +28,7 @@ const originalColors = [
   "#ff5f45",
   "#0798ec",
   "#fc6c7c",
-  "#435b71",
+  "#fff",
   "orange",
   "blue",
   "purple",
@@ -199,11 +201,15 @@ class App extends React.Component {
                 )}
 
                 {chronicle && (
-                  <div className="section" data-anchor="section4"></div>
+                  <div className="section" data-anchor="section4">
+                    <Chronicle chronicle={chronicle.data} />
+                  </div>
                 )}
 
                 {leadership && (
-                  <div className="section" data-anchor="section5"></div>
+                  <div className="section" data-anchor="section5">
+                    <Leadership leadership={leadership.data} />
+                  </div>
                 )}
 
                 {news && <div className="section" data-anchor="section6"></div>}

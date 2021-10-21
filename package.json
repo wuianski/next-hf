@@ -11,13 +11,16 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@fullpage/react-fullpage": "^0.1.19",
+    "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.3",
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-markdown": "^7.0.1",
     "react-responsive-modal": "^6.1.0",
     "react-slick": "^0.28.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "victory": "^36.0.1"
   }
 }

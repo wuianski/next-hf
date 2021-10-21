@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./nav.module.css";
 import { Modal } from "react-responsive-modal";
 
+
 export default function Nav() {
   const [openFirst, setOpenFirst] = React.useState(false);
   const [openSecondProjects, setOpenSecondProjects] = React.useState(false);

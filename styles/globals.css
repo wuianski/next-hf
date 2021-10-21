@@ -65,3 +65,14 @@ div.secName{
   transform: rotate(-90deg);
 }*/
 
+/* hide react-slick arrow */
+.slick-arrow {
+  display: none !important;
+}
+
+/* force h3 markdown css*/
+h3 {
+  margin: 0;
+  line-height: 0;
+}
+

@@ -12,6 +12,8 @@ import Events from "../components/events";
 import Projects from "../components/projects";
 import Chronicle from "../components/chronicle";
 import Leadership from "../components/leadership";
+import News from "../components/news";
+import Sponsorship from "../components/sponsorship";
 //import dynamic from "next/dynamic";
 //const Events = dynamic(() => import("../components/events"));
 import Box from "@mui/material/Box";
@@ -24,16 +26,7 @@ const pluginWrapper = () => {
    */
 };
 
-const originalColors = [
-  "#ff5f45",
-  "#0798ec",
-  "#fc6c7c",
-  "#fff",
-  "orange",
-  "blue",
-  "purple",
-  "yellow",
-];
+const originalColors = ["#fff"];
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +37,9 @@ class App extends React.Component {
       projects,
       chronicle,
       leadership,
+      leadership_doc,
       news,
+      news_announce,
       sponsorship,
       publication,
     } = props;
@@ -80,10 +75,12 @@ class App extends React.Component {
       leadership: {
         title: "leadership",
         data: leadership,
+        data2: leadership_doc,
       },
       news: {
         title: "news",
         data: news,
+        data2: news_announce,
       },
       sponsorship: {
         title: "sponsorship",
@@ -151,77 +148,91 @@ class App extends React.Component {
             <div className="secName_en">publication</div>
           </div>
         </Box>
+
         <ReactFullpage
           pluginWrapper={pluginWrapper}
-          //scrollHorizontally={true}
-          //fixedElements={".getSection"}
+          //autoScrolling={false}
+          animateAnchor={false}
           loopHorizontal={false}
           menu={"#myMenu"}
-          slidesNavigation={true}
-          slidesNavPosition={"bottom"}
+          slidesNavigation={false}
+          //slidesNavPosition={"bottom"}
           controlArrows={false}
           sectionsColor={this.state.sectionsColor}
           anchors={this.state.anchors}
           render={({ state, fullpageApi }) =>
             console.log("render prop change") || (
-              <ReactFullpage.Wrapper>
-                {events && (
-                  <div className="section" data-anchor="section1">
-                    <Events events={events.data} />
-                  </div>
-                )}
+              <>
+                <ReactFullpage.Wrapper>
+                  {events && (
+                    <div className="section" data-anchor="section1">
+                      {/* <Events events={events.data} /> */}
+                    </div>
+                  )}
 
-                {mission && (
-                  <div className="section" data-anchor="section2">
-                    <div className="slide">
-                      <MissionSlogan
+                  {mission && (
+                    <div className="section" data-anchor="section2">
+                      <div className="slide">
+                        {/*<MissionSlogan
+                        mission={mission.data}
+                        fullpageApi={fullpageApi}
+                      />*/}
+                      </div>
+                      <div className="slide">
+                        {/*<MissionTW
                         mission={mission.data}
                         fullpageApi={fullpageApi}
                       />
-                    </div>
-                    <div className="slide">
-                      <MissionTW
+                      */}
+                      </div>
+                      <div className="slide">
+                        {/*<MissionEN
                         mission={mission.data}
+                        fullpageApi={fullpageApi}
+                      />*/}
+                      </div>
+                    </div>
+                  )}
+
+                  {projects && (
+                    <div className="section" data-anchor="section3">
+                      {/*<Projects projects={projects.data} />
+                       */}
+                    </div>
+                  )}
+
+                  {chronicle && (
+                    <div className="section" data-anchor="section4">
+                      {/*<Chronicle chronicle={chronicle.data} />*/}
+                    </div>
+                  )}
+
+                  {leadership && (
+                    <div className="section" data-anchor="section5">
+                      <Leadership
+                        leadership={leadership.data}
                         fullpageApi={fullpageApi}
                       />
                     </div>
-                    <div className="slide">
-                      <MissionEN
-                        mission={mission.data}
-                        fullpageApi={fullpageApi}
-                      />
+                  )}
+
+                  {news && (
+                    <div className="section" data-anchor="section6">
+                      <News news={news.data} newsAnnounce={news.data2} />
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {projects && (
-                  <div className="section" data-anchor="section3">
-                    <Projects projects={projects.data} />
-                  </div>
-                )}
+                  {sponsorship && (
+                    <div className="section" data-anchor="section7">
+                      <Sponsorship sponsorship={sponsorship.data} />
+                    </div>
+                  )}
 
-                {chronicle && (
-                  <div className="section" data-anchor="section4">
-                    <Chronicle chronicle={chronicle.data} />
-                  </div>
-                )}
-
-                {leadership && (
-                  <div className="section" data-anchor="section5">
-                    <Leadership leadership={leadership.data} />
-                  </div>
-                )}
-
-                {news && <div className="section" data-anchor="section6"></div>}
-
-                {sponsorship && (
-                  <div className="section" data-anchor="section7"></div>
-                )}
-
-                {publication && (
-                  <div className="section" data-anchor="section8"></div>
-                )}
-              </ReactFullpage.Wrapper>
+                  {publication && (
+                    <div className="section" data-anchor="section8"></div>
+                  )}
+                </ReactFullpage.Wrapper>
+              </>
             )
           }
         />
@@ -238,7 +249,9 @@ export async function getServerSideProps() {
     projects,
     chronicle,
     leadership,
+    leadership_doc,
     news,
+    news_announce,
     sponsorship,
     publication,
   ] = await Promise.all([
@@ -247,7 +260,9 @@ export async function getServerSideProps() {
     await fetchAPI("/projects"),
     await fetchAPI("/chronicles"),
     await fetchAPI("/leadership-members"),
+    await fetchAPI("/leadership"),
     await fetchAPI("/the-news"),
+    await fetchAPI("/news-announcements"),
     await fetchAPI("/sponsorships"),
     await fetchAPI("/about-public"),
   ]);
@@ -259,7 +274,9 @@ export async function getServerSideProps() {
       projects,
       chronicle,
       leadership,
+      leadership_doc,
       news,
+      news_announce,
       sponsorship,
       publication,
     },
@@ -270,11 +287,6 @@ export async function getServerSideProps() {
 export default App;
 
 App.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Nav />
-
-      {page}
-    </Layout>
-  );
+  //console.log(App);
+  return <Layout>{page}</Layout>;
 };

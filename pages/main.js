@@ -3,6 +3,7 @@ import ReactFullpage from "@fullpage/react-fullpage";
 
 import Layout from "../components/layout";
 import Nav from "../components/nav";
+import NavInMain from "../components/navInMain";
 
 import { fetchAPI } from "../lib/api";
 import MissionSlogan from "../components/MissionSlogan";
@@ -14,9 +15,12 @@ import Chronicle from "../components/chronicle";
 import Leadership from "../components/leadership";
 import News from "../components/news";
 import Sponsorship from "../components/sponsorship";
+import PublicationIntro from "../components/publicationIntro";
 //import dynamic from "next/dynamic";
 //const Events = dynamic(() => import("../components/events"));
 import Box from "@mui/material/Box";
+
+import Image from "next/image";
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -47,14 +51,14 @@ class App extends React.Component {
     this.state = {
       sectionsColor: [...originalColors],
       anchors: [
-        "section1",
-        "section2",
-        "section3",
-        "section4",
-        "section5",
-        "section6",
-        "section7",
-        "section8",
+        "events",
+        "mission",
+        "projects",
+        "chronicle",
+        "leadership",
+        "news",
+        "facts",
+        "publication",
       ],
       events: {
         title: "specail events",
@@ -107,43 +111,44 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <NavInMain />
         <Box id="myMenu">
-          <div data-menuanchor="section1" className="active secName">
+          <div data-menuanchor="events" className="active secName">
             <div className="secName_tw">活動</div>
             <div className="secName_en">events</div>
           </div>
 
-          <div data-menuanchor="section2" className="secName">
+          <div data-menuanchor="mission" className="secName">
             <div className="secName_tw">使命</div>
             <div className="secName_en">mission</div>
           </div>
 
-          <div data-menuanchor="section3" className="secName">
+          <div data-menuanchor="projects" className="secName">
             <div className="secName_tw">業務</div>
             <div className="secName_en">projects</div>
           </div>
 
-          <div data-menuanchor="section4" className="secName">
+          <div data-menuanchor="chronicle" className="secName">
             <div className="secName_tw">大事記</div>
             <div className="secName_en">chronicle</div>
           </div>
 
-          <div data-menuanchor="section5" className="secName">
+          <div data-menuanchor="leadership" className="secName">
             <div className="secName_tw">組織</div>
             <div className="secName_en">leadership</div>
           </div>
 
-          <div data-menuanchor="section6" className="secName">
+          <div data-menuanchor="news" className="secName">
             <div className="secName_tw">消息</div>
             <div className="secName_en">news</div>
           </div>
 
-          <div data-menuanchor="section7" className="secName">
+          <div data-menuanchor="facts" className="secName">
             <div className="secName_tw">公開資訊</div>
             <div className="secName_en">facts</div>
           </div>
 
-          <div data-menuanchor="section8" className="secName">
+          <div data-menuanchor="publication" className="secName">
             <div className="secName_tw">出版</div>
             <div className="secName_en">publication</div>
           </div>
@@ -151,59 +156,63 @@ class App extends React.Component {
 
         <ReactFullpage
           pluginWrapper={pluginWrapper}
-          //autoScrolling={false}
           animateAnchor={false}
           loopHorizontal={false}
           menu={"#myMenu"}
           slidesNavigation={false}
-          //slidesNavPosition={"bottom"}
+          lockAnchors={false}
+          //autoScrolling={false}
+          //recordHistory={false}
+          //scrollBar={true}
           controlArrows={false}
           sectionsColor={this.state.sectionsColor}
           anchors={this.state.anchors}
+          //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
+          //scrollOverflow={true}
+          //using below to use normal scroll elements
+          //normalScrollElements={ '#element1, .element2'}
           render={({ state, fullpageApi }) =>
             console.log("render prop change") || (
               <>
                 <ReactFullpage.Wrapper>
                   {events && (
                     <div className="section" data-anchor="section1">
-                      {/* <Events events={events.data} /> */}
+                      <Events events={events.data} />
                     </div>
                   )}
 
                   {mission && (
                     <div className="section" data-anchor="section2">
                       <div className="slide">
-                        {/*<MissionSlogan
-                        mission={mission.data}
-                        fullpageApi={fullpageApi}
-                      />*/}
+                        <MissionSlogan
+                          mission={mission.data}
+                          fullpageApi={fullpageApi}
+                        />
                       </div>
                       <div className="slide">
-                        {/*<MissionTW
-                        mission={mission.data}
-                        fullpageApi={fullpageApi}
-                      />
-                      */}
+                        <MissionTW
+                          mission={mission.data}
+                          fullpageApi={fullpageApi}
+                        />
                       </div>
                       <div className="slide">
-                        {/*<MissionEN
-                        mission={mission.data}
-                        fullpageApi={fullpageApi}
-                      />*/}
+                        <MissionEN
+                          mission={mission.data}
+                          fullpageApi={fullpageApi}
+                        />
                       </div>
                     </div>
                   )}
 
                   {projects && (
                     <div className="section" data-anchor="section3">
-                      {/*<Projects projects={projects.data} />
-                       */}
+                      <Projects projects={projects.data} />
                     </div>
                   )}
 
                   {chronicle && (
                     <div className="section" data-anchor="section4">
-                      {/*<Chronicle chronicle={chronicle.data} />*/}
+                      <Chronicle chronicle={chronicle.data} />
                     </div>
                   )}
 
@@ -229,7 +238,9 @@ class App extends React.Component {
                   )}
 
                   {publication && (
-                    <div className="section" data-anchor="section8"></div>
+                    <div className="section" data-anchor="section8">
+                      <PublicationIntro publication={publication.data} />
+                    </div>
                   )}
                 </ReactFullpage.Wrapper>
               </>
@@ -288,5 +299,10 @@ export default App;
 
 App.getLayout = function getLayout(page) {
   //console.log(App);
-  return <Layout>{page}</Layout>;
+  return (
+    <Layout>
+      {/*<Nav />*/}
+      {page}
+    </Layout>
+  );
 };

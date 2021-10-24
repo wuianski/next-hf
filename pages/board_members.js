@@ -82,7 +82,7 @@ function LeadershipBoad({ leadership: dataset, leadership_doc }) {
               </Box>
             </Item>
             <Item sx={{ width: "25vw", cursor: "pointer" }}>
-              <Link href="/main#section5">
+              <Link href="/main#leadership">
                 <Stack
                   direction="row"
                   spacing={0}
@@ -148,5 +148,10 @@ export async function getServerSideProps() {
 export default LeadershipBoad;
 
 LeadershipBoad.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return (
+    <Layout>
+      {/*<Nav />*/}
+      {page}
+    </Layout>
+  );
 };

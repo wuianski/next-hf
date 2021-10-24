@@ -3,6 +3,7 @@
 	top: 41px;
 	right: 32px;
   z-index:99;
+  cursor: pointer;
 }
 .menuClose{
   padding: 18px;
@@ -15,6 +16,7 @@
 }
 .menuTitleList:hover{
   color:#fff;
+  cursor: pointer;
 }
 .highlightD{
   color:#545454;
@@ -23,7 +25,7 @@
   color:#fff;
 }
 .menuTitle{
-  font-weight: bold;
+  font-weight: 400;
   font-size: 26px;
   line-height: 48px;
   letter-spacing: 0.1em;
@@ -33,7 +35,7 @@
 .menuTitleEn{
   font-family: Helvetica Neue;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 25px;
   line-height: 48px;
   align-items: center;
@@ -43,4 +45,24 @@
   position: relative;
   right: 38vw;
   bottom: -86vh;
+}
+
+@media only screen and (max-width: 900px) {
+  /* 2nd layer menu modal */
+  .menuTitle{
+    display: block;
+    line-height: 38px;
+  }
+  .menuTitleEn{
+    line-height: 31px;
+  }
+  .menuTitleList{
+    padding-bottom: 20px;
+  }
+  .menuBack{
+    padding: 18px;
+    position: relative;
+    right: unset;
+    bottom: -86vh;
+  }
 }

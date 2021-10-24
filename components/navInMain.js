@@ -4,8 +4,9 @@ import Image from "next/image";
 import styles from "./nav.module.css";
 import { Modal } from "react-responsive-modal";
 
-
-export default function Nav() {
+export default function NavInMain() {
+  //console.log(fullpageApi);
+  //const sec2slide1 = fullpageApi.moveTo(2, 1);
 
   const [openFirst, setOpenFirst] = React.useState(false);
   const [openSecondProjects, setOpenSecondProjects] = React.useState(false);
@@ -65,7 +66,7 @@ export default function Nav() {
             openSecondFact ? styles.highlightD : null
           } ${openSecondPub ? styles.highlightD : null}`}
         >
-          <Link href="/main#events" replace>
+          <a href="#events">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -73,8 +74,8 @@ export default function Nav() {
               <span className={styles.menuTitle}>特別活動</span>
               <span className={styles.menuTitleEn}>Special Events</span>
             </div>
-          </Link>
-          <Link href="/main#mission" replace>
+          </a>
+          <a href="#mission">
             <div
               className={`${styles.menuTitleList} ${styles.menuTitleList2}`}
               onClick={() => setOpenFirst(false)}
@@ -82,7 +83,7 @@ export default function Nav() {
               <span className={styles.menuTitle}>使命</span>
               <span className={styles.menuTitleEn}>Missions</span>
             </div>
-          </Link>
+          </a>
           <div
             className={`${styles.menuTitleList} ${
               openSecondProjects ? styles.highlightL : null
@@ -92,7 +93,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>業務</span>
             <span className={styles.menuTitleEn}>Projects</span>
           </div>
-          <Link href="/main#chronicle" passHref>
+          <a href="#chronicle">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -100,7 +101,7 @@ export default function Nav() {
               <span className={styles.menuTitle}>大事記</span>
               <span className={styles.menuTitleEn}>Chronicle</span>
             </div>
-          </Link>
+          </a>
           <div
             className={`${styles.menuTitleList} ${
               openSecondLead ? styles.highlightL : null
@@ -110,7 +111,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>組織</span>
             <span className={styles.menuTitleEn}>Leadership</span>
           </div>
-          <Link href="/main#news" passHref>
+          <a href="#news">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -118,7 +119,7 @@ export default function Nav() {
               <span className={styles.menuTitle}>最新消息</span>
               <span className={styles.menuTitleEn}>News</span>
             </div>
-          </Link>
+          </a>
           <div
             className={`${styles.menuTitleList} ${
               openSecondFact ? styles.highlightL : null
@@ -154,19 +155,20 @@ export default function Nav() {
         }}
         animationDuration={400}
       >
-        <Link href="/main#projects" passHref>
+        <a href="/main#projects">
           <div
             className={styles.menuTitleList}
             onClick={() => {
               setOpenFirst(false);
               setOpenSecondProjects(false);
+              //fullpageApi.moveTo(2, 1);
             }}
           >
             <span className={styles.menuTitle}>覓計畫</span>
             <span className={styles.menuTitleEn}>Project Seek</span>
           </div>
-        </Link>
-        <Link href="/main#projects" passHref>
+        </a>
+        <a href="#projects">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -177,8 +179,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>敏隆講堂</span>
             <span className={styles.menuTitleEn}>Minlong Forum</span>
           </div>
-        </Link>
-        <Link href="/main#projects" passHref>
+        </a>
+        <a href="#projects">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -189,7 +191,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>素直友會</span>
             <span className={styles.menuTitleEn}>PHP Sunao Community</span>
           </div>
-        </Link>
+        </a>
       </Modal>
       <Modal
         open={openSecondLead}
@@ -206,7 +208,7 @@ export default function Nav() {
         }}
         animationDuration={400}
       >
-        <Link href="/main#leadership" passHref>
+        <a href="#leadership">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -217,8 +219,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>創辦人</span>
             <span className={styles.menuTitleEn}>Founder</span>
           </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
+        </a>
+        <a href="#leadership">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -229,8 +231,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>董事長</span>
             <span className={styles.menuTitleEn}>Chairman</span>
           </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
+        </a>
+        <a href="#leadership">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -241,8 +243,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>副董事長</span>
             <span className={styles.menuTitleEn}>Vice Chairman</span>
           </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
+        </a>
+        <a href="#leadership">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -253,8 +255,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>董事會</span>
             <span className={styles.menuTitleEn}>Board Members</span>
           </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
+        </a>
+        <a href="#leadership">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -265,7 +267,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>組織章程</span>
             <span className={styles.menuTitleEn}>Articles of Organization</span>
           </div>
-        </Link>
+        </a>
       </Modal>
       <Modal
         open={openSecondFact}
@@ -282,7 +284,7 @@ export default function Nav() {
         }}
         animationDuration={400}
       >
-        <Link href="/main#facts" passHref>
+        <a href="#facts">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -293,8 +295,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>公開資訊</span>
             <span className={styles.menuTitleEn}>FUN FACTS</span>
           </div>
-        </Link>
-        <Link href="/main#facts" passHref>
+        </a>
+        <a href="#facts">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -305,8 +307,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>贊助</span>
             <span className={styles.menuTitleEn}>Sponsorship</span>
           </div>
-        </Link>
-        <Link href="/main#facts" passHref>
+        </a>
+        <a href="#facts">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -317,8 +319,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>工作報告</span>
             <span className={styles.menuTitleEn}>Sponsorship</span>
           </div>
-        </Link>
-        <Link href="/main#facts" passHref>
+        </a>
+        <a href="#facts">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -329,8 +331,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>捐款明細</span>
             <span className={styles.menuTitleEn}>Donation</span>
           </div>
-        </Link>
-        <Link href="/main#facts" passHref>
+        </a>
+        <a href="#facts">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -341,7 +343,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>財務報表</span>
             <span className={styles.menuTitleEn}>Financial Statements</span>
           </div>
-        </Link>
+        </a>
       </Modal>
       <Modal
         open={openSecondPub}
@@ -358,7 +360,7 @@ export default function Nav() {
         }}
         animationDuration={400}
       >
-        <Link href="/main#publication" passHref>
+        <a href="#publication" passHref>
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -369,8 +371,8 @@ export default function Nav() {
             <span className={styles.menuTitle}>關於出版</span>
             <span className={styles.menuTitleEn}>ABOUT PUBLIC</span>
           </div>
-        </Link>
-        <Link href="/main#publication" passHref>
+        </a>
+        <a href="#publication">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -381,7 +383,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>出版品</span>
             <span className={styles.menuTitleEn}>Past Publication</span>
           </div>
-        </Link>
+        </a>
       </Modal>
     </div>
   );

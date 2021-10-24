@@ -17,6 +17,7 @@ import { styled } from "@mui/material/styles";
 import ReactMarkdown from "react-markdown";
 import Slider from "react-slick";
 import Stack from "@mui/material/Stack";
+import styles from "./news.module.css";
 
 /** pagination setting **/
 function TablePaginationActions(props) {
@@ -106,6 +107,21 @@ const settings = {
   //prevArrow: <SamplePrevArrow />,
 };
 
+/** react-slick setting for mobile **/
+const settingsMobile = {
+  infinite: false,
+  //className: "center",
+  centerMode: false,
+  dots: true,
+  //centerPadding: "500px",
+  slidesToShow: 1.3,
+  slidesToScroll: 1,
+  speed: 700,
+  swipeToSlide: true,
+  //nextArrow: <SampleNextArrow />,
+  //prevArrow: <SamplePrevArrow />,
+};
+
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
   //...theme.typography.body2,
@@ -148,95 +164,143 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
 
   return (
     <>
-      <TableContainer
-        component={Paper}
-        sx={{ border: "none", boxShadow: "none" }}
-      >
-        <Box ml={33} mr={13} mt={10}>
-          <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-            <TableBody>
-              {(rowsPerPage > 0
-                ? sorted.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : sorted
-              ).map((news) => (
-                <StyledTableRow key={news.id}>
-                  <StyledTableCell style={{ width: "30vw" }} align="left">
-                    <Box
-                      ml={13}
-                      sx={{
-                        fontSize: { md: 15, xl: 18 },
-                        fontWeight: 600,
-                      }}
-                    >
-                      <Box>{news.start_date}-</Box>
-                      <Box>{news.end_date}</Box>
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell style={{ width: "50vw" }} align="left">
-                    <Box
-                      sx={{
-                        fontSize: { md: 14, xl: 17 },
-                        marginTop: 0.5,
-                      }}
-                    >
-                      <ReactMarkdown>{news.title}</ReactMarkdown>
-                    </Box>
-                  </StyledTableCell>
-                  <StyledTableCell style={{ width: "20vw" }} align="right">
-                    <Box sx={{ textAlign: "right" }}>
-                      {news.news_categories &&
-                        news.news_categories.map((cat) => (
-                          <Box key={cat.id}>{cat.name}</Box>
-                        ))}
-                    </Box>
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <TableContainer
+          component={Paper}
+          sx={{ border: "none", boxShadow: "none" }}
+        >
+          <Box ml={33} mr={13} mt={10}>
+            <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+              <TableBody>
+                {(rowsPerPage > 0
+                  ? sorted.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : sorted
+                ).map((news) => (
+                  <StyledTableRow key={news.id}>
+                    <StyledTableCell style={{ width: "30vw" }} align="left">
+                      <Box
+                        ml={13}
+                        sx={{
+                          fontSize: { md: 15, xl: 18 },
+                          fontWeight: 600,
+                        }}
+                      >
+                        <Box>{news.start_date}-</Box>
+                        <Box>{news.end_date}</Box>
+                      </Box>
+                    </StyledTableCell>
+                    <StyledTableCell style={{ width: "50vw" }} align="left">
+                      <Box
+                        sx={{
+                          fontSize: { md: 14, xl: 17 },
+                          marginTop: 0.5,
+                        }}
+                      >
+                        <ReactMarkdown>{news.title}</ReactMarkdown>
+                      </Box>
+                    </StyledTableCell>
+                    <StyledTableCell style={{ width: "20vw" }} align="right">
+                      <Box sx={{ textAlign: "right" }}>
+                        {news.news_categories &&
+                          news.news_categories.map((cat) => (
+                            <Box key={cat.id}>{cat.name}</Box>
+                          ))}
+                      </Box>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
 
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={6} />
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 53 * emptyRows }}>
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TablePagination
+                    rowsPerPageOptions={[5]}
+                    colSpan={3}
+                    count={sorted.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                    sx={{ border: "none" }}
+                  />
                 </TableRow>
-              )}
-            </TableBody>
-            <TableFooter>
-              <TableRow>
-                <TablePagination
-                  rowsPerPageOptions={[5]}
-                  colSpan={3}
-                  count={sorted.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  ActionsComponent={TablePaginationActions}
-                  sx={{ border: "none" }}
-                />
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </Box>
-      </TableContainer>
+              </TableFooter>
+            </Table>
+          </Box>
+        </TableContainer>
+      </Box>
 
-      <Box ml={33} mr={13} sx={{ marginTop: { md: "3vh", xl: "8vh" } }}>
+      {/* mobile */}
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={8} ml={8} pb={6}>
+        <Slider {...settingsMobile} /*className={styles.slideBg}*/>
+          {sorted &&
+            sorted.map((news) => (
+              <Box
+                key={news.id}
+                sx={{ width: "100vw" }}
+                //className={styles.slideBg}
+              >
+                <Box className={styles.slideBg} sx={{ height: "43vh" }}>
+                  <Stack direction="column" spacing={1}>
+                    <Item>
+                      <Box sx={{ fontSize: 21, fontWeight: 700 }}>
+                        <Box>{news.start_date}-</Box>
+                        <Box>{news.end_date}</Box>
+                      </Box>
+                    </Item>
+                    <Item>
+                      <Box sx={{ fontSize: 18, marginTop: 0.5 }}>
+                        <ReactMarkdown>{news.title}</ReactMarkdown>
+                      </Box>
+                    </Item>
+                    <Item>
+                      <Box sx={{ fontSize: 13 }}>
+                        {news.news_categories &&
+                          news.news_categories.map((cat) => (
+                            <Box key={cat.id}>{cat.name}</Box>
+                          ))}
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </Box>
+            ))}
+        </Slider>
+      </Box>
+      {/* /mobile */}
+
+      <Box
+        ml={{ xs: 8, md: 33 }}
+        mr={{ xs: 2, md: 13 }}
+        sx={{
+          marginTop: { xs: "1vh", md: "3vh", xl: "8vh" },
+          height: { xs: "20vh", md: "10vh" },
+        }}
+      >
         <Slider {...settings}>
           {dataset2 &&
             dataset2.map((announcement) => (
               <Box pr={1} key={announcement.id}>
                 <Box sx={{ border: "1px solid #000", padding: 1 }}>
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                     <Item>
                       <Box
-                        sx={{ fontSize: { md: 13, xl: 15 }, fontWeight: 700 }}
+                        sx={{ fontSize: { xs: 15, xl: 15 }, fontWeight: 700 }}
                       >
                         {announcement.title}
                       </Box>
                     </Item>
                     <Item>
-                      <Box sx={{ fontSize: { md: 12, xl: 13 } }}>
+                      <Box sx={{ fontSize: { xs: 12, xl: 13 } }}>
                         {announcement.content}
                       </Box>
                     </Item>

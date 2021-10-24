@@ -87,14 +87,14 @@ const Chronicle = ({ chronicle: dataset }) => {
                             fontSize: "15px",
                           }}
                         >
-                          {chronicle.chronicle_type.name}
+                          {chronicle.type_tw}
                         </Box>
                         <Box
                           sx={{ fontSize: "20px", fontWeight: 700 }}
                           component="span"
                           mr={1}
                         >
-                          {chronicle.content.tw}
+                          {chronicle.content_tw}
                         </Box>
                         |
                         <Box
@@ -102,7 +102,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                           component="span"
                           ml={1}
                         >
-                          {chronicle.additional_content.tw}
+                          {chronicle.additional_content_tw}
                         </Box>
                       </Box>
                       <Box
@@ -113,11 +113,11 @@ const Chronicle = ({ chronicle: dataset }) => {
                         }}
                       >
                         <Box component="span" mr={1}>
-                          {chronicle.content.en}
+                          {chronicle.content_en}
                         </Box>
                         :
                         <Box component="span" ml={1}>
-                          {chronicle.additional_content.en}
+                          {chronicle.additional_content_en}
                         </Box>
                       </Box>
                     </AccordionDetails>

@@ -25,7 +25,7 @@ const MissionTW = ({ mission: dataset, fullpageApi }) => {
                   textJustify: "distribute",
                 }}
               >
-                {dataset.content.tw}
+                {dataset.content_tw}
               </Box>
             </div>
           )}

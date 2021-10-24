@@ -15,12 +15,13 @@ a {
 }
 /* Section Name */
 #myMenu{
-  position: absolute;
+  position: fixed;
   bottom: 68px;
   z-index: 999;
   height: 68vh;
   width:93px;
   border-right: 1px solid #000;
+  mix-blend-mode: difference;
 }
 div.secName{
   color: #000;
@@ -43,9 +44,12 @@ div.secName{
   height: 27px;
   position: absolute;
   left: 0px;
-  margin-left: -20px;
+  margin-left: -21px;
   margin-top: 48px;
   text-align: left;
+  /* below for mix-blend-mode */
+  color: #fff;
+  text-shadow: 0.2em 0.2em 0.8em #000;
 }
 .secName_tw{
   font-weight: 500;
@@ -57,6 +61,10 @@ div.secName{
   position: absolute;
   left: 0px;
   margin-left: 60px;
+  text-align: left;
+  /* below for mix-blend-mode */
+  color: #fff;
+  text-shadow: 0.2em 0.2em 0.8em #000;
 }
 /* /Section Name */
 
@@ -70,9 +78,62 @@ div.secName{
   display: none !important;
 }
 
-/* force h3 markdown css*/
+/* force h3 markdown css */
 h3 {
   margin: 0;
   line-height: 0;
 }
 
+/* react-awesome-slider bullets */
+.awssld__bullets button{
+  width: 10px !important;
+  height: 10px !important;
+}
+.awssld__bullets{
+  bottom: 40px !important;
+  z-index: 9;
+}
+.awssld__bullets--active{
+  background:#fff !important;
+}
+.awssld__controls__arrow-left::before, .awssld__controls__arrow-left::after, .awssld__controls__arrow-right::before, .awssld__controls__arrow-right::after{
+  background-color: #fff !important;
+}
+/* /react-awesome-slider bullets */
+
+/*  
+.logoFixed{
+  position:fixed;
+  z-index:8;
+  left: 32px;
+  top: 36px;
+  mix-blend-mode: difference;
+}*/
+
+/* Large devices (phones, 900px and down) */
+@media only screen and (max-width: 900px) {
+  #myMenu{
+    width: 40px;
+  }
+
+  .secName_en{
+    font-size: 10px;
+    margin-top: 45px;
+    /*background-color: #fff;*/
+    padding: 0 5px;
+    text-align: start;
+  }
+
+  .secName_tw{
+    font-size: 10px;
+    margin-left: 33.5px;
+    bottom: 0;
+    height: inherit;
+    /*background-color: #fff;*/
+    padding-top: 50px;
+    } 
+  h3 {
+    margin: 0;
+    line-height: initial;
+  }
+}

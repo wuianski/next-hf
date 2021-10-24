@@ -23,7 +23,7 @@ const MissionEN = ({ mission: dataset, fullpageApi }) => {
                   columnGap: "25px",
                 }}
               >
-                {dataset.content.en}
+                {dataset.content_en}
               </Box>
             </div>
           )}

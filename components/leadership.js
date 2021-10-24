@@ -9,6 +9,7 @@ import Divider from "@mui/material/Divider";
 import Image from "next/image";
 import Drawer from "@mui/material/Drawer";
 import Link from "next/link";
+import { useState, useLayoutEffect } from "react";
 
 const Leadership = ({ leadership: dataset, fullpageApi }) => {
   /** sorting dataset by id **/
@@ -29,11 +30,6 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
     slidesToScroll: 0.5,
     speed: 500,
     swipeToSlide: true,
-    //nextArrow: <SampleNextArrow />,
-    //prevArrow: <SamplePrevArrow />,
-    /*afterChange: () =>
-      this.setState((state) => ({ updateCount: state.updateCount + 1 })),*/
-    //beforeChange: { handleChange },
   };
 
   /** stack Item setting **/
@@ -55,21 +51,32 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+  const [stateS, setStateS] = React.useState({
+    right: false,
+    right: false,
+    right: false,
+    right: false,
+  });
 
+  const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
+
+    /* when drawer open, set fullPage cannot scroll */
+    if (open == true) {
+      fullpageApi.setAllowScrolling(false);
+    } else {
+      fullpageApi.setAllowScrolling(true);
+    }
   };
 
   return (
     <>
       <Box ml={0} mr={0}>
-        <Box ml={33} mt={10} sx={{ backgroundColor: "none" }}>
+        <Box
+          ml={{ xs: 8, md: 33 }}
+          mt={{ xs: 0, md: 10 }}
+          sx={{ backgroundColor: "none" }}
+        >
           <Slider {...settings}>
             {leaders &&
               leaders.map((leader) => (
@@ -80,7 +87,13 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
                       sx={{ cursor: "pointer" }}
                     >
                       <Box mb={2} sx={{ fontSize: 15 }} component="div">
-                        <Box mb={2} sx={{ width: "33vh", height: "33vh" }}>
+                        <Box
+                          mb={2}
+                          sx={{
+                            width: { xs: "13vh", md: "33vh" },
+                            height: { xs: "13vh", md: "33vh" },
+                          }}
+                        >
                           <Image
                             src="/localTest_IMGs/chien.png"
                             alt="download icon"
@@ -88,17 +101,40 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
                             height={500}
                           />
                         </Box>
-                        <Box component="span" sx={{ fontWeight: 700 }}>
+                        <Box
+                          component="span"
+                          sx={{
+                            fontWeight: 500,
+                            display: { xs: "block", md: "inline" },
+                          }}
+                        >
                           {leader.job_title.tw}
                         </Box>
-                        <Box component="span" sx={{ fontWeight: 500 }} ml={1}>
+                        <Box
+                          component="span"
+                          sx={{ fontWeight: 500 }}
+                          ml={{ xs: 0, md: 1 }}
+                        >
                           {leader.job_title.en}
                         </Box>
                       </Box>
                       <Box sx={{ fontSize: 20, fontWeight: 500 }}>
                         <Box>
-                          <Box component="div">{leader.name_tw}</Box>
-                          <Box component="div">{leader.name_en}</Box>
+                          <Box
+                            sx={{ fontSize: { xs: 20, md: 20 } }}
+                            component="div"
+                          >
+                            {leader.name_tw}
+                          </Box>
+                          <Box
+                            component="div"
+                            sx={{
+                              fontSize: { xs: 15, md: 20 },
+                              fontWeight: { xs: 400, md: 400 },
+                            }}
+                          >
+                            {leader.name_en}
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
@@ -106,6 +142,7 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
                       anchor={"right"}
                       open={state[leader.job_title.tw]}
                       onClose={toggleDrawer(leader.job_title.tw, false)}
+                      //onClose={handleCloseDrawer}
                     >
                       {/* content inside of drawer */}
                       <Box
@@ -114,9 +151,10 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
                         onKeyDown={toggleDrawer(leader.job_title.tw, false)}
                         sx={{
                           width: "80vw",
-                          height: "100vh",
+                          //height: "100vh",
                           backgroundColor: "#000",
                           padding: 2,
+                          //position: "absolute",
                         }}
                       >
                         <Stack direction="row" spacing={1}>
@@ -213,18 +251,17 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
           </Slider>
         </Box>
         <Box
-          ml={13}
-          mr={10}
+          ml={{ xs: 6, md: 13 }}
+          mr={{ xs: 2, md: 13 }}
           /* set up the distance between two Box */
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
-            marginTop: { md: "13vh", xl: "18vh" },
+            justifyContent: { xs: "flex-start", md: "flex-end" },
+            marginTop: { xs: "13vh", md: "13vh", xl: "18vh" },
           }}
         >
           <Stack
-            direction="row"
-            //divider={<Divider orientation="vertical" flexItem />}
+            direction={{ xs: "column", md: "row" }}
             spacing={0}
             height={"38px"}
           >

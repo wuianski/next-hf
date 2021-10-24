@@ -108,7 +108,7 @@ const Projects = ({ projects: dataset }) => {
                       cursor: "pointer",
                     }}
                   >
-                    {project.title.en}
+                    {project.title_en}
                   </Box>
                   <Box
                     sx={{
@@ -117,7 +117,7 @@ const Projects = ({ projects: dataset }) => {
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    {project.title.tw}
+                    {project.title_tw}
                   </Box>
 
                   <Collapse in={open_PS}>
@@ -130,7 +130,7 @@ const Projects = ({ projects: dataset }) => {
                         textJustify: "distribute",
                       }}
                     >
-                      {project.content.tw}
+                      {project.content_tw}
                     </Box>
                     <Box
                       sx={{
@@ -138,7 +138,7 @@ const Projects = ({ projects: dataset }) => {
                         lineHeight: { md: 1.4, xl: 1.6 },
                       }}
                     >
-                      {project.content.en}
+                      {project.content_en}
                     </Box>
                   </Collapse>
                   <Collapse in={open_PS}>
@@ -208,7 +208,7 @@ const Projects = ({ projects: dataset }) => {
                       cursor: "pointer",
                     }}
                   >
-                    {project.title.en}
+                    {project.title_en}
                   </Box>
                   <Box
                     sx={{
@@ -217,7 +217,7 @@ const Projects = ({ projects: dataset }) => {
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    {project.title.tw}
+                    {project.title_tw}
                   </Box>
 
                   <Collapse in={open_MF}>
@@ -230,7 +230,7 @@ const Projects = ({ projects: dataset }) => {
                         textJustify: "distribute",
                       }}
                     >
-                      {project.content.tw}
+                      {project.content_tw}
                     </Box>
                     <Box
                       sx={{
@@ -239,7 +239,7 @@ const Projects = ({ projects: dataset }) => {
                         lineHeight: 1.6,
                       }}
                     >
-                      {project.content.en}
+                      {project.content_en}
                     </Box>
                   </Collapse>
                   <Collapse in={open_MF}>
@@ -310,7 +310,7 @@ const Projects = ({ projects: dataset }) => {
                       cursor: "pointer",
                     }}
                   >
-                    {project.title.en}
+                    {project.title_en}
                   </Box>
                   <Box
                     sx={{
@@ -319,7 +319,7 @@ const Projects = ({ projects: dataset }) => {
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    {project.title.tw}
+                    {project.title_tw}
                   </Box>
 
                   <Collapse in={open_PHP}>
@@ -332,7 +332,7 @@ const Projects = ({ projects: dataset }) => {
                         textJustify: "distribute",
                       }}
                     >
-                      {project.content.tw}
+                      {project.content_tw}
                     </Box>
                     <Box
                       sx={{
@@ -341,7 +341,7 @@ const Projects = ({ projects: dataset }) => {
                         lineHeight: 1.6,
                       }}
                     >
-                      {project.content.en}
+                      {project.content_en}
                     </Box>
                   </Collapse>
                   <Collapse in={open_PHP}>
@@ -411,7 +411,7 @@ const Projects = ({ projects: dataset }) => {
                       cursor: "pointer",
                     }}
                   >
-                    {project.title.en}
+                    {project.title_en}
                   </Box>
                   <Box
                     sx={{
@@ -420,7 +420,7 @@ const Projects = ({ projects: dataset }) => {
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    {project.title.tw}
+                    {project.title_tw}
                   </Box>
 
                   <Collapse in={open_CH}>

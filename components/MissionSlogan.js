@@ -18,8 +18,8 @@ const MissionSlogan = ({ mission: dataset, fullpageApi }) => {
         >
           {dataset && (
             <div key={dataset.id}>
-              <div>{dataset.slogan.tw}</div>
-              <div>{dataset.slogan.en}</div>
+              <div>{dataset.slogan_tw}</div>
+              <div>{dataset.slogan_en}</div>
             </div>
           )}
         </Box>

@@ -8,8 +8,27 @@ import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import { VictoryPie, VictoryLabel } from "victory";
 import { VictoryChart, VictoryBar, VictoryStack, VictoryAxis } from "victory";
+import Slider from "react-slick";
 
 const Sponsorship = ({ sponsorship: datasetS }) => {
+  /** react-slick setting **/
+  const settings = {
+    infinite: false,
+    dots: true,
+    //className: "center",
+    //centerMode: true,
+    //centerPadding: "500px",
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 500,
+    swipeToSlide: true,
+    //nextArrow: <SampleNextArrow />,
+    //prevArrow: <SamplePrevArrow />,
+    /*afterChange: () =>
+      this.setState((state) => ({ updateCount: state.updateCount + 1 })),*/
+    //beforeChange: { handleChange },
+  };
+
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -131,44 +150,55 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 0 600 600">
-            <VictoryChart
-              standalone={false}
-              //height={300}
-              //width={300}
-              domainPadding={{ x: 0, y: 30 }}
-            >
-              <VictoryStack horizontal>
-                {dataset.map((data, i) => {
-                  return <VictoryBar data={data} key={i} />;
-                })}
-              </VictoryStack>
-              <VictoryAxis
-                orientation="bottom"
-                label="每十年贊助比例"
-                dependentAxis
-                style={{
-                  tickLabels: { fill: "none" },
-                  axis: { stroke: "none" },
-                  axisLabel: { fontSize: 17, fontWeight: 700 },
-                }}
-              />
-              <VictoryAxis
-                tickFormat={[
-                  "1971-1980",
-                  "1981-1980",
-                  "1991-2000",
-                  "2001-2010",
-                  "2011-2020",
-                ]}
-                style={{
-                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 5 },
-                  axis: { stroke: "none" },
-                }}
-                offsetX={455}
-              />
-            </VictoryChart>
-          </svg>
+          {/*<svg viewBox="0 0 600 600">*/}
+          <VictoryChart
+            //standalone={false}
+            //height={300}
+            //width={300}
+            domainPadding={{ x: 0, y: 30 }}
+          >
+            <VictoryStack horizontal>
+              {dataset.map((data, i) => {
+                return (
+                  <VictoryBar
+                    data={data}
+                    key={i}
+                    colorScale={[
+                      "rgba(176, 147, 54, 0.6)",
+                      "rgba(0, 0, 0, 0.5)",
+                      "rgba(196, 173, 50, 0.6)",
+                      "rgba(187, 187, 187, 0.6)",
+                    ]}
+                  />
+                );
+              })}
+            </VictoryStack>
+            <VictoryAxis
+              orientation="bottom"
+              label="每十年贊助比例"
+              dependentAxis
+              style={{
+                tickLabels: { fill: "none" },
+                axis: { stroke: "none" },
+                axisLabel: { fontSize: 17, fontWeight: 700 },
+              }}
+            />
+            <VictoryAxis
+              tickFormat={[
+                "1971-1980",
+                "1981-1980",
+                "1991-2000",
+                "2001-2010",
+                "2011-2020",
+              ]}
+              style={{
+                tickLabels: { fontSize: 13, fontWeight: 700, padding: 5 },
+                axis: { stroke: "none" },
+              }}
+              offsetX={455}
+            />
+          </VictoryChart>
+          {/*</svg>*/}
         </div>
       );
     }
@@ -267,38 +297,49 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 0 600 600">
-            <VictoryChart
-              standalone={false}
-              //height={300}
-              //width={300}
-              domainPadding={{ x: 0, y: 30 }}
-            >
-              <VictoryStack horizontal>
-                {dataset.map((data, i) => {
-                  return <VictoryBar data={data} key={i} />;
-                })}
-              </VictoryStack>
-              <VictoryAxis
-                orientation="bottom"
-                label="2015-2019 各年度贊助比例"
-                dependentAxis
-                style={{
-                  tickLabels: { fill: "none" },
-                  axis: { stroke: "none" },
-                  axisLabel: { fontSize: 17, fontWeight: 700 },
-                }}
-              />
-              <VictoryAxis
-                tickFormat={["2016", "2017", "2018", "2019", "2020"]}
-                style={{
-                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 35 },
-                  axis: { stroke: "none" },
-                }}
-                offsetX={455}
-              />
-            </VictoryChart>
-          </svg>
+          {/*<svg viewBox="0 0 600 600">*/}
+          <VictoryChart
+            //standalone={false}
+            //height={300}
+            //width={300}
+            domainPadding={{ x: 0, y: 30 }}
+          >
+            <VictoryStack horizontal>
+              {dataset.map((data, i) => {
+                return (
+                  <VictoryBar
+                    colorScale={[
+                      "rgba(176, 147, 54, 0.6)",
+                      "rgba(0, 0, 0, 0.5)",
+                      "rgba(196, 173, 50, 0.6)",
+                      "rgba(187, 187, 187, 0.6)",
+                    ]}
+                    data={data}
+                    key={i}
+                  />
+                );
+              })}
+            </VictoryStack>
+            <VictoryAxis
+              orientation="bottom"
+              label="2015-2019 各年度贊助比例"
+              dependentAxis
+              style={{
+                tickLabels: { fill: "none" },
+                axis: { stroke: "none" },
+                axisLabel: { fontSize: 17, fontWeight: 700 },
+              }}
+            />
+            <VictoryAxis
+              tickFormat={["2016", "2017", "2018", "2019", "2020"]}
+              style={{
+                tickLabels: { fontSize: 13, fontWeight: 700, padding: 35 },
+                axis: { stroke: "none" },
+              }}
+              offsetX={447}
+            />
+          </VictoryChart>
+          {/*</svg>*/}
         </div>
       );
     }
@@ -307,104 +348,182 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
 
   return (
     <>
-      <Box ml={13} mr={6} mt={-5}>
-        <Stack direction="row" spacing={1}>
-          <Item>
-            <Box sx={{ height: "50vh", width: "50vw" }}>
-              <svg viewBox="-100 0 600 600">
+      <Box ml={{ xs: 8, md: 13 }} mr={{ xs: 2, md: 12 }} mt={-5}>
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Stack direction="row" spacing={-12}>
+            <Item>
+              <Box sx={{ height: "60vh", width: "60vw" }}>
+                <svg viewBox="-100 0 600 600">
+                  <VictoryPie
+                    standalone={false}
+                    width={400}
+                    height={400}
+                    data={new_y0Arr}
+                    x="name"
+                    y="p"
+                    innerRadius={100}
+                    labelRadius={168}
+                    style={{
+                      labels: { fontSize: 15, fontWeight: 500, fill: "black" },
+                    }}
+                    colorScale={[
+                      "rgba(176, 147, 54, 0.6)",
+                      "rgba(0, 0, 0, 0.5)",
+                      "rgba(196, 173, 50, 0.6)",
+                      "rgba(187, 187, 187, 0.6)",
+                    ]}
+                  />
+                  <VictoryLabel
+                    textAnchor="middle"
+                    style={{ fontSize: 30, fontWeight: 700 }}
+                    x={200}
+                    y={190}
+                    text="1971~2020"
+                  />
+                  <VictoryLabel
+                    textAnchor="middle"
+                    style={{ fontSize: 15, fontWeight: 700 }}
+                    x={200}
+                    y={220}
+                    text="總比例贊助"
+                  />
+                </svg>
+              </Box>
+            </Item>
+            <Item>
+              <Box sx={{ height: "60vh", marginTop: { md: 0, xl: 0 } }}>
+                <Stack spacing={{ sm: 2, md: 2 }}>
+                  <Item>
+                    <Box sx={{ height: "20vh" }}>
+                      <Bar2 />
+                    </Box>
+                  </Item>
+                  <Item>
+                    <Box sx={{ height: "20vh" }}>
+                      <Bar1 />
+                    </Box>
+                  </Item>
+                </Stack>
+              </Box>
+            </Item>
+          </Stack>
+        </Box>
+
+        <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <Slider {...settings}>
+            <Box sx={{ width: "100vw" }}>
+              <svg viewBox="-20 0 400 450">
                 <VictoryPie
                   standalone={false}
-                  width={400}
-                  height={400}
+                  width={360}
+                  height={360}
                   data={new_y0Arr}
                   x="name"
                   y="p"
-                  innerRadius={100}
-                  labelRadius={168}
+                  innerRadius={60}
+                  labelRadius={140}
                   style={{
                     labels: { fontSize: 15, fontWeight: 500, fill: "black" },
                   }}
+                  colorScale={[
+                    "rgba(176, 147, 54, 0.6)",
+                    "rgba(0, 0, 0, 0.5)",
+                    "rgba(196, 173, 50, 0.6)",
+                    "rgba(187, 187, 187, 0.6)",
+                  ]}
                 />
                 <VictoryLabel
                   textAnchor="middle"
                   style={{ fontSize: 30, fontWeight: 700 }}
-                  x={200}
-                  y={190}
+                  x={180}
+                  y={385}
                   text="1971~2020"
                 />
                 <VictoryLabel
                   textAnchor="middle"
-                  style={{ fontSize: 15, fontWeight: 700 }}
-                  x={200}
-                  y={220}
+                  style={{ fontSize: 23, fontWeight: 700 }}
+                  x={180}
+                  y={420}
                   text="總比例贊助"
                 />
               </svg>
             </Box>
-          </Item>
-          <Item>
-            <Box sx={{ height: "50vh" }}>
-              <Stack>
+            <Box>
+              <Stack
+                /* set up the distance between two Item, and vertical center of Stack */
+                spacing={-6}
+                sx={{ marginTop: "-60px", marginLeft: "-30px" }}
+              >
                 <Item>
-                  <Box sx={{ height: "20vh" }}>
-                    <Bar2 />
-                  </Box>
+                  <Bar2 />
                 </Item>
                 <Item>
-                  <Box sx={{ height: "20vh" }}>
-                    <Bar1 />
-                  </Box>
-                </Item>
-                <Item sx={{ cursor: "pointer" }}>
-                  <Box>
-                    <Link href="/board_members">
-                      <Stack
-                        direction="row"
-                        spacing={0}
-                        sx={{
-                          width: 260,
-                          position: "absolute",
-                          bottom: "60px",
-                          //right: "calc(50vw - 175px)",
-                          right: 0,
-                        }}
-                        height={"38px"}
-                        mr={13}
-                      >
-                        <Divider
-                          orientation="vertical"
-                          flexItem
-                          sx={{ borderColor: "#000" }}
-                        />
-                        <Item>
-                          <Box sx={{ lineHeight: "38px" }}>
-                            <Box component="span">公開資訊</Box>
-                            <Box ml={1} component="span">
-                              Public Information
-                            </Box>
-                          </Box>
-                        </Item>
-                        <Item>
-                          <Image
-                            src="/IMGs/goto_icon.png"
-                            alt="download icon"
-                            width={38}
-                            height={38}
-                          />
-                        </Item>
-                        <Divider
-                          orientation="vertical"
-                          flexItem
-                          sx={{ borderColor: "#000" }}
-                        />
-                      </Stack>
-                    </Link>
-                  </Box>
+                  <Bar1 />
                 </Item>
               </Stack>
             </Box>
-          </Item>
-        </Stack>
+          </Slider>
+        </Box>
+
+        <Box>
+          <Box sx={{ cursor: "pointer" }}>
+            <Link href="/board_members">
+              <Stack
+                direction="row"
+                spacing={0}
+                sx={{
+                  width: "auto",
+                  position: "absolute",
+                  bottom: "60px",
+                  //right: "calc(50vw - 175px)",
+                  right: 0,
+                }}
+                height={"38px"}
+                mr={{ xs: 3, md: 13 }}
+              >
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={{
+                    borderColor: "#000",
+                    display: { xs: "none", md: "block" },
+                  }}
+                />
+                <Item>
+                  <Box sx={{ lineHeight: { xs: "19px", md: "38px" } }}>
+                    <Box
+                      component="span"
+                      sx={{
+                        display: { xs: "block", md: "inline" },
+                      }}
+                    >
+                      公開資訊
+                    </Box>
+                    <Box ml={{ xs: 0, md: 1 }} component="span">
+                      Public Information
+                    </Box>
+                  </Box>
+                </Item>
+                <Item>
+                  <Image
+                    src="/IMGs/goto_icon.png"
+                    alt="download icon"
+                    width={38}
+                    height={38}
+                  />
+                </Item>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={{
+                    borderColor: "#000",
+                    display: { xs: "none", md: "block" },
+                  }}
+                />
+              </Stack>
+            </Link>
+          </Box>
+        </Box>
       </Box>
     </>
   );

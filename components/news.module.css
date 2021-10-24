@@ -1,0 +1,7 @@
+.slideBg:nth-of-type(odd){
+    background:linear-gradient(270deg, rgba(176, 147, 54, 0) 0.01%, rgba(176, 147, 54, 0.5) 99.99%);
+}
+
+.slideBg:nth-of-type(even) {
+    background:linear-gradient(270deg, rgba(187, 187, 187, 0) 0.01%, rgba(187, 187, 187, 0.5) 99.99%);
+}

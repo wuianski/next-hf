@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 const PublicationIntro = ({ publication: dataset }) => {
   /** stack Item setting **/
@@ -44,8 +45,14 @@ const PublicationIntro = ({ publication: dataset }) => {
                 }}
               >
                 <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
-                  <Box component="div" mb={2}>
-                    {dataset.content_tw}
+                  <Box
+                    component="div"
+                    mb={2}
+                    sx={{ textAlign: "justify", textJustify: "distribute" }}
+                    //in order to make first <P/> of markdown margin top equal zero
+                    className="markdownP"
+                  >
+                    <ReactMarkdown>{dataset.content_tw}</ReactMarkdown>
                   </Box>
                   <Box component="div">{dataset.content_en}</Box>
                 </Box>

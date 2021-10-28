@@ -170,7 +170,8 @@ class App extends React.Component {
           //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
           //scrollOverflow={true}
           //using below to use normal scroll elements
-          //normalScrollElements={ '#element1, .element2'}
+          normalScrollElements={".scrollEle"}
+          //verticalCentered={false}
           render={({ state, fullpageApi }) =>
             console.log("render prop change") || (
               <>
@@ -220,6 +221,7 @@ class App extends React.Component {
                     <div className="section" data-anchor="section5">
                       <Leadership
                         leadership={leadership.data}
+                        leadership_doc={leadership.data2}
                         fullpageApi={fullpageApi}
                       />
                     </div>

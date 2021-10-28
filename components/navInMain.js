@@ -36,7 +36,7 @@ export default function NavInMain() {
 
   return (
     <div>
-      <div onClick={() => setOpenFirst(true)} className={styles.menuOpen}>
+      <div onClick={() => setOpenFirst(true)} className={styles.menuOpenInMain}>
         <Image
           src="/IMGs/menuOpen.png"
           alt="icon of menu open"

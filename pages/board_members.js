@@ -1,7 +1,7 @@
 import React from "react";
 import { fetchAPI } from "../lib/api";
 import Layout from "../components/layout";
-//import Nav from "../components/nav";
+import Nav from "../components/nav";
 
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -150,7 +150,7 @@ export default LeadershipBoad;
 LeadershipBoad.getLayout = function getLayout(page) {
   return (
     <Layout>
-      {/*<Nav />*/}
+      <Nav />
       {page}
     </Layout>
   );

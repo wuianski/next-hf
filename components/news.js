@@ -188,8 +188,8 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                           fontWeight: 600,
                         }}
                       >
-                        <Box>{news.start_date}-</Box>
-                        <Box>{news.end_date}</Box>
+                        <Box>{news.start_date}</Box>
+                        <Box>{news.end_date && `-` + news.end_date}</Box>
                       </Box>
                     </StyledTableCell>
                     <StyledTableCell style={{ width: "50vw" }} align="left">
@@ -253,8 +253,8 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                   <Stack direction="column" spacing={1}>
                     <Item>
                       <Box sx={{ fontSize: 21, fontWeight: 700 }}>
-                        <Box>{news.start_date}-</Box>
-                        <Box>{news.end_date}</Box>
+                        <Box>{news.start_date}</Box>
+                        <Box>{news.end_date && `-` + news.end_date}</Box>
                       </Box>
                     </Item>
                     <Item>

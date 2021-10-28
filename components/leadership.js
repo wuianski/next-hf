@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Slider from "react-slick";
@@ -11,7 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import Link from "next/link";
 import { useState, useLayoutEffect } from "react";
 
-const Leadership = ({ leadership: dataset, fullpageApi }) => {
+const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
   /** sorting dataset by id **/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -20,17 +20,10 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
     return leadership.job_title.id !== 5;
   });
 
-  /** react-slick setting **/
-  const settings = {
-    infinite: false,
-    //className: "center",
-    //centerMode: true,
-    //centerPadding: "500px",
-    slidesToShow: 2.5,
-    slidesToScroll: 0.5,
-    speed: 500,
-    swipeToSlide: true,
-  };
+  /** (boardMembers) filting dataset by job_title.id **/
+  const boardMembers = dataset.filter(function (leadership) {
+    return leadership.job_title.id == 5;
+  });
 
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
@@ -43,216 +36,73 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
     boxShadow: "none",
   }));
 
-  /** Drawer setting **/
-  const [state, setState] = React.useState({
-    right: false,
-    right: false,
-    right: false,
-    right: false,
-  });
-
-  const [stateS, setStateS] = React.useState({
-    right: false,
-    right: false,
-    right: false,
-    right: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    setState({ ...state, [anchor]: open });
-
-    /* when drawer open, set fullPage cannot scroll */
-    if (open == true) {
-      fullpageApi.setAllowScrolling(false);
-    } else {
-      fullpageApi.setAllowScrolling(true);
-    }
-  };
-
   return (
     <>
-      <Box ml={0} mr={0}>
-        <Box
-          ml={{ xs: 8, md: 33 }}
-          mt={{ xs: 0, md: 10 }}
-          sx={{ backgroundColor: "none" }}
-        >
-          <Slider {...settings}>
-            {leaders &&
-              leaders.map((leader) => (
-                <Box key={leader.id}>
-                  <React.Fragment key={leader.job_title.tw}>
+      <Box ml={{ xs: 8, md: 22 }} mr={{ xs: 2, md: 13 }} mt={{ xs: 5, md: 13 }}>
+        <Box>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ xs: 6, md: 1 }}
+          >
+            <Item sx={{ width: { md: "60vw", md: "20vw" } }}>
+              <Box
+                sx={{
+                  whiteSpace: "pre-line",
+                  fontSize: 20,
+                  fontWeight: 700,
+                }}
+              >
+                {leadership_doc.years_of_board_members}
+              </Box>
+            </Item>
+            <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  columnCount: { md: "1", md: "2" },
+                  columnGap: "25px",
+                  textAlign: "justify",
+                  textJustify: "distribute",
+                  //in order to make element can scroll normally, give element a specific height.
+                  height: { xs: "33vh", md: "48vh" },
+                  overflow: "scroll",
+                }}
+                //in order to make element can scroll normally, give a className and use it in fullPage options
+                className="scrollEle"
+              >
+                {boardMembers &&
+                  boardMembers.map((boardMember) => (
                     <Box
-                      onClick={toggleDrawer(leader.job_title.tw, true)}
-                      sx={{ cursor: "pointer" }}
+                      key={boardMember.id}
+                      mb={{ xs: 4, md: 2 }}
+                      sx={{ height: { xs: "90px", md: "120px" } }}
                     >
-                      <Box mb={2} sx={{ fontSize: 15 }} component="div">
-                        <Box
-                          mb={2}
-                          sx={{
-                            width: { xs: "13vh", md: "33vh" },
-                            height: { xs: "13vh", md: "33vh" },
-                          }}
-                        >
-                          <Image
-                            src="/localTest_IMGs/chien.png"
-                            alt="download icon"
-                            width={500}
-                            height={500}
-                          />
-                        </Box>
-                        <Box
-                          component="span"
-                          sx={{
-                            fontWeight: 500,
-                            display: { xs: "block", md: "inline" },
-                          }}
-                        >
-                          {leader.job_title.tw}
-                        </Box>
-                        <Box
-                          component="span"
-                          sx={{ fontWeight: 500 }}
-                          ml={{ xs: 0, md: 1 }}
-                        >
-                          {leader.job_title.en}
-                        </Box>
-                      </Box>
-                      <Box sx={{ fontSize: 20, fontWeight: 500 }}>
-                        <Box>
-                          <Box
-                            sx={{ fontSize: { xs: 20, md: 20 } }}
-                            component="div"
-                          >
-                            {leader.name_tw}
-                          </Box>
-                          <Box
-                            component="div"
-                            sx={{
-                              fontSize: { xs: 15, md: 20 },
-                              fontWeight: { xs: 400, md: 400 },
-                            }}
-                          >
-                            {leader.name_en}
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Box>
-                    <Drawer
-                      anchor={"right"}
-                      open={state[leader.job_title.tw]}
-                      onClose={toggleDrawer(leader.job_title.tw, false)}
-                      //onClose={handleCloseDrawer}
-                    >
-                      {/* content inside of drawer */}
                       <Box
-                        role="presentation"
-                        onClick={toggleDrawer(leader.job_title.tw, false)}
-                        onKeyDown={toggleDrawer(leader.job_title.tw, false)}
+                        mb={{ xs: 1.5, md: 1.5 }}
+                        sx={{ fontSize: { xs: 20, xl: 20 } }}
+                      >
+                        <Box component="span" sx={{ fontWeight: 700 }}>
+                          {boardMember.name_tw}
+                        </Box>
+                        <Box component="span" ml={2}>
+                          {boardMember.name_en}
+                        </Box>
+                      </Box>
+                      <Box
                         sx={{
-                          width: "80vw",
-                          //height: "100vh",
-                          backgroundColor: "#000",
-                          padding: 2,
-                          //position: "absolute",
+                          whiteSpace: "pre-line",
+                          fontSize: { xs: 15, xl: 15 },
                         }}
                       >
-                        <Stack direction="row" spacing={1}>
-                          <Item sx={{ width: "50%" }}>
-                            <Box pl={6} pt={6} mb={-6}>
-                              <Image
-                                src="/localTest_IMGs/chien.png"
-                                alt="download icon"
-                                width={400}
-                                height={400}
-                              />
-                            </Box>
-                            <Box
-                              pl={1}
-                              pb={6}
-                              sx={{
-                                /* for overlay work */
-                                position: "absolute",
-                                bottom: 0,
-                                color: "#fff",
-                                fontWeight: 500,
-                                fontSize: {
-                                  md: 13,
-                                  xl: 15,
-                                },
-                                lineHeight: 1.3,
-                              }}
-                            >
-                              <Box mb={3}>
-                                <Box component="span" sx={{ fontWeight: 700 }}>
-                                  {leader.job_title.tw}
-                                </Box>
-                                <Box component="span" ml={1}>
-                                  {leader.job_title.en}
-                                </Box>
-                              </Box>
-
-                              <Box mb={3}>
-                                <Box sx={{ fontSize: { md: 30, xl: 33 } }}>
-                                  {leader.name_tw}
-                                </Box>
-                                <Box sx={{ fontSize: { md: 24, xl: 27 } }}>
-                                  {leader.name_en}
-                                </Box>
-                              </Box>
-
-                              <Box sx={{ whiteSpace: "pre-line" }}>
-                                {leader.selected_title}
-                              </Box>
-                            </Box>
-                          </Item>
-                          {/* leader.introduce */}
-                          <Item sx={{ width: "50%" }}>
-                            <Box
-                              pr={3}
-                              sx={{
-                                color: "#fff",
-                                fontSize: 15,
-                                lineHeight: 1.5,
-                                fontWeight: 500,
-                                /* vertical align in the middle of screen's height */
-                                display: "table-cell",
-                                verticalAlign: "middle",
-                                height: "100vh",
-                              }}
-                            >
-                              <Box
-                                ml={-13}
-                                sx={{
-                                  /* for overlay work */
-                                  position: "relative",
-                                  whiteSpace: "pre-line",
-                                  fontSize: {
-                                    md: 15,
-                                    xl: 17,
-                                  },
-                                }}
-                              >
-                                <Box component="div" mb={3}>
-                                  {leader.introduce_tw}
-                                </Box>
-                                <Box component="div">{leader.introduce_en}</Box>
-                              </Box>
-                            </Box>
-                          </Item>
-                          {/* /leader.introduce */}
-                        </Stack>
+                        {boardMember.selected_title}
                       </Box>
-                      {/* /content inside of drawer */}
-                    </Drawer>
-                  </React.Fragment>
-                </Box>
-              ))}
-          </Slider>
+                    </Box>
+                  ))}
+              </Box>
+            </Item>
+          </Stack>
         </Box>
         <Box
-          ml={{ xs: 6, md: 13 }}
-          mr={{ xs: 2, md: 13 }}
           /* set up the distance between two Box */
           sx={{
             display: "flex",
@@ -271,20 +121,25 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
               sx={{ borderColor: "#000" }}
             />
             <Item>
-              <Stack direction="row" spacing={0}>
-                <Item>
-                  <Box>組織章程</Box>
-                  <Box>Articles of Organization</Box>
-                </Item>
-                <Item>
-                  <Image
-                    src="/IMGs/download_icon.png"
-                    alt="download icon"
-                    width={38}
-                    height={38}
-                  />
-                </Item>
-              </Stack>
+              <a
+                href={leadership_doc.articles_of_organization.url}
+                target="_blank"
+              >
+                <Stack direction="row" spacing={0}>
+                  <Item>
+                    <Box>組織章程</Box>
+                    <Box>Articles of Organization</Box>
+                  </Item>
+                  <Item>
+                    <Image
+                      src="/IMGs/download_icon.png"
+                      alt="download icon"
+                      width={38}
+                      height={38}
+                    />
+                  </Item>
+                </Stack>
+              </a>
             </Item>
             <Divider
               orientation="vertical"
@@ -312,32 +167,6 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
               flexItem
               sx={{ borderColor: "#000" }}
             />
-            <Item
-              //onClick={() => fullpageApi.moveTo(5, 1)}
-              sx={{ cursor: "pointer" }}
-            >
-              <Link href="/board_members">
-                <Stack direction="row" spacing={0}>
-                  <Item>
-                    <Box>現任董事會成員</Box>
-                    <Box>Board Members</Box>
-                  </Item>
-                  <Item>
-                    <Image
-                      src="/IMGs/goto_icon.png"
-                      alt="download icon"
-                      width={38}
-                      height={38}
-                    />
-                  </Item>
-                </Stack>
-              </Link>
-            </Item>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{ borderColor: "#000" }}
-            />
           </Stack>
         </Box>
       </Box>
@@ -346,4 +175,3 @@ const Leadership = ({ leadership: dataset, fullpageApi }) => {
 };
 
 export default Leadership;
-

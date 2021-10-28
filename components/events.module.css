@@ -1,4 +1,15 @@
-.container{
+/*.container{
   z-index:-1;
+}*/
+
+.landingImage{
+  z-index: 0;
+}
+
+.landingText{
+  z-index: 1;
+  position: absolute;
+  right:0;
+  bottom: 0;
 }
 

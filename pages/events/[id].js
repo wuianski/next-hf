@@ -33,15 +33,14 @@ function Event({ event }) {
 
   return (
     <>
+      <Box id="myMenuInPage">
+        <div /*data-menuanchor="section1"*/ className="active secName">
+          <div className="secName_twInPage">活動</div>
+          <div className="secName_enInPage">events</div>
+        </div>
+      </Box>
+
       <Box mt={20}>
-        <Box>
-          <Box id="myMenu">
-            <div /*data-menuanchor="section1"*/ className="active secName">
-              <div className="secName_tw">活動</div>
-              <div className="secName_en">events</div>
-            </div>
-          </Box>
-        </Box>
         <Stack direction="column" spacing={{ xs: 8, md: 12 }}>
           <Item sx={{ width: "100vw" }}>
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
@@ -143,19 +142,38 @@ function Event({ event }) {
                   </Box>
                 </Item>
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
-                  <Box>video</Box>
+                  <Box>{/*video*/}</Box>
                 </Item>
               </Stack>
             </Box>
           </Item>
           <Item>
-            <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }}>
-              <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+            <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }} mb={6}>
+              <Stack
+                direction={{ xs: "column", md: "row" }}
+                spacing={{ xs: 2, md: 6 }}
+              >
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
-                  <Box>圖片</Box>
+                  <Box>
+                    {event.images.map((image) => (
+                      <div key={image.id}>
+                        <Image
+                          //className={styles.landingImage}
+                          src={image.url}
+                          alt="event images"
+                          layout="responsive"
+                          objectFit="cover"
+                          objectPosition="center"
+                          width={1280}
+                          height={720}
+                        />
+                      </div>
+                    ))}
+                  </Box>
                 </Item>
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
                   <Box
+                    pt={{ xs: 3, md: 0 }}
                     sx={{
                       fontSize: { xs: "15px", xl: "15px" },
                       fontWeight: { xs: 700, xl: 700 },
@@ -163,7 +181,7 @@ function Event({ event }) {
                       textAlign: { xs: "end", md: "end" },
                     }}
                   >
-                    展覽時間
+                    展覽概念
                   </Box>
                   <Box sx={{ textAlign: "justify", textJustify: "distribute" }}>
                     <ReactMarkdown>{event.content_tw}</ReactMarkdown>

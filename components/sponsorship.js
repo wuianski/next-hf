@@ -467,7 +467,7 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
 
         <Box>
           <Box sx={{ cursor: "pointer" }}>
-            <Link href="/board_members">
+            <Link href="/reports">
               <Stack
                 direction="row"
                 spacing={0}

@@ -70,7 +70,7 @@ const Projects = ({ projects: dataset }) => {
   return (
     <div>
       <Box
-        ml={13}
+        ml={{ xs: 8, md: 13 }}
         sx={{
           display: { xs: "block", md: "flex" },
           justifyContent: "center",
@@ -81,7 +81,7 @@ const Projects = ({ projects: dataset }) => {
       >
         <Box
           sx={{
-            width: 1 / 5,
+            width: { xs: "60vw", md: "1 / 5" },
             marginRight: 3,
             "&:hover": {
               width: 2 / 3,
@@ -182,7 +182,7 @@ const Projects = ({ projects: dataset }) => {
         <Box
           mr={3}
           sx={{
-            width: 1 / 5,
+            width: { xs: "60vw", md: "1 / 5" },
             "&:hover": {
               width: 1 / 3,
             },
@@ -284,7 +284,7 @@ const Projects = ({ projects: dataset }) => {
           mr={3}
           sx={{
             alignSelf: "flex-end",
-            width: 1 / 5,
+            width: { xs: "50vw", md: "1 / 5" },
             "&:hover": {
               width: 2 / 3,
             },
@@ -385,7 +385,7 @@ const Projects = ({ projects: dataset }) => {
         <Box
           sx={{
             alignSelf: "flex-end",
-            width: 1 / 6,
+            width: { xs: "30vw", md: "1 / 5" },
             "&:hover": {
               width: 1 / 6,
             },

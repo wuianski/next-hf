@@ -13,14 +13,14 @@ a {
 * {
   box-sizing: border-box;
 }
-/* Section Name */
+/* Section Name in main page*/
 #myMenu{
   position: fixed;
   bottom: 68px;
   z-index: 999;
   height: 68vh;
   width:93px;
-  border-right: 1px solid #000;
+  border-right: 1px solid #fff;
   mix-blend-mode: difference;
 }
 div.secName{
@@ -66,7 +66,7 @@ div.secName{
   color: #fff;
   text-shadow: 0.2em 0.2em 0.8em #000;
 }
-/* /Section Name */
+/* /Section Name in main page*/
 
 /*.css-0{
   width: 50%;
@@ -76,6 +76,10 @@ div.secName{
 /* hide react-slick arrow */
 .slick-arrow {
   display: none !important;
+}
+.image_bw{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 
 /* force h3 markdown css */
@@ -88,6 +92,8 @@ h3 {
 .awssld__bullets button{
   width: 10px !important;
   height: 10px !important;
+  border: 2px solid #fff !important;
+  /*background:transparent !important;*/
 }
 .awssld__bullets{
   bottom: 40px !important;
@@ -95,45 +101,140 @@ h3 {
 }
 .awssld__bullets--active{
   background:#fff !important;
+
 }
 .awssld__controls__arrow-left::before, .awssld__controls__arrow-left::after, .awssld__controls__arrow-right::before, .awssld__controls__arrow-right::after{
   background-color: #fff !important;
 }
 /* /react-awesome-slider bullets */
 
-/*  
-.logoFixed{
-  position:fixed;
-  z-index:8;
-  left: 32px;
-  top: 36px;
-  mix-blend-mode: difference;
-}*/
+/* section name in other next page */
+#myMenuInPage{
+  position: fixed;
+  bottom: 68px;
+  z-index: 999;
+  height: 68vh;
+  width:93px;
+  border-right: 1px solid #000;
+}
+.secName_enInPage{
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  width: 118px;
+  height: 27px;
+  position: absolute;
+  left: 0px;
+  margin-left: -21px;
+  margin-top: 48px;
+  text-align: left;
+  color: #000;
+}
+.secName_twInPage{
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.5em;
+  width: 15px;
+  height: 118px;
+  position: absolute;
+  left: 0px;
+  margin-left: 60px;
+  text-align: left;
+  color: #000;
+}
+/* /section name in other next page */
+
+/* MuiTabs Lab  */
+.Mui-selected{
+  color: #000 !important;
+}
+.MuiTabs-indicator{
+  background-color: #000 !important;
+  height:5px;
+}
+.MuiTabs-flexContainer{
+    display: flex;
+  }
+
+/* in order to make first <P/> of markdown margin top equal zero  */
+.markdownP p:nth-of-type(1){
+  margin-top:0;
+}
+
+/*  */
+.textAniBlk{
+  color: #fff;
+  font-size:20px;
+  font-weight:700;
+  display: flex;
+  align-items: flex-end;
+}
+.textAniNumber{
+  color: #fff;
+  font-size:40px;
+  display: inline;
+}
+
 
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {
+  /* section name in main page */
   #myMenu{
     width: 40px;
   }
-
   .secName_en{
     font-size: 10px;
     margin-top: 45px;
     /*background-color: #fff;*/
     padding: 0 5px;
     text-align: start;
+    margin-left: -41px;
   }
-
   .secName_tw{
     font-size: 10px;
-    margin-left: 33.5px;
+    margin-left: 13.5px; /*33.5px*/
     bottom: 0;
     height: inherit;
     /*background-color: #fff;*/
     padding-top: 50px;
     } 
+  /* /section name in main page */
+
   h3 {
     margin: 0;
     line-height: initial;
   }
+
+  /* section name in other next page */
+  #myMenuInPage{
+    width: 40px;
+  }  
+  .secName_enInPage{
+    font-size: 10px;
+    margin-top: 45px;
+    /*background-color: #fff;*/
+    padding: 0 5px;
+    text-align: start;
+    margin-left: -41px;
+  }
+  .secName_twInPage{
+    font-size: 10px;
+    margin-left: 13.5px; /*33.5px*/
+    bottom: 0;
+    height: inherit;
+    /*background-color: #fff;*/
+    padding-top: 50px;
+    } 
+  /* section name in other next page */
+
+  /* MuiTabs Lab  */
+  .MuiTabs-flexContainer{
+    display: grid;
+  }
+
+  
 }

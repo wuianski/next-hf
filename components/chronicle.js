@@ -1,133 +1,163 @@
-import React from "react";
+import * as React from "react";
 import Box from "@mui/material/Box";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import { StyledEngineProvider } from "@mui/material/styles";
-import Zoom from "@mui/material/Zoom";
-import Grow from "@mui/material/Grow";
-import styles from "./chronicle.module.css";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel, { stepLabelClasses } from "@mui/material/StepLabel";
+import StepContent, { stepContentClasses } from "@mui/material/StepContent";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import StepButton from "@mui/material/StepButton";
+import { styled } from "@mui/material/styles";
+
+//import _, { map } from "underscore";
+import _ from "lodash";
 
 const Chronicle = ({ chronicle: dataset }) => {
   /** sorting dataset by id **/
-  !dataset ? null : dataset.sort((a, b) => a.id - b.id);
+  !dataset ? null : dataset.sort((a, b) => b.id - a.id);
 
-  /** panel state **/
-  const containerRef = React.useRef(null);
-  const [expanded, setExpanded] = React.useState(true);
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : true);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [completed, setCompleted] = React.useState({});
+
+  const totalSteps = () => {
+    return steps.length;
   };
 
+  const completedSteps = () => {
+    return Object.keys(completed).length;
+  };
+
+  const isLastStep = () => {
+    return activeStep === totalSteps() - 1;
+  };
+
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps();
+  };
+
+  const handleNext = () => {
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1;
+    setActiveStep(newActiveStep);
+  };
+
+  const handleStep = (step) => () => {
+    setActiveStep(step);
+  };
+
+  const groups = _.groupBy(dataset, "year");
+
+  const arrByYear = Object.entries(groups).map((x) => {
+    let year = x[0];
+    let val = x[1];
+    //console.log(val);
+    return year, val;
+  });
+
+  //console.log(arrByYear.year);
+
+  /*const myArr = Object.entries(groups).map((x) => {
+    let year = x[0];
+    let val = x[1];
+
+    const contentArr = val.map((c) => {
+      let myContent = c.content_tw;
+      return myContent;
+    });
+
+    return year, contentArr;
+  });*/
+
+  /*const file1 = leadership_doc.map((leader) => {
+    let url1 = leader.articles_of_organization.url;
+    return url1;
+  });
+  console.log(file1);*/
+
+  /** style stepper **/
+  const StyledStepLabel = styled(StepLabel)(() => ({
+    "& .MuiStepLabel-iconContainer": {
+      display: "none",
+    },
+  }));
+
+  const StyledStepContent = styled(StepContent)(() => ({
+    paddingLeft: 0,
+    paddingRight: "30px",
+    /*width: "50px",
+    display: "block",
+    background:
+      "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, rgba(176, 147, 54, 0.5) 99.99%)",*/
+    /*"& .MuiCollapse-wrapperInner": {
+      paddingBottom: "300px",
+    },*/
+  }));
+
   return (
-    <StyledEngineProvider injectFirst>
-      <>
-        <Box ml={13} mr={6}>
-          <Box>
-            <Box
-              ml={6}
-              mt={38}
-              sx={{ width: "400px" }}
-              className={styles.myAccordionBlk}
-            >
-              {dataset &&
-                dataset.map((chronicle) => (
-                  <Accordion
-                    key={chronicle.id}
-                    disableGutters={true}
-                    className={styles.myAccordion}
-                    expanded={expanded === `panel` + chronicle.id}
-                    onChange={handleChange(`panel` + chronicle.id)}
-                  >
-                    <AccordionSummary
-                      key={chronicle.id}
-                      className={styles.myAccordionSummary}
-                      aria-controls={`panel` + chronicle.id + `d-content`}
-                      id={`panel` + chronicle.id + `d-header`}
+    <>
+      <Box ml={13} mr={6} mt={13}>
+        <Box
+          sx={{
+            //in order to make element can scroll normally, give element a specific height.
+            width: { xs: "60vw", md: "50vw" },
+            overflow: "scroll",
+          }}
+          //in order to make element can scroll normally, give a className and use it in fullPage options
+          className="scrollEle"
+        >
+          <Stepper nonLinear activeStep={activeStep}>
+            {arrByYear.map((step, index) => (
+              //console.log(step),
+              <Step key={index} completed={completed[index]}>
+                <>
+                  <StyledStepLabel onClick={handleStep(index)}>
+                    {index + 1971}
+                    {/*<Box
+                      sx={{
+                        height: 100,
+                        background:
+                          "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
+                      }}
+                    ></Box>*/}
+                  </StyledStepLabel>
+                  <StyledStepContent>
+                    <Box
+                      sx={{
+                        width: "30px",
+                        height: "max-content",
+                        //paddingBottom: "150px",
+                        background:
+                          "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, rgba(176, 147, 54, 0.5) 99.99%)",
+                      }}
                     >
-                      <Box
-                        //visibility={"hidden"}
-                        /*onClick={(handleChange) => {
-                          alert("clicked");
-                        }}*/
-                        sx={{
-                          height: 110,
-                          backgroundImage:
-                            "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
-                        }}
-                      >
-                        <Box mt={-3}>{chronicle.year}</Box>
-                      </Box>
-                      <Grow in={expanded === `panel` + chronicle.id}>
-                        <Box
-                          sx={{
-                            height: 380,
-                            width: 38,
-                            backgroundImage:
-                              "linear-gradient(180deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 70.31%, rgba(176, 147, 54, 0) 89.58%)",
-                            marginLeft: "-36px",
-                            marginTop: "-270px",
-                            backgroundColor: "#fff",
-                          }}
-                        >
-                          <Box mt={-7} ml={-2} sx={{ fontSize: "33px" }}>
-                            {chronicle.year}
+                      {step.map((chronicle) => (
+                        <Box>
+                          <Box
+                            sx={{
+                              position: "relative",
+                              left: "30px",
+                              width: "100px",
+                            }}
+                            key={chronicle.id}
+                          >
+                            {chronicle.content_tw}
                           </Box>
                         </Box>
-                      </Grow>
-                    </AccordionSummary>
-                    <AccordionDetails
-                      className={styles.myAccordionDetails}
-                      key={chronicle.id}
-                    >
-                      <Box sx={{ maxWidth: "300px" }}>
-                        <Box
-                          sx={{
-                            color: "#666666",
-                            fontSize: "15px",
-                          }}
-                        >
-                          {chronicle.type_tw}
-                        </Box>
-                        <Box
-                          sx={{ fontSize: "20px", fontWeight: 700 }}
-                          component="span"
-                          mr={1}
-                        >
-                          {chronicle.content_tw}
-                        </Box>
-                        |
-                        <Box
-                          sx={{ fontSize: "20px", fontWeight: 400 }}
-                          component="span"
-                          ml={1}
-                        >
-                          {chronicle.additional_content_tw}
-                        </Box>
-                      </Box>
-                      <Box
-                        sx={{
-                          fontSize: "17px",
-                          fontWeight: 500,
-                          maxWidth: "300px",
-                        }}
-                      >
-                        <Box component="span" mr={1}>
-                          {chronicle.content_en}
-                        </Box>
-                        :
-                        <Box component="span" ml={1}>
-                          {chronicle.additional_content_en}
-                        </Box>
-                      </Box>
-                    </AccordionDetails>
-                  </Accordion>
-                ))}
-            </Box>
-          </Box>
+                      ))}
+                    </Box>
+                  </StyledStepContent>
+                </>
+              </Step>
+            ))}
+          </Stepper>
         </Box>
-      </>
-    </StyledEngineProvider>
+      </Box>
+    </>
   );
 };
 

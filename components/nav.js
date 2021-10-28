@@ -37,7 +37,7 @@ export default function Nav() {
     <div>
       <div onClick={() => setOpenFirst(true)} className={styles.menuOpen}>
         <Image
-          src="/IMGs/menuOpen.png"
+          src="/IMGs/menuOpen_w.png"
           alt="icon of menu open"
           width={40}
           height={28}

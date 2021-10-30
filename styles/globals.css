@@ -96,7 +96,7 @@ h3 {
   /*background:transparent !important;*/
 }
 .awssld__bullets{
-  bottom: 40px !important;
+  bottom: 30px !important;
   z-index: 9;
 }
 .awssld__bullets--active{
@@ -107,6 +107,12 @@ h3 {
   background-color: #fff !important;
 }
 /* /react-awesome-slider bullets */
+/* react-awesome-slider in publication */
+.awssld__content{
+  background-color: unset !important;
+  align-items: end !important;
+}
+/* react-awesome-slider in publication */
 
 /* section name in other next page */
 #myMenuInPage{

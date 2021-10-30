@@ -18,24 +18,29 @@ const MissionSlogan = ({ mission: dataset, fullpageApi }) => {
 
   return (
     <div>
-      <Box ml={{ xs: 13, md: 33 }} mr={{ xs: 2, md: 13 }} mt={13}>
+      <Box ml={{ xs: 10, md: 23 }} mr={{ xs: 0, md: 8 }} mt={13}>
         {/* 1st row */}
         <Box
           sx={{
-            fontSize: { xs: 20, md: 30, xl: 33 },
+            fontSize: { xs: 18, md: 30, xl: 33 },
             lineHeight: 1.3,
             display: "flex",
             justifyContent: "flex-end",
-            width: "85%",
+            width: "90%",
             height: { xs: "30vh", md: "40vh" },
             textTransform: "uppercase",
           }}
           mr={13}
+          mb={{ xs: 12, md: 6 }}
         >
           {dataset && (
             <Box key={dataset.id}>
               <Box sx={{ whiteSpace: "pre-line" }}>{dataset.slogan_tw}</Box>
-              <Box sx={{ whiteSpace: { xs: "unset", md: "pre-line" } }}>
+              <Box
+                sx={{
+                  whiteSpace: { xs: "unset", md: "pre-line" },
+                }}
+              >
                 {dataset.slogan_en}
               </Box>
             </Box>
@@ -47,7 +52,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi }) => {
           <Stack direction={{ xs: "column-reverse", md: "row" }}>
             <Item
               sx={{
-                width: { xs: "50vw", md: "50vw" },
+                width: { xs: "80vw", md: "30vw" },
               }}
             >
               <Box>
@@ -81,7 +86,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi }) => {
                 </Stack>
               </Box>
             </Item>
-            <Item sx={{ width: { xs: "60vw", md: "50vw" } }}>
+            <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
               <Box
                 sx={{
                   fontSize: { md: 17, xl: 19 },

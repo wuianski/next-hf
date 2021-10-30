@@ -185,8 +185,15 @@ function Reports({ reports: dataset }) {
 
   return (
     <>
-      <Box ml={{ xs: 5, md: 33 }} mr={{ xs: 2, md: 13 }} mt={16}>
-        <Box sx={{ width: { xs: "80vw", md: "68vw" } }}>
+      <Box id="myMenuInPage">
+        <div className="active secName">
+          <div className="secName_twInPage">公開資訊</div>
+          <div className="secName_enInPage">fact</div>
+        </div>
+      </Box>
+
+      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 13 }} mt={16}>
+        <Box sx={{ width: { xs: "74vw", md: "68vw" } }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <TabList

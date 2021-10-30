@@ -3,6 +3,7 @@ import Nav from "../components/nav";
 import React, { useState, useEffect } from "react";
 import { fetchAPI } from "../lib/api";
 import Image from "next/image";
+import AwesomeSlider from "react-awesome-slider";
 /** grid **/
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -125,10 +126,42 @@ function Publication({ books: dataset, archiveImg }) {
 
   return (
     <>
-      <Box ml={13} mr={8} mt={38}>
-        {/*<box>{archiveImg.images_archive}</box>*/}
+      <Box id="myMenuInPage">
+        <div className="active secName">
+          <div className="secName_twInPage">出版</div>
+          <div className="secName_enInPage">publication</div>
+        </div>
+      </Box>
+
+      <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 8, md: -12 }}>
+        <Box m={2} sx={{ display: { xs: "none", md: "block" } }}>
+          <AwesomeSlider
+            bullets={true}
+            //fillParent={true}
+            transitionDelay={500}
+            organicArrows={false}
+          >
+            {archiveImg.images_archive &&
+              archiveImg.images_archive.map((img) => (
+                <Box key={img.id}>
+                  <Image
+                    //className={styles.landingImage}
+                    src={img.url}
+                    alt="slider"
+                    //layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={1920}
+                    height={699}
+                  />
+                </Box>
+              ))}
+          </AwesomeSlider>
+        </Box>
+
         <Box
           className="portfolio__labels"
+          mt={{ xs: 8, md: -3 }}
           ml={2}
           p={2}
           sx={{ width: "calc(100% - 32px)", backgroundColor: "#000" }}
@@ -137,8 +170,8 @@ function Publication({ books: dataset, archiveImg }) {
             direction={{ xs: "column", md: "row" }}
             justifyContent="center"
             alignItems="center"
-            spacing={3}
-            height={"100px"}
+            spacing={{ xs: 0, md: 3 }}
+            height={{ xs: "100%", md: "100px" }}
           >
             <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
               <a
@@ -217,7 +250,7 @@ function Publication({ books: dataset, archiveImg }) {
             </ItemS>
           </Stack>
         </Box>
-        <Box sx={{ flexGrow: 1 }} pt={10}>
+        <Box sx={{ flexGrow: 1 }} pt={{ xs: 4, md: 10 }}>
           <Grid
             className="portfolio__container"
             container
@@ -294,3 +327,12 @@ export async function getServerSideProps() {
 }
 
 export default Publication;
+
+Publication.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Nav />
+      {page}
+    </Layout>
+  );
+};

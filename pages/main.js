@@ -38,8 +38,8 @@ class App extends React.Component {
     let {
       events,
       mission,
-      projects,
       chronicle,
+      projects,
       leadership,
       leadership_doc,
       news,
@@ -53,8 +53,8 @@ class App extends React.Component {
       anchors: [
         "events",
         "mission",
-        "projects",
         "chronicle",
+        "projects",
         "leadership",
         "news",
         "facts",
@@ -68,13 +68,13 @@ class App extends React.Component {
         title: "mission",
         data: mission,
       },
-      projects: {
-        title: "projects",
-        data: projects,
-      },
       chronicle: {
         title: "chronicle",
         data: chronicle,
+      },
+      projects: {
+        title: "projects",
+        data: projects,
       },
       leadership: {
         title: "leadership",
@@ -101,8 +101,8 @@ class App extends React.Component {
     const {
       events,
       mission,
-      projects,
       chronicle,
+      projects,
       leadership,
       news,
       sponsorship,
@@ -123,14 +123,14 @@ class App extends React.Component {
             <div className="secName_en">mission</div>
           </div>
 
-          <div data-menuanchor="projects" className="secName">
-            <div className="secName_tw">業務</div>
-            <div className="secName_en">projects</div>
-          </div>
-
           <div data-menuanchor="chronicle" className="secName">
             <div className="secName_tw">大事記</div>
-            <div className="secName_en">chronicle</div>
+            <div className="secName_en">timeline</div>
+          </div>
+
+          <div data-menuanchor="projects" className="secName">
+            <div className="secName_tw">計畫</div>
+            <div className="secName_en">program</div>
           </div>
 
           <div data-menuanchor="leadership" className="secName">
@@ -145,7 +145,7 @@ class App extends React.Component {
 
           <div data-menuanchor="facts" className="secName">
             <div className="secName_tw">公開資訊</div>
-            <div className="secName_en">facts</div>
+            <div className="secName_en">resource</div>
           </div>
 
           <div data-menuanchor="publication" className="secName">
@@ -205,15 +205,15 @@ class App extends React.Component {
                     </div>
                   )}
 
-                  {projects && (
-                    <div className="section" data-anchor="section3">
-                      <Projects projects={projects.data} />
-                    </div>
-                  )}
-
                   {chronicle && (
                     <div className="section" data-anchor="section4">
                       <Chronicle chronicle={chronicle.data} />
+                    </div>
+                  )}
+
+                  {projects && (
+                    <div className="section" data-anchor="section3">
+                      <Projects projects={projects.data} />
                     </div>
                   )}
 

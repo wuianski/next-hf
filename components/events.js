@@ -12,7 +12,7 @@ const Events = ({ events: dataset }) => {
 
   return (
     <>
-      <Box /*sx={{width:"100vw", height:"100vh"}}*/>
+      <Box>
         <AwesomeSlider
           bullets={true}
           fillParent={true}

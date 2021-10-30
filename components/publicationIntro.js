@@ -29,16 +29,26 @@ const PublicationIntro = ({ publication: dataset }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 13 }} mt={8}>
+      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={13}>
         <Stack>
           <Item>
-            <Stack direction={{ xs: "column", md: "row" }} spacing={3}>
-              <Item sx={{ width: { xs: "100%", md: "20vw" } }}>
-                <Box sx={{ fontSize: { md: 30, xl: 33 } }}>關於出版</Box>
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              spacing={{ xs: 1, md: 0 }}
+            >
+              <Item sx={{ width: { xs: "100%", md: "18vw" } }}>
+                <Box
+                  sx={{
+                    fontSize: { xs: 20, md: 30, xl: 33 },
+                    fontWeight: { xs: 700, md: 400, xl: 400 },
+                  }}
+                >
+                  關於出版
+                </Box>
               </Item>
               <Item
                 sx={{
-                  width: { xs: "100%", md: "80vw" },
+                  width: { xs: "100%", md: "100vw" },
                   /* height of scroll area on mobile */
                   height: { xs: "40vh", md: "auto" },
                   overflowY: { xs: "scroll", md: "auto" },
@@ -67,8 +77,8 @@ const PublicationIntro = ({ publication: dataset }) => {
                   display: { xs: "flex", md: "flex" },
                   alignItems: { xs: "flex-start", md: "flex-end" },
                   /* set up the distance between two Box */
-                  height: { md: "25vh", xl: "35vh" },
-                  minHeight: 250,
+                  height: { md: "25vh", xl: "30vh" },
+                  minHeight: 180,
                 }}
               >
                 <Item sx={{ width: { xs: "0vw", md: "40vw" } }}>
@@ -81,8 +91,8 @@ const PublicationIntro = ({ publication: dataset }) => {
                         justifyContent: "left",
                         alignItems: "flex-end",
                         height: "25vh",
-                        scale: { xs: "0.5", md: "0.75", xl: "1" },
-                        marginBottom: { md: "-3.1vh", xl: "0" },
+                        scale: { xs: "0.36", md: "0.65", xl: "1" },
+                        marginBottom: { xs: "-3vh", md: "-3.1vh", xl: "0" },
                       }}
                     >
                       <Item>
@@ -221,7 +231,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                         sx={{ borderColor: "#000" }}
                       />
                       <Item sx={{ cursor: "pointer" }}>
-                        <Link href="">
+                        <Link href="/publication">
                           <Stack
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}

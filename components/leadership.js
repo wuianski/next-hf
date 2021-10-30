@@ -58,14 +58,17 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
             <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
               <Box
                 sx={{
-                  width: "100%",
+                  //width: "100%",
                   columnCount: { md: "1", md: "2" },
                   columnGap: "25px",
                   textAlign: "justify",
                   textJustify: "distribute",
                   //in order to make element can scroll normally, give element a specific height.
-                  height: { xs: "33vh", md: "48vh" },
+
+                  width: { xs: "80vw", md: "60vw" },
+                  height: { xs: "33vh", md: "40vh" },
                   overflow: "scroll",
+                  paddingRight: "60px",
                 }}
                 //in order to make element can scroll normally, give a className and use it in fullPage options
                 className="scrollEle"
@@ -74,8 +77,10 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   boardMembers.map((boardMember) => (
                     <Box
                       key={boardMember.id}
-                      mb={{ xs: 4, md: 2 }}
-                      sx={{ height: { xs: "90px", md: "120px" } }}
+                      mb={{ xs: 6, md: 2 }}
+                      sx={{
+                        height: { xs: "130px", md: "120px" },
+                      }}
                     >
                       <Box
                         mb={{ xs: 1.5, md: 1.5 }}
@@ -147,20 +152,22 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               sx={{ borderColor: "#000" }}
             />
             <Item>
-              <Stack direction="row" spacing={0}>
-                <Item>
-                  <Box>歷年董事會成員</Box>
-                  <Box>Board Members</Box>
-                </Item>
-                <Item>
-                  <Image
-                    src="/IMGs/download_icon.png"
-                    alt="download icon"
-                    width={38}
-                    height={38}
-                  />
-                </Item>
-              </Stack>
+              <a href={leadership_doc.board_members.url} target="_blank">
+                <Stack direction="row" spacing={0}>
+                  <Item>
+                    <Box>歷年董事會成員</Box>
+                    <Box>Board Members</Box>
+                  </Item>
+                  <Item>
+                    <Image
+                      src="/IMGs/download_icon.png"
+                      alt="download icon"
+                      width={38}
+                      height={38}
+                    />
+                  </Item>
+                </Stack>
+              </a>
             </Item>
             <Divider
               orientation="vertical"

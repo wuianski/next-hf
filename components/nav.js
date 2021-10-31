@@ -70,8 +70,8 @@ export default function Nav() {
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
             >
-              <span className={styles.menuTitle}>特別活動</span>
-              <span className={styles.menuTitleEn}>Special Events</span>
+              <span className={styles.menuTitle}>活動</span>
+              <span className={styles.menuTitleEn}>Events</span>
             </div>
           </Link>
           <Link href="/main#mission" replace>
@@ -80,36 +80,45 @@ export default function Nav() {
               onClick={() => setOpenFirst(false)}
             >
               <span className={styles.menuTitle}>使命</span>
-              <span className={styles.menuTitleEn}>Missions</span>
+              <span className={styles.menuTitleEn}>Mission</span>
             </div>
           </Link>
-          <div
-            className={`${styles.menuTitleList} ${
-              openSecondProjects ? styles.highlightL : null
-            }`}
-            onClick={() => setOpenSecondProjects(true)}
-          >
-            <span className={styles.menuTitle}>業務</span>
-            <span className={styles.menuTitleEn}>Projects</span>
-          </div>
           <Link href="/main#chronicle" passHref>
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
             >
               <span className={styles.menuTitle}>大事記</span>
-              <span className={styles.menuTitleEn}>Chronicle</span>
+              <span className={styles.menuTitleEn}>Timeline</span>
             </div>
           </Link>
-          <div
+          {/*<div
             className={`${styles.menuTitleList} ${
-              openSecondLead ? styles.highlightL : null
+              openSecondProjects ? styles.highlightL : null
             }`}
-            onClick={() => setOpenSecondLead(true)}
+            onClick={() => setOpenSecondProjects(true)}
           >
-            <span className={styles.menuTitle}>組織</span>
-            <span className={styles.menuTitleEn}>Leadership</span>
-          </div>
+            <span className={styles.menuTitle}>業務</span>
+            <span className={styles.menuTitleEn}>Program</span>
+          </div>*/}
+          <Link href="/main#projects" passHref>
+            <div
+              className={styles.menuTitleList}
+              onClick={() => setOpenFirst(false)}
+            >
+              <span className={styles.menuTitle}>業務</span>
+              <span className={styles.menuTitleEn}>Program</span>
+            </div>
+          </Link>
+          <Link href="/main#leadership" passHref>
+            <div
+              className={styles.menuTitleList}
+              onClick={() => setOpenFirst(false)}
+            >
+              <span className={styles.menuTitle}>組織</span>
+              <span className={styles.menuTitleEn}>Leadership</span>
+            </div>
+          </Link>
           <Link href="/main#news" passHref>
             <div
               className={styles.menuTitleList}
@@ -126,7 +135,7 @@ export default function Nav() {
             onClick={() => setOpenSecondFact(true)}
           >
             <span className={styles.menuTitle}>公開資訊</span>
-            <span className={styles.menuTitleEn}>Facts</span>
+            <span className={styles.menuTitleEn}>Resource</span>
           </div>
           <div
             className={`${styles.menuTitleList} ${
@@ -139,6 +148,8 @@ export default function Nav() {
           </div>
         </div>
       </Modal>
+      {/* 2nd modal of program */}
+      {/*
       <Modal
         open={openSecondProjects}
         onClose={() => setOpenSecondProjects(false)}
@@ -191,82 +202,8 @@ export default function Nav() {
           </div>
         </Link>
       </Modal>
-      <Modal
-        open={openSecondLead}
-        onClose={() => setOpenSecondLead(false)}
-        center
-        closeIcon={closeIcon2}
-        classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
-        }}
-        animationDuration={400}
-      >
-        <Link href="/main#leadership" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondLead(false);
-            }}
-          >
-            <span className={styles.menuTitle}>創辦人</span>
-            <span className={styles.menuTitleEn}>Founder</span>
-          </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondLead(false);
-            }}
-          >
-            <span className={styles.menuTitle}>董事長</span>
-            <span className={styles.menuTitleEn}>Chairman</span>
-          </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondLead(false);
-            }}
-          >
-            <span className={styles.menuTitle}>副董事長</span>
-            <span className={styles.menuTitleEn}>Vice Chairman</span>
-          </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondLead(false);
-            }}
-          >
-            <span className={styles.menuTitle}>董事會</span>
-            <span className={styles.menuTitleEn}>Board Members</span>
-          </div>
-        </Link>
-        <Link href="/main#leadership" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondLead(false);
-            }}
-          >
-            <span className={styles.menuTitle}>組織章程</span>
-            <span className={styles.menuTitleEn}>Articles of Organization</span>
-          </div>
-        </Link>
-      </Modal>
+      */}
+      {/* 2nd modal of resource */}
       <Modal
         open={openSecondFact}
         onClose={() => setOpenSecondFact(false)}
@@ -294,43 +231,7 @@ export default function Nav() {
             <span className={styles.menuTitleEn}>FUN FACTS</span>
           </div>
         </Link>
-        <Link href="/main#facts" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>贊助</span>
-            <span className={styles.menuTitleEn}>Sponsorship</span>
-          </div>
-        </Link>
-        <Link href="/main#facts" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>工作報告</span>
-            <span className={styles.menuTitleEn}>Sponsorship</span>
-          </div>
-        </Link>
-        <Link href="/main#facts" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>捐款明細</span>
-            <span className={styles.menuTitleEn}>Donation</span>
-          </div>
-        </Link>
-        <Link href="/main#facts" passHref>
+        <Link href="/reports" passHref>
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -342,7 +243,44 @@ export default function Nav() {
             <span className={styles.menuTitleEn}>Financial Statements</span>
           </div>
         </Link>
+        <Link href="/reports" passHref>
+          <div
+            className={styles.menuTitleList}
+            onClick={() => {
+              setOpenFirst(false);
+              setOpenSecondFact(false);
+            }}
+          >
+            <span className={styles.menuTitle}>贊助明細</span>
+            <span className={styles.menuTitleEn}>Sponsorship sheet</span>
+          </div>
+        </Link>
+        <Link href="/reports" passHref>
+          <div
+            className={styles.menuTitleList}
+            onClick={() => {
+              setOpenFirst(false);
+              setOpenSecondFact(false);
+            }}
+          >
+            <span className={styles.menuTitle}>捐款明細</span>
+            <span className={styles.menuTitleEn}>Donation sheet</span>
+          </div>
+        </Link>
+        <Link href="/reports" passHref>
+          <div
+            className={styles.menuTitleList}
+            onClick={() => {
+              setOpenFirst(false);
+              setOpenSecondFact(false);
+            }}
+          >
+            <span className={styles.menuTitle}>工作報告</span>
+            <span className={styles.menuTitleEn}>work report</span>
+          </div>
+        </Link>
       </Modal>
+      {/* 2nd modal of publication */}
       <Modal
         open={openSecondPub}
         onClose={() => setOpenSecondPub(false)}
@@ -367,10 +305,10 @@ export default function Nav() {
             }}
           >
             <span className={styles.menuTitle}>關於出版</span>
-            <span className={styles.menuTitleEn}>ABOUT PUBLIC</span>
+            <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
           </div>
         </Link>
-        <Link href="/main#publication" passHref>
+        <Link href="/publication" passHref>
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -379,7 +317,7 @@ export default function Nav() {
             }}
           >
             <span className={styles.menuTitle}>出版品</span>
-            <span className={styles.menuTitleEn}>Past Publication</span>
+            <span className={styles.menuTitleEn}>Publications</span>
           </div>
         </Link>
       </Modal>

@@ -78,7 +78,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      展覽時間
+                      活動時間
                     </Box>
                     <Box
                       pt={1}
@@ -103,7 +103,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      展覽地點
+                      活動地點
                     </Box>
                     <Box
                       pt={1}
@@ -181,7 +181,7 @@ function Event({ event }) {
                       textAlign: { xs: "end", md: "end" },
                     }}
                   >
-                    展覽概念
+                    活動概念
                   </Box>
                   <Box sx={{ textAlign: "justify", textJustify: "distribute" }}>
                     <ReactMarkdown>{event.content_tw}</ReactMarkdown>

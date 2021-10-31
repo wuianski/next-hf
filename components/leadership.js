@@ -59,6 +59,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               <Box
                 sx={{
                   //width: "100%",
+                  //columns: "100px 2",
                   columnCount: { md: "1", md: "2" },
                   columnGap: "25px",
                   textAlign: "justify",
@@ -66,7 +67,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   //in order to make element can scroll normally, give element a specific height.
 
                   width: { xs: "80vw", md: "60vw" },
-                  height: { xs: "33vh", md: "40vh" },
+                  height: { xs: "33vh", md: "408px" },
                   overflow: "scroll",
                   paddingRight: "60px",
                 }}
@@ -79,7 +80,8 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                       key={boardMember.id}
                       mb={{ xs: 6, md: 2 }}
                       sx={{
-                        height: { xs: "130px", md: "120px" },
+                        height: { xs: "auto", md: "120px" },
+                        //maxHeight: { xs: "80px", md: "120px" },
                       }}
                     >
                       <Box
@@ -132,8 +134,8 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               >
                 <Stack direction="row" spacing={0}>
                   <Item>
-                    <Box>組織章程</Box>
-                    <Box>Articles of Organization</Box>
+                    <Box>捐助章程</Box>
+                    <Box>Foundation Bylaws</Box>
                   </Item>
                   <Item>
                     <Image

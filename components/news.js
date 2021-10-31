@@ -19,6 +19,8 @@ import Slider from "react-slick";
 import Stack from "@mui/material/Stack";
 import styles from "./news.module.css";
 
+import { format } from "date-fns";
+
 /** pagination setting **/
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -188,8 +190,14 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                           fontWeight: 600,
                         }}
                       >
-                        <Box>{news.start_date}</Box>
-                        <Box>{news.end_date && `-` + news.end_date}</Box>
+                        <Box component="span">
+                          {format(new Date(news.start_date), "yyyy.MM.dd")}
+                        </Box>
+                        <Box component="span">{news.end_date && ` - `}</Box>
+                        <Box>
+                          {news.end_date &&
+                            format(new Date(news.end_date), "yyyy.MM.dd")}
+                        </Box>
                       </Box>
                     </StyledTableCell>
                     <StyledTableCell style={{ width: "50vw" }} align="left">
@@ -294,7 +302,11 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                   <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                     <Item>
                       <Box
-                        sx={{ fontSize: { xs: 15, xl: 15 }, fontWeight: 700 }}
+                        sx={{
+                          fontSize: { xs: 15, xl: 15 },
+                          fontWeight: 700,
+                          whiteSpace: "pre-line",
+                        }}
                       >
                         {announcement.title}
                       </Box>

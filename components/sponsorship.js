@@ -53,8 +53,8 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
   const new_y0Arr = [
     { name: "教育", p: y0_educate },
     { name: "藝術", p: y0_art },
-    { name: "獎學金", p: y0_scholarship },
-    { name: "其他", p: y0_other },
+    { name: "助學", p: y0_scholarship },
+    { name: "文哲", p: y0_other },
   ];
   /** /pie chart **/
 
@@ -390,9 +390,126 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
                 </svg>
               </Box>
             </Item>
+            {/* vvv color demo */}
             <Item>
               <Box sx={{ height: "60vh", marginTop: { md: 0, xl: 0 } }}>
                 <Stack spacing={{ sm: 2, md: 2 }}>
+                  {/* vvv color demo, set marginBottom for the distance with down ele */}
+                  <Item sx={{ marginBottom: -13, paddingTop: "7vh" }}>
+                    <Box>
+                      <Stack direction="row">
+                        <Item>
+                          <Box ml={3} sx={{ width: "73px", height: "5vh" }}>
+                            <Stack direction="row">
+                              <Item>
+                                <Box
+                                  mt={0.5}
+                                  sx={{
+                                    width: 10,
+                                    height: 10,
+                                    background: "rgba(176, 147, 54, 0.6)",
+                                    display: "inline-block",
+                                    borderRadius: 5,
+                                  }}
+                                ></Box>
+                              </Item>
+                              <Item>
+                                <Box
+                                  sx={{
+                                    fontSize: { md: 14, xl: 17 },
+                                    lineHeight: { md: "14px", xl: "17px" },
+                                  }}
+                                >
+                                  教育
+                                </Box>
+                              </Item>
+                            </Stack>
+                          </Box>
+                        </Item>
+                        <Item>
+                          <Box sx={{ width: "73px" }}>
+                            <Stack direction="row">
+                              <Item>
+                                <Box
+                                  sx={{
+                                    width: 10,
+                                    height: 10,
+                                    background: "rgba(0, 0, 0, 0.5)",
+                                    display: "inline-block",
+                                    borderRadius: 5,
+                                  }}
+                                ></Box>
+                              </Item>
+                              <Item>
+                                <Box
+                                  sx={{
+                                    fontSize: { md: 14, xl: 17 },
+                                    lineHeight: { md: "14px", xl: "17px" },
+                                  }}
+                                >
+                                  藝術
+                                </Box>
+                              </Item>
+                            </Stack>
+                          </Box>
+                        </Item>
+                        <Item>
+                          <Box sx={{ width: "73px" }}>
+                            <Stack direction="row">
+                              <Item>
+                                <Box
+                                  sx={{
+                                    width: 10,
+                                    height: 10,
+                                    background: "rgba(196, 173, 50, 0.6)",
+                                    display: "inline-block",
+                                    borderRadius: 5,
+                                  }}
+                                ></Box>
+                              </Item>
+                              <Item>
+                                <Box
+                                  sx={{
+                                    fontSize: { md: 14, xl: 17 },
+                                    lineHeight: { md: "14px", xl: "17px" },
+                                  }}
+                                >
+                                  助學
+                                </Box>
+                              </Item>
+                            </Stack>
+                          </Box>
+                        </Item>
+                        <Item>
+                          <Box sx={{ width: "73px" }}>
+                            <Stack direction="row">
+                              <Item>
+                                <Box
+                                  sx={{
+                                    width: 10,
+                                    height: 10,
+                                    background: "rgba(187, 187, 187, 0.6)",
+                                    display: "inline-block",
+                                    borderRadius: 5,
+                                  }}
+                                ></Box>
+                              </Item>
+                              <Item>
+                                <Box
+                                  sx={{
+                                    fontSize: { md: 14, xl: 17 },
+                                    lineHeight: { md: "14px", xl: "17px" },
+                                  }}
+                                >
+                                  文哲
+                                </Box>
+                              </Item>
+                            </Stack>
+                          </Box>
+                        </Item>
+                      </Stack>
+                    </Box>
+                  </Item>
                   <Item>
                     <Box sx={{ height: "20vh" }}>
                       <Bar2 />
@@ -454,6 +571,137 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
                 spacing={-6}
                 sx={{ marginTop: "-60px", marginLeft: "-30px" }}
               >
+                <Item sx={{ marginBottom: 0, paddingTop: "7vh" }}>
+                  <Box>
+                    <Stack direction="row">
+                      <Item>
+                        <Box ml={2} sx={{ width: "73px", height: "5vh" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                mt={0.5}
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(176, 147, 54, 0.6)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "17px",
+                                  },
+                                }}
+                              >
+                                教育
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(0, 0, 0, 0.5)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "17px",
+                                  },
+                                }}
+                              >
+                                藝術
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(196, 173, 50, 0.6)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "17px",
+                                  },
+                                }}
+                              >
+                                助學
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(187, 187, 187, 0.6)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "17px",
+                                  },
+                                }}
+                              >
+                                文哲
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                    </Stack>
+                  </Box>
+                </Item>
                 <Item>
                   <Bar2 />
                 </Item>

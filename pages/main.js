@@ -213,7 +213,10 @@ class App extends React.Component {
 
                   {projects && (
                     <div className="section" data-anchor="section3">
-                      <Projects projects={projects.data} />
+                      <Projects
+                        projects={projects.data}
+                        fullpageApi={fullpageApi}
+                      />
                     </div>
                   )}
 

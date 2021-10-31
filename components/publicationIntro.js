@@ -29,12 +29,12 @@ const PublicationIntro = ({ publication: dataset }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={13}>
+      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 4, md: 13 }}>
         <Stack>
           <Item>
             <Stack
               direction={{ xs: "column", md: "row" }}
-              spacing={{ xs: 1, md: 0 }}
+              spacing={{ xs: 1, md: 3 }}
             >
               <Item sx={{ width: { xs: "100%", md: "18vw" } }}>
                 <Box
@@ -50,9 +50,11 @@ const PublicationIntro = ({ publication: dataset }) => {
                 sx={{
                   width: { xs: "100%", md: "100vw" },
                   /* height of scroll area on mobile */
-                  height: { xs: "40vh", md: "auto" },
-                  overflowY: { xs: "scroll", md: "auto" },
+                  height: { xs: "40vh", md: "38vh" },
+                  overflow: "scroll",
                 }}
+                //in order to make element can scroll normally, give a className and use it in fullPage options
+                className="scrollEle"
               >
                 <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
                   <Box
@@ -70,7 +72,7 @@ const PublicationIntro = ({ publication: dataset }) => {
             </Stack>
           </Item>
           <Item>
-            <Box>
+            <Box mt={{ xs: 0, md: 2 }}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 sx={{
@@ -78,7 +80,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                   alignItems: { xs: "flex-start", md: "flex-end" },
                   /* set up the distance between two Box */
                   height: { md: "25vh", xl: "30vh" },
-                  minHeight: 180,
+                  minHeight: 200,
                 }}
               >
                 <Item sx={{ width: { xs: "0vw", md: "40vw" } }}>

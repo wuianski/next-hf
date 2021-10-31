@@ -6,6 +6,8 @@ import AwesomeSlider from "react-awesome-slider";
 import styles from "./events.module.css";
 import Nav from "./nav";
 
+import { format } from "date-fns";
+
 const Events = ({ events: dataset }) => {
   /** sorting dataset by id **/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
@@ -68,6 +70,7 @@ const Events = ({ events: dataset }) => {
                         {event.title_en}
                       </Box>
                     </Box>
+
                     <Box
                       mt={1}
                       sx={{
@@ -75,8 +78,14 @@ const Events = ({ events: dataset }) => {
                         fontWeight: { xs: 400, md: 400, xl: 500 },
                       }}
                     >
-                      {event.start_time}
-                      {event.end_time}
+                      <Box component="span">
+                        {format(new Date(event.start_time), "MMM ee")}
+                      </Box>
+                      <Box component="span">
+                        {event.end_time &&
+                          ` - ` +
+                            format(new Date(event.end_time), "MMM ee yyyy")}
+                      </Box>
                     </Box>
 
                     <Box

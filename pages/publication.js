@@ -135,13 +135,13 @@ function Publication({ books: dataset, archiveImg }) {
           url: "https://hongfoundation.org.tw/",
           title: "Open Graph Title",
           description: "Open Graph Description",
-          images: [
+          /*images: [
             {
               url: "/IMGs/frontPage_bg.png",
               alt: "Og Image Alt",
               type: "image/jpeg",
             },
-          ],
+          ],*/
           site_name: "Hong Foundation",
         }}
         twitter={{

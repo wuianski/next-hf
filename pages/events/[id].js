@@ -44,13 +44,13 @@ function Event({ event }) {
           url: "https://hongfoundation.org.tw/main#events",
           title: "Open Graph Title",
           description: "Open Graph Description",
-          images: [
+          /*images: [
             {
               url: "/IMGs/frontPage_bg.png",
               alt: "Og Image Alt",
               type: "image/jpeg",
             },
-          ],
+          ],*/
           site_name: "Hong Foundation",
         }}
         twitter={{

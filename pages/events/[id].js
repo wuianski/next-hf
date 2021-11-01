@@ -9,8 +9,10 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import ReactMarkdown from "react-markdown";
-
 import Nav from "../../components/nav";
+import Masonry from "@mui/lab/Masonry";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 function Event({ event }) {
   /** sorting dataset by id **/
@@ -49,6 +51,7 @@ function Event({ event }) {
                   fontSize: { xs: "34px", xl: "37px" },
                   lineHeight: 1.3,
                   textAlign: "end",
+                  whiteSpace: "pre-line",
                   //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
                 }}
               >
@@ -59,6 +62,7 @@ function Event({ event }) {
                   fontSize: { xs: "25px", xl: "28px" },
                   lineHeight: 1.3,
                   textAlign: "end",
+                  whiteSpace: "pre-line",
                 }}
               >
                 {event.title_en}
@@ -70,6 +74,7 @@ function Event({ event }) {
               <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Item sx={{ width: { xs: "100%", md: "40%" } }}>
                   <Box>
+                    {/* vvv comment out only for 活動資訊
                     <Box
                       sx={{
                         fontSize: { xs: "15px", xl: "15px" },
@@ -78,7 +83,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      活動時間
+                      {event.start_time && +`活動時間`}
                     </Box>
                     <Box
                       pt={1}
@@ -89,7 +94,8 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      <Box component="span">{event.start_time} -</Box>
+                      <Box component="span">{event.start_time}</Box>
+                      <Box component="span">{event.end_time && +` - `}</Box>
                       <Box component="span" ml={1}>
                         {event.end_time}
                       </Box>
@@ -103,7 +109,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      活動地點
+                      {event.place && +`活動地點`}
                     </Box>
                     <Box
                       pt={1}
@@ -116,6 +122,7 @@ function Event({ event }) {
                     >
                       {event.place}
                     </Box>
+                    */}
                     <Box
                       pt={3}
                       sx={{
@@ -125,7 +132,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      主辦單位
+                      活動資訊
                     </Box>
                     <Box
                       pt={1}
@@ -137,7 +144,7 @@ function Event({ event }) {
                         textAlign: { xs: "end", md: "start" },
                       }}
                     >
-                      {event.sponsor}
+                      {event.sponsor && event.sponsor}
                     </Box>
                   </Box>
                 </Item>
@@ -155,20 +162,18 @@ function Event({ event }) {
               >
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
                   <Box>
-                    {event.images.map((image) => (
-                      <div key={image.id}>
-                        <Image
-                          //className={styles.landingImage}
-                          src={image.url}
-                          alt="event images"
-                          layout="responsive"
-                          objectFit="cover"
-                          objectPosition="center"
-                          width={1280}
-                          height={720}
-                        />
-                      </div>
-                    ))}
+                    <ImageList variant="masonry" cols={1} gap={8}>
+                      {event.images.map((image) => (
+                        <ImageListItem key={image.id}>
+                          <img
+                            src={`${image.url}?w=162&fit=format`}
+                            srcSet={`${image.url}?w=162&fit=format&dpr=2 2x`}
+                            //alt={item.title}
+                            loading="lazy"
+                          />
+                        </ImageListItem>
+                      ))}
+                    </ImageList>
                   </Box>
                 </Item>
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>

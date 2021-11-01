@@ -29,7 +29,7 @@ const PublicationIntro = ({ publication: dataset }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 4, md: 13 }}>
+      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 10, md: 13 }}>
         <Stack>
           <Item>
             <Stack
@@ -188,6 +188,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                         justifyContent: "right",
                       }}
                     >
+                      {/*** vvv wait untill new book release
                       <Divider
                         orientation="vertical"
                         flexItem
@@ -227,6 +228,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                           </Stack>
                         </Link>
                       </Item>
+                                */}
                       <Divider
                         orientation="vertical"
                         flexItem
@@ -248,7 +250,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                                     display: { xs: "block", md: "inline" },
                                   }}
                                 >
-                                  經點館藏
+                                  經典館藏
                                 </Box>
                                 <Box ml={{ xs: 0, md: 1 }} component="span">
                                   Archive

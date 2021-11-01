@@ -155,6 +155,7 @@ class App extends React.Component {
         </Box>
 
         <ReactFullpage
+          licenseKey={"D28AB884-511F4CC8-B6B12F9C-95B09C68"}
           pluginWrapper={pluginWrapper}
           animateAnchor={false}
           loopHorizontal={false}

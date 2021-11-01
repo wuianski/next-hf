@@ -28,18 +28,17 @@ function Index({ summary }) {
 
   const p1 = allPhase[0].split("，");
   const p2 = allPhase[1].split("，");
-
   const p3 = allPhase[2].split("，");
+
   const p4 = allPhase[3].split("，");
   const p5 = allPhase[4].split("，");
 
   const p6 = allPhase[5].split("，");
   const p7 = allPhase[6].split("，");
-
   const p8 = allPhase[7].split("，");
   const p9 = allPhase[8].split("，");
-  const p10 = allPhase[9].split("，");
-  //console.log(allPhase[10]);
+  //const p10 = allPhase[9].split("，");
+  //console.log(p2[0]);
 
   /** animation **/
 
@@ -51,7 +50,7 @@ function Index({ summary }) {
             width: { xs: "100vw", md: "50vw" },
             height: { xs: "100vw", md: "50vw" },
             position: "absolute",
-            top: { xs: "8vh", md: "-6vh" },
+            top: { xs: "8vh", md: "-4vh" },
             right: 0,
             zIndex: 0,
           }}
@@ -69,11 +68,11 @@ function Index({ summary }) {
           <Box
             sx={{
               position: "fixed",
-              width: "200vw",
+              width: "100vw",
               bottom: 120,
               left: 0,
               zIndex: 1,
-              //overflow: "hidden",
+              overflow: "hidden",
             }}
             className="textAniBlk"
           >
@@ -83,10 +82,7 @@ function Index({ summary }) {
                 initial={{ x: "100vw" }}
                 animate={{ x: ["100vw", "50vw", "-100vw"] }}
                 exit={{ x: "-100vw" }}
-                transition={{
-                  duration: 6,
-                  times: [0, 1, 0],
-                }}
+                transition={{ duration: 5, times: [0, 0.8, 0], delay: 5 }}
               >
                 <Box>
                   <Box sx={{ color: "#fff" }}>
@@ -103,6 +99,13 @@ function Index({ summary }) {
                     </Box>
                     <Box component="span">{p2[2]}</Box>
                   </Box>
+                  <Box sx={{ color: "#fff" }}>
+                    <Box component="span">{p3[0]}</Box>
+                    <Box component="span" className="textAniNumber">
+                      {p3[1]}
+                    </Box>
+                    <Box component="span">{p3[2]}</Box>
+                  </Box>
                 </Box>
               </motion.div>
             </Box>
@@ -112,16 +115,9 @@ function Index({ summary }) {
                 initial={{ x: "70vw" }}
                 animate={{ x: ["70vw", "20vw", "-130vw"] }}
                 exit={{ x: "-130vw" }}
-                transition={{ duration: 6, times: [0, 0.8, 1], delay: 6 }}
+                transition={{ duration: 5, times: [0, 0.8, 1], delay: 10 }}
               >
                 <Box>
-                  <Box sx={{ color: "#fff" }}>
-                    <Box component="span">{p3[0]}</Box>
-                    <Box component="span" className="textAniNumber">
-                      {p3[1]}
-                    </Box>
-                    <Box component="span">{p3[2]}</Box>
-                  </Box>
                   <Box sx={{ color: "#fff" }}>
                     <Box component="span">{p4[0]}</Box>
                     <Box component="span" className="textAniNumber">
@@ -145,7 +141,7 @@ function Index({ summary }) {
                 initial={{ x: "40vw" }}
                 animate={{ x: ["40vw", "-10vw", "-160vw"] }}
                 exit={{ x: "-160vw" }}
-                transition={{ duration: 6, times: [0, 0.8, 1], delay: 12 }}
+                transition={{ duration: 5, times: [0, 0.8, 1], delay: 15 }}
               >
                 <Box>
                   <Box sx={{ color: "#fff" }}>
@@ -162,18 +158,6 @@ function Index({ summary }) {
                     </Box>
                     <Box component="span">{p7[2]}</Box>
                   </Box>
-                </Box>
-              </motion.div>
-            </Box>
-
-            <Box sx={{ width: { xs: "80vw", md: "30vw" } }}>
-              <motion.div
-                initial={{ x: "10vw" }}
-                animate={{ x: ["10vw", "-40vw", "-190vw"] }}
-                exit={{ x: "-190vw" }}
-                transition={{ duration: 6, times: [0, 0.8, 1], delay: 18 }}
-              >
-                <Box>
                   <Box sx={{ color: "#fff" }}>
                     <Box component="span">{p8[0]}</Box>
                     <Box component="span" className="textAniNumber">
@@ -182,20 +166,16 @@ function Index({ summary }) {
                     <Box component="span">{p8[2]}</Box>
                   </Box>
                   <Box sx={{ color: "#fff" }}>
+                    <Box component="span">{p9[0]}</Box>
                     <Box component="span" className="textAniNumber">
-                      {p9[0]}
+                      {p9[1]}
                     </Box>
-                    <Box component="span">{p9[1]}</Box>
-                  </Box>
-                  <Box sx={{ color: "#fff" }}>
-                    <Box component="span" className="textAniNumber">
-                      {p10[0]}
-                    </Box>
-                    <Box component="span">{p10[1]}</Box>
+                    <Box component="span">{p9[2]}</Box>
                   </Box>
                 </Box>
               </motion.div>
             </Box>
+
             {/* / flex items */}
           </Box>
         </Box>

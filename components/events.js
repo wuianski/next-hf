@@ -79,12 +79,13 @@ const Events = ({ events: dataset }) => {
                       }}
                     >
                       <Box component="span">
-                        {format(new Date(event.start_time), "MMM ee")}
+                        {event.start_time &&
+                          format(new Date(event.start_time), "MMM dd")}
                       </Box>
                       <Box component="span">
                         {event.end_time &&
                           ` - ` +
-                            format(new Date(event.end_time), "MMM ee yyyy")}
+                            format(new Date(event.end_time), "MMM dd, yyyy")}
                       </Box>
                     </Box>
 
@@ -121,41 +122,3 @@ const Events = ({ events: dataset }) => {
 export default Events;
 
 
-/*
-<div className={styles.container}>
-        {dataset &&
-          dataset.map((event) => (
-            <div key={event.id}>
-              <Image
-                className={styles.landingImage}
-                src="/localTest_IMGs/event1.jpg"
-                alt="download icon"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-              <div className={styles.landingText}>sfkjshkjfsd</div>
-            </div>
-          ))}
-      </div>
-*/
-
-/*
-<AwesomeSlider
-        bullets={true}
-        fillParent={true}
-        transitionDelay={500}
-        organicArrows={false}
-      >
-        {dataset &&
-          dataset.map((event) => (
-            <div key={event.id}>
-              <Image
-                layout={"fill"}
-                src="/localTest_IMGs/event1.jpg"
-                alt="download icon"
-              />
-            </div>
-          ))}
-      </AwesomeSlider>
-*/

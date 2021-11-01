@@ -185,6 +185,12 @@ h3 {
   display: inline;
 }
 
+/**/
+.wrapImg{
+  position:absolute;
+  top:0;
+}
+
 
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {

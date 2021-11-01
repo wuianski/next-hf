@@ -65,7 +65,7 @@ export default function Nav() {
             openSecondFact ? styles.highlightD : null
           } ${openSecondPub ? styles.highlightD : null}`}
         >
-          <Link href="/main#events" replace>
+          <Link href="/main#events">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -74,7 +74,7 @@ export default function Nav() {
               <span className={styles.menuTitleEn}>Events</span>
             </div>
           </Link>
-          <Link href="/main#mission" replace>
+          <Link href="/main#mission">
             <div
               className={`${styles.menuTitleList} ${styles.menuTitleList2}`}
               onClick={() => setOpenFirst(false)}
@@ -83,7 +83,7 @@ export default function Nav() {
               <span className={styles.menuTitleEn}>Mission</span>
             </div>
           </Link>
-          <Link href="/main#chronicle" passHref>
+          <Link href="/main#chronicle">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -101,7 +101,7 @@ export default function Nav() {
             <span className={styles.menuTitle}>業務</span>
             <span className={styles.menuTitleEn}>Program</span>
           </div>*/}
-          <Link href="/main#projects" passHref>
+          <Link href="/main#projects">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -110,7 +110,7 @@ export default function Nav() {
               <span className={styles.menuTitleEn}>Program</span>
             </div>
           </Link>
-          <Link href="/main#leadership" passHref>
+          <Link href="/main#leadership">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}
@@ -119,7 +119,7 @@ export default function Nav() {
               <span className={styles.menuTitleEn}>Leadership</span>
             </div>
           </Link>
-          <Link href="/main#news" passHref>
+          <Link href="/main#news">
             <div
               className={styles.menuTitleList}
               onClick={() => setOpenFirst(false)}

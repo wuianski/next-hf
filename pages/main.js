@@ -19,8 +19,8 @@ import PublicationIntro from "../components/publicationIntro";
 //import dynamic from "next/dynamic";
 //const Events = dynamic(() => import("../components/events"));
 import Box from "@mui/material/Box";
-
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -110,150 +110,175 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className="App">
-        <NavInMain />
-        <Box id="myMenu">
-          <div data-menuanchor="events" className="active secName">
-            <div className="secName_tw">活動</div>
-            <div className="secName_en">events</div>
-          </div>
-
-          <div data-menuanchor="mission" className="secName">
-            <div className="secName_tw">使命</div>
-            <div className="secName_en">mission</div>
-          </div>
-
-          <div data-menuanchor="chronicle" className="secName">
-            <div className="secName_tw">大事記</div>
-            <div className="secName_en">timeline</div>
-          </div>
-
-          <div data-menuanchor="projects" className="secName">
-            <div className="secName_tw">計畫</div>
-            <div className="secName_en">program</div>
-          </div>
-
-          <div data-menuanchor="leadership" className="secName">
-            <div className="secName_tw">組織</div>
-            <div className="secName_en">leadership</div>
-          </div>
-
-          <div data-menuanchor="news" className="secName">
-            <div className="secName_tw">消息</div>
-            <div className="secName_en">news</div>
-          </div>
-
-          <div data-menuanchor="facts" className="secName">
-            <div className="secName_tw">公開資訊</div>
-            <div className="secName_en">resource</div>
-          </div>
-
-          <div data-menuanchor="publication" className="secName">
-            <div className="secName_tw">出版</div>
-            <div className="secName_en">publication</div>
-          </div>
-        </Box>
-
-        <ReactFullpage
-          licenseKey={"D28AB884-511F4CC8-B6B12F9C-95B09C68"}
-          pluginWrapper={pluginWrapper}
-          animateAnchor={false}
-          loopHorizontal={false}
-          menu={"#myMenu"}
-          slidesNavigation={false}
-          lockAnchors={false}
-          //autoScrolling={false}
-          //recordHistory={false}
-          //scrollBar={true}
-          controlArrows={false}
-          sectionsColor={this.state.sectionsColor}
-          anchors={this.state.anchors}
-          //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
-          //scrollOverflow={true}
-          //using below to use normal scroll elements
-          normalScrollElements={".scrollEle"}
-          //verticalCentered={false}
-          render={({ state, fullpageApi }) =>
-            console.log("render prop change") || (
-              <>
-                <ReactFullpage.Wrapper>
-                  {events && (
-                    <div className="section" data-anchor="section1">
-                      <Events events={events.data} />
-                    </div>
-                  )}
-
-                  {mission && (
-                    <div className="section" data-anchor="section2">
-                      <div className="slide">
-                        <MissionSlogan
-                          mission={mission.data}
-                          fullpageApi={fullpageApi}
-                        />
-                      </div>
-                      <div className="slide">
-                        <MissionTW
-                          mission={mission.data}
-                          fullpageApi={fullpageApi}
-                        />
-                      </div>
-                      <div className="slide">
-                        <MissionEN
-                          mission={mission.data}
-                          fullpageApi={fullpageApi}
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  {chronicle && (
-                    <div className="section" data-anchor="section4">
-                      <Chronicle chronicle={chronicle.data} />
-                    </div>
-                  )}
-
-                  {projects && (
-                    <div className="section" data-anchor="section3">
-                      <Projects
-                        projects={projects.data}
-                        fullpageApi={fullpageApi}
-                      />
-                    </div>
-                  )}
-
-                  {leadership && (
-                    <div className="section" data-anchor="section5">
-                      <Leadership
-                        leadership={leadership.data}
-                        leadership_doc={leadership.data2}
-                        fullpageApi={fullpageApi}
-                      />
-                    </div>
-                  )}
-
-                  {news && (
-                    <div className="section" data-anchor="section6">
-                      <News news={news.data} newsAnnounce={news.data2} />
-                    </div>
-                  )}
-
-                  {sponsorship && (
-                    <div className="section" data-anchor="section7">
-                      <Sponsorship sponsorship={sponsorship.data} />
-                    </div>
-                  )}
-
-                  {publication && (
-                    <div className="section" data-anchor="section8">
-                      <PublicationIntro publication={publication.data} />
-                    </div>
-                  )}
-                </ReactFullpage.Wrapper>
-              </>
-            )
-          }
+      <>
+        <NextSeo
+          title="Hong Foundation 洪建全基金會"
+          description="Hong Foundation 洪建全基金會 : 讓前衛創作的力量滲透到社會中，使「原創文化」成為社會和產業的養分與動力。"
+          canonical="https://hongfoundation.org.tw/main"
+          openGraph={{
+            url: "https://hongfoundation.org.tw/",
+            title: "Open Graph Title",
+            description: "Open Graph Description",
+            images: [
+              {
+                url: "/IMGs/frontPage_bg.png",
+                alt: "Og Image Alt",
+                type: "image/jpeg",
+              },
+            ],
+            site_name: "Hong Foundation",
+          }}
+          twitter={{
+            handle: "@handle",
+            site: "@site",
+            cardType: "summary_large_image",
+          }}
         />
-      </div>
+        <div className="App">
+          <NavInMain />
+          <Box id="myMenu">
+            <div data-menuanchor="events" className="active secName">
+              <div className="secName_tw">活動</div>
+              <div className="secName_en">events</div>
+            </div>
+
+            <div data-menuanchor="mission" className="secName">
+              <div className="secName_tw">使命</div>
+              <div className="secName_en">mission</div>
+            </div>
+
+            <div data-menuanchor="chronicle" className="secName">
+              <div className="secName_tw">大事記</div>
+              <div className="secName_en">timeline</div>
+            </div>
+
+            <div data-menuanchor="projects" className="secName">
+              <div className="secName_tw">計畫</div>
+              <div className="secName_en">program</div>
+            </div>
+
+            <div data-menuanchor="leadership" className="secName">
+              <div className="secName_tw">組織</div>
+              <div className="secName_en">leadership</div>
+            </div>
+
+            <div data-menuanchor="news" className="secName">
+              <div className="secName_tw">消息</div>
+              <div className="secName_en">news</div>
+            </div>
+
+            <div data-menuanchor="facts" className="secName">
+              <div className="secName_tw">公開資訊</div>
+              <div className="secName_en">resource</div>
+            </div>
+
+            <div data-menuanchor="publication" className="secName">
+              <div className="secName_tw">出版</div>
+              <div className="secName_en">publication</div>
+            </div>
+          </Box>
+
+          <ReactFullpage
+            licenseKey={"D28AB884-511F4CC8-B6B12F9C-95B09C68"}
+            pluginWrapper={pluginWrapper}
+            animateAnchor={false}
+            loopHorizontal={false}
+            menu={"#myMenu"}
+            slidesNavigation={false}
+            lockAnchors={false}
+            //autoScrolling={false}
+            //recordHistory={false}
+            //scrollBar={true}
+            controlArrows={false}
+            sectionsColor={this.state.sectionsColor}
+            anchors={this.state.anchors}
+            //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
+            //scrollOverflow={true}
+            //using below to use normal scroll elements
+            normalScrollElements={".scrollEle"}
+            //verticalCentered={false}
+            render={({ state, fullpageApi }) =>
+              console.log("render prop change") || (
+                <>
+                  <ReactFullpage.Wrapper>
+                    {events && (
+                      <div className="section" data-anchor="section1">
+                        <Events events={events.data} />
+                      </div>
+                    )}
+
+                    {mission && (
+                      <div className="section" data-anchor="section2">
+                        <div className="slide">
+                          <MissionSlogan
+                            mission={mission.data}
+                            fullpageApi={fullpageApi}
+                          />
+                        </div>
+                        <div className="slide">
+                          <MissionTW
+                            mission={mission.data}
+                            fullpageApi={fullpageApi}
+                          />
+                        </div>
+                        <div className="slide">
+                          <MissionEN
+                            mission={mission.data}
+                            fullpageApi={fullpageApi}
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {chronicle && (
+                      <div className="section" data-anchor="section4">
+                        <Chronicle chronicle={chronicle.data} />
+                      </div>
+                    )}
+
+                    {projects && (
+                      <div className="section" data-anchor="section3">
+                        <Projects
+                          projects={projects.data}
+                          fullpageApi={fullpageApi}
+                        />
+                      </div>
+                    )}
+
+                    {leadership && (
+                      <div className="section" data-anchor="section5">
+                        <Leadership
+                          leadership={leadership.data}
+                          leadership_doc={leadership.data2}
+                          fullpageApi={fullpageApi}
+                        />
+                      </div>
+                    )}
+
+                    {news && (
+                      <div className="section" data-anchor="section6">
+                        <News news={news.data} newsAnnounce={news.data2} />
+                      </div>
+                    )}
+
+                    {sponsorship && (
+                      <div className="section" data-anchor="section7">
+                        <Sponsorship sponsorship={sponsorship.data} />
+                      </div>
+                    )}
+
+                    {publication && (
+                      <div className="section" data-anchor="section8">
+                        <PublicationIntro publication={publication.data} />
+                      </div>
+                    )}
+                  </ReactFullpage.Wrapper>
+                </>
+              )
+            }
+          />
+        </div>
+      </>
     );
   }
 }

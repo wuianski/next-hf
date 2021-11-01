@@ -8,9 +8,9 @@ export default function Layout({ children }) {
   //console.log(children);
   return (
     <>
-      <Head>
+      {/*<Head>
         <title>Layouts Example</title>
-      </Head>
+      </Head>*/}
       <Link href="/">
         <div className={styles.logoFixed}>
           <Image src="/IMGs/logo_w.png" alt="logo" width={185} height={75} />

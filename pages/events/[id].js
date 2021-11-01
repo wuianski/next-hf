@@ -13,6 +13,7 @@ import Nav from "../../components/nav";
 import Masonry from "@mui/lab/Masonry";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { NextSeo } from "next-seo";
 
 function Event({ event }) {
   /** sorting dataset by id **/
@@ -35,6 +36,29 @@ function Event({ event }) {
 
   return (
     <>
+      <NextSeo
+        title={`Hong Foundation 洪建全基金會 ｜ ` + event.title_tw}
+        description={`Hong Foundation 洪建全基金會： ` + event.title_tw}
+        canonical={`https://hongfoundation.org.tw/events/` + event.id}
+        openGraph={{
+          url: "https://hongfoundation.org.tw/main#events",
+          title: "Open Graph Title",
+          description: "Open Graph Description",
+          images: [
+            {
+              url: "/IMGs/frontPage_bg.png",
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+          site_name: "Hong Foundation",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <Box id="myMenuInPage">
         <div /*data-menuanchor="section1"*/ className="active secName">
           <div className="secName_twInPage">活動</div>

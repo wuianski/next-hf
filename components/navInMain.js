@@ -233,7 +233,7 @@ export default function NavInMain() {
             <span className={styles.menuTitleEn}>FUN FACTS</span>
           </div>
         </a>
-        <Link href="/reports" passHref>
+        <Link href="/reports">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -245,7 +245,7 @@ export default function NavInMain() {
             <span className={styles.menuTitleEn}>Financial Statements</span>
           </div>
         </Link>
-        <Link href="/reports" passHref>
+        <Link href="/reports">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -257,7 +257,7 @@ export default function NavInMain() {
             <span className={styles.menuTitleEn}>Sponsorship sheet</span>
           </div>
         </Link>
-        <Link href="/reports" passHref>
+        <Link href="/reports">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -269,7 +269,7 @@ export default function NavInMain() {
             <span className={styles.menuTitleEn}>Donation sheet</span>
           </div>
         </Link>
-        <Link href="/reports" passHref>
+        <Link href="/reports">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -298,7 +298,7 @@ export default function NavInMain() {
         }}
         animationDuration={400}
       >
-        <a href="#publication" passHref>
+        <a href="#publication">
           <div
             className={styles.menuTitleList}
             onClick={() => {
@@ -310,7 +310,7 @@ export default function NavInMain() {
             <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
           </div>
         </a>
-        <Link href="/publication" passHref>
+        <Link href="/publication">
           <div
             className={styles.menuTitleList}
             onClick={() => {

@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 function Index({ summary }) {
   /** stack Item setting **/
@@ -44,6 +45,29 @@ function Index({ summary }) {
 
   return (
     <>
+      <NextSeo
+        title="Hong Foundation 洪建全基金會"
+        description="Hong Foundation 洪建全基金會 : 讓前衛創作的力量滲透到社會中，使「原創文化」成為社會和產業的養分與動力。"
+        canonical="https://hongfoundation.org.tw/"
+        openGraph={{
+          url: "https://hongfoundation.org.tw/",
+          title: "Open Graph Title",
+          description: "Open Graph Description",
+          images: [
+            {
+              url: "/IMGs/frontPage_bg.png",
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+          site_name: "Hong Foundation",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <Box sx={{ backgroundColor: "#000000", width: "100vw", height: "100vh" }}>
         <Box
           sx={{
@@ -68,11 +92,11 @@ function Index({ summary }) {
           <Box
             sx={{
               position: "fixed",
-              width: "100vw",
+              width: "200vw",
               bottom: 120,
               left: 0,
               zIndex: 1,
-              overflow: "hidden",
+              //overflow: "hidden",
             }}
             className="textAniBlk"
           >

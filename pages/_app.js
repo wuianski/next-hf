@@ -11,6 +11,8 @@ import React, { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 /** react-awesome-slider css (full oage slider) **/
 import "react-awesome-slider/dist/styles.css";
+/** next-seo **/
+import { DefaultSeo } from "next-seo";
 
 export default function MyApp({ Component, pageProps, router }) {
   // Use the layout defined at the page level, if available
@@ -25,6 +27,19 @@ export default function MyApp({ Component, pageProps, router }) {
 
   return getLayout(
     <AnimatePresence exitBeforeEnter>
+      <DefaultSeo
+        openGraph={{
+          type: "website",
+          locale: "zh_TW",
+          url: "https://hongfoundation.org.tw/",
+          site_name: "Hong Foundation",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <Component {...pageProps} key={router.route} />
     </AnimatePresence>
   );

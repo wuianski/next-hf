@@ -30,6 +30,7 @@ import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 
 import { format } from "date-fns";
+import { NextSeo } from "next-seo";
 
 /** pagination setting **/
 function TablePaginationActions(props) {
@@ -207,6 +208,29 @@ function Reports({ reports: dataset }) {
 
   return (
     <>
+      <NextSeo
+        title="Hong Foundation 洪建全基金會 ｜ 公開資訊"
+        description="Hong Foundation 洪建全基金會：財務報表、贊助明細、捐款明細、工作報告"
+        canonical="https://hongfoundation.org.tw/publication"
+        openGraph={{
+          url: "https://hongfoundation.org.tw/",
+          title: "Open Graph Title",
+          description: "Open Graph Description",
+          images: [
+            {
+              url: "/IMGs/frontPage_bg.png",
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
+          site_name: "Hong Foundation",
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+      />
       <Box id="myMenuInPage">
         <div className="active secName">
           <div className="secName_twInPage">公開資訊</div>

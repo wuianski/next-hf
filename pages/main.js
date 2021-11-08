@@ -46,6 +46,7 @@ class App extends React.Component {
       news_announce,
       sponsorship,
       publication,
+      contact,
     } = props;
 
     this.state = {
@@ -94,6 +95,7 @@ class App extends React.Component {
         title: "publication",
         data: publication,
       },
+      contact,
     };
   }
 
@@ -107,6 +109,7 @@ class App extends React.Component {
       news,
       sponsorship,
       publication,
+      contact,
     } = this.state;
 
     return (
@@ -134,8 +137,8 @@ class App extends React.Component {
             cardType: "summary_large_image",
           }}
         />
+        <NavInMain contact={contact} />
         <div className="App">
-          <NavInMain />
           <Box id="myMenu">
             <div data-menuanchor="events" className="active secName">
               <div className="secName_tw">活動</div>
@@ -153,7 +156,7 @@ class App extends React.Component {
             </div>
 
             <div data-menuanchor="projects" className="secName">
-              <div className="secName_tw">計畫</div>
+              <div className="secName_tw">計劃</div>
               <div className="secName_en">program</div>
             </div>
 
@@ -296,6 +299,7 @@ export async function getServerSideProps() {
     news_announce,
     sponsorship,
     publication,
+    contact,
   ] = await Promise.all([
     await fetchAPI("/events"),
     await fetchAPI("/mission"),
@@ -307,6 +311,7 @@ export async function getServerSideProps() {
     await fetchAPI("/news-announcements"),
     await fetchAPI("/sponsorships"),
     await fetchAPI("/about-public"),
+    await fetchAPI("/contact"),
   ]);
 
   return {
@@ -321,6 +326,7 @@ export async function getServerSideProps() {
       news_announce,
       sponsorship,
       publication,
+      contact,
     },
     //revalidate: 1,
   };

@@ -78,7 +78,7 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function Reports({ reports: dataset }) {
+function Reports({ reports: dataset, contact }) {
   /** sorting dataset by id **/
   !dataset ? null : dataset.sort((a, b) => b.order - a.order);
 
@@ -231,6 +231,7 @@ function Reports({ reports: dataset }) {
           cardType: "summary_large_image",
         }}
       />
+      <Nav contact={contact} />
       <Box id="myMenuInPage">
         <div className="active secName">
           <div className="secName_twInPage">公開資訊</div>
@@ -634,10 +635,13 @@ function Reports({ reports: dataset }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [reports] = await Promise.all([await fetchAPI("/reports")]);
+  const [reports, contact] = await Promise.all([
+    await fetchAPI("/reports"),
+    await fetchAPI("/contact"),
+  ]);
 
   return {
-    props: { reports },
+    props: { reports, contact },
     //revalidate: 1,
   };
 }
@@ -645,10 +649,5 @@ export async function getServerSideProps() {
 export default Reports;
 
 Reports.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Nav />
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

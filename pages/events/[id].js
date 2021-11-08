@@ -15,7 +15,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { NextSeo } from "next-seo";
 
-function Event({ event }) {
+function Event({ event, contact }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -59,6 +59,7 @@ function Event({ event }) {
           cardType: "summary_large_image",
         }}
       />
+      <Nav contact={contact} />
       <Box id="myMenuInPage">
         <div /*data-menuanchor="section1"*/ className="active secName">
           <div className="secName_twInPage">活動</div>
@@ -229,9 +230,10 @@ export async function getServerSideProps({ params }) {
   // Run API calls in parallel
   //const [events] = await Promise.all([await fetchAPI("/events")]);
   const events = await fetchAPI(`/events?id=${params.id}`);
+  const contact = await fetchAPI("/contact");
 
   return {
-    props: { event: events[0] },
+    props: { event: events[0], contact },
     //revalidate: 1,
   };
 }
@@ -239,10 +241,5 @@ export async function getServerSideProps({ params }) {
 export default Event;
 
 Event.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Nav />
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

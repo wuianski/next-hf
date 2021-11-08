@@ -1,7 +1,7 @@
-import Layout from "../components/layout";
-import Nav from "../components/nav";
+import Layout from "../../components/layout";
+import Nav from "../../components/nav";
 import React, { useState, useEffect } from "react";
-import { fetchAPI } from "../lib/api";
+import { fetchAPI } from "../../lib/api";
 import Image from "next/image";
 import AwesomeSlider from "react-awesome-slider";
 /** grid **/
@@ -17,7 +17,7 @@ import Tab from "@mui/material/Tab";
 import _ from "lodash";
 import { NextSeo } from "next-seo";
 
-function Publication({ books: dataset, archiveImg }) {
+function Publication({ books: dataset, archiveImg, contact }) {
   /** organize data **/
   const pub = dataset.map((book) => {
     let result = {
@@ -150,12 +150,13 @@ function Publication({ books: dataset, archiveImg }) {
           cardType: "summary_large_image",
         }}
       />
+      <Nav contact={contact} />
       <div>
         <Box id="myMenuInPage">
-          <div className="active secName">
-            <div className="secName_twInPage">出版</div>
-            <div className="secName_enInPage">publication</div>
-          </div>
+          <Box className="active secName">
+            <Box className="secName_twInPage">出版</Box>
+            <Box className="secName_enInPage">publication</Box>
+          </Box>
         </Box>
 
         <Box
@@ -235,7 +236,7 @@ function Publication({ books: dataset, archiveImg }) {
                       borderBottom: "1px solid #fff",
                     }}
                   >
-                    書
+                    圖書
                   </Box>
                 </a>
               </ItemS>
@@ -317,16 +318,16 @@ function Publication({ books: dataset, archiveImg }) {
                             lineHeight: "21px",
                           }}
                         >
-                          <div>
+                          <Box>
                             {item.authorName && `作者：` + item.authorName}
-                          </div>
-                          <div>
+                          </Box>
+                          <Box>
                             {item.translatorName &&
                               `譯者：` + item.translatorName}
-                          </div>
-                          <div>
+                          </Box>
+                          <Box>
                             {item.editorName && `編輯：` + item.editorName}
-                          </div>
+                          </Box>
                         </Box>
                       </Box>
                     </Item>
@@ -345,13 +346,14 @@ function Publication({ books: dataset, archiveImg }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [books, archiveImg] = await Promise.all([
+  const [books, archiveImg, contact] = await Promise.all([
     await fetchAPI("/books?_limit=-1"),
     await fetchAPI("/about-public"),
+    await fetchAPI("/contact"),
   ]);
 
   return {
-    props: { books, archiveImg },
+    props: { books, archiveImg, contact },
     //revalidate: 1,
   };
 }
@@ -359,10 +361,5 @@ export async function getServerSideProps() {
 export default Publication;
 
 Publication.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Nav />
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

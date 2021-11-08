@@ -235,7 +235,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                         sx={{ borderColor: "#000" }}
                       />
                       <Item sx={{ cursor: "pointer" }}>
-                        <Link href="/publication">
+                        <Link href="/publications">
                           <Stack
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}

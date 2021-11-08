@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 
-function Index({ summary }) {
+function Index({ summary, contact }) {
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -68,6 +68,7 @@ function Index({ summary }) {
           cardType: "summary_large_image",
         }}
       />
+      <Nav contact={contact} />
       <Box sx={{ backgroundColor: "#000000", width: "100vw", height: "100vh" }}>
         <Box
           sx={{
@@ -241,10 +242,13 @@ function Index({ summary }) {
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [summary] = await Promise.all([await fetchAPI("/summary")]);
+  const [summary, contact] = await Promise.all([
+    await fetchAPI("/summary"),
+    await fetchAPI("/contact"),
+  ]);
 
   return {
-    props: { summary },
+    props: { summary, contact },
     //revalidate: 1,
   };
 }
@@ -252,10 +256,5 @@ export async function getServerSideProps() {
 export default Index;
 
 Index.getLayout = function getLayout(page) {
-  return (
-    <Layout>
-      <Nav />
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };

@@ -3,7 +3,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: Noto Sans CJK TC, Helvetica Neue, sans-serif;
-  overflow: hidden;
 }
 
 a {
@@ -161,7 +160,7 @@ h3 {
 }
 .MuiTabs-indicator{
   /*background-color: #fff !important;*/
-  background:none;
+  background:none !important;
   height:5px;
   /*mix-blend-mode: difference;*/
 }
@@ -200,6 +199,8 @@ h3 {
   /* section name in main page */
   #myMenu{
     width: 40px;
+    top: calc(50vh - 30vh);
+    bottom: unset;
   }
   .secName_en{
     font-size: 10px;
@@ -227,6 +228,8 @@ h3 {
   /* section name in other next page */
   #myMenuInPage{
     width: 40px;
+    top: calc(50vh - 30vh);
+    bottom: unset;
   }  
   .secName_enInPage{
     font-size: 10px;

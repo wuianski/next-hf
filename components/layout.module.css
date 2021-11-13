@@ -20,5 +20,6 @@
 @media only screen and (max-width: 900px) {
   .logoFixed{
     width:110px;
+    top:32px;
   }
 }

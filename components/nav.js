@@ -107,62 +107,7 @@ function ChildModal() {
   );
 }
 
-function ChildModal2() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
 
-  return (
-    <React.Fragment>
-      <Box
-        onClick={handleOpen}
-        className={styles.menuTitleList}
-        sx={{ color: "#fff" }}
-      >
-        <Box component="span" className={styles.menuTitle}>
-          出版
-        </Box>
-        <Box component="span" className={styles.menuTitleEn}>
-          Publicaiton
-        </Box>
-      </Box>
-      <Modal
-        hideBackdrop
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-      >
-        <Box sx={{ ...subStyle }}>
-          <Link href="/main#publication">
-            <div className={styles.menuTitleList}>
-              <span className={styles.menuTitle}>關於出版</span>
-              <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
-            </div>
-          </Link>
-          <Link href="/publications">
-            <div className={styles.menuTitleList}>
-              <span className={styles.menuTitle}>出版品</span>
-              <span className={styles.menuTitleEn}>Publications</span>
-            </div>
-          </Link>
-          <Box onClick={handleClose} className={styles.menuBack}>
-            <Image
-              src="/IMGs/menuBack.png"
-              alt="icon of menu back"
-              width={73}
-              height={33}
-            />
-          </Box>
-        </Box>
-      </Modal>
-    </React.Fragment>
-  );
-}
 
 export default function Nav({ contact }) {
   const [open, setOpen] = React.useState(false);
@@ -172,6 +117,168 @@ export default function Nav({ contact }) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  function ChildModal() {
+    const [open2, setOpen2] = React.useState(false);
+    const handleOpen2 = () => {
+      setOpen2(true);
+    };
+    const handleClose2 = () => {
+      setOpen2(false);
+    };
+
+    return (
+      <React.Fragment>
+        <Box
+          onClick={handleOpen2}
+          className={styles.menuTitleList}
+          sx={{ color: "#fff" }}
+        >
+          <Box component="span" className={styles.menuTitle}>
+            公開資訊
+          </Box>
+          <Box component="span" className={styles.menuTitleEn}>
+            Resource
+          </Box>
+        </Box>
+        <Modal
+          hideBackdrop
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...subStyle }}>
+            <Link href="/main#facts">
+              <div className={styles.menuTitleList}>
+                <span className={styles.menuTitle}>公開資訊</span>
+                <span className={styles.menuTitleEn}>FUN FACTS</span>
+              </div>
+            </Link>
+            <Link href="/reports" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>財務報表</span>
+                <span className={styles.menuTitleEn}>Financial Statements</span>
+              </div>
+            </Link>
+            <Link href="/reports" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>贊助明細</span>
+                <span className={styles.menuTitleEn}>Sponsorship sheet</span>
+              </div>
+            </Link>
+            <Link href="/reports" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>捐款明細</span>
+                <span className={styles.menuTitleEn}>Donation sheet</span>
+              </div>
+            </Link>
+            <Link href="/reports" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>工作報告</span>
+                <span className={styles.menuTitleEn}>work report</span>
+              </div>
+            </Link>
+            <Box onClick={handleClose2} className={styles.menuBack}>
+              <Image
+                src="/IMGs/menuBack.png"
+                alt="icon of menu back"
+                width={73}
+                height={33}
+              />
+            </Box>
+          </Box>
+        </Modal>
+      </React.Fragment>
+    );
+  }
+
+  function ChildModal2() {
+    const [open2, setOpen2] = React.useState(false);
+    const handleOpen2 = () => {
+      setOpen2(true);
+    };
+    const handleClose2 = () => {
+      setOpen2(false);
+    };
+
+    return (
+      <React.Fragment>
+        <Box
+          onClick={handleOpen2}
+          className={styles.menuTitleList}
+          sx={{ color: "#fff" }}
+        >
+          <Box component="span" className={styles.menuTitle}>
+            出版
+          </Box>
+          <Box component="span" className={styles.menuTitleEn}>
+            Publicaiton
+          </Box>
+        </Box>
+        <Modal
+          hideBackdrop
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="child-modal-title"
+          aria-describedby="child-modal-description"
+        >
+          <Box sx={{ ...subStyle }}>
+            <Link href="/main#publication">
+              <div className={styles.menuTitleList}>
+                <span className={styles.menuTitle}>關於出版</span>
+                <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
+              </div>
+            </Link>
+            <Link href="/publications" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>出版品</span>
+                <span className={styles.menuTitleEn}>Publications</span>
+              </div>
+            </Link>
+            <Box onClick={handleClose2} className={styles.menuBack}>
+              <Image
+                src="/IMGs/menuBack.png"
+                alt="icon of menu back"
+                width={73}
+                height={33}
+              />
+            </Box>
+          </Box>
+        </Modal>
+      </React.Fragment>
+    );
+  }
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,

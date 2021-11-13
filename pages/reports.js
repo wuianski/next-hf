@@ -115,6 +115,11 @@ function Reports({ reports: dataset, contact }) {
 
   const StyledTab = styled(Tab)(({ theme }) => ({
     color: "#000",
+    fontSize: 17,
+    alignItems: "start",
+    padding: 0,
+    borderBottom: "1px solid #C4C4C4",
+
     [theme.breakpoints.up("md")]: {
       fontSize: 20,
     },
@@ -125,9 +130,13 @@ function Reports({ reports: dataset, contact }) {
       width: "25%",
     },
     [theme.breakpoints.down("md")]: {
-      width: "25%",
+      width: "100%",
+      maxWidth: "initial",
     },
-    //width: "25%",
+    "&.Mui-selected": {
+      color: "#000 !important",
+      borderBottom: "5px solid #000",
+    },
   }));
 
   const StyledTabList = styled(TabList)(({ theme }) => ({
@@ -242,7 +251,7 @@ function Reports({ reports: dataset, contact }) {
       <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={13}>
         <Box sx={{ width: { xs: "74vw", md: "74vw" } }}>
           <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Box>
               <TabList
                 onChange={handleChange}
                 aria-label="lab API tabs example"

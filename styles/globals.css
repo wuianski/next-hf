@@ -159,8 +159,10 @@ h3 {
   color: #000 !important;
 }
 .MuiTabs-indicator{
-  background-color: #000 !important;
+  /*background-color: #fff !important;*/
+  background:none;
   height:5px;
+  /*mix-blend-mode: difference;*/
 }
 .MuiTabs-flexContainer{
     display: flex;

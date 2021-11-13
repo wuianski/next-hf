@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { fetchAPI } from "../../lib/api";
 import Image from "next/image";
 import AwesomeSlider from "react-awesome-slider";
+import Link from "next/link";
 /** grid **/
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -11,16 +12,21 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 /** tab **/
+
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
 import _ from "lodash";
 import { NextSeo } from "next-seo";
 
-function Publication({ books: dataset, archiveImg, contact }) {
-  /** organize data **/
+function Publication({ books: dataset, bookCat, archiveImg, contact }) {
+  /** organize all books data **/
   const pub = dataset.map((book) => {
     let result = {
+      id: book.id,
       bookName: book.title_tw,
       catName: book.book_categories.map((cat) => {
         return cat.name;
@@ -37,9 +43,59 @@ function Publication({ books: dataset, archiveImg, contact }) {
     return result;
   });
   //console.log(pub);
-  /** /organize data **/
+  /** /organize all books data **/
 
-  /** filter **/
+  /** (sub categories of 書) filting dataCat by id **/
+  const cat_books = bookCat.filter(function (cat) {
+    return cat.id <= 22 && cat.id >= 6;
+  });
+
+  const subCat_books = cat_books.map((c) => {
+    let result_cat = {
+      id: c.id,
+      catName: c.name,
+      booksNum: c.books.length,
+    };
+
+    return result_cat;
+  });
+  /** /(sub categories of 書) filting dataCat by id **/
+
+  /** (sub categories of 影音) filting dataCat by id **/
+  const cat_medias = bookCat.filter(function (cat) {
+    return cat.id <= 4 && cat.id >= 3;
+  });
+
+  const subCat_media = cat_medias.map((c) => {
+    let result_cat = {
+      id: c.id,
+      catName: c.name,
+      booksNum: c.books.length,
+    };
+
+    return result_cat;
+  });
+  //console.log(subCat_media);
+  /** /(sub categories of 影音) filting dataCat by id **/
+
+  /** (sub categories of 刊物) filting dataCat by id **/
+  const cat_journals = bookCat.filter(function (cat) {
+    return cat.id <= 27 && cat.id >= 24;
+  });
+
+  const subCat_journal = cat_journals.map((c) => {
+    let result_cat = {
+      id: c.id,
+      catName: c.name,
+      booksNum: c.books.length,
+    };
+
+    return result_cat;
+  });
+  //console.log(cat_journal);
+  /** /(sub categories of 刊物) filting dataCat by id **/
+
+  /** filter by categories**/
   const [filter, setFilter] = useState("書評書目");
   const [projects, setProjects] = useState([]);
 
@@ -56,62 +112,78 @@ function Publication({ books: dataset, archiveImg, contact }) {
     }));
     setProjects(filtered);
   }, [filter]);
-  /** /filter **/
+  /** /filter by categories**/
 
   /** grid **/
+  const ItemTab = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    paddingBottom: 8,
+    paddingTop: 0,
+    textAlign: "left",
+    color: "#fff",
+    boxShadow: "none",
+    background: "none",
+    borderBottom: "1px solid #C4C4C4",
+    borderRadius: "0px",
+  }));
+
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
-    padding: theme.spacing(2),
+    padding: 16,
     textAlign: "left",
-    color: theme.palette.text.secondary,
+    color: "#fff",
     boxShadow: "none",
+    background: "none",
+    //borderBottom: "1px solid #C4C4C4",
+    borderRadius: "0px",
   }));
   /** /grid **/
 
   /** tab **/
-  const [value, setValue] = React.useState("one");
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  /*
-  const StyledTabs = styled((props) => (
-    <Tabs
-      {...props}
-      TabIndicatorProps={{
-        children: <span className="MuiTabs-indicatorSpan" />,
-      }}
-    />
-  ))({
-    "& .MuiTabs-indicator": {
-      display: "flex",
-      justifyContent: "center",
-      backgroundColor: "transparent",
-    },
-    "& .MuiTabs-indicatorSpan": {
-      maxWidth: 40,
-      width: "100%",
-      backgroundColor: "#635ee7",
-    },
-  });
+  const StyledTab = styled(Tab)(({ theme }) => ({
+    color: "#828282",
+    fontSize: 17,
+    alignItems: "start",
+    padding: 0,
+    marginRight: 48,
+    borderBottom: "1px solid #828282",
 
-  const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
-    ({ theme }) => ({
-      textTransform: "none",
-      fontWeight: theme.typography.fontWeightRegular,
-      fontSize: theme.typography.pxToRem(15),
-      marginRight: theme.spacing(1),
-      color: "rgba(255, 255, 255, 0.7)",
-      "&.Mui-selected": {
-        color: "#000",
-      },
-      "&.Mui-focusVisible": {
-        backgroundColor: "rgba(100, 95, 228, 0.32)",
-      },
-    })
-  );
-  */
+    [theme.breakpoints.up("md")]: {
+      fontSize: "20px",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "17px",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: "calc(25% - 36px)",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "calc(100%)",
+      maxWidth: "initial",
+    },
+    "&.Mui-selected": {
+      color: "#fff !important",
+      borderBottom: "5px solid #fff",
+    },
+  }));
+
+  const StyledTabList = styled(TabList)(({ theme }) => ({
+    paddingLeft: 20,
+    paddingRight: 20,
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "grid",
+    },
+  }));
+
   /** /tab **/
 
   /** stack Item setting **/
@@ -135,13 +207,6 @@ function Publication({ books: dataset, archiveImg, contact }) {
           url: "https://hongfoundation.org.tw/",
           title: "Open Graph Title",
           description: "Open Graph Description",
-          /*images: [
-            {
-              url: "/IMGs/frontPage_bg.png",
-              alt: "Og Image Alt",
-              type: "image/jpeg",
-            },
-          ],*/
           site_name: "Hong Foundation",
         }}
         twitter={{
@@ -150,210 +215,1431 @@ function Publication({ books: dataset, archiveImg, contact }) {
           cardType: "summary_large_image",
         }}
       />
+
       <Nav contact={contact} />
-      <div>
-        <Box id="myMenuInPage">
-          <Box className="active secName">
-            <Box className="secName_twInPage">出版</Box>
-            <Box className="secName_enInPage">publication</Box>
-          </Box>
+      <Box id="myMenuInPage">
+        <Box className="active secName">
+          <Box className="secName_twInPage">出版</Box>
+          <Box className="secName_enInPage">publication</Box>
+        </Box>
+      </Box>
+
+      <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 8, md: -12 }}>
+        <Box m={2} sx={{ display: { xs: "none", md: "block" } }}>
+          <AwesomeSlider
+            bullets={true}
+            //fillParent={true}
+            transitionDelay={500}
+            organicArrows={false}
+          >
+            {archiveImg.images_archive &&
+              archiveImg.images_archive.map((img) => (
+                <Box key={img.id}>
+                  <Image
+                    //className={styles.landingImage}
+                    src={img.url}
+                    alt="slider"
+                    //layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={1920}
+                    height={699}
+                  />
+                </Box>
+              ))}
+          </AwesomeSlider>
         </Box>
 
         <Box
-          ml={{ xs: 8, md: 28 }}
-          mr={{ xs: 2, md: 8 }}
-          mt={{ xs: 8, md: -12 }}
+          className="portfolio__labels"
+          mt={{ xs: 8, md: -3 }}
+          ml={2}
+          p={2}
+          sx={{ width: "calc(100% - 32px)", backgroundColor: "#000" }}
         >
-          <Box m={2} sx={{ display: { xs: "none", md: "block" } }}>
-            <AwesomeSlider
-              bullets={true}
-              //fillParent={true}
-              transitionDelay={500}
-              organicArrows={false}
-            >
-              {archiveImg.images_archive &&
-                archiveImg.images_archive.map((img) => (
-                  <Box key={img.id}>
-                    <Image
-                      //className={styles.landingImage}
-                      src={img.url}
-                      alt="slider"
-                      //layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      width={1920}
-                      height={699}
-                    />
-                  </Box>
-                ))}
-            </AwesomeSlider>
-          </Box>
-
-          <Box
-            className="portfolio__labels"
-            mt={{ xs: 8, md: -3 }}
-            ml={2}
-            p={2}
-            sx={{ width: "calc(100% - 32px)", backgroundColor: "#000" }}
-          >
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              justifyContent="center"
-              alignItems="center"
-              spacing={{ xs: 0, md: 3 }}
-              height={{ xs: "100%", md: "100px" }}
-            >
-              <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
-                <a
-                  href="#"
-                  active={filter === "書評書目"}
+          <TabContext value={value}>
+            <Box pt={2}>
+              <StyledTabList
+                onChange={handleChange}
+                aria-label="lab API tabs example"
+              >
+                <StyledTab
+                  label="書評書目"
+                  value="1"
+                  active={filter === "書評書目" ? 1 : 0}
                   onClick={() => setFilter("書評書目")}
+                />
+                <StyledTab label="圖書" value="2" />
+                <StyledTab label="刊物" value="3" />
+                <StyledTab label="影音" value="4" />
+              </StyledTabList>
+            </Box>
+            <TabPanel value="1"></TabPanel>
+            <TabPanel value="2" sx={{ marginTop: 3 }}>
+              <Box sx={{ color: "#fff" }}>
+                <Grid
+                  container
+                  rowSpacing={1.5}
+                  columnSpacing={{ sm: 6, md: 6 }}
                 >
-                  <Box
-                    sx={{
-                      color: "#fff",
-                      fontSize: { md: 17, xl: 20 },
-                      lineHeight: "49px",
-                      borderBottom: "1px solid #fff",
-                    }}
-                  >
-                    書評書目
-                  </Box>
-                </a>
-              </ItemS>
-
-              <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
-                <a
-                  href="#"
-                  active={filter === "書"}
-                  onClick={() => setFilter("書")}
-                >
-                  <Box
-                    sx={{
-                      color: "#fff",
-                      fontSize: { md: 17, xl: 20 },
-                      lineHeight: "49px",
-                      borderBottom: "1px solid #fff",
-                    }}
-                  >
-                    圖書
-                  </Box>
-                </a>
-              </ItemS>
-
-              <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
-                <a
-                  href="#"
-                  active={filter === "影音"}
-                  onClick={() => setFilter("影音")}
-                >
-                  <Box
-                    sx={{
-                      color: "#fff",
-                      fontSize: { md: 17, xl: 20 },
-                      lineHeight: "49px",
-                      borderBottom: "1px solid #fff",
-                    }}
-                  >
-                    影音
-                  </Box>
-                </a>
-              </ItemS>
-
-              <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
-                <a
-                  href="#"
-                  active={filter === "刊物"}
-                  onClick={() => setFilter("刊物")}
-                >
-                  <Box
-                    sx={{
-                      color: "#fff",
-                      fontSize: { md: 17, xl: 20 },
-                      lineHeight: "49px",
-                      borderBottom: "1px solid #fff",
-                    }}
-                  >
-                    刊物
-                  </Box>
-                </a>
-              </ItemS>
-            </Stack>
-          </Box>
-          <Box sx={{ flexGrow: 1 }} pt={{ xs: 4, md: 10 }}>
-            <Grid
-              className="portfolio__container"
-              container
-              spacing={{ xs: 2, md: 4 }}
-              columns={{ xs: 4, sm: 8, md: 10 }}
-            >
-              {projects.map((item) =>
-                item.filtered === true ? (
-                  <Grid item xs={2} sm={4} md={2} key={item.bookName}>
-                    <Item>
-                      <Box>
-                        <Box /*sx={{ width: "152px", height: "223px" }}*/>
-                          <Image
-                            src={item.bookCover}
-                            alt="book cover"
-                            layout="responsive"
-                            objectFit="cover"
-                            objectPosition="center"
-                            width={152}
-                            height={223}
-                          />
-                        </Box>
+                  {subCat_books.map((cat) => (
+                    <Grid item xs={12} sm={6} md={3} key={cat.id}>
+                      <ItemTab key={cat.id}>
                         <Box
-                          mt={2}
-                          mb={1}
-                          sx={{ fontSize: 17, fontWeight: 600, color: "#000" }}
+                          key={cat.id}
+                          sx={{ cursor: "pointer" }}
+                          /* add ? 1 : 0 for pass a boolean in a custom attribute */
+                          active={filter === cat.catName ? 1 : 0}
+                          onClick={() => setFilter(cat.catName)}
                         >
-                          {item.bookName}
+                          <Box
+                            component="span"
+                            sx={{ fontSize: { xs: 14, md: 14, xl: 17 } }}
+                          >
+                            {cat.catName}
+                          </Box>
+                          <Box
+                            component="span"
+                            sx={{ float: "right", color: "#828282" }}
+                          >
+                            <Box component="span">{cat.booksNum}</Box>
+                            <Box
+                              component="span"
+                              ml={0.5}
+                              sx={{ fontSize: "11px" }}
+                            >
+                              本
+                            </Box>
+                          </Box>
                         </Box>
+                      </ItemTab>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </TabPanel>
+            <TabPanel value="3" sx={{ marginTop: 3 }}>
+              <Box sx={{ color: "#fff" }}>
+                <Grid
+                  container
+                  rowSpacing={1.5}
+                  columnSpacing={{ sm: 6, md: 6 }}
+                >
+                  {subCat_journal.map((cat) => (
+                    <Grid item xs={12} sm={6} md={3} key={cat.id}>
+                      <ItemTab key={cat.id}>
                         <Box
-                          sx={{
-                            fontSize: 13,
-                            fontWeight: 500,
-                            color: "#666",
-                            lineHeight: "21px",
-                          }}
+                          key={cat.id}
+                          sx={{ cursor: "pointer" }}
+                          /* add ? 1 : 0 for pass a boolean in a custom attribute */
+                          active={filter === cat.catName ? 1 : 0}
+                          onClick={() => setFilter(cat.catName)}
                         >
-                          <Box>
-                            {item.authorName && `作者：` + item.authorName}
+                          <Box
+                            component="span"
+                            sx={{ fontSize: { xs: 14, md: 14, xl: 17 } }}
+                          >
+                            {cat.catName}
                           </Box>
-                          <Box>
-                            {item.translatorName &&
-                              `譯者：` + item.translatorName}
-                          </Box>
-                          <Box>
-                            {item.editorName && `編輯：` + item.editorName}
+                          <Box
+                            component="span"
+                            sx={{ float: "right", color: "#828282" }}
+                          >
+                            <Box component="span">{cat.booksNum}</Box>
+                            <Box
+                              component="span"
+                              ml={0.5}
+                              sx={{ fontSize: "11px" }}
+                            >
+                              本
+                            </Box>
                           </Box>
                         </Box>
-                      </Box>
-                    </Item>
-                  </Grid>
-                ) : (
-                  ""
-                )
-              )}
-            </Grid>
-          </Box>
+                      </ItemTab>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </TabPanel>
+            <TabPanel value="4" sx={{ marginTop: 3 }}>
+              <Box sx={{ color: "#fff" }}>
+                <Grid
+                  container
+                  rowSpacing={1.5}
+                  columnSpacing={{ sm: 6, md: 6 }}
+                >
+                  {subCat_media.map((cat) => (
+                    <Grid item xs={12} sm={6} md={3} key={cat.id}>
+                      <ItemTab key={cat.id}>
+                        <Box
+                          key={cat.id}
+                          sx={{ cursor: "pointer" }}
+                          /* add ? 1 : 0 for pass a boolean in a custom attribute */
+                          active={filter === cat.catName ? 1 : 0}
+                          onClick={() => setFilter(cat.catName)}
+                        >
+                          <Box
+                            component="span"
+                            sx={{ fontSize: { xs: 14, md: 14, xl: 17 } }}
+                          >
+                            {cat.catName}
+                          </Box>
+                          <Box
+                            component="span"
+                            sx={{ float: "right", color: "#828282" }}
+                          >
+                            <Box component="span">{cat.booksNum}</Box>
+                            <Box
+                              component="span"
+                              ml={0.5}
+                              sx={{ fontSize: "11px" }}
+                            >
+                              本
+                            </Box>
+                          </Box>
+                        </Box>
+                      </ItemTab>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </TabPanel>
+          </TabContext>
         </Box>
-      </div>
+        <Box
+          sx={{ flexGrow: 1, minWidth: { xs: "78vw", sm: "90vw", md: "78vw" } }}
+          pt={{ xs: 4, md: 10 }}
+        >
+          <Grid
+            className="portfolio__container"
+            container
+            spacing={{ xs: 2, md: 4 }}
+            columns={{ xs: 4, sm: 8, md: 10 }}
+          >
+            {projects.map((item) =>
+              item.filtered === true ? (
+                <>
+                  {(() => {
+                    switch (item.catName[1]) {
+                      case "文學":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/literature/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "經營管理":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/management/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "兩性議題":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/genderIssues/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "文學評論":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/literaryReview/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "家庭親子":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/family/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "兒童文學":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/literatureChildren/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "藝術設計":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/artDesign/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "人文史哲":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/historyPhilosophy/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "洪建全兒童文學創作獎":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/literatureChildrenAward/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "青少年文學":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/literatureYouth/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "醫學保健":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/medicalCare/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "心理勵志":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/psychology/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "閱讀生活":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/readingLife/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "人物傳記":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/biography/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "人際溝通":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/communication/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "PHP叢書":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/PHP/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "洪建全基金會":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/hf/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "唱片":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/record/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      case "DVD":
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Link
+                                href={`/books/DVD/${encodeURIComponent(
+                                  item.bookName
+                                )}`}
+                              >
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </Link>
+                            </Grid>
+                          </>
+                        );
+                      default:
+                        return (
+                          <>
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <Item>
+                                <Box>
+                                  <Box>
+                                    <Image
+                                      src={item.bookCover}
+                                      alt="book cover"
+                                      layout="responsive"
+                                      objectFit="contain"
+                                      objectPosition="center"
+                                      width={152}
+                                      height={223}
+                                    />
+                                  </Box>
+                                  <Box
+                                    mt={2}
+                                    mb={1}
+                                    sx={{
+                                      fontSize: 17,
+                                      fontWeight: 600,
+                                      color: "#000",
+                                    }}
+                                  >
+                                    {item.bookName}
+                                  </Box>
+                                  <Box
+                                    sx={{
+                                      fontSize: 13,
+                                      fontWeight: 500,
+                                      color: "#666",
+                                      lineHeight: "21px",
+                                    }}
+                                  >
+                                    <Box>
+                                      {item.authorName &&
+                                        `作者：` + item.authorName}
+                                    </Box>
+                                    <Box>
+                                      {item.translatorName &&
+                                        `譯者：` + item.translatorName}
+                                    </Box>
+                                    <Box>
+                                      {item.editorName &&
+                                        `編輯：` + item.editorName}
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              </Item>
+                            </Grid>
+                          </>
+                        );
+                    }
+                  })()}
+                </>
+              ) : (
+                ""
+              )
+            )}
+          </Grid>
+        </Box>
+      </Box>
     </>
   );
 }
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [books, archiveImg, contact] = await Promise.all([
+  const [books, bookCat, archiveImg, contact] = await Promise.all([
     await fetchAPI("/books?_limit=-1"),
+    await fetchAPI("/book-categories"),
     await fetchAPI("/about-public"),
     await fetchAPI("/contact"),
   ]);
 
   return {
-    props: { books, archiveImg, contact },
+    props: { books, bookCat, archiveImg, contact },
     //revalidate: 1,
   };
 }

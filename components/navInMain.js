@@ -202,7 +202,7 @@ export default function NavInMain({ contact }) {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }}>
+        <Box sx={{ ...style }} className="scrollEle">
           <Box onClick={handleClose} className={styles.menuClose}>
             <Image
               src="/IMGs/menuClose.png"

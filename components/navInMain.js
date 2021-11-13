@@ -2,189 +2,303 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./nav.module.css";
-import { Modal } from "react-responsive-modal";
 import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+
+const style = {
+  position: "absolute",
+  width: "100vw",
+  height: "100%",
+  bgcolor: "#000",
+  color: "#fff",
+  paddingLeft: { xs: "20px", md: "60px" },
+  paddingRight: { xs: "20px", md: "60px" },
+  paddingTop: { xs: "100px", md: "60px" },
+  paddingBottom: { xs: "40px", md: "0px" },
+  overflowY: "scroll",
+};
+
+const subStyle = {
+  position: "absolute",
+  width: { xs: "100vw", md: "50vw" },
+  height: "100%",
+  right: 0,
+  bgcolor: "#666",
+  color: "#fff",
+  padding: { xs: "20px", md: "60px" },
+  overflowY: "scroll",
+};
+
+function ChildModal() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Box
+        onClick={handleOpen}
+        className={styles.menuTitleList}
+        sx={{ color: "#fff" }}
+      >
+        <Box component="span" className={styles.menuTitle}>
+          公開資訊
+        </Box>
+        <Box component="span" className={styles.menuTitleEn}>
+          Resource
+        </Box>
+      </Box>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...subStyle }}>
+          <a href="#facts" onClick={handleClose}>
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>公開資訊</span>
+              <span className={styles.menuTitleEn}>FUN FACTS</span>
+            </div>
+          </a>
+          <Link href="/reports">
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>財務報表</span>
+              <span className={styles.menuTitleEn}>Financial Statements</span>
+            </div>
+          </Link>
+          <Link href="/reports">
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>贊助明細</span>
+              <span className={styles.menuTitleEn}>Sponsorship sheet</span>
+            </div>
+          </Link>
+          <Link href="/reports">
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>捐款明細</span>
+              <span className={styles.menuTitleEn}>Donation sheet</span>
+            </div>
+          </Link>
+          <Link href="/reports">
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>工作報告</span>
+              <span className={styles.menuTitleEn}>work report</span>
+            </div>
+          </Link>
+          <Box onClick={handleClose} className={styles.menuBack}>
+            <Image
+              src="/IMGs/menuBack.png"
+              alt="icon of menu back"
+              width={73}
+              height={33}
+            />
+          </Box>
+        </Box>
+      </Modal>
+    </React.Fragment>
+  );
+}
+
+function ChildModal2() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Box
+        onClick={handleOpen}
+        className={styles.menuTitleList}
+        sx={{ color: "#fff" }}
+      >
+        <Box component="span" className={styles.menuTitle}>
+          出版
+        </Box>
+        <Box component="span" className={styles.menuTitleEn}>
+          Publicaiton
+        </Box>
+      </Box>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...subStyle }}>
+          <a href="#publication" onClick={handleClose}>
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>關於出版</span>
+              <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
+            </div>
+          </a>
+          <Link href="/publications">
+            <div className={styles.menuTitleList}>
+              <span className={styles.menuTitle}>出版品</span>
+              <span className={styles.menuTitleEn}>Publications</span>
+            </div>
+          </Link>
+          <Box onClick={handleClose} className={styles.menuBack}>
+            <Image
+              src="/IMGs/menuBack.png"
+              alt="icon of menu back"
+              width={73}
+              height={33}
+            />
+          </Box>
+        </Box>
+      </Modal>
+    </React.Fragment>
+  );
+}
 
 export default function NavInMain({ contact }) {
   //console.log(fullpageApi);
   //const sec2slide1 = fullpageApi.moveTo(2, 1);
 
-  const [openFirst, setOpenFirst] = React.useState(false);
-  const [openSecondProjects, setOpenSecondProjects] = React.useState(false);
-  const [openSecondLead, setOpenSecondLead] = React.useState(false);
-  const [openSecondFact, setOpenSecondFact] = React.useState(false);
-  const [openSecondPub, setOpenSecondPub] = React.useState(false);
-  const closeIcon = (
-    <div className={styles.menuClose}>
-      <Image
-        src="/IMGs/menuClose.png"
-        alt="icon of menu close"
-        width={42}
-        height={42}
-      />
-    </div>
-  );
-  const closeIcon2 = (
-    <div className={styles.menuBack}>
-      <Image
-        src="/IMGs/menuBack.png"
-        alt="icon of menu back"
-        width={73}
-        height={33}
-      />
-    </div>
-  );
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  /** stack Item setting **/
+  const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    textAlign: "left",
+    color: "#fff",
+    background: "none",
+    boxShadow: "none",
+  }));
 
   return (
     <div>
-      <div onClick={() => setOpenFirst(true)} className={styles.menuOpenInMain}>
+      <Box onClick={handleOpen} className={styles.menuOpen}>
         <Image
-          src="/IMGs/menuOpen.png"
+          src="/IMGs/menuOpen_w.png"
           alt="icon of menu open"
           width={40}
           height={28}
         />
-      </div>
+      </Box>
       <Modal
-        open={openFirst}
-        onClose={() => setOpenFirst(false)}
-        center
-        closeIcon={closeIcon}
-        classNames={{
-          overlay: "customOverlay",
-          modal: "customModal",
-          overlayAnimationIn: "customEnterOverlayAnimation",
-          overlayAnimationOut: "customLeaveOverlayAnimation",
-          modalAnimationIn: "customEnterModalAnimation",
-          modalAnimationOut: "customLeaveModalAnimation",
-        }}
-        animationDuration={400}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="parent-modal-title"
+        aria-describedby="parent-modal-description"
       >
-        <Box
-          sx={{ display: { xs: "block", md: "flex" } }}
-          className="scrollEle"
-        >
-          <Box sx={{ width: { xs: "80vw", md: "55vw" } }}>
-            <div
-              className={`${styles.menuTitleBlk} ${
-                openSecondLead ? styles.highlightD : null
-              } ${openSecondProjects ? styles.highlightD : null} ${
-                openSecondFact ? styles.highlightD : null
-              } ${openSecondPub ? styles.highlightD : null}`}
-            >
-              <a href="#events">
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>活動</span>
-                  <span className={styles.menuTitleEn}>Events</span>
-                </div>
-              </a>
-              <a href="#mission">
-                <div
-                  className={`${styles.menuTitleList} ${styles.menuTitleList2}`}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>使命</span>
-                  <span className={styles.menuTitleEn}>Mission</span>
-                </div>
-              </a>
-              <a href="#chronicle">
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>大事記</span>
-                  <span className={styles.menuTitleEn}>Timeline</span>
-                </div>
-              </a>
-              {/*<div
-            className={`${styles.menuTitleList} ${
-              openSecondProjects ? styles.highlightL : null
-            }`}
-            onClick={() => setOpenSecondProjects(true)}
-          >
-            <span className={styles.menuTitle}>業務</span>
-            <span className={styles.menuTitleEn}>Program</span>
-          </div>*/}
-              <a href="#projects">
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>計劃</span>
-                  <span className={styles.menuTitleEn}>Program</span>
-                </div>
-              </a>
-              <a href="#leadership">
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>組織</span>
-                  <span className={styles.menuTitleEn}>Leadership</span>
-                </div>
-              </a>
-              <a href="#news">
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => setOpenFirst(false)}
-                >
-                  <span className={styles.menuTitle}>最新消息</span>
-                  <span className={styles.menuTitleEn}>News</span>
-                </div>
-              </a>
-              <div
-                className={`${styles.menuTitleList} ${
-                  openSecondFact ? styles.highlightL : null
-                }`}
-                onClick={() => setOpenSecondFact(true)}
-              >
-                <span className={styles.menuTitle}>公開資訊</span>
-                <span className={styles.menuTitleEn}>Resource</span>
-              </div>
-              <div
-                className={`${styles.menuTitleList} ${
-                  openSecondPub ? styles.highlightL : null
-                }`}
-                onClick={() => setOpenSecondPub(true)}
-              >
-                <span className={styles.menuTitle}>出版</span>
-                <span className={styles.menuTitleEn}>publication</span>
-              </div>
-            </div>
+        <Box sx={{ ...style }}>
+          <Box onClick={handleClose} className={styles.menuClose}>
+            <Image
+              src="/IMGs/menuClose.png"
+              alt="icon of menu close"
+              width={42}
+              height={42}
+            />
           </Box>
-          {/* vvv below r contact info block */}
-          <Box
-            sx={{
-              //display: { xs: "inline-block", md: "block" },
-              width: { xs: "80vw", md: "35vw" },
-            }}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ xs: 6, md: 1 }}
           >
-            {/* vvv below r contact info */}
-            <Box
-              mt={{ xs: 13, md: 0 }}
-              mb={{ xs: 6, md: 0 }}
-              sx={{ width: { xs: "80vw", md: "30vw" } }}
-            >
-              <Box
-                sx={{ height: "auto", display: { xs: "none", md: "block" } }}
-              >
-                <Image
-                  src="/IMGs/logo_w.png"
-                  alt="icon of menu close"
-                  width={241}
-                  height={97}
-                />
+            <Item sx={{ width: { xs: "80vw", md: "calc(50% + 60px)" } }}>
+              <Box>
+                <a href="#events" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      活動
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      Events
+                    </Box>
+                  </Box>
+                </a>
+                <a href="#mission" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      使命
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      Mission
+                    </Box>
+                  </Box>
+                </a>
+                <a href="#chronicle" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      大事記
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      Timeline
+                    </Box>
+                  </Box>
+                </a>
+                <a href="#projects" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      計劃
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      Program
+                    </Box>
+                  </Box>
+                </a>
+                <a href="#leadership" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      組織
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      Leadership
+                    </Box>
+                  </Box>
+                </a>
+                <a href="#news" onClick={handleClose}>
+                  <Box className={styles.menuTitleList}>
+                    <Box component="span" className={styles.menuTitle}>
+                      最新消息
+                    </Box>
+                    <Box component="span" className={styles.menuTitleEn}>
+                      News
+                    </Box>
+                  </Box>
+                </a>
+                <ChildModal />
+                <ChildModal2 />
               </Box>
-              <Box
-                sx={{
-                  position: { xs: "relative", md: "absolute" },
-                  bottom: { xs: "unset", md: "74px" },
-                }}
-              >
-                <Box>
+            </Item>
+            <Item sx={{ width: { xs: "80vw", md: "38vw" } }}>
+              <Box>
+                <Box
+                  sx={{ height: "auto", display: { xs: "none", md: "block" } }}
+                >
+                  <Image
+                    src="/IMGs/logo_w.png"
+                    alt="icon of menu close"
+                    width={241}
+                    height={97}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    position: { xs: "unset", md: "absolute" },
+                    bottom: { xs: "74px", md: "74px" },
+                  }}
+                >
                   <Box pb={3}>
                     <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
                       地址 Address
@@ -249,28 +363,15 @@ export default function NavInMain({ contact }) {
                   <Box sx={{ fontSize: { xs: 10, md: 10, xl: 13 } }}>
                     2021©財團法人洪建全教育文化基金會 All Rights Reserved.
                   </Box>
-                  {/* vvv below r social media info (mobile) */}
                 </Box>
               </Box>
-            </Box>
-            {/* vvv below r social media info (desktop) */}
-            <Box
-              sx={{
-                width: { xs: "60vw", md: "5vw" },
-                display: { xs: "none", md: "block" },
-              }}
-            >
+            </Item>
+            <Item>
               <Box
                 sx={{
-                  height: { xs: "0", md: "45vh" },
-                }}
-              ></Box>
-              <Box
-                sx={{
-                  position: { md: "absolute" },
-                  display: { md: "block" },
-                  bottom: { md: "74px" },
-                  right: { md: "42px" },
+                  position: { xs: "unset", md: "absolute" },
+                  bottom: { xs: "74px", md: "74px" },
+                  display: { xs: "flex", md: "block" },
                 }}
               >
                 <a href={contact.email} target="_blank">
@@ -337,188 +438,14 @@ export default function NavInMain({ contact }) {
                       objectFit="contain"
                       objectPosition="center"
                       width={20}
-                      height={12}
+                      height={18}
                     />
                   </Box>
                 </a>
               </Box>
-            </Box>
-          </Box>
+            </Item>
+          </Stack>
         </Box>
-      </Modal>
-      {/* 2nd modal of program */}
-      {/*
-      <Modal
-        open={openSecondProjects}
-        onClose={() => setOpenSecondProjects(false)}
-        center
-        closeIcon={closeIcon2}
-        classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
-        }}
-        animationDuration={400}
-      >
-        <a href="/main#projects">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-              //fullpageApi.moveTo(2, 1);
-            }}
-          >
-            <span className={styles.menuTitle}>覓計畫</span>
-            <span className={styles.menuTitleEn}>Project Seek</span>
-          </div>
-        </a>
-        <a href="#projects">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-            }}
-          >
-            <span className={styles.menuTitle}>敏隆講堂</span>
-            <span className={styles.menuTitleEn}>Minlong Forum</span>
-          </div>
-        </a>
-        <a href="#projects">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-            }}
-          >
-            <span className={styles.menuTitle}>素直友會</span>
-            <span className={styles.menuTitleEn}>PHP Sunao Community</span>
-          </div>
-        </a>
-      </Modal>
-      */}
-      {/* 2nd modal of resource */}
-      <Modal
-        open={openSecondFact}
-        onClose={() => setOpenSecondFact(false)}
-        center
-        closeIcon={closeIcon2}
-        classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
-        }}
-        animationDuration={400}
-      >
-        <a href="#facts">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>公開資訊</span>
-            <span className={styles.menuTitleEn}>FUN FACTS</span>
-          </div>
-        </a>
-        <Link href="/reports">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>財務報表</span>
-            <span className={styles.menuTitleEn}>Financial Statements</span>
-          </div>
-        </Link>
-        <Link href="/reports">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>贊助明細</span>
-            <span className={styles.menuTitleEn}>Sponsorship sheet</span>
-          </div>
-        </Link>
-        <Link href="/reports">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>捐款明細</span>
-            <span className={styles.menuTitleEn}>Donation sheet</span>
-          </div>
-        </Link>
-        <Link href="/reports">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondFact(false);
-            }}
-          >
-            <span className={styles.menuTitle}>工作報告</span>
-            <span className={styles.menuTitleEn}>work report</span>
-          </div>
-        </Link>
-      </Modal>
-      {/* 2nd modal of publication */}
-      <Modal
-        open={openSecondPub}
-        onClose={() => setOpenSecondPub(false)}
-        center
-        closeIcon={closeIcon2}
-        classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
-        }}
-        animationDuration={400}
-      >
-        <a href="#publication">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondPub(false);
-            }}
-          >
-            <span className={styles.menuTitle}>關於出版</span>
-            <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
-          </div>
-        </a>
-        <Link href="/publications">
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondPub(false);
-            }}
-          >
-            <span className={styles.menuTitle}>出版品</span>
-            <span className={styles.menuTitleEn}>Publications</span>
-          </div>
-        </Link>
       </Modal>
     </div>
   );

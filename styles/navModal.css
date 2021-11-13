@@ -15,7 +15,7 @@
   margin: 0;
   color: #fff;
   /* add for scroll */
-  height: 100vh;
+  height: 100%;
 }
 @keyframes customEnterOverlayAnimation {
   0% {
@@ -67,7 +67,7 @@
   padding: 60px;
   margin: 0;
   color: #fff;
-  height: 100vh;
+  height: 100%;
 }
 @keyframes customEnterOverlayAnimation2 {
   0% {

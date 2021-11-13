@@ -368,7 +368,11 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
               ))}
           </Box>
 
-          <Box>
+          <Box
+            sx={{
+              width: { xs: "60vw", md: "30vw" },
+            }}
+          >
             {dataset3 &&
               dataset3.map((project) => (
                 <div key={project.id}>

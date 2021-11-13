@@ -60,7 +60,10 @@ export default function NavInMain({ contact }) {
         }}
         animationDuration={400}
       >
-        <Box sx={{ display: { xs: "block", md: "flex" } }}>
+        <Box
+          sx={{ display: { xs: "block", md: "flex" } }}
+          className="scrollEle"
+        >
           <Box sx={{ width: { xs: "80vw", md: "55vw" } }}>
             <div
               className={`${styles.menuTitleBlk} ${
@@ -114,7 +117,7 @@ export default function NavInMain({ contact }) {
                   <span className={styles.menuTitleEn}>Program</span>
                 </div>
               </a>
-              <a href="#leadership" passHref>
+              <a href="#leadership">
                 <div
                   className={styles.menuTitleList}
                   onClick={() => setOpenFirst(false)}
@@ -152,171 +155,193 @@ export default function NavInMain({ contact }) {
               </div>
             </div>
           </Box>
+          {/* vvv below r contact info block */}
           <Box
-            mt={{ xs: 6, md: 0 }}
-            mb={{ xs: 13, md: 0 }}
-            sx={{ width: { xs: "80vw", md: "30vw" } }}
+            sx={{
+              //display: { xs: "inline-block", md: "block" },
+              width: { xs: "80vw", md: "35vw" },
+            }}
           >
-            <Box sx={{ height: "auto", display: { xs: "none", md: "block" } }}>
-              <Image
-                src="/IMGs/logo_w.png"
-                alt="icon of menu close"
-                width={241}
-                height={97}
-              />
-            </Box>
+            {/* vvv below r contact info */}
             <Box
-              sx={{
-                position: { xs: "unset", md: "absolute" },
-                bottom: "74px",
-              }}
+              mt={{ xs: 13, md: 0 }}
+              mb={{ xs: 6, md: 0 }}
+              sx={{ width: { xs: "80vw", md: "30vw" } }}
             >
-              <Box>
-                <Box pb={3}>
-                  <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
-                    地址 Address
+              <Box
+                sx={{ height: "auto", display: { xs: "none", md: "block" } }}
+              >
+                <Image
+                  src="/IMGs/logo_w.png"
+                  alt="icon of menu close"
+                  width={241}
+                  height={97}
+                />
+              </Box>
+              <Box
+                sx={{
+                  position: { xs: "relative", md: "absolute" },
+                  bottom: { xs: "unset", md: "74px" },
+                }}
+              >
+                <Box>
+                  <Box pb={3}>
+                    <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
+                      地址 Address
+                    </Box>
+                    <Box sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}>
+                      {contact.address_tw}
+                    </Box>
+                    <Box
+                      sx={{
+                        fontSize: { xs: 16, md: 16, xl: 19 },
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {contact.address_en}
+                    </Box>
                   </Box>
-                  <Box sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}>
-                    {contact.address_tw}
+                  <Box pb={3}>
+                    <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
+                      上班時間 Opening Hours
+                    </Box>
+                    <Box
+                      sx={{
+                        fontSize: { xs: 16, md: 16, xl: 19 },
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {contact.opening_time}
+                    </Box>
                   </Box>
-                  <Box
-                    sx={{
-                      fontSize: { xs: 16, md: 16, xl: 19 },
-                      whiteSpace: "pre-line",
-                    }}
-                  >
-                    {contact.address_en}
+                  <Box pb={3}>
+                    <Box
+                      pb={1}
+                      sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
+                      component="span"
+                    >
+                      電話 TEL
+                    </Box>
+                    <Box
+                      pl={2}
+                      sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
+                      component="span"
+                    >
+                      {contact.phone}
+                    </Box>
                   </Box>
-                </Box>
-                <Box pb={3}>
-                  <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
-                    上班時間 Opening Hours
+                  <Box pb={3}>
+                    <Box
+                      pb={1}
+                      sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
+                      component="span"
+                    >
+                      傳真 FAX
+                    </Box>
+                    <Box
+                      pl={2}
+                      sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
+                      component="span"
+                    >
+                      {contact.fax}
+                    </Box>
                   </Box>
-                  <Box
-                    sx={{
-                      fontSize: { xs: 16, md: 16, xl: 19 },
-                      whiteSpace: "pre-line",
-                    }}
-                  >
-                    {contact.opening_time}
+                  <Box sx={{ fontSize: { xs: 10, md: 10, xl: 13 } }}>
+                    2021©財團法人洪建全教育文化基金會 All Rights Reserved.
                   </Box>
-                </Box>
-                <Box pb={3}>
-                  <Box
-                    pb={1}
-                    sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
-                    component="span"
-                  >
-                    電話 TEL
-                  </Box>
-                  <Box
-                    pl={2}
-                    sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
-                    component="span"
-                  >
-                    {contact.phone}
-                  </Box>
-                </Box>
-                <Box pb={3}>
-                  <Box
-                    pb={1}
-                    sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
-                    component="span"
-                  >
-                    傳真 FAX
-                  </Box>
-                  <Box
-                    pl={2}
-                    sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
-                    component="span"
-                  >
-                    {contact.fax}
-                  </Box>
-                </Box>
-                <Box sx={{ fontSize: { xs: 10, md: 10, xl: 13 } }}>
-                  2021©財團法人洪建全教育文化基金會 All Rights Reserved.
+                  {/* vvv below r social media info (mobile) */}
                 </Box>
               </Box>
             </Box>
-          </Box>
-          <Box sx={{ width: { xs: "60vw", md: "5vw" } }}>
-            <Box sx={{ height: { xs: "0", md: "45vh" } }}></Box>
+            {/* vvv below r social media info (desktop) */}
             <Box
               sx={{
-                position: { xs: "relative", md: "absolute" },
-                display: { xs: "flex", md: "block" },
-                bottom: "74px",
-                right: { xs: "0", md: "42px" },
+                width: { xs: "60vw", md: "5vw" },
+                display: { xs: "none", md: "block" },
               }}
             >
-              <a href={contact.email} target="_blank">
-                <Box
-                  sx={{ width: 20, height: 20 }}
-                  mt={{ xs: 6, md: 20 }}
-                  mr={{ xs: 6, md: 0 }}
-                >
-                  <Image
-                    src="/IMGs/email_icon.png"
-                    alt="icon of menu close"
-                    layout="responsive"
-                    objectFit="contain"
-                    objectPosition="center"
-                    width={20}
-                    height={12}
-                  />
-                </Box>
-              </a>
-              <a href={contact.facebook} target="_blank">
-                <Box
-                  sx={{ width: 20, height: 20 }}
-                  mt={6}
-                  mr={{ xs: 6, md: 0 }}
-                >
-                  <Image
-                    src="/IMGs/fb_icon.png"
-                    alt="icon of menu close"
-                    layout="responsive"
-                    objectFit="contain"
-                    objectPosition="center"
-                    width={20}
-                    height={19}
-                  />
-                </Box>
-              </a>
-              <a href={contact.youtube} target="_blank">
-                <Box
-                  sx={{ width: 20, height: 20 }}
-                  mt={6}
-                  mr={{ xs: 6, md: 0 }}
-                >
-                  <Image
-                    src="/IMGs/yt_icon.png"
-                    alt="icon of menu close"
-                    layout="responsive"
-                    objectFit="contain"
-                    objectPosition="center"
-                    width={20}
-                    height={12}
-                  />
-                </Box>
-              </a>
-              <a href={contact.instagram} target="_blank">
-                <Box
-                  sx={{ width: 20, height: 20 }}
-                  mt={6}
-                  mr={{ xs: 6, md: 0 }}
-                >
-                  <Image
-                    src="/IMGs/ig_icon.png"
-                    alt="icon of menu close"
-                    layout="responsive"
-                    objectFit="contain"
-                    objectPosition="center"
-                    width={20}
-                    height={12}
-                  />
-                </Box>
-              </a>
+              <Box
+                sx={{
+                  height: { xs: "0", md: "45vh" },
+                }}
+              ></Box>
+              <Box
+                sx={{
+                  position: { md: "absolute" },
+                  display: { md: "block" },
+                  bottom: { md: "74px" },
+                  right: { md: "42px" },
+                }}
+              >
+                <a href={contact.email} target="_blank">
+                  <Box
+                    sx={{ width: 20, height: 20 }}
+                    mt={{ xs: 6, md: 20 }}
+                    mr={{ xs: 6, md: 0 }}
+                  >
+                    <Image
+                      src="/IMGs/email_icon.png"
+                      alt="icon of menu close"
+                      layout="responsive"
+                      objectFit="contain"
+                      objectPosition="center"
+                      width={20}
+                      height={12}
+                    />
+                  </Box>
+                </a>
+                <a href={contact.facebook} target="_blank">
+                  <Box
+                    sx={{ width: 20, height: 20 }}
+                    mt={6}
+                    mr={{ xs: 6, md: 0 }}
+                  >
+                    <Image
+                      src="/IMGs/fb_icon.png"
+                      alt="icon of menu close"
+                      layout="responsive"
+                      objectFit="contain"
+                      objectPosition="center"
+                      width={20}
+                      height={19}
+                    />
+                  </Box>
+                </a>
+                <a href={contact.youtube} target="_blank">
+                  <Box
+                    sx={{ width: 20, height: 20 }}
+                    mt={6}
+                    mr={{ xs: 6, md: 0 }}
+                  >
+                    <Image
+                      src="/IMGs/yt_icon.png"
+                      alt="icon of menu close"
+                      layout="responsive"
+                      objectFit="contain"
+                      objectPosition="center"
+                      width={20}
+                      height={12}
+                    />
+                  </Box>
+                </a>
+                <a href={contact.instagram} target="_blank">
+                  <Box
+                    sx={{ width: 20, height: 20 }}
+                    mt={6}
+                    mr={{ xs: 6, md: 0 }}
+                  >
+                    <Image
+                      src="/IMGs/ig_icon.png"
+                      alt="icon of menu close"
+                      layout="responsive"
+                      objectFit="contain"
+                      objectPosition="center"
+                      width={20}
+                      height={12}
+                    />
+                  </Box>
+                </a>
+              </Box>
             </Box>
           </Box>
         </Box>

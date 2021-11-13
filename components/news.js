@@ -69,10 +69,11 @@ TablePaginationActions.propTypes = {
 
 /** style table cell and table row **/
 const StyledTableCell = styled(TableCell)(() => ({
+  verticalAlign: "initial",
   [`&.${tableCellClasses.body}`]: {
     fontSize: 13,
-    verticalAlign: "top",
-    paddingTop: 0,
+    //verticalAlign: "top",
+    //paddingTop: 0,
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
@@ -204,7 +205,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                       <Box
                         sx={{
                           fontSize: { md: 14, xl: 17 },
-                          marginTop: 0.5,
+                          //marginTop: 0.5,
                         }}
                       >
                         <ReactMarkdown>{news.title}</ReactMarkdown>

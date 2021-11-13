@@ -21,6 +21,7 @@
 }
 .menuTitleBlk{
   cursor: pointer;
+  overflow-y: scroll;
 }
 .menuTitleBlk:hover{
   color:#545454;

@@ -1,7 +1,4 @@
 import "../styles/globals.css";
-/** react-responsive-modal css (menu) **/
-import "react-responsive-modal/styles.css";
-
 /** react-slick css (slider) **/
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

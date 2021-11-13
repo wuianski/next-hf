@@ -4,6 +4,9 @@ import Image from "next/image";
 import styles from "./nav.module.css";
 import { Modal } from "react-responsive-modal";
 import Box from "@mui/material/Box";
+/** react-responsive-modal css (menu) **/
+import "react-responsive-modal/styles.css";
+
 
 export default function Nav({ contact }) {
   const [openFirst, setOpenFirst] = React.useState(false);
@@ -58,15 +61,16 @@ export default function Nav({ contact }) {
         animationDuration={400}
       >
         <Box
+          sx={{
+            display: { xs: "block", md: "block" },
+            width: { xs: "80vw", md: "55vw" },
+            height: "100vh",
+          }}
           className={`${styles.menuTitleBlk} ${
             openSecondLead ? styles.highlightD : null
           } ${openSecondProjects ? styles.highlightD : null} ${
             openSecondFact ? styles.highlightD : null
           } ${openSecondPub ? styles.highlightD : null}`}
-          sx={{
-            display: { xs: "block", md: "block" },
-            width: { xs: "80vw", md: "55vw" },
-          }}
         >
           <Link href="/main#events">
             <div

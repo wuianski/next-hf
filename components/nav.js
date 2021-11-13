@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./nav.module.css";
 import { Modal } from "react-responsive-modal";
+import styles from "./nav.module.css";
 import Box from "@mui/material/Box";
-/** react-responsive-modal css (menu) **/
-import "react-responsive-modal/styles.css";
-
 
 export default function Nav({ contact }) {
   const [openFirst, setOpenFirst] = React.useState(false);
@@ -35,8 +32,11 @@ export default function Nav({ contact }) {
     </div>
   );
 
+  const myRef = React.useRef(null);
+
   return (
     <div>
+      <div ref={myRef} />
       <div onClick={() => setOpenFirst(true)} className={styles.menuOpen}>
         <Image
           src="/IMGs/menuOpen_w.png"
@@ -51,14 +51,15 @@ export default function Nav({ contact }) {
         center
         closeIcon={closeIcon}
         classNames={{
-          overlay: "customOverlay",
-          modal: "customModal",
-          overlayAnimationIn: "customEnterOverlayAnimation",
-          overlayAnimationOut: "customLeaveOverlayAnimation",
-          modalAnimationIn: "customEnterModalAnimation",
-          modalAnimationOut: "customLeaveModalAnimation",
+          overlay: `${styles.customOverlay}`,
+          modal: `${styles.customModal}`,
+          overlayAnimationIn: `${styles.customEnterOverlayAnimation}`,
+          overlayAnimationOut: `${styles.customLeaveOverlayAnimation}`,
+          modalAnimationIn: `${styles.customEnterModalAnimation}`,
+          modalAnimationOut: `${styles.customLeaveModalAnimation}`,
         }}
         animationDuration={400}
+        container={myRef.current}
       >
         <Box
           sx={{
@@ -146,61 +147,7 @@ export default function Nav({ contact }) {
           </div>
         </Box>
       </Modal>
-      {/* 2nd modal of program */}
-      {/*
-      <Modal
-        open={openSecondProjects}
-        onClose={() => setOpenSecondProjects(false)}
-        center
-        closeIcon={closeIcon2}
-        classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
-        }}
-        animationDuration={400}
-      >
-        <Link href="/main#projects" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-            }}
-          >
-            <span className={styles.menuTitle}>覓計畫</span>
-            <span className={styles.menuTitleEn}>Project Seek</span>
-          </div>
-        </Link>
-        <Link href="/main#projects" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-            }}
-          >
-            <span className={styles.menuTitle}>敏隆講堂</span>
-            <span className={styles.menuTitleEn}>Minlong Forum</span>
-          </div>
-        </Link>
-        <Link href="/main#projects" passHref>
-          <div
-            className={styles.menuTitleList}
-            onClick={() => {
-              setOpenFirst(false);
-              setOpenSecondProjects(false);
-            }}
-          >
-            <span className={styles.menuTitle}>素直友會</span>
-            <span className={styles.menuTitleEn}>PHP Sunao Community</span>
-          </div>
-        </Link>
-      </Modal>
-      */}
+
       {/* 2nd modal of resource */}
       <Modal
         open={openSecondFact}
@@ -208,12 +155,12 @@ export default function Nav({ contact }) {
         center
         closeIcon={closeIcon2}
         classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
+          overlay: `${styles.customOverlay2}`,
+          modal: `${styles.customModal2}`,
+          overlayAnimationIn: `${styles.customEnterOverlayAnimation2}`,
+          overlayAnimationOut: `${styles.customLeaveOverlayAnimation2}`,
+          modalAnimationIn: `${styles.customEnterModalAnimation2}`,
+          modalAnimationOut: `${styles.customLeaveModalAnimation2}`,
         }}
         animationDuration={400}
       >
@@ -285,12 +232,12 @@ export default function Nav({ contact }) {
         center
         closeIcon={closeIcon2}
         classNames={{
-          overlay: "customOverlay2",
-          modal: "customModal2",
-          overlayAnimationIn: "customEnterOverlayAnimation2",
-          overlayAnimationOut: "customLeaveOverlayAnimation2",
-          modalAnimationIn: "customEnterModalAnimation2",
-          modalAnimationOut: "customLeaveModalAnimation2",
+          overlay: `${styles.customOverlay2}`,
+          modal: `${styles.customModal2}`,
+          overlayAnimationIn: `${styles.customEnterOverlayAnimation2}`,
+          overlayAnimationOut: `${styles.customLeaveOverlayAnimation2}`,
+          modalAnimationIn: `${styles.customEnterModalAnimation2}`,
+          modalAnimationOut: `${styles.customLeaveModalAnimation2}`,
         }}
         animationDuration={400}
       >

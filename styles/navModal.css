@@ -107,7 +107,7 @@
 @media only screen and (max-width: 900px) {
   .customModal {
     padding:100px 38px;
-    height:100%;
+    height:100vh;
   }
   /* 2nd layer menu modal */
   .customOverlay2{

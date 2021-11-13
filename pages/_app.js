@@ -18,12 +18,12 @@ export default function MyApp({ Component, pageProps, router }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }, []);
+  }, []);*/
 
   return getLayout(
     <AnimatePresence exitBeforeEnter>

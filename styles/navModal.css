@@ -16,6 +16,7 @@
   color: #fff;
   /* add for scroll */
   height: 100%;
+  overflow-y:scroll;
 }
 @keyframes customEnterOverlayAnimation {
   0% {

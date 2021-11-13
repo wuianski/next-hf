@@ -57,7 +57,7 @@ export default function Nav({ contact }) {
         }}
         animationDuration={400}
       >
-        <Box sx={{ display: { xs: "block", md: "flex" } }}>
+        <Box sx={{ display: { xs: "block", md: "flex" }, overflowY: "scroll" }}>
           <Box sx={{ width: { xs: "80vw", md: "55vw" } }}>
             <Box
               className={`${styles.menuTitleBlk} ${

@@ -498,9 +498,9 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box sx={{ fontSize: 18, mb: 1 }}>{project.title_tw}</Box>
                     <Box
-                      mb={3}
+                      mb={2}
                       sx={{
-                        height: 28,
+                        height: 24,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}

@@ -258,12 +258,18 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                 sx={{ width: "100vw" }}
                 //className={styles.slideBg}
               >
-                <Box className={styles.slideBg} sx={{ height: "43vh" }}>
+                <Box className={styles.slideBg} sx={{ height: "38vh" }}>
                   <Stack direction="column" spacing={1}>
                     <Item>
                       <Box sx={{ fontSize: 21, fontWeight: 700 }}>
-                        <Box>{news.start_date}</Box>
-                        <Box>{news.end_date && `-` + news.end_date}</Box>
+                        <Box component="span">
+                          {format(new Date(news.start_date), "yyyy.MM.dd")}
+                        </Box>
+                        <Box component="span">{news.end_date && ` - `}</Box>
+                        <Box>
+                          {news.end_date &&
+                            format(new Date(news.end_date), "yyyy.MM.dd")}
+                        </Box>
                       </Box>
                     </Item>
                     <Item>

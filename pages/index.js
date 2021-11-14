@@ -75,8 +75,8 @@ function Index({ summary, contact }) {
             width: { xs: "100vw", md: "50vw" },
             height: { xs: "100vw", md: "50vw" },
             position: "absolute",
-            top: { xs: "8vh", md: "-4vh" },
-            right: 0,
+            top: { xs: "8vh", md: "0px" },
+            right: { xs: "0px", md: "50px" },
             zIndex: 0,
           }}
         >

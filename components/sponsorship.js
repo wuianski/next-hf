@@ -385,7 +385,7 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
                     style={{ fontSize: 15, fontWeight: 700 }}
                     x={200}
                     y={220}
-                    text="總比例贊助"
+                    text="贊助概覽"
                   />
                 </svg>
               </Box>
@@ -561,7 +561,7 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
                   style={{ fontSize: 23, fontWeight: 700 }}
                   x={180}
                   y={420}
-                  text="總比例贊助"
+                  text="贊助概覽"
                 />
               </svg>
             </Box>

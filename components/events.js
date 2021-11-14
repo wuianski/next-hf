@@ -44,6 +44,7 @@ const Events = ({ events: dataset }) => {
                       textAlign: "end",
                       textShadow: "0.2em 0.2em 0.8em #000",
                       whiteSpace: "pre-line",
+                      maxWidth: "78vw",
                     }}
                     className={styles.landingText}
                   >

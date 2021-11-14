@@ -38,13 +38,18 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 22 }} mr={{ xs: 2, md: 13 }} mt={{ xs: 5, md: 13 }}>
+      <Box
+        ml={{ xs: 8, md: 22 }}
+        mr={{ xs: 2, md: 13 }}
+        mt={{ xs: 6, md: 13 }}
+        mb={1}
+      >
         <Box>
           <Stack
             direction={{ xs: "column", md: "row" }}
-            spacing={{ xs: 6, md: 1 }}
+            spacing={{ xs: 4, md: 1 }}
           >
-            <Item sx={{ width: { md: "60vw", md: "20vw" } }}>
+            <Item sx={{ width: { xs: "60vw", md: "20vw" } }}>
               <Box
                 sx={{
                   whiteSpace: "pre-line",
@@ -67,7 +72,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   //in order to make element can scroll normally, give element a specific height.
 
                   width: { xs: "80vw", md: "60vw" },
-                  height: { xs: "33vh", md: "408px" },
+                  height: { xs: "35vh", md: "418px" },
                   overflow: "scroll",
                   paddingRight: "60px",
                 }}
@@ -78,7 +83,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   boardMembers.map((boardMember) => (
                     <Box
                       key={boardMember.id}
-                      mb={{ xs: 6, md: 2 }}
+                      mb={{ xs: 4, md: 2 }}
                       sx={{
                         height: { xs: "auto", md: "120px" },
                         //maxHeight: { xs: "80px", md: "120px" },
@@ -114,7 +119,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
           sx={{
             display: "flex",
             justifyContent: { xs: "flex-start", md: "flex-end" },
-            marginTop: { xs: "13vh", md: "13vh", xl: "18vh" },
+            marginTop: { xs: "6vh", md: "10vh", xl: "16vh" },
           }}
         >
           <Stack

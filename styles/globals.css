@@ -251,7 +251,7 @@ h3 {
 
   /* MuiTabs Lab  */
   .MuiTabs-flexContainer{
-    display: grid;
+    display: grid !important;
   }
 
   

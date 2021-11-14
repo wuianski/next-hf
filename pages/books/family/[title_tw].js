@@ -305,8 +305,8 @@ function Book({ book, contact }) {
               sx={{
                 position: { xs: "relative", md: "fixed" },
                 justifyContent: { xs: "end", md: "unset" },
-                top: { xs: 60, xl: "unset" },
-                marginBottom: { xs: "80px", xl: "unset" },
+                top: { xs: 60, md: "unset" },
+                marginBottom: { xs: "80px", md: "unset" },
                 bottom: { md: 68, xl: 68 },
                 right: { md: 68, xl: 68 },
                 cursor: "pointer",

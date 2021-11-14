@@ -241,7 +241,7 @@ function Reports({ reports: dataset, contact }) {
         </div>
       </Box>
 
-      <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={13}>
+      <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 13, md: 20 }}>
         <Box sx={{ width: { xs: "74vw", md: "74vw" } }}>
           <TabContext value={value}>
             <Box>
@@ -260,7 +260,7 @@ function Reports({ reports: dataset, contact }) {
               <StyledTableContainer
                 component={Paper}
                 //below control the height of table
-                sx={{ maxHeight: { xs: "58vw", md: "58vw" } }}
+                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
               >
                 <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                   <TableHead>
@@ -340,7 +340,7 @@ function Reports({ reports: dataset, contact }) {
               <StyledTableContainer
                 component={Paper}
                 //below control the height of table
-                sx={{ maxHeight: { xs: "58vw", md: "58vw" } }}
+                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
               >
                 <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                   <TableHead>
@@ -420,7 +420,7 @@ function Reports({ reports: dataset, contact }) {
               <StyledTableContainer
                 component={Paper}
                 //below control the height of table
-                sx={{ maxHeight: { xs: "58vw", md: "58vw" } }}
+                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
               >
                 <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                   <TableHead>
@@ -500,7 +500,7 @@ function Reports({ reports: dataset, contact }) {
               <StyledTableContainer
                 component={Paper}
                 //below control the height of table
-                sx={{ maxHeight: { xs: "58vw", md: "58vw" } }}
+                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
               >
                 <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                   <TableHead>
@@ -591,7 +591,12 @@ function Reports({ reports: dataset, contact }) {
             <Stack
               direction="row"
               spacing={0}
-              sx={{ position: "fixed", bottom: { md: 28, xl: 68 } }}
+              sx={{
+                position: { xs: "relative", md: "relative" },
+                marginBottom: { xs: "130px", md: "130px" },
+                //bottom: { md: 38, xl: 38 },
+                top: { xs: 60, md: 60 },
+              }}
               height={"38px"}
             >
               <Divider

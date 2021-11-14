@@ -258,7 +258,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                 sx={{ width: "100vw" }}
                 //className={styles.slideBg}
               >
-                <Box className={styles.slideBg} sx={{ height: "38vh" }}>
+                <Box className={styles.slideBg} sx={{ height: "33vh" }}>
                   <Stack direction="column" spacing={1}>
                     <Item>
                       <Box sx={{ fontSize: 21, fontWeight: 700 }}>

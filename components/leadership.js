@@ -67,8 +67,8 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   //columns: "100px 2",
                   columnCount: { md: "1", md: "2" },
                   columnGap: "25px",
-                  textAlign: "justify",
-                  textJustify: "distribute",
+                  //textAlign: "justify",
+                  //textJustify: "distribute",
                   //in order to make element can scroll normally, give element a specific height.
 
                   width: { xs: "80vw", md: "60vw" },
@@ -83,14 +83,14 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                   boardMembers.map((boardMember) => (
                     <Box
                       key={boardMember.id}
-                      mb={{ xs: 4, md: 2 }}
+                      mb={{ xs: 3, md: 2 }}
                       sx={{
                         height: { xs: "auto", md: "120px" },
                         //maxHeight: { xs: "80px", md: "120px" },
                       }}
                     >
                       <Box
-                        mb={{ xs: 1.5, md: 1.5 }}
+                        mb={{ xs: 1, md: 1.5 }}
                         sx={{ fontSize: { xs: 20, xl: 20 } }}
                       >
                         <Box component="span" sx={{ fontWeight: 700 }}>
@@ -102,7 +102,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                       </Box>
                       <Box
                         sx={{
-                          whiteSpace: "pre-line",
+                          whiteSpace: { xs: "pre-line", md: "pre-line" },
                           fontSize: { xs: 15, xl: 15 },
                         }}
                       >
@@ -118,8 +118,8 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
           /* set up the distance between two Box */
           sx={{
             display: "flex",
-            justifyContent: { xs: "flex-start", md: "flex-end" },
-            marginTop: { xs: "6vh", md: "10vh", xl: "16vh" },
+            justifyContent: { xs: "flex-end", md: "flex-end" },
+            marginTop: { xs: "5vh", md: "10vh", xl: "16vh" },
           }}
         >
           <Stack

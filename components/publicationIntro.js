@@ -50,7 +50,7 @@ const PublicationIntro = ({ publication: dataset }) => {
                 sx={{
                   width: { xs: "100%", md: "100vw" },
                   /* height of scroll area on mobile */
-                  height: { xs: "40vh", md: "38vh" },
+                  height: { xs: "38vh", md: "38vh" },
                   overflow: "scroll",
                 }}
                 //in order to make element can scroll normally, give a className and use it in fullPage options
@@ -92,8 +92,8 @@ const PublicationIntro = ({ publication: dataset }) => {
                         display: "flex",
                         justifyContent: "left",
                         alignItems: "flex-end",
-                        height: "25vh",
-                        scale: { xs: "0.36", md: "0.65", xl: "1" },
+                        height: "22vh",
+                        scale: { xs: "0.3", md: "0.65", xl: "1" },
                         marginBottom: { xs: "-3vh", md: "-3.1vh", xl: "0" },
                       }}
                     >

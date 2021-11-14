@@ -40,8 +40,8 @@ function Book({ book, contact }) {
           <div className="secName_enInPage">publication</div>
         </div>
       </Box>
-      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 28 }} mt={20}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={6}>
+      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 28 }} mt={20} mb={4}>
+        <Stack direction={{ xs: "column", md: "row" }} spacing={6}>
           <Item>
             <Box width={200}>
               <Image
@@ -283,6 +283,17 @@ function Book({ book, contact }) {
                   {book.introduce_tw}
                 </Box>
               )}
+              {book.introduce_en && (
+                <Box
+                  sx={{
+                    maxWidth: 416,
+                    fontSize: { xs: "14px", xl: "17px" },
+                    fontWeight: { xs: 500, xl: 500 },
+                  }}
+                >
+                  {book.introduce_en}
+                </Box>
+              )}
             </Box>
           </Item>
         </Stack>
@@ -292,7 +303,10 @@ function Book({ book, contact }) {
               direction="row"
               spacing={0}
               sx={{
-                position: "fixed",
+                position: { xs: "relative", md: "fixed" },
+                justifyContent: { xs: "end", md: "unset" },
+                top: { xs: 60, xl: "unset" },
+                marginBottom: { xs: "80px", xl: "unset" },
                 bottom: { md: 68, xl: 68 },
                 right: { md: 68, xl: 68 },
                 cursor: "pointer",

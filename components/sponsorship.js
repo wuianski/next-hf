@@ -526,6 +526,7 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
           </Stack>
         </Box>
 
+        {/** vvv mobile **/}
         <Box sx={{ display: { xs: "block", md: "none" } }}>
           <Slider {...settings}>
             <Box sx={{ width: "100vw" }}>
@@ -568,8 +569,8 @@ const Sponsorship = ({ sponsorship: datasetS }) => {
             <Box>
               <Stack
                 /* set up the distance between two Item, and vertical center of Stack */
-                spacing={-6}
-                sx={{ marginTop: "-60px", marginLeft: "-30px" }}
+                spacing={-9}
+                sx={{ marginTop: "-20px", marginLeft: "-30px" }}
               >
                 <Item sx={{ marginBottom: 0, paddingTop: "7vh" }}>
                   <Box>

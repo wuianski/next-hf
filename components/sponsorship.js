@@ -10,7 +10,10 @@ import { VictoryPie, VictoryLabel } from "victory";
 import { VictoryChart, VictoryBar, VictoryStack, VictoryAxis } from "victory";
 import Slider from "react-slick";
 
-const Sponsorship = ({ sponsorship: datasetS }) => {
+const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
+  //const activeSec = fullpageApi.getActiveSection();
+  //const activeSecI = activeSec.index;
+  //console.log(fullpageApi.getActiveSection());
   /** react-slick setting **/
   const settings = {
     infinite: false,

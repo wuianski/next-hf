@@ -31,6 +31,7 @@ import Divider from "@mui/material/Divider";
 
 import { format } from "date-fns";
 import { NextSeo } from "next-seo";
+import { motion } from "framer-motion";
 
 /** pagination setting **/
 function TablePaginationActions(props) {
@@ -241,401 +242,435 @@ function Reports({ reports: dataset, contact }) {
         </div>
       </Box>
 
-      <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 13, md: 20 }}>
-        <Box sx={{ width: { xs: "74vw", md: "74vw" } }}>
-          <TabContext value={value}>
-            <Box>
-              <TabList
-                onChange={handleChange}
-                aria-label="lab API tabs example"
-                //sx={{ display: { xs: "grid", md: "block" } }}
-              >
-                <StyledTab label="財務報表" value="1" />
-                <StyledTab label="贊助明細" value="2" />
-                <StyledTab label="捐款明細" value="3" />
-                <StyledTab label="工作報告" value="4" />
-              </TabList>
-            </Box>
-            <TabPanel value="1" sx={{ padding: 0, marginTop: 3 }}>
-              <StyledTableContainer
-                component={Paper}
-                //below control the height of table
-                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
-              >
-                <Table sx={{ minWidth: "100%" }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <StyledTableCell>項目名稱</StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        類型
-                      </StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        更新日期
-                      </StyledTableCell>
-                      <StyledTableCell align="left">下載</StyledTableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {(rowsPerPage > 0
-                      ? report1.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                      : report1
-                    ).map((row) => (
-                      <TableRow key={row.title}>
-                        <StyledTableCell2 component="th" scope="row">
-                          {row.title}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {row.file.ext}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {format(new Date(row.file.updated_at), "yyyy-MM-dd")}
-                        </StyledTableCell2>
-                        <StyledTableCell2 align="left">
-                          <a href={row.file.url} target="_blank">
-                            <Image
-                              src="/IMGs/downloadReport_icon.png"
-                              alt="download icon"
-                              width={38}
-                              height={38}
-                            />
-                          </a>
-                        </StyledTableCell2>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5]}
-                        colSpan={0}
-                        count={report1.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActions}
-                        sx={{ border: "none" }}
-                      />
-                    </TableRow>
-                  </TableFooter>
-                </Table>
-              </StyledTableContainer>
-            </TabPanel>
-            <TabPanel value="2" sx={{ padding: 0, marginTop: 3 }}>
-              <StyledTableContainer
-                component={Paper}
-                //below control the height of table
-                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
-              >
-                <Table sx={{ minWidth: "100%" }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <StyledTableCell>項目名稱</StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        類型
-                      </StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        更新日期
-                      </StyledTableCell>
-                      <StyledTableCell align="left">下載</StyledTableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {(rowsPerPage > 0
-                      ? report2.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                      : report2
-                    ).map((row) => (
-                      <TableRow key={row.title}>
-                        <StyledTableCell2 component="th" scope="row">
-                          {row.title}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {row.file.ext}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {format(new Date(row.file.updated_at), "yyyy-MM-dd")}
-                        </StyledTableCell2>
-                        <StyledTableCell2 align="left">
-                          <a href={row.file.url} target="_blank">
-                            <Image
-                              src="/IMGs/downloadReport_icon.png"
-                              alt="download icon"
-                              width={38}
-                              height={38}
-                            />
-                          </a>
-                        </StyledTableCell2>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5]}
-                        colSpan={0}
-                        count={report1.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActions}
-                        sx={{ border: "none" }}
-                      />
-                    </TableRow>
-                  </TableFooter>
-                </Table>
-              </StyledTableContainer>
-            </TabPanel>
-            <TabPanel value="3" sx={{ padding: 0, marginTop: 3 }}>
-              <StyledTableContainer
-                component={Paper}
-                //below control the height of table
-                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
-              >
-                <Table sx={{ minWidth: "100%" }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <StyledTableCell>項目名稱</StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        類型
-                      </StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        更新日期
-                      </StyledTableCell>
-                      <StyledTableCell align="left">下載</StyledTableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {(rowsPerPage > 0
-                      ? report3.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                      : report3
-                    ).map((row) => (
-                      <TableRow key={row.title}>
-                        <StyledTableCell2 component="th" scope="row">
-                          {row.title}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {row.file.ext}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {format(new Date(row.file.updated_at), "yyyy-MM-dd")}
-                        </StyledTableCell2>
-                        <StyledTableCell2 align="left">
-                          <a href={row.file.url} target="_blank">
-                            <Image
-                              src="/IMGs/downloadReport_icon.png"
-                              alt="download icon"
-                              width={38}
-                              height={38}
-                            />
-                          </a>
-                        </StyledTableCell2>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5]}
-                        colSpan={0}
-                        count={report1.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActions}
-                        sx={{ border: "none" }}
-                      />
-                    </TableRow>
-                  </TableFooter>
-                </Table>
-              </StyledTableContainer>
-            </TabPanel>
-            <TabPanel value="4" sx={{ padding: 0, marginTop: 3 }}>
-              <StyledTableContainer
-                component={Paper}
-                //below control the height of table
-                sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
-              >
-                <Table sx={{ minWidth: "100%" }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <StyledTableCell>項目名稱</StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        類型
-                      </StyledTableCell>
-                      <StyledTableCell
-                        align="left"
-                        sx={{ display: { xs: "none", md: "table-cell" } }}
-                      >
-                        更新日期
-                      </StyledTableCell>
-                      <StyledTableCell align="left">下載</StyledTableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {(rowsPerPage > 0
-                      ? report4.slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                      : report4
-                    ).map((row) => (
-                      <TableRow key={row.title}>
-                        <StyledTableCell2 component="th" scope="row">
-                          {row.title}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {row.file.ext}
-                        </StyledTableCell2>
-                        <StyledTableCell2
-                          align="left"
-                          sx={{ display: { xs: "none", md: "table-cell" } }}
-                        >
-                          {format(new Date(row.file.updated_at), "yyyy-MM-dd")}
-                        </StyledTableCell2>
-                        <StyledTableCell2 align="left">
-                          <a href={row.file.url} target="_blank">
-                            <Image
-                              src="/IMGs/downloadReport_icon.png"
-                              alt="download icon"
-                              width={38}
-                              height={38}
-                            />
-                          </a>
-                        </StyledTableCell2>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5]}
-                        colSpan={0}
-                        count={report1.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActions}
-                        sx={{ border: "none" }}
-                      />
-                    </TableRow>
-                  </TableFooter>
-                </Table>
-              </StyledTableContainer>
-            </TabPanel>
-          </TabContext>
-        </Box>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {
+            scale: 0.8,
+            opacity: 0,
+          },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              delay: 0.4,
+            },
+          },
+        }}
+      >
         <Box
-          sx={{
-            //lineHeight: 1.3,
-            display: "flex",
-            justifyContent: "flex-end",
-            cursor: "pointer",
-            //width: { xs: "74vw", md: "74vw" },
-          }}
+          ml={{ xs: 8, md: 28 }}
+          mr={{ xs: 2, md: 8 }}
+          mt={{ xs: 13, md: 20 }}
         >
-          <Link href="/main#facts">
-            <Stack
-              direction="row"
-              spacing={0}
-              sx={{
-                position: { xs: "relative", md: "relative" },
-                marginBottom: { xs: "130px", md: "130px" },
-                //bottom: { md: 38, xl: 38 },
-                top: { xs: 60, md: 60 },
-              }}
-              height={"38px"}
-            >
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ borderColor: "#000" }}
-              />
-              <Item>
-                <Box
-                  pl={1}
-                  sx={{
-                    lineHeight: "38px",
-                    textTransform: "uppercase",
-                    fontSize: { md: 12, xl: 15 },
-                    fontWeight: 700,
-                  }}
+          <Box sx={{ width: { xs: "74vw", md: "74vw" } }}>
+            <TabContext value={value}>
+              <Box>
+                <TabList
+                  onChange={handleChange}
+                  aria-label="lab API tabs example"
+                  //sx={{ display: { xs: "grid", md: "block" } }}
                 >
-                  返回 back
-                </Box>
-              </Item>
-              <Item>
-                <Box pr={1}>
-                  <Image
-                    src="/IMGs/back_icon.png"
-                    alt="back icon"
-                    width={38}
-                    height={38}
-                  />
-                </Box>
-              </Item>
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ borderColor: "#000" }}
-              />
-            </Stack>
-          </Link>
+                  <StyledTab label="財務報表" value="1" />
+                  <StyledTab label="贊助明細" value="2" />
+                  <StyledTab label="捐款明細" value="3" />
+                  <StyledTab label="工作報告" value="4" />
+                </TabList>
+              </Box>
+              <TabPanel value="1" sx={{ padding: 0, marginTop: 3 }}>
+                <StyledTableContainer
+                  component={Paper}
+                  //below control the height of table
+                  sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
+                >
+                  <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <StyledTableCell>項目名稱</StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          類型
+                        </StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          更新日期
+                        </StyledTableCell>
+                        <StyledTableCell align="left">下載</StyledTableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {(rowsPerPage > 0
+                        ? report1.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                        : report1
+                      ).map((row) => (
+                        <TableRow key={row.title}>
+                          <StyledTableCell2 component="th" scope="row">
+                            {row.title}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {row.file.ext}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {format(
+                              new Date(row.file.updated_at),
+                              "yyyy-MM-dd"
+                            )}
+                          </StyledTableCell2>
+                          <StyledTableCell2 align="left">
+                            <a href={row.file.url} target="_blank">
+                              <Image
+                                src="/IMGs/downloadReport_icon.png"
+                                alt="download icon"
+                                width={38}
+                                height={38}
+                              />
+                            </a>
+                          </StyledTableCell2>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableRow>
+                        <TablePagination
+                          rowsPerPageOptions={[5]}
+                          colSpan={0}
+                          count={report1.length}
+                          rowsPerPage={rowsPerPage}
+                          page={page}
+                          onPageChange={handleChangePage}
+                          onRowsPerPageChange={handleChangeRowsPerPage}
+                          ActionsComponent={TablePaginationActions}
+                          sx={{ border: "none" }}
+                        />
+                      </TableRow>
+                    </TableFooter>
+                  </Table>
+                </StyledTableContainer>
+              </TabPanel>
+              <TabPanel value="2" sx={{ padding: 0, marginTop: 3 }}>
+                <StyledTableContainer
+                  component={Paper}
+                  //below control the height of table
+                  sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
+                >
+                  <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <StyledTableCell>項目名稱</StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          類型
+                        </StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          更新日期
+                        </StyledTableCell>
+                        <StyledTableCell align="left">下載</StyledTableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {(rowsPerPage > 0
+                        ? report2.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                        : report2
+                      ).map((row) => (
+                        <TableRow key={row.title}>
+                          <StyledTableCell2 component="th" scope="row">
+                            {row.title}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {row.file.ext}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {format(
+                              new Date(row.file.updated_at),
+                              "yyyy-MM-dd"
+                            )}
+                          </StyledTableCell2>
+                          <StyledTableCell2 align="left">
+                            <a href={row.file.url} target="_blank">
+                              <Image
+                                src="/IMGs/downloadReport_icon.png"
+                                alt="download icon"
+                                width={38}
+                                height={38}
+                              />
+                            </a>
+                          </StyledTableCell2>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableRow>
+                        <TablePagination
+                          rowsPerPageOptions={[5]}
+                          colSpan={0}
+                          count={report1.length}
+                          rowsPerPage={rowsPerPage}
+                          page={page}
+                          onPageChange={handleChangePage}
+                          onRowsPerPageChange={handleChangeRowsPerPage}
+                          ActionsComponent={TablePaginationActions}
+                          sx={{ border: "none" }}
+                        />
+                      </TableRow>
+                    </TableFooter>
+                  </Table>
+                </StyledTableContainer>
+              </TabPanel>
+              <TabPanel value="3" sx={{ padding: 0, marginTop: 3 }}>
+                <StyledTableContainer
+                  component={Paper}
+                  //below control the height of table
+                  sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
+                >
+                  <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <StyledTableCell>項目名稱</StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          類型
+                        </StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          更新日期
+                        </StyledTableCell>
+                        <StyledTableCell align="left">下載</StyledTableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {(rowsPerPage > 0
+                        ? report3.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                        : report3
+                      ).map((row) => (
+                        <TableRow key={row.title}>
+                          <StyledTableCell2 component="th" scope="row">
+                            {row.title}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {row.file.ext}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {format(
+                              new Date(row.file.updated_at),
+                              "yyyy-MM-dd"
+                            )}
+                          </StyledTableCell2>
+                          <StyledTableCell2 align="left">
+                            <a href={row.file.url} target="_blank">
+                              <Image
+                                src="/IMGs/downloadReport_icon.png"
+                                alt="download icon"
+                                width={38}
+                                height={38}
+                              />
+                            </a>
+                          </StyledTableCell2>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableRow>
+                        <TablePagination
+                          rowsPerPageOptions={[5]}
+                          colSpan={0}
+                          count={report1.length}
+                          rowsPerPage={rowsPerPage}
+                          page={page}
+                          onPageChange={handleChangePage}
+                          onRowsPerPageChange={handleChangeRowsPerPage}
+                          ActionsComponent={TablePaginationActions}
+                          sx={{ border: "none" }}
+                        />
+                      </TableRow>
+                    </TableFooter>
+                  </Table>
+                </StyledTableContainer>
+              </TabPanel>
+              <TabPanel value="4" sx={{ padding: 0, marginTop: 3 }}>
+                <StyledTableContainer
+                  component={Paper}
+                  //below control the height of table
+                  sx={{ maxHeight: { xs: "unset", md: "58vw" } }}
+                >
+                  <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <StyledTableCell>項目名稱</StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          類型
+                        </StyledTableCell>
+                        <StyledTableCell
+                          align="left"
+                          sx={{ display: { xs: "none", md: "table-cell" } }}
+                        >
+                          更新日期
+                        </StyledTableCell>
+                        <StyledTableCell align="left">下載</StyledTableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {(rowsPerPage > 0
+                        ? report4.slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                        : report4
+                      ).map((row) => (
+                        <TableRow key={row.title}>
+                          <StyledTableCell2 component="th" scope="row">
+                            {row.title}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {row.file.ext}
+                          </StyledTableCell2>
+                          <StyledTableCell2
+                            align="left"
+                            sx={{ display: { xs: "none", md: "table-cell" } }}
+                          >
+                            {format(
+                              new Date(row.file.updated_at),
+                              "yyyy-MM-dd"
+                            )}
+                          </StyledTableCell2>
+                          <StyledTableCell2 align="left">
+                            <a href={row.file.url} target="_blank">
+                              <Image
+                                src="/IMGs/downloadReport_icon.png"
+                                alt="download icon"
+                                width={38}
+                                height={38}
+                              />
+                            </a>
+                          </StyledTableCell2>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                    <TableFooter>
+                      <TableRow>
+                        <TablePagination
+                          rowsPerPageOptions={[5]}
+                          colSpan={0}
+                          count={report1.length}
+                          rowsPerPage={rowsPerPage}
+                          page={page}
+                          onPageChange={handleChangePage}
+                          onRowsPerPageChange={handleChangeRowsPerPage}
+                          ActionsComponent={TablePaginationActions}
+                          sx={{ border: "none" }}
+                        />
+                      </TableRow>
+                    </TableFooter>
+                  </Table>
+                </StyledTableContainer>
+              </TabPanel>
+            </TabContext>
+          </Box>
+          <Box
+            sx={{
+              //lineHeight: 1.3,
+              display: "flex",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+              //width: { xs: "74vw", md: "74vw" },
+            }}
+          >
+            <Link href="/main#facts">
+              <Stack
+                direction="row"
+                spacing={0}
+                sx={{
+                  position: { xs: "relative", md: "relative" },
+                  marginBottom: { xs: "130px", md: "130px" },
+                  //bottom: { md: 38, xl: 38 },
+                  top: { xs: 60, md: 60 },
+                }}
+                height={"38px"}
+              >
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={{ borderColor: "#000" }}
+                />
+                <Item>
+                  <Box
+                    pl={1}
+                    sx={{
+                      lineHeight: "38px",
+                      textTransform: "uppercase",
+                      fontSize: { md: 12, xl: 15 },
+                      fontWeight: 700,
+                    }}
+                  >
+                    返回 back
+                  </Box>
+                </Item>
+                <Item>
+                  <Box pr={1}>
+                    <Image
+                      src="/IMGs/back_icon.png"
+                      alt="back icon"
+                      width={38}
+                      height={38}
+                    />
+                  </Box>
+                </Item>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  sx={{ borderColor: "#000" }}
+                />
+              </Stack>
+            </Link>
+          </Box>
         </Box>
-      </Box>
+      </motion.div>
     </>
   );
 }

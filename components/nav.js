@@ -132,7 +132,7 @@ export default function Nav({ contact }) {
         <Box
           onClick={handleOpen2}
           className={styles.menuTitleList}
-          sx={{ color: "#fff" }}
+          //sx={{ color: "#fff" }}
         >
           <Box component="span" className={styles.menuTitle}>
             公開資訊
@@ -231,7 +231,7 @@ export default function Nav({ contact }) {
         <Box
           onClick={handleOpen2}
           className={styles.menuTitleList}
-          sx={{ color: "#fff" }}
+          //sx={{ color: "#fff" }}
         >
           <Box component="span" className={styles.menuTitle}>
             出版
@@ -320,7 +320,7 @@ export default function Nav({ contact }) {
             spacing={{ xs: 6, md: 1 }}
           >
             <Item sx={{ width: { xs: "80vw", md: "calc(50% + 60px)" } }}>
-              <Box>
+              <Box className={styles.menuTitleBlk}>
                 <Link href="/main#events">
                   <Box className={styles.menuTitleList}>
                     <Box component="span" className={styles.menuTitle}>

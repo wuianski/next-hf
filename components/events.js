@@ -26,7 +26,7 @@ const Events = ({ events: dataset }) => {
               <Box key={event.id}>
                 <Image
                   className={styles.landingImage}
-                  src={event.cover.url}
+                  src={event.cover && event.cover.url}
                   alt="download icon"
                   layout="fill"
                   objectFit="cover"

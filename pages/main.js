@@ -1,10 +1,10 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import ReactFullpage from "@fullpage/react-fullpage";
 
 import Layout from "../components/layout";
 import Nav from "../components/nav";
 import NavInMain from "../components/navInMain";
-
 import { fetchAPI } from "../lib/api";
 import MissionSlogan from "../components/MissionSlogan";
 import MissionTW from "../components/MissionTW";
@@ -50,6 +50,7 @@ class App extends React.Component {
     } = props;
 
     this.state = {
+      //initialActiveSection: null,
       sectionsColor: [...originalColors],
       anchors: [
         "events",
@@ -99,6 +100,15 @@ class App extends React.Component {
     };
   }
 
+  onLeave(origin, destination, direction) {
+    //console.log("onLeave", { origin, destination, direction });
+    // arguments are mapped in order of fullpage.js callback arguments do something
+    // with the event
+    //const secIndex = destination.index;
+    //console.log(secIndex);
+    //return destination.index;
+  }
+
   render() {
     const {
       events,
@@ -110,6 +120,7 @@ class App extends React.Component {
       sponsorship,
       publication,
       contact,
+      //initialActiveSection,
     } = this.state;
 
     return (
@@ -200,8 +211,9 @@ class App extends React.Component {
             //using below to use normal scroll elements
             normalScrollElements={".scrollEle"}
             //verticalCentered={false}
+            onLeave={this.onLeave.bind(this)}
             render={({ state, fullpageApi }) =>
-              console.log("render prop change") || (
+              console.log("render") || (
                 <>
                   <ReactFullpage.Wrapper>
                     {events && (
@@ -266,13 +278,21 @@ class App extends React.Component {
 
                     {sponsorship && (
                       <div className="section" data-anchor="section7">
-                        <Sponsorship sponsorship={sponsorship.data} />
+                        <Sponsorship
+                          sponsorship={sponsorship.data}
+                          fullpageApi={fullpageApi}
+                        />
                       </div>
                     )}
 
                     {publication && (
                       <div className="section" data-anchor="section8">
-                        <PublicationIntro publication={publication.data} />
+                        {/*console.log(fullpageApi.getActiveSection())*/}
+                        <PublicationIntro
+                          publication={publication.data}
+                          fullpageApi={fullpageApi}
+                          secIndex={state}
+                        />
                       </div>
                     )}
                   </ReactFullpage.Wrapper>

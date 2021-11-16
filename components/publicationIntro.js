@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
@@ -6,10 +6,10 @@ import Divider from "@mui/material/Divider";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
-const PublicationIntro = ({ publication: dataset }) => {
+const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -21,6 +21,11 @@ const PublicationIntro = ({ publication: dataset }) => {
     boxShadow: "none",
   }));
 
+  //console.log(fullpageApi.getActiveSection());
+  const activeSec = secIndex;
+  const activeSecI = activeSec.destination;
+  console.log(activeSecI);
+
   const [isActive, setIsActive] = React.useState(false);
   const variants = {
     hidden: { opacity: 0 },
@@ -30,6 +35,7 @@ const PublicationIntro = ({ publication: dataset }) => {
   return (
     <>
       <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 10, md: 13 }}>
+        {console.log()}
         <Stack>
           <Item>
             <Stack
@@ -138,21 +144,28 @@ const PublicationIntro = ({ publication: dataset }) => {
                         ></Box>
                       </Item>
                       <Item>
-                        <motion.div
-                          initial={{ rotate: 0 }}
-                          animate={{ rotate: -30 }}
-                          exit={{ rotate: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Box
-                            sx={{
-                              width: 52,
-                              height: 154,
-                              background:
-                                "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, #B09336 99.99%)",
-                            }}
-                          ></Box>
-                        </motion.div>
+                        <AnimatePresence initial={{ rotate: 0 }}>
+                          {activeSecI && (
+                            <motion.div
+                              initial={{ rotate: 0 }}
+                              animate={{ rotate: 30 }}
+                              exit={{ rotate: 0 }}
+                              transition={{
+                                duration: 0.5,
+                                delay: 1,
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  width: 52,
+                                  height: 154,
+                                  background:
+                                    "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, #B09336 99.99%)",
+                                }}
+                              />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </Item>
                       <Item>
                         <Box

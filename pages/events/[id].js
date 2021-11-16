@@ -14,6 +14,7 @@ import Masonry from "@mui/lab/Masonry";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { NextSeo } from "next-seo";
+import { motion } from "framer-motion";
 
 function Event({ event, contact }) {
   /** sorting dataset by id **/
@@ -44,13 +45,6 @@ function Event({ event, contact }) {
           url: "https://hongfoundation.org.tw/main#events",
           title: "Open Graph Title",
           description: "Open Graph Description",
-          /*images: [
-            {
-              url: "/IMGs/frontPage_bg.png",
-              alt: "Og Image Alt",
-              type: "image/jpeg",
-            },
-          ],*/
           site_name: "Hong Foundation",
         }}
         twitter={{
@@ -70,29 +64,47 @@ function Event({ event, contact }) {
       <Box mt={20}>
         <Stack direction="column" spacing={{ xs: 8, md: 12 }}>
           <Item sx={{ width: "100vw" }}>
-            <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
-              <Box
-                sx={{
-                  fontSize: { xs: "34px", xl: "37px" },
-                  lineHeight: 1.3,
-                  textAlign: "end",
-                  whiteSpace: "pre-line",
-                  //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
-                }}
-              >
-                {event.title_tw}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  scale: 0.8,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    delay: 0.4,
+                  },
+                },
+              }}
+            >
+              <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
+                <Box
+                  sx={{
+                    fontSize: { xs: "34px", xl: "37px" },
+                    lineHeight: 1.3,
+                    textAlign: "end",
+                    whiteSpace: "pre-line",
+                    //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
+                  }}
+                >
+                  {event.title_tw}
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: { xs: "25px", xl: "28px" },
+                    lineHeight: 1.3,
+                    textAlign: "end",
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {event.title_en}
+                </Box>
               </Box>
-              <Box
-                sx={{
-                  fontSize: { xs: "25px", xl: "28px" },
-                  lineHeight: 1.3,
-                  textAlign: "end",
-                  whiteSpace: "pre-line",
-                }}
-              >
-                {event.title_en}
-              </Box>
-            </Box>
+            </motion.div>
           </Item>
           <Item>
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }}>

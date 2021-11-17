@@ -249,8 +249,8 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} mt={8} ml={8} pb={6}>
-        <Slider {...settingsMobile} /*className={styles.slideBg}*/>
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={2} ml={8} pb={6}>
+        <Slider {...settingsMobile}>
           {sorted &&
             sorted.map((news) => (
               <Box
@@ -297,7 +297,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
         ml={{ xs: 8, md: 33 }}
         mr={{ xs: 2, md: 13 }}
         sx={{
-          marginTop: { xs: "1vh", md: "3vh", xl: "8vh" },
+          marginTop: { xs: "2vh", md: "3vh", xl: "8vh" },
           height: { xs: "20vh", md: "10vh" },
         }}
       >
@@ -305,7 +305,13 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
           {dataset2 &&
             dataset2.map((announcement) => (
               <Box pr={1} key={announcement.id}>
-                <Box sx={{ border: "1px solid #000", padding: 1 }}>
+                <Box
+                  sx={{
+                    border: "1px solid #000",
+                    padding: 1,
+                    minHeight: { xs: "140px", md: "68px" },
+                  }}
+                >
                   <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                     <Item>
                       <Box

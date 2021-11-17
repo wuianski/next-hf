@@ -21,10 +21,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
     boxShadow: "none",
   }));
 
-  //console.log(fullpageApi.getActiveSection());
+  /** fullPage onLeave trigger motion framer **/
   const activeSec = secIndex;
   const activeSecI = activeSec.destination;
-  console.log(activeSecI);
+  //console.log(activeSecI);
 
   const [isActive, setIsActive] = React.useState(false);
   const variants = {
@@ -35,12 +35,11 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
   return (
     <>
       <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 10, md: 13 }}>
-        {console.log()}
         <Stack>
           <Item>
             <Stack
               direction={{ xs: "column", md: "row" }}
-              spacing={{ xs: 1, md: 3 }}
+              spacing={{ xs: 3, md: 3 }}
             >
               <Item sx={{ width: { xs: "100%", md: "18vw" } }}>
                 <Box
@@ -150,10 +149,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                               initial={{ rotate: 0 }}
                               animate={{ rotate: 30 }}
                               exit={{ rotate: 0 }}
-                              transition={{
-                                duration: 0.5,
-                                delay: 1,
-                              }}
+                              transition={{ duration: 0.5, delay: 1 }}
                             >
                               <Box
                                 sx={{
@@ -252,6 +248,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                           <Stack
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}
+                            ml={-2}
                           >
                             <Item>
                               <Box

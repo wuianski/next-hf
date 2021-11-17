@@ -21,6 +21,7 @@ import PublicationIntro from "../components/publicationIntro";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
+import { motion, AnimatePresence } from "framer-motion";
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 // This is no longer required for the scrollOverflow option.
@@ -228,6 +229,7 @@ class App extends React.Component {
                           <MissionSlogan
                             mission={mission.data}
                             fullpageApi={fullpageApi}
+                            secIndex={state}
                           />
                         </div>
                         <div className="slide">
@@ -256,6 +258,7 @@ class App extends React.Component {
                         <Projects
                           projects={projects.data}
                           fullpageApi={fullpageApi}
+                          secIndex={state}
                         />
                       </div>
                     )}

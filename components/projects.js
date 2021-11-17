@@ -1,18 +1,14 @@
 import React from "react";
 import Image from "next/image";
-
 import Collapse from "@mui/material/Collapse";
 import Box from "@mui/material/Box";
-
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-
 import Drawer from "@mui/material/Drawer";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Projects = ({ projects: dataset, fullpageApi }) => {
-  //console.log(events);
-
+const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
   /* CHANGE ARRAY SORTING BY ID*/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -60,6 +56,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
     }
   };
 
+  /** fullPage onLeave trigger motion framer **/
+  const activeSec = secIndex;
+  const activeSecI = activeSec.destination;
+
   return (
     <>
       {/** vvv desktop collapse mode **/}
@@ -81,11 +81,14 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
           <Box pr={5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset0 &&
               dataset0.map((project) => (
-                <div key={project.id}>
+                <Box key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
                     <Box
                       sx={{
-                        fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
+                        fontSize: {
+                          md: "h5.fontSize",
+                          xl: "h4.fontSize",
+                        },
                         lineHeight: 1.2,
                         whiteSpace: "pre-line",
                         textTransform: "uppercase",
@@ -96,7 +99,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box
                       sx={{
-                        fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
+                        fontSize: {
+                          md: "h6.fontSize",
+                          xl: "h5.fontSize",
+                        },
                         mb: 2,
                         cursor: "pointer",
                       }}
@@ -155,15 +161,16 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                         </Box>
                       </Box>
                     </Collapse>
+
                     <Box
                       sx={{
                         height: 28,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
-                    ></Box>
+                    />
                   </Box>
-                </div>
+                </Box>
               ))}
           </Box>
 
@@ -174,7 +181,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                   <Box onClick={handleClick(project.id, true)}>
                     <Box
                       sx={{
-                        fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
+                        fontSize: {
+                          md: "h5.fontSize",
+                          xl: "h4.fontSize",
+                        },
                         lineHeight: 1.2,
                         whiteSpace: "pre-line",
                         textTransform: "uppercase",
@@ -185,7 +195,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box
                       sx={{
-                        fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
+                        fontSize: {
+                          md: "h6.fontSize",
+                          xl: "h5.fontSize",
+                        },
                         mb: 2,
                         cursor: "pointer",
                       }}
@@ -264,27 +277,19 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
             display: { xs: "block", md: "flex" },
             justifyContent: "end",
             alignItems: "flex-end",
-            //height: "8vh",
-            //minHeight: 180,
           }}
         >
-          <Box
-            pr={5}
-            sx={{
-              width: { xs: "60vw", md: "30vw" },
-            }}
-          >
+          <Box pr={5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset2 &&
               dataset2.map((project) => (
                 <div key={project.id}>
-                  <Box
-                    // handleClick
-                    onClick={handleClick(project.id, true)}
-                    //sx={{  }}
-                  >
+                  <Box onClick={handleClick(project.id, true)}>
                     <Box
                       sx={{
-                        fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
+                        fontSize: {
+                          md: "h5.fontSize",
+                          xl: "h4.fontSize",
+                        },
                         lineHeight: 1.2,
                       }}
                       style={{
@@ -297,7 +302,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box
                       sx={{
-                        fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
+                        fontSize: {
+                          md: "h6.fontSize",
+                          xl: "h5.fontSize",
+                        },
                         mb: 3,
                       }}
                       style={{ cursor: "pointer" }}
@@ -368,22 +376,17 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
               ))}
           </Box>
 
-          <Box
-            sx={{
-              width: { xs: "60vw", md: "30vw" },
-            }}
-          >
+          <Box sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset3 &&
               dataset3.map((project) => (
                 <div key={project.id}>
-                  <Box
-                    // handleClick
-                    onClick={handleClick(project.id, true)}
-                    //sx={{  }}
-                  >
+                  <Box onClick={handleClick(project.id, true)}>
                     <Box
                       sx={{
-                        fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
+                        fontSize: {
+                          md: "h5.fontSize",
+                          xl: "h4.fontSize",
+                        },
                         lineHeight: 1.2,
                       }}
                       style={{
@@ -396,7 +399,10 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box
                       sx={{
-                        fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
+                        fontSize: {
+                          md: "h6.fontSize",
+                          xl: "h5.fontSize",
+                        },
                         mb: 3,
                       }}
                       style={{ cursor: "pointer" }}
@@ -498,7 +504,7 @@ const Projects = ({ projects: dataset, fullpageApi }) => {
                     </Box>
                     <Box sx={{ fontSize: 18, mb: 1 }}>{project.title_tw}</Box>
                     <Box
-                      mb={2}
+                      mb={"5vh"}
                       sx={{
                         height: 24,
                         backgroundImage:

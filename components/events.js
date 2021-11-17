@@ -24,16 +24,22 @@ const Events = ({ events: dataset }) => {
           {dataset &&
             dataset.map((event) => (
               <Box key={event.id}>
-                <Image
-                  className={styles.landingImage}
-                  src={event.cover && event.cover.url}
-                  alt="download icon"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  //width={1080}
-                  //height={520}
-                />
+                <Box
+                  width={"100vw"}
+                  height={"100vh"}
+                  sx={{ position: "relative" }}
+                >
+                  <Image
+                    className={styles.landingImage}
+                    src={event.cover && event.cover.url}
+                    alt="download icon"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    //width={1080}
+                    //height={520}
+                  />
+                </Box>
                 <Link href="/events/[id]" as={`/events/` + event.id}>
                   <Box
                     mr={{ xs: 4, md: 6 }}

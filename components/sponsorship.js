@@ -11,9 +11,6 @@ import { VictoryChart, VictoryBar, VictoryStack, VictoryAxis } from "victory";
 import Slider from "react-slick";
 
 const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
-  //const activeSec = fullpageApi.getActiveSection();
-  //const activeSecI = activeSec.index;
-  //console.log(fullpageApi.getActiveSection());
   /** react-slick setting **/
   const settings = {
     infinite: false,
@@ -25,11 +22,6 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
     slidesToScroll: 1,
     speed: 500,
     swipeToSlide: true,
-    //nextArrow: <SampleNextArrow />,
-    //prevArrow: <SamplePrevArrow />,
-    /*afterChange: () =>
-      this.setState((state) => ({ updateCount: state.updateCount + 1 })),*/
-    //beforeChange: { handleChange },
   };
 
   /** stack Item setting **/
@@ -153,55 +145,212 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          {/*<svg viewBox="0 0 600 600">*/}
-          <VictoryChart
-            //standalone={false}
-            //height={300}
-            //width={300}
-            domainPadding={{ x: 0, y: 30 }}
-          >
-            <VictoryStack horizontal>
-              {dataset.map((data, i) => {
-                return (
-                  <VictoryBar
-                    data={data}
-                    key={i}
-                    colorScale={[
-                      "rgba(176, 147, 54, 0.6)",
-                      "rgba(0, 0, 0, 0.5)",
-                      "rgba(196, 173, 50, 0.6)",
-                      "rgba(187, 187, 187, 0.6)",
-                    ]}
-                  />
-                );
-              })}
-            </VictoryStack>
-            <VictoryAxis
-              orientation="bottom"
-              label="每十年贊助比例"
-              dependentAxis
-              style={{
-                tickLabels: { fill: "none" },
-                axis: { stroke: "none" },
-                axisLabel: { fontSize: 17, fontWeight: 700 },
-              }}
-            />
-            <VictoryAxis
-              tickFormat={[
-                "1971-1980",
-                "1981-1980",
-                "1991-2000",
-                "2001-2010",
-                "2011-2020",
-              ]}
-              style={{
-                tickLabels: { fontSize: 13, fontWeight: 700, padding: 5 },
-                axis: { stroke: "none" },
-              }}
-              offsetX={455}
-            />
-          </VictoryChart>
-          {/*</svg>*/}
+          <svg viewBox="0 0 600 400">
+            <defs>
+              <linearGradient
+                id="myGradient1_bar1"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#B09336" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient2_bar1"
+                x1="0%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient3_bar1"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#C4AD32" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient4_bar1"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#BBBBBB" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+            </defs>
+            <VictoryChart
+              standalone={false}
+              width={600}
+              height={400}
+              domainPadding={{ x: 0, y: 30 }}
+            >
+              <VictoryStack horizontal>
+                {dataset.map((data, i) => {
+                  return (
+                    <VictoryBar
+                      data={data}
+                      key={i}
+                      colorScale={[
+                        "url(#myGradient1_bar1)",
+                        "url(#myGradient2_bar1)",
+                        "url(#myGradient3_bar1)",
+                        "url(#myGradient4_bar1)",
+                      ]}
+                    />
+                  );
+                })}
+              </VictoryStack>
+              <VictoryAxis
+                orientation="bottom"
+                label="每十年贊助比例"
+                dependentAxis
+                style={{
+                  tickLabels: { fill: "none" },
+                  axis: { stroke: "none" },
+                  axisLabel: { fontSize: 17, fontWeight: 700 },
+                }}
+              />
+              <VictoryAxis
+                tickFormat={[
+                  "1971-1980",
+                  "1981-1980",
+                  "1991-2000",
+                  "2001-2010",
+                  "2011-2020",
+                ]}
+                style={{
+                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 5 },
+                  axis: { stroke: "none" },
+                }}
+                offsetX={600}
+              />
+            </VictoryChart>
+          </svg>
+        </div>
+      );
+    }
+  }
+  class Bar1m extends React.Component {
+    // This is an example of a function you might use to transform your data to make 100% data
+    transformData(dataset) {
+      const totals = dataset[0].map((data, i) => {
+        return dataset.reduce((memo, curr) => {
+          return memo + curr[i].y;
+        }, 0);
+      });
+      return dataset.map((data) => {
+        return data.map((datum, i) => {
+          return { x: datum.x, y: (datum.y / totals[i]) * 100 };
+        });
+      });
+    }
+
+    render() {
+      const dataset = this.transformData(bar1Dataset);
+      //const dataset = this.transformData(myDataset);
+      return (
+        <div>
+          <svg viewBox="0 0 500 400">
+            <defs>
+              <linearGradient
+                id="myGradient1_bar1m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#B09336" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient2_bar1m"
+                x1="0%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient3_bar1m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#C4AD32" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient4_bar1m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#BBBBBB" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+            </defs>
+            <VictoryChart
+              standalone={false}
+              width={500}
+              height={400}
+              domainPadding={{ x: 0, y: 30 }}
+            >
+              <VictoryStack horizontal>
+                {dataset.map((data, i) => {
+                  return (
+                    <VictoryBar
+                      data={data}
+                      key={i}
+                      colorScale={[
+                        "url(#myGradient1_bar1m)",
+                        "url(#myGradient2_bar1m)",
+                        "url(#myGradient3_bar1m)",
+                        "url(#myGradient4_bar1m)",
+                      ]}
+                    />
+                  );
+                })}
+              </VictoryStack>
+              <VictoryAxis
+                orientation="bottom"
+                label="每十年贊助比例"
+                dependentAxis
+                style={{
+                  tickLabels: { fill: "none" },
+                  axis: { stroke: "none" },
+                  axisLabel: { fontSize: 17, fontWeight: 700 },
+                }}
+              />
+              <VictoryAxis
+                tickFormat={[
+                  "1971-1980",
+                  "1981-1980",
+                  "1991-2000",
+                  "2001-2010",
+                  "2011-2020",
+                ]}
+                style={{
+                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 5 },
+                  axis: { stroke: "none" },
+                }}
+                offsetX={500}
+              />
+            </VictoryChart>
+          </svg>
         </div>
       );
     }
@@ -300,49 +449,200 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          {/*<svg viewBox="0 0 600 600">*/}
-          <VictoryChart
-            //standalone={false}
-            //height={300}
-            //width={300}
-            domainPadding={{ x: 0, y: 30 }}
-          >
-            <VictoryStack horizontal>
-              {dataset.map((data, i) => {
-                return (
-                  <VictoryBar
-                    colorScale={[
-                      "rgba(176, 147, 54, 0.6)",
-                      "rgba(0, 0, 0, 0.5)",
-                      "rgba(196, 173, 50, 0.6)",
-                      "rgba(187, 187, 187, 0.6)",
-                    ]}
-                    data={data}
-                    key={i}
-                  />
-                );
-              })}
-            </VictoryStack>
-            <VictoryAxis
-              orientation="bottom"
-              label="2015-2019 各年度贊助比例"
-              dependentAxis
-              style={{
-                tickLabels: { fill: "none" },
-                axis: { stroke: "none" },
-                axisLabel: { fontSize: 17, fontWeight: 700 },
-              }}
-            />
-            <VictoryAxis
-              tickFormat={["2016", "2017", "2018", "2019", "2020"]}
-              style={{
-                tickLabels: { fontSize: 13, fontWeight: 700, padding: 35 },
-                axis: { stroke: "none" },
-              }}
-              offsetX={447}
-            />
-          </VictoryChart>
-          {/*</svg>*/}
+          <svg viewBox="0 0 600 400">
+            <defs>
+              <linearGradient
+                id="myGradient1_bar2"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#B09336" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient2_bar2"
+                x1="0%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient3_bar2"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#C4AD32" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient4_bar2"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#BBBBBB" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+            </defs>
+            <VictoryChart
+              standalone={false}
+              width={600}
+              height={400}
+              domainPadding={{ x: 0, y: 30 }}
+            >
+              <VictoryStack horizontal>
+                {dataset.map((data, i) => {
+                  return (
+                    <VictoryBar
+                      colorScale={[
+                        "url(#myGradient1_bar2)",
+                        "url(#myGradient2_bar2)",
+                        "url(#myGradient3_bar2)",
+                        "url(#myGradient4_bar2)",
+                      ]}
+                      data={data}
+                      key={i}
+                    />
+                  );
+                })}
+              </VictoryStack>
+              <VictoryAxis
+                orientation="bottom"
+                label="2015-2019 各年度贊助比例"
+                dependentAxis
+                style={{
+                  tickLabels: { fill: "none" },
+                  axis: { stroke: "none" },
+                  axisLabel: { fontSize: 17, fontWeight: 700 },
+                }}
+              />
+              <VictoryAxis
+                tickFormat={["2016", "2017", "2018", "2019", "2020"]}
+                style={{
+                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 35 },
+                  axis: { stroke: "none" },
+                }}
+                offsetX={600}
+              />
+            </VictoryChart>
+          </svg>
+        </div>
+      );
+    }
+  }
+  class Bar2m extends React.Component {
+    // This is an example of a function you might use to transform your data to make 100% data
+    transformData(dataset) {
+      const totals = dataset[0].map((data, i) => {
+        return dataset.reduce((memo, curr) => {
+          return memo + curr[i].y;
+        }, 0);
+      });
+      return dataset.map((data) => {
+        return data.map((datum, i) => {
+          return { x: datum.x, y: (datum.y / totals[i]) * 100 };
+        });
+      });
+    }
+
+    render() {
+      const dataset = this.transformData(bar2Dataset);
+      //const dataset = this.transformData(myDataset);
+      return (
+        <div>
+          <svg viewBox="0 0 500 400">
+            <defs>
+              <linearGradient
+                id="myGradient1_bar2m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#B09336" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient2_bar2m"
+                x1="0%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#000000" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient3_bar2m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#C4AD32" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+              <linearGradient
+                id="myGradient4_bar2m"
+                x1="20%"
+                y1="0%"
+                x2="120%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#BBBBBB" />
+                <stop offset="100%" stopColor="#FFFFFF" />
+              </linearGradient>
+            </defs>
+            <VictoryChart
+              standalone={false}
+              width={500}
+              height={400}
+              domainPadding={{ x: 0, y: 30 }}
+            >
+              <VictoryStack horizontal>
+                {dataset.map((data, i) => {
+                  return (
+                    <VictoryBar
+                      colorScale={[
+                        "url(#myGradient1_bar2m)",
+                        "url(#myGradient2_bar2m)",
+                        "url(#myGradient3_bar2m)",
+                        "url(#myGradient4_bar2m)",
+                      ]}
+                      data={data}
+                      key={i}
+                    />
+                  );
+                })}
+              </VictoryStack>
+              <VictoryAxis
+                orientation="bottom"
+                label="2015-2019 各年度贊助比例"
+                dependentAxis
+                style={{
+                  tickLabels: { fill: "none" },
+                  axis: { stroke: "none" },
+                  axisLabel: { fontSize: 17, fontWeight: 700 },
+                }}
+              />
+              <VictoryAxis
+                tickFormat={["2016", "2017", "2018", "2019", "2020"]}
+                style={{
+                  tickLabels: { fontSize: 13, fontWeight: 700, padding: 35 },
+                  axis: { stroke: "none" },
+                }}
+                offsetX={500}
+              />
+            </VictoryChart>
+          </svg>
         </div>
       );
     }
@@ -351,12 +651,56 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 13 }} mr={{ xs: 2, md: 12 }} mt={-5}>
+      <Box ml={{ xs: 8, md: 13 }} mr={{ xs: 2, md: 12 }} mt={5}>
+        {/** vvv desktop **/}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <Stack direction="row" spacing={-12}>
             <Item>
               <Box sx={{ height: "60vh", width: "60vw" }}>
+                {/* vvv pie */}
                 <svg viewBox="-100 0 600 600">
+                  <defs>
+                    <linearGradient
+                      id="myGradient1"
+                      x1="0%"
+                      y1="0%"
+                      x2="30%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#B09336" />
+                      <stop offset="100%" stopColor="#FFFFFF" />
+                    </linearGradient>
+                    <linearGradient
+                      id="myGradient2"
+                      x1="100%"
+                      y1="0%"
+                      x2="0%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#000000" />
+                      <stop offset="100%" stopColor="#FFFFFF" />
+                    </linearGradient>
+                    <linearGradient
+                      id="myGradient3"
+                      x1="0%"
+                      y1="100%"
+                      x2="0%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#C4AD32" />
+                      <stop offset="100%" stopColor="#FFFFFF" />
+                    </linearGradient>
+                    <linearGradient
+                      id="myGradient4"
+                      x1="0%"
+                      y1="100%"
+                      x2="0%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#BBBBBB" />
+                      <stop offset="100%" stopColor="#FFFFFF" />
+                    </linearGradient>
+                  </defs>
                   <VictoryPie
                     standalone={false}
                     width={400}
@@ -365,27 +709,46 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                     x="name"
                     y="p"
                     innerRadius={100}
-                    labelRadius={168}
+                    labels={({ datum }) => `${datum.p}%`}
+                    labelRadius={({ innerRadius }) => innerRadius + 15}
+                    labelPosition={({ index }) =>
+                      index ? "centroid" : "centroid"
+                    }
+                    labelPlacement={({ index }) =>
+                      index ? "perpendicular" : "perpendicular"
+                    }
                     style={{
-                      labels: { fontSize: 15, fontWeight: 500, fill: "black" },
+                      labels: {
+                        fontSize: ({ text }) => (text.length > 10 ? 8 : 12),
+                        fontWeight: 500,
+                        //fill: ["#B09336", "#B09336", "#B09336", "#B09336"],
+                        fill: ({ index }) =>
+                          index == 0
+                            ? "#93834C"
+                            : index == 1
+                            ? "#000"
+                            : index == 2
+                            ? "#B09336"
+                            : "#545454",
+                      },
                     }}
                     colorScale={[
-                      "rgba(176, 147, 54, 0.6)",
-                      "rgba(0, 0, 0, 0.5)",
-                      "rgba(196, 173, 50, 0.6)",
-                      "rgba(187, 187, 187, 0.6)",
+                      "url(#myGradient1)",
+                      "url(#myGradient2)",
+                      "url(#myGradient3)",
+                      "url(#myGradient4)",
                     ]}
                   />
                   <VictoryLabel
                     textAnchor="middle"
-                    style={{ fontSize: 30, fontWeight: 700 }}
+                    style={{ fontSize: 30, fontWeight: 600 }}
                     x={200}
                     y={190}
                     text="1971~2020"
                   />
                   <VictoryLabel
                     textAnchor="middle"
-                    style={{ fontSize: 15, fontWeight: 700 }}
+                    style={{ fontSize: 15, fontWeight: 500 }}
                     x={200}
                     y={220}
                     text="贊助概覽"
@@ -393,16 +756,17 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                 </svg>
               </Box>
             </Item>
-            {/* vvv color demo */}
+
             <Item>
               <Box sx={{ height: "60vh", marginTop: { md: 0, xl: 0 } }}>
                 <Stack spacing={{ sm: 2, md: 2 }}>
                   {/* vvv color demo, set marginBottom for the distance with down ele */}
                   <Item sx={{ marginBottom: -13, paddingTop: "7vh" }}>
                     <Box>
+                      {/* vvv color demo */}
                       <Stack direction="row">
                         <Item>
-                          <Box ml={3} sx={{ width: "73px", height: "5vh" }}>
+                          <Box ml={3} sx={{ width: "73px", height: "4vh" }}>
                             <Stack direction="row">
                               <Item>
                                 <Box
@@ -410,7 +774,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                   sx={{
                                     width: 10,
                                     height: 10,
-                                    background: "rgba(176, 147, 54, 0.6)",
+                                    background: "rgba(176, 147, 54, 1)",
                                     display: "inline-block",
                                     borderRadius: 5,
                                   }}
@@ -419,8 +783,8 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                               <Item>
                                 <Box
                                   sx={{
-                                    fontSize: { md: 14, xl: 17 },
-                                    lineHeight: { md: "14px", xl: "17px" },
+                                    fontSize: { md: 14, xl: 14 },
+                                    lineHeight: { md: "14px", xl: "14px" },
                                   }}
                                 >
                                   教育
@@ -437,7 +801,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                   sx={{
                                     width: 10,
                                     height: 10,
-                                    background: "rgba(0, 0, 0, 0.5)",
+                                    background: "rgba(0, 0, 0, 1)",
                                     display: "inline-block",
                                     borderRadius: 5,
                                   }}
@@ -446,8 +810,8 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                               <Item>
                                 <Box
                                   sx={{
-                                    fontSize: { md: 14, xl: 17 },
-                                    lineHeight: { md: "14px", xl: "17px" },
+                                    fontSize: { md: 14, xl: 14 },
+                                    lineHeight: { md: "14px", xl: "14px" },
                                   }}
                                 >
                                   藝術
@@ -464,7 +828,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                   sx={{
                                     width: 10,
                                     height: 10,
-                                    background: "rgba(196, 173, 50, 0.6)",
+                                    background: "rgba(196, 173, 50, 1)",
                                     display: "inline-block",
                                     borderRadius: 5,
                                   }}
@@ -473,8 +837,8 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                               <Item>
                                 <Box
                                   sx={{
-                                    fontSize: { md: 14, xl: 17 },
-                                    lineHeight: { md: "14px", xl: "17px" },
+                                    fontSize: { md: 14, xl: 14 },
+                                    lineHeight: { md: "14px", xl: "14px" },
                                   }}
                                 >
                                   助學
@@ -491,7 +855,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                   sx={{
                                     width: 10,
                                     height: 10,
-                                    background: "rgba(187, 187, 187, 0.6)",
+                                    background: "rgba(187, 187, 187, 1)",
                                     display: "inline-block",
                                     borderRadius: 5,
                                   }}
@@ -500,8 +864,8 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                               <Item>
                                 <Box
                                   sx={{
-                                    fontSize: { md: 14, xl: 17 },
-                                    lineHeight: { md: "14px", xl: "17px" },
+                                    fontSize: { md: 14, xl: 14 },
+                                    lineHeight: { md: "14px", xl: "14px" },
                                   }}
                                 >
                                   文哲
@@ -533,53 +897,17 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
         <Box sx={{ display: { xs: "block", md: "none" } }}>
           <Slider {...settings}>
             <Box sx={{ width: "100vw" }}>
-              <svg viewBox="-20 0 400 450">
-                <VictoryPie
-                  standalone={false}
-                  width={360}
-                  height={360}
-                  data={new_y0Arr}
-                  x="name"
-                  y="p"
-                  innerRadius={60}
-                  labelRadius={140}
-                  style={{
-                    labels: { fontSize: 15, fontWeight: 500, fill: "black" },
-                  }}
-                  colorScale={[
-                    "rgba(176, 147, 54, 0.6)",
-                    "rgba(0, 0, 0, 0.5)",
-                    "rgba(196, 173, 50, 0.6)",
-                    "rgba(187, 187, 187, 0.6)",
-                  ]}
-                />
-                <VictoryLabel
-                  textAnchor="middle"
-                  style={{ fontSize: 30, fontWeight: 700 }}
-                  x={180}
-                  y={385}
-                  text="1971~2020"
-                />
-                <VictoryLabel
-                  textAnchor="middle"
-                  style={{ fontSize: 23, fontWeight: 700 }}
-                  x={180}
-                  y={420}
-                  text="贊助概覽"
-                />
-              </svg>
-            </Box>
-            <Box>
               <Stack
                 /* set up the distance between two Item, and vertical center of Stack */
-                spacing={-9}
+                spacing={0}
                 sx={{ marginTop: "-20px", marginLeft: "-30px" }}
               >
-                <Item sx={{ marginBottom: 0, paddingTop: "7vh" }}>
+                <Item sx={{ marginBottom: 0, paddingTop: "2vh" }}>
                   <Box>
+                    {/* vvv color demo */}
                     <Stack direction="row">
                       <Item>
-                        <Box ml={2} sx={{ width: "73px", height: "5vh" }}>
+                        <Box ml={2} sx={{ width: "73px", height: "4vh" }}>
                           <Stack direction="row">
                             <Item>
                               <Box
@@ -587,7 +915,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                 sx={{
                                   width: 10,
                                   height: 10,
-                                  background: "rgba(176, 147, 54, 0.6)",
+                                  background: "rgba(176, 147, 54, 1)",
                                   display: "inline-block",
                                   borderRadius: 5,
                                 }}
@@ -596,11 +924,11 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                             <Item>
                               <Box
                                 sx={{
-                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
                                   lineHeight: {
                                     xs: "12px",
                                     md: "14px",
-                                    xl: "17px",
+                                    xl: "14px",
                                   },
                                 }}
                               >
@@ -618,7 +946,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                 sx={{
                                   width: 10,
                                   height: 10,
-                                  background: "rgba(0, 0, 0, 0.5)",
+                                  background: "rgba(0, 0, 0, 1)",
                                   display: "inline-block",
                                   borderRadius: 5,
                                 }}
@@ -627,11 +955,11 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                             <Item>
                               <Box
                                 sx={{
-                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
                                   lineHeight: {
                                     xs: "12px",
                                     md: "14px",
-                                    xl: "17px",
+                                    xl: "14px",
                                   },
                                 }}
                               >
@@ -649,7 +977,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                 sx={{
                                   width: 10,
                                   height: 10,
-                                  background: "rgba(196, 173, 50, 0.6)",
+                                  background: "rgba(196, 173, 50, 1)",
                                   display: "inline-block",
                                   borderRadius: 5,
                                 }}
@@ -658,11 +986,11 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                             <Item>
                               <Box
                                 sx={{
-                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
                                   lineHeight: {
                                     xs: "12px",
                                     md: "14px",
-                                    xl: "17px",
+                                    xl: "14px",
                                   },
                                 }}
                               >
@@ -680,7 +1008,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                                 sx={{
                                   width: 10,
                                   height: 10,
-                                  background: "rgba(187, 187, 187, 0.6)",
+                                  background: "rgba(187, 187, 187, 1)",
                                   display: "inline-block",
                                   borderRadius: 5,
                                 }}
@@ -689,11 +1017,11 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                             <Item>
                               <Box
                                 sx={{
-                                  fontSize: { xs: 12, md: 14, xl: 17 },
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
                                   lineHeight: {
                                     xs: "12px",
                                     md: "14px",
-                                    xl: "17px",
+                                    xl: "14px",
                                   },
                                 }}
                               >
@@ -707,10 +1035,248 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   </Box>
                 </Item>
                 <Item>
-                  <Bar2 />
+                  {/* vvv pie */}
+                  <svg viewBox="-40 0 400 450">
+                    <defs>
+                      <linearGradient
+                        id="myGradient1m"
+                        x1="0%"
+                        y1="0%"
+                        x2="30%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#B09336" />
+                        <stop offset="100%" stopColor="#FFFFFF" />
+                      </linearGradient>
+                      <linearGradient
+                        id="myGradient2m"
+                        x1="100%"
+                        y1="0%"
+                        x2="0%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor="#000000" />
+                        <stop offset="100%" stopColor="#FFFFFF" />
+                      </linearGradient>
+                      <linearGradient
+                        id="myGradient3m"
+                        x1="0%"
+                        y1="100%"
+                        x2="0%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor="#C4AD32" />
+                        <stop offset="100%" stopColor="#FFFFFF" />
+                      </linearGradient>
+                      <linearGradient
+                        id="myGradient4m"
+                        x1="0%"
+                        y1="100%"
+                        x2="0%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stopColor="#BBBBBB" />
+                        <stop offset="100%" stopColor="#FFFFFF" />
+                      </linearGradient>
+                    </defs>
+                    <VictoryPie
+                      standalone={false}
+                      width={360}
+                      height={360}
+                      data={new_y0Arr}
+                      x="name"
+                      y="p"
+                      innerRadius={70}
+                      labels={({ datum }) => `${datum.p}%`}
+                      labelRadius={({ innerRadius }) => innerRadius + 15}
+                      labelPosition={({ index }) =>
+                        index ? "centroid" : "centroid"
+                      }
+                      labelPlacement={({ index }) =>
+                        index ? "perpendicular" : "perpendicular"
+                      }
+                      style={{
+                        labels: {
+                          fontSize: 15,
+                          fontWeight: 500,
+                          fill: ({ index }) =>
+                            index == 0
+                              ? "#93834C"
+                              : index == 1
+                              ? "#000"
+                              : index == 2
+                              ? "#B09336"
+                              : "#545454",
+                        },
+                      }}
+                      colorScale={[
+                        "url(#myGradient1m)",
+                        "url(#myGradient2m)",
+                        "url(#myGradient3m)",
+                        "url(#myGradient4m)",
+                      ]}
+                    />
+                    <VictoryLabel
+                      textAnchor="middle"
+                      style={{ fontSize: 30, fontWeight: 700 }}
+                      x={180}
+                      y={385}
+                      text="1971~2020"
+                    />
+                    <VictoryLabel
+                      textAnchor="middle"
+                      style={{ fontSize: 23, fontWeight: 700 }}
+                      x={180}
+                      y={420}
+                      text="贊助概覽"
+                    />
+                  </svg>
+                </Item>
+              </Stack>
+            </Box>
+            <Box>
+              <Stack
+                /* set up the distance between two Item, and vertical center of Stack */
+                spacing={-10}
+                sx={{ marginTop: "-20px", marginLeft: "-30px" }}
+              >
+                <Item sx={{ marginBottom: 0, paddingTop: "2vh" }}>
+                  <Box>
+                    {/* vvv color demo */}
+                    <Stack direction="row">
+                      <Item>
+                        <Box ml={2} sx={{ width: "73px", height: "4vh" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                mt={0.5}
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(176, 147, 54, 1)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "14px",
+                                  },
+                                }}
+                              >
+                                教育
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(0, 0, 0, 1)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "14px",
+                                  },
+                                }}
+                              >
+                                藝術
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(196, 173, 50, 1)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "14px",
+                                  },
+                                }}
+                              >
+                                助學
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                      <Item>
+                        <Box ml={-2} sx={{ width: "73px" }}>
+                          <Stack direction="row">
+                            <Item>
+                              <Box
+                                sx={{
+                                  width: 10,
+                                  height: 10,
+                                  background: "rgba(187, 187, 187, 1)",
+                                  display: "inline-block",
+                                  borderRadius: 5,
+                                }}
+                              ></Box>
+                            </Item>
+                            <Item>
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, md: 14, xl: 14 },
+                                  lineHeight: {
+                                    xs: "12px",
+                                    md: "14px",
+                                    xl: "14px",
+                                  },
+                                }}
+                              >
+                                文哲
+                              </Box>
+                            </Item>
+                          </Stack>
+                        </Box>
+                      </Item>
+                    </Stack>
+                  </Box>
                 </Item>
                 <Item>
-                  <Bar1 />
+                  <Bar2m />
+                </Item>
+                <Item>
+                  <Bar1m />
                 </Item>
               </Stack>
             </Box>
@@ -725,13 +1291,12 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                 spacing={0}
                 sx={{
                   width: "auto",
-                  position: "absolute",
-                  bottom: "60px",
-                  //right: "calc(50vw - 175px)",
-                  right: 0,
+                  position: "relative",
+                  alignContent: "flex-end",
+                  justifyContent: "flex-end",
                 }}
                 height={"38px"}
-                mr={{ xs: 3, md: 13 }}
+                mt={8}
               >
                 <Divider
                   orientation="vertical"
@@ -745,9 +1310,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   <Box sx={{ lineHeight: { xs: "19px", md: "38px" } }}>
                     <Box
                       component="span"
-                      sx={{
-                        display: { xs: "block", md: "inline" },
-                      }}
+                      sx={{ display: { xs: "block", md: "inline" } }}
                     >
                       公開資訊
                     </Box>

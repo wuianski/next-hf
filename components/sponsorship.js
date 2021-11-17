@@ -761,7 +761,12 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               <Box sx={{ height: "60vh", marginTop: { md: 0, xl: 0 } }}>
                 <Stack spacing={{ sm: 2, md: 2 }}>
                   {/* vvv color demo, set marginBottom for the distance with down ele */}
-                  <Item sx={{ marginBottom: -13, paddingTop: "7vh" }}>
+                  <Item
+                    sx={{
+                      marginBottom: { md: -13, xl: -20 },
+                      paddingTop: { md: "7vh", xl: "7vh" },
+                    }}
+                  >
                     <Box>
                       {/* vvv color demo */}
                       <Stack direction="row">
@@ -1296,7 +1301,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   justifyContent: "flex-end",
                 }}
                 height={"38px"}
-                mt={8}
+                mt={{ xs: "10vh", md: 12 }}
               >
                 <Divider
                   orientation="vertical"

@@ -248,7 +248,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                           <Stack
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}
-                            ml={-2}
+                            ml={{ xs: -2, md: 0 }}
                           >
                             <Item>
                               <Box

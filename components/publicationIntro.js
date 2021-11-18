@@ -71,7 +71,9 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   >
                     <ReactMarkdown>{dataset.content_tw}</ReactMarkdown>
                   </Box>
-                  <Box component="div">{dataset.content_en}</Box>
+                  <Box component="div">
+                    <ReactMarkdown>{dataset.content_en}</ReactMarkdown>
+                  </Box>
                 </Box>
               </Item>
             </Stack>

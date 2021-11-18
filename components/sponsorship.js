@@ -149,7 +149,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <defs>
               <linearGradient
                 id="myGradient1_bar1"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -161,7 +161,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                 id="myGradient2_bar1"
                 x1="0%"
                 y1="0%"
-                x2="120%"
+                x2="100%"
                 y2="0%"
               >
                 <stop offset="0%" stopColor="#000000" />
@@ -169,7 +169,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               </linearGradient>
               <linearGradient
                 id="myGradient3_bar1"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -264,9 +264,9 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <defs>
               <linearGradient
                 id="myGradient1_bar1m"
-                x1="20%"
+                x1="0%"
                 y1="0%"
-                x2="120%"
+                x2="100%"
                 y2="0%"
               >
                 <stop offset="0%" stopColor="#B09336" />
@@ -284,7 +284,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               </linearGradient>
               <linearGradient
                 id="myGradient3_bar1m"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -453,7 +453,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <defs>
               <linearGradient
                 id="myGradient1_bar2"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -465,7 +465,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                 id="myGradient2_bar2"
                 x1="0%"
                 y1="0%"
-                x2="120%"
+                x2="100%"
                 y2="0%"
               >
                 <stop offset="0%" stopColor="#000000" />
@@ -473,7 +473,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               </linearGradient>
               <linearGradient
                 id="myGradient3_bar2"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -562,7 +562,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <defs>
               <linearGradient
                 id="myGradient1_bar2m"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -574,7 +574,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                 id="myGradient2_bar2m"
                 x1="0%"
                 y1="0%"
-                x2="120%"
+                x2="100%"
                 y2="0%"
               >
                 <stop offset="0%" stopColor="#000000" />
@@ -582,7 +582,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               </linearGradient>
               <linearGradient
                 id="myGradient3_bar2m"
-                x1="20%"
+                x1="0%"
                 y1="0%"
                 x2="120%"
                 y2="0%"
@@ -651,7 +651,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 13 }} mr={{ xs: 2, md: 12 }} mt={5}>
+      <Box ml={{ xs: 8, md: 6 }} mr={{ xs: 2, md: 12 }} mt={5}>
         {/** vvv desktop **/}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <Stack direction="row" spacing={-12}>

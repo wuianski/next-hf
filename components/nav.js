@@ -478,7 +478,7 @@ export default function Nav({ contact }) {
                   display: { xs: "flex", md: "block" },
                 }}
               >
-                <a href={contact.email} target="_blank">
+                <a href={`mailto:` + contact.email} target="_blank">
                   <Box
                     sx={{ width: 20, height: 20 }}
                     mt={{ xs: 6, md: 20 }}

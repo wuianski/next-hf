@@ -136,7 +136,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             {project.content_en}
                           </Box>
                         </Box>
-                        <Box sx={{ mt: 3 }}>
+                        <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
                               height: 48,
@@ -164,7 +164,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
 
                     <Box
                       sx={{
-                        height: 28,
+                        height: 32,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
@@ -232,7 +232,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             {project.content_en}
                           </Box>
                         </Box>
-                        <Box sx={{ mt: 3 }}>
+                        <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
                               height: 48,
@@ -259,7 +259,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     </Collapse>
                     <Box
                       sx={{
-                        height: 28,
+                        height: 32,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
@@ -339,7 +339,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             {project.content_en}
                           </Box>
                         </Box>
-                        <Box sx={{ mt: 3 }}>
+                        <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
                               height: 48,
@@ -366,7 +366,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     </Collapse>
                     <Box
                       sx={{
-                        height: 28,
+                        height: 32,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
@@ -431,7 +431,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                         >
                           {project.content_en}
                         </Box>
-                        <Box sx={{ mt: 3 }}>
+                        <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
                               height: 48,
@@ -458,7 +458,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     </Collapse>
                     <Box
                       sx={{
-                        height: 28,
+                        height: 32,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}

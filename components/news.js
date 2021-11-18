@@ -83,11 +83,11 @@ const StyledTableCell = styled(TableCell)(() => ({
 const StyledTableRow = styled(TableRow)(() => ({
   "&:nth-of-type(odd)": {
     background:
-      "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, rgba(176, 147, 54, 0.5) 99.99%)",
+      "linear-gradient(270deg, rgba(176, 147, 54, 0) 1%, rgba(176, 147, 54, 0.8) 99%)",
   },
   "&:nth-of-type(even)": {
     background:
-      "linear-gradient(270deg, rgba(187, 187, 187, 0) 0.04%, rgba(187, 187, 187, 0.5) 100.04%)",
+      "linear-gradient(270deg, rgba(187, 187, 187, 0) 1%, rgba(187, 187, 187, 0.8) 99%)",
   },
   /* hide last border */
   "&:last-child td, &:last-child th": {

@@ -104,12 +104,12 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
               </AnimatePresence>
             </Item>
             <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
-              <AnimatePresence initial={{ x: 300 }}>
+              <AnimatePresence initial={{ x: 60 }}>
                 {activeSecI && (
                   <motion.div
-                    initial={{ x: 300 }}
+                    initial={{ x: 60 }}
                     animate={{ x: 0 }}
-                    exit={{ x: 300 }}
+                    exit={{ x: 60 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
                     <Box

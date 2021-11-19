@@ -11,6 +11,8 @@ import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import Image from "next/image";
 import Link from "next/link";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,12 +25,11 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-
 function Book({ book, contact }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => b.order - a.order);
   /** route each post **/
-  const router = useRouter();
+  //const router = useRouter();
   //const data = router.query.id || [];
 
   //console.log(book);
@@ -41,10 +42,10 @@ function Book({ book, contact }) {
           <div className="secName_enInPage">publication</div>
         </div>
       </Box>
-      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 28 }} mt={20} mb={4}>
-        <Stack direction={{ xs: "column", md: "row" }} spacing={6}>
+      <Box ml={{ xs: 8, md: 28, xl: 33 }} mr={{ xs: 2, md: 28 }} mt={20} mb={4}>
+        <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={6}>
           <Item>
-            <Box width={200}>
+            <Box width={{ xs: "auto", md: 300, xl: 360 }}>
               <Image
                 src={
                   !!book.cover && !!book.cover.url
@@ -58,6 +59,18 @@ function Book({ book, contact }) {
                 width={152}
                 height={223}
               />
+              <ImageList variant="masonry" cols={1} gap={8}>
+                {book.images.map((image) => (
+                  <ImageListItem key={image.id}>
+                    <img
+                      src={`${image.url}?w=162&fit=format`}
+                      srcSet={`${image.url}?w=162&fit=format&dpr=2 2x`}
+                      //alt={item.title}
+                      loading="lazy"
+                    />
+                  </ImageListItem>
+                ))}
+              </ImageList>
             </Box>
           </Item>
           <Item>
@@ -70,7 +83,12 @@ function Book({ book, contact }) {
                 <Box component="span"> / </Box>
                 <Box component="span">{book.book_categories[1].name}</Box>
               </Box>
-              <Box sx={{ fontSize: { xs: "44px", xl: "47px" } }}>
+              <Box
+                sx={{
+                  fontSize: { xs: "44px", xl: "47px" },
+                  maxWidth: { xs: 416, xl: 450 },
+                }}
+              >
                 {book.title_tw}
               </Box>
               <Box
@@ -298,55 +316,57 @@ function Book({ book, contact }) {
             </Box>
           </Item>
         </Stack>
-        <Box onClick={() => router.back()}>
-          <Stack
-            direction="row"
-            spacing={0}
-            sx={{
-              position: { xs: "relative", md: "fixed" },
-              justifyContent: { xs: "end", md: "unset" },
-              top: { xs: 60, md: "unset" },
-              marginBottom: { xs: "80px", md: "unset" },
-              bottom: { md: 68, xl: 68 },
-              right: { md: 68, xl: 68 },
-              cursor: "pointer",
-            }}
-            height={"38px"}
-          >
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{ borderColor: "#000" }}
-            />
-            <Item>
-              <Box
-                pl={1}
-                sx={{
-                  lineHeight: "38px",
-                  textTransform: "uppercase",
-                  fontSize: { md: 12, xl: 15 },
-                  fontWeight: 700,
-                }}
-              >
-                返回 back
-              </Box>
-            </Item>
-            <Item>
-              <Box pr={1}>
-                <Image
-                  src="/IMGs/back_icon.png"
-                  alt="back icon"
-                  width={38}
-                  height={38}
-                />
-              </Box>
-            </Item>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{ borderColor: "#000" }}
-            />
-          </Stack>
+        <Box>
+          <Link href="/publications_new" scroll={false}>
+            <Stack
+              direction="row"
+              spacing={0}
+              sx={{
+                position: { xs: "relative", md: "fixed" },
+                justifyContent: { xs: "end", md: "unset" },
+                top: { xs: 60, md: "unset" },
+                marginBottom: { xs: "80px", md: "unset" },
+                bottom: { md: 68, xl: 68 },
+                right: { md: 68, xl: 68 },
+                cursor: "pointer",
+              }}
+              height={"38px"}
+            >
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: "#000" }}
+              />
+              <Item>
+                <Box
+                  pl={1}
+                  sx={{
+                    lineHeight: "38px",
+                    textTransform: "uppercase",
+                    fontSize: { md: 12, xl: 15 },
+                    fontWeight: 700,
+                  }}
+                >
+                  返回 back
+                </Box>
+              </Item>
+              <Item>
+                <Box pr={1}>
+                  <Image
+                    src="/IMGs/back_icon.png"
+                    alt="back icon"
+                    width={38}
+                    height={38}
+                  />
+                </Box>
+              </Item>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: "#000" }}
+              />
+            </Stack>
+          </Link>
         </Box>
       </Box>
     </>
@@ -355,8 +375,8 @@ function Book({ book, contact }) {
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  // Call an external API endpoint to get books = 文學
-  const books = await fetchAPI("/books?book_categories=6");
+  // Call an external API endpoint to get books = 唱片
+  const books = await fetchAPI("/books?book_categories=28");
 
   // Get the paths we want to pre-render based on books
   const paths = books.map((book) => ({

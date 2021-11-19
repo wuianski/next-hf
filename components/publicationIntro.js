@@ -199,17 +199,18 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                         justifyContent: "right",
                       }}
                     >
-                      {/*** vvv wait untill new book release
                       <Divider
                         orientation="vertical"
                         flexItem
                         sx={{ borderColor: "#000" }}
                       />
-                      <Item>
-                        <Link href="">
+                      <Item sx={{ cursor: "pointer" }}>
+                        <Link href="/publications_new">
                           <Stack
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}
+                            ml={{ xs: -2, md: 0 }}
+                            mt={{ xs: "1vh", md: 0 }}
                           >
                             <Item>
                               <Box
@@ -239,7 +240,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                           </Stack>
                         </Link>
                       </Item>
-                                */}
+
                       <Divider
                         orientation="vertical"
                         flexItem
@@ -251,6 +252,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                             direction={{ xs: "row", md: "row" }}
                             spacing={0}
                             ml={{ xs: -2, md: 0 }}
+                            mt={{ xs: "1vh", md: 0 }}
                           >
                             <Item>
                               <Box

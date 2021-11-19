@@ -254,6 +254,18 @@ export default function Nav({ contact }) {
                 <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
               </div>
             </Link>
+            <Link href="/publications_new" passHref>
+              <div
+                className={styles.menuTitleList}
+                onClick={() => {
+                  setOpen(false);
+                  setOpen2(false);
+                }}
+              >
+                <span className={styles.menuTitle}>焦點新書</span>
+                <span className={styles.menuTitleEn}>New Release</span>
+              </div>
+            </Link>
             <Link href="/publications" passHref>
               <div
                 className={styles.menuTitleList}
@@ -262,8 +274,8 @@ export default function Nav({ contact }) {
                   setOpen2(false);
                 }}
               >
-                <span className={styles.menuTitle}>出版品</span>
-                <span className={styles.menuTitleEn}>Publications</span>
+                <span className={styles.menuTitle}>經典館藏</span>
+                <span className={styles.menuTitleEn}>Archive</span>
               </div>
             </Link>
             <Box onClick={handleClose2} className={styles.menuBack}>

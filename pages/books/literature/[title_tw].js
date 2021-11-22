@@ -30,6 +30,7 @@ function Book({ book, contact }) {
   /** route each post **/
   const router = useRouter();
   //const data = router.query.id || [];
+  console.log(router);
 
   //console.log(book);
   return (

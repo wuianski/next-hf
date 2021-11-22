@@ -83,7 +83,8 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
 
   /** (sub categories of 刊物) filting dataCat by id **/
   const cat_journals = bookCat.filter(function (cat) {
-    return cat.id <= 27 && cat.id >= 24;
+    //make sure not include id==28, which is the category of new release of books.
+    return cat.id <= 29 && cat.id >= 24 && cat.id !== 28;
   });
 
   const subCat_journal = cat_journals.map((c) => {
@@ -1773,6 +1774,63 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                           </>
                         );
                       case "年報":
+                        return (
+                          <>
+                            {console.log(item)}
+                            <Grid item xs={2} sm={4} md={2} key={item.id}>
+                              <a href={item.file} target="_blank" key={item.id}>
+                                <Item>
+                                  <Box sx={{ cursor: "pointer" }}>
+                                    <Box>
+                                      <Image
+                                        src={item.bookCover}
+                                        alt="book cover"
+                                        layout="responsive"
+                                        objectFit="contain"
+                                        objectPosition="center"
+                                        width={152}
+                                        height={223}
+                                      />
+                                    </Box>
+                                    <Box
+                                      mt={2}
+                                      mb={1}
+                                      sx={{
+                                        fontSize: 17,
+                                        fontWeight: 600,
+                                        color: "#000",
+                                      }}
+                                    >
+                                      {item.bookName}
+                                    </Box>
+                                    <Box
+                                      sx={{
+                                        fontSize: 13,
+                                        fontWeight: 500,
+                                        color: "#666",
+                                        lineHeight: "21px",
+                                      }}
+                                    >
+                                      <Box>
+                                        {item.authorName &&
+                                          `作者：` + item.authorName}
+                                      </Box>
+                                      <Box>
+                                        {item.translatorName &&
+                                          `譯者：` + item.translatorName}
+                                      </Box>
+                                      <Box>
+                                        {item.editorName &&
+                                          `編輯：` + item.editorName}
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Item>
+                              </a>
+                            </Grid>
+                          </>
+                        );
+                      case "國際視聽月刊":
                         return (
                           <>
                             <Grid item xs={2} sm={4} md={2} key={item.id}>

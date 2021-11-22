@@ -10,7 +10,20 @@ import { format } from "date-fns";
 
 const Events = ({ events: dataset }) => {
   /** sorting dataset by id **/
-  !dataset ? null : dataset.sort((a, b) => a.id - b.id);
+  //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
+
+  /** sorting dataset by start_time in the Object **/
+  function sortByDate(a, b) {
+    if (a.start_time < b.start_time) {
+      return -1;
+    }
+    if (a.start_time > b.start_time) {
+      return 1;
+    }
+    return 0;
+  }
+  const sorted = dataset.sort(sortByDate);
+  //console.log(sorted);
 
   return (
     <>
@@ -21,8 +34,8 @@ const Events = ({ events: dataset }) => {
           transitionDelay={500}
           organicArrows={false}
         >
-          {dataset &&
-            dataset.map((event) => (
+          {sorted &&
+            sorted.map((event) => (
               <Box key={event.id}>
                 <Box
                   width={"100vw"}
@@ -86,13 +99,14 @@ const Events = ({ events: dataset }) => {
                       }}
                     >
                       <Box component="span">
-                        {event.start_time &&
-                          format(new Date(event.start_time), "MMM dd")}
+                        {event.start_time && event.start_time == event.end_time
+                          ? ""
+                          : format(new Date(event.start_time), "MMM dd") +
+                            ` - `}
                       </Box>
                       <Box component="span">
                         {event.end_time &&
-                          ` - ` +
-                            format(new Date(event.end_time), "MMM dd, yyyy")}
+                          format(new Date(event.end_time), "MMM dd, yyyy")}
                       </Box>
                     </Box>
 

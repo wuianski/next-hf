@@ -299,17 +299,7 @@ function Book({ book, contact }) {
             </Box>
           </Item>
         </Stack>
-        <Box
-          onClick={() =>
-            router.replace(
-              "/publications?filter=文學",
-              `/publications?filter=文學`,
-              {
-                shallow: true,
-              }
-            )
-          }
-        >
+        <Box onClick={() => router.back()}>
           <Stack
             direction="row"
             spacing={0}

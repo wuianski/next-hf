@@ -27,7 +27,7 @@ function Book({ book, contact }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => b.order - a.order);
   /** route each post **/
-  //const router = useRouter();
+  const router = useRouter();
   //const data = router.query.id || [];
 
   //console.log(book);
@@ -297,57 +297,55 @@ function Book({ book, contact }) {
             </Box>
           </Item>
         </Stack>
-        <Box>
-          <Link href="/publications" scroll={false}>
-            <Stack
-              direction="row"
-              spacing={0}
-              sx={{
-                position: { xs: "relative", md: "fixed" },
-                justifyContent: { xs: "end", md: "unset" },
-                top: { xs: 60, md: "unset" },
-                marginBottom: { xs: "80px", md: "unset" },
-                bottom: { md: 68, xl: 68 },
-                right: { md: 68, xl: 68 },
-                cursor: "pointer",
-              }}
-              height={"38px"}
-            >
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ borderColor: "#000" }}
-              />
-              <Item>
-                <Box
-                  pl={1}
-                  sx={{
-                    lineHeight: "38px",
-                    textTransform: "uppercase",
-                    fontSize: { md: 12, xl: 15 },
-                    fontWeight: 700,
-                  }}
-                >
-                  返回 back
-                </Box>
-              </Item>
-              <Item>
-                <Box pr={1}>
-                  <Image
-                    src="/IMGs/back_icon.png"
-                    alt="back icon"
-                    width={38}
-                    height={38}
-                  />
-                </Box>
-              </Item>
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ borderColor: "#000" }}
-              />
-            </Stack>
-          </Link>
+        <Box onClick={() => router.back()}>
+          <Stack
+            direction="row"
+            spacing={0}
+            sx={{
+              position: { xs: "relative", md: "fixed" },
+              justifyContent: { xs: "end", md: "unset" },
+              top: { xs: 60, md: "unset" },
+              marginBottom: { xs: "80px", md: "unset" },
+              bottom: { md: 68, xl: 68 },
+              right: { md: 68, xl: 68 },
+              cursor: "pointer",
+            }}
+            height={"38px"}
+          >
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ borderColor: "#000" }}
+            />
+            <Item>
+              <Box
+                pl={1}
+                sx={{
+                  lineHeight: "38px",
+                  textTransform: "uppercase",
+                  fontSize: { md: 12, xl: 15 },
+                  fontWeight: 700,
+                }}
+              >
+                返回 back
+              </Box>
+            </Item>
+            <Item>
+              <Box pr={1}>
+                <Image
+                  src="/IMGs/back_icon.png"
+                  alt="back icon"
+                  width={38}
+                  height={38}
+                />
+              </Box>
+            </Item>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ borderColor: "#000" }}
+            />
+          </Stack>
         </Box>
       </Box>
     </>

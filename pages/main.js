@@ -219,7 +219,9 @@ class App extends React.Component {
                   <ReactFullpage.Wrapper>
                     {events && (
                       <div className="section" data-anchor="section1">
-                        <Events events={events.data} />
+                        <Box>
+                          <Events events={events.data} secIndex={state} />
+                        </Box>
                       </div>
                     )}
 

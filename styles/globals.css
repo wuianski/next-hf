@@ -68,11 +68,6 @@ div.secName{
 }
 /* /Section Name in main page*/
 
-/*.css-0{
-  width: 50%;
-  transform: rotate(-90deg);
-}*/
-
 /* hide react-slick arrow */
 .slick-arrow {
   display: none !important;
@@ -192,7 +187,7 @@ h3 {
   position:absolute;
   top:0;
 }
-
+                  
 
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {

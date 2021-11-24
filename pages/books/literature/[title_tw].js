@@ -30,7 +30,7 @@ function Book({ book, contact }) {
   /** route each post **/
   const router = useRouter();
   //const data = router.query.id || [];
-  console.log(router);
+  //console.log(router);
 
   //console.log(book);
   return (
@@ -299,7 +299,17 @@ function Book({ book, contact }) {
             </Box>
           </Item>
         </Stack>
-        <Box onClick={() => router.back()}>
+        <Box
+          onClick={() =>
+            router.replace(
+              "/publications?filter=文學",
+              `/publications?filter=文學`,
+              {
+                shallow: true,
+              }
+            )
+          }
+        >
           <Stack
             direction="row"
             spacing={0}

@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import { motion, AnimatePresence } from "framer-motion";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
   /* CHANGE ARRAY SORTING BY ID*/
@@ -112,30 +113,35 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
 
                     <Collapse in={open[project.id]}>
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <Box
-                          sx={{ height: "20vh", overflow: "scroll" }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                          className="scrollEle"
+                        <OverlayScrollbarsComponent
+                          options={{ className: "os-theme-block-dark" }}
                         >
                           <Box
-                            pb={1}
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                              textAlign: "justify",
-                              textJustify: "distribute",
-                            }}
+                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                            className="scrollEle"
+                            pr={3}
                           >
-                            {project.content_tw}
+                            <Box
+                              pb={1}
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                                textAlign: "justify",
+                                textJustify: "distribute",
+                              }}
+                            >
+                              {project.content_tw}
+                            </Box>
+                            <Box
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                              }}
+                            >
+                              {project.content_en}
+                            </Box>
                           </Box>
-                          <Box
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                            }}
-                          >
-                            {project.content_en}
-                          </Box>
-                        </Box>
+                        </OverlayScrollbarsComponent>
                         <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
@@ -208,30 +214,35 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
 
                     <Collapse in={open[project.id]}>
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <Box
-                          sx={{ height: "20vh", overflow: "scroll" }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                          className="scrollEle"
+                        <OverlayScrollbarsComponent
+                          options={{ className: "os-theme-block-dark" }}
                         >
                           <Box
-                            pb={1}
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                              textAlign: "justify",
-                              textJustify: "distribute",
-                            }}
+                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                            className="scrollEle"
+                            pr={3}
                           >
-                            {project.content_tw}
+                            <Box
+                              pb={1}
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                                textAlign: "justify",
+                                textJustify: "distribute",
+                              }}
+                            >
+                              {project.content_tw}
+                            </Box>
+                            <Box
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                              }}
+                            >
+                              {project.content_en}
+                            </Box>
                           </Box>
-                          <Box
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                            }}
-                          >
-                            {project.content_en}
-                          </Box>
-                        </Box>
+                        </OverlayScrollbarsComponent>
                         <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
@@ -315,30 +326,35 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
 
                     <Collapse in={open[project.id]}>
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <Box
-                          sx={{ height: "20vh", overflow: "scroll" }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                          className="scrollEle"
+                        <OverlayScrollbarsComponent
+                          options={{ className: "os-theme-block-dark" }}
                         >
                           <Box
-                            pb={1}
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                              textAlign: "justify",
-                              textJustify: "distribute",
-                            }}
+                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                            className="scrollEle"
+                            pr={3}
                           >
-                            {project.content_tw}
+                            <Box
+                              pb={1}
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                                textAlign: "justify",
+                                textJustify: "distribute",
+                              }}
+                            >
+                              {project.content_tw}
+                            </Box>
+                            <Box
+                              sx={{
+                                fontSize: { md: 14, xl: 17 },
+                                lineHeight: { md: 1.4, xl: 1.6 },
+                              }}
+                            >
+                              {project.content_en}
+                            </Box>
                           </Box>
-                          <Box
-                            sx={{
-                              fontSize: { md: 14, xl: 17 },
-                              lineHeight: { md: 1.4, xl: 1.6 },
-                            }}
-                          >
-                            {project.content_en}
-                          </Box>
-                        </Box>
+                        </OverlayScrollbarsComponent>
                         <Box sx={{ mt: 2 }}>
                           <Box
                             sx={{
@@ -531,55 +547,60 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           height={48}
                         />
                       </Box>
-                      <Box
-                        sx={{
-                          width: "80vw",
-                          backgroundColor: "#fff",
-                          padding: 2,
-                          /* height of scroll area on mobile */
-                          height: { xs: "80vh" },
-                          overflow: "scroll",
-                        }}
-                        //in order to make element can scroll normally, give a className and use it in fullPage options
-                        className="scrollEle"
+                      <OverlayScrollbarsComponent
+                        options={{ className: "os-theme-block-dark" }}
                       >
                         <Box
                           sx={{
-                            fontSize: 33,
-                            lineHeight: 1.2,
-                            whiteSpace: "pre-line",
-                            textTransform: "uppercase",
+                            width: "80vw",
+                            backgroundColor: "#fff",
+                            padding: 2,
+                            /* height of scroll area on mobile */
+                            height: { xs: "80vh" },
+                            //overflow: "scroll",
                           }}
+                          //in order to make element can scroll normally, give a className and use it in fullPage options
+                          className="scrollEle"
+                          pr={3}
                         >
-                          {project.title_en}
-                        </Box>
-                        <Box sx={{ fontSize: 30 }}>{project.title_tw}</Box>
-                        <Box
-                          mt={2}
-                          mb={2}
-                          sx={{
-                            height: 48,
-                            backgroundImage:
-                              "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
-                          }}
-                        >
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            style={{ cursor: "pointer" }}
+                          <Box
+                            sx={{
+                              fontSize: 33,
+                              lineHeight: 1.2,
+                              whiteSpace: "pre-line",
+                              textTransform: "uppercase",
+                            }}
                           >
-                            <Image
-                              src="/IMGs/externalLink_icon.png"
-                              alt="deco"
-                              width={48}
-                              height={48}
-                            />
-                          </a>
+                            {project.title_en}
+                          </Box>
+                          <Box sx={{ fontSize: 30 }}>{project.title_tw}</Box>
+                          <Box
+                            mt={2}
+                            mb={2}
+                            sx={{
+                              height: 48,
+                              backgroundImage:
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                            }}
+                          >
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{ cursor: "pointer" }}
+                            >
+                              <Image
+                                src="/IMGs/externalLink_icon.png"
+                                alt="deco"
+                                width={48}
+                                height={48}
+                              />
+                            </a>
+                          </Box>
+                          <Box>{project.content_tw}</Box>
+                          <Box>{project.content_en}</Box>
                         </Box>
-                        <Box>{project.content_tw}</Box>
-                        <Box>{project.content_en}</Box>
-                      </Box>
+                      </OverlayScrollbarsComponent>
                     </Box>
                   </Drawer>
                 </div>

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Drawer from "@mui/material/Drawer";
 import Link from "next/link";
 import { useState, useLayoutEffect } from "react";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
   /** sorting dataset by id **/
@@ -61,56 +62,57 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               </Box>
             </Item>
             <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
-              <Box
-                sx={{
-                  //width: "100%",
-                  //columns: "100px 2",
-                  columnCount: { md: "1", md: "2" },
-                  columnGap: "25px",
-                  //textAlign: "justify",
-                  //textJustify: "distribute",
-                  //in order to make element can scroll normally, give element a specific height.
-
-                  width: { xs: "80vw", md: "60vw" },
-                  height: { xs: "35vh", md: "418px" },
-                  overflow: "scroll",
-                  paddingRight: "60px",
-                }}
-                //in order to make element can scroll normally, give a className and use it in fullPage options
-                className="scrollEle"
+              <OverlayScrollbarsComponent
+                options={{ className: "os-theme-block-dark-timeline" }}
               >
-                {boardMembers &&
-                  boardMembers.map((boardMember) => (
-                    <Box
-                      key={boardMember.id}
-                      mb={{ xs: 3, md: 2 }}
-                      sx={{
-                        height: { xs: "auto", md: "120px" },
-                        //maxHeight: { xs: "80px", md: "120px" },
-                      }}
-                    >
+                <Box
+                  sx={{
+                    columnCount: { md: "1", md: "2" },
+                    columnGap: "25px",
+                    //textAlign: "justify",
+                    //textJustify: "distribute",
+                    //in order to make element can scroll normally, give element a specific height.
+                    width: { xs: "80vw", md: "60vw" },
+                    height: { xs: "35vh", md: "418px" },
+                    //overflow: "scroll",
+                    paddingRight: "60px",
+                  }}
+                  //in order to make element can scroll normally, give a className and use it in fullPage options
+                  className="scrollEle"
+                >
+                  {boardMembers &&
+                    boardMembers.map((boardMember) => (
                       <Box
-                        mb={{ xs: 1, md: 1.5 }}
-                        sx={{ fontSize: { xs: 20, xl: 20 } }}
-                      >
-                        <Box component="span" sx={{ fontWeight: 700 }}>
-                          {boardMember.name_tw}
-                        </Box>
-                        <Box component="span" ml={2}>
-                          {boardMember.name_en}
-                        </Box>
-                      </Box>
-                      <Box
+                        key={boardMember.id}
+                        mb={{ xs: 3, md: 2 }}
                         sx={{
-                          whiteSpace: { xs: "pre-line", md: "pre-line" },
-                          fontSize: { xs: 15, xl: 15 },
+                          height: { xs: "auto", md: "120px" },
+                          //maxHeight: { xs: "80px", md: "120px" },
                         }}
                       >
-                        {boardMember.selected_title}
+                        <Box
+                          mb={{ xs: 1, md: 1.5 }}
+                          sx={{ fontSize: { xs: 20, xl: 20 } }}
+                        >
+                          <Box component="span" sx={{ fontWeight: 700 }}>
+                            {boardMember.name_tw}
+                          </Box>
+                          <Box component="span" ml={2}>
+                            {boardMember.name_en}
+                          </Box>
+                        </Box>
+                        <Box
+                          sx={{
+                            whiteSpace: { xs: "pre-line", md: "pre-line" },
+                            fontSize: { xs: 15, xl: 15 },
+                          }}
+                        >
+                          {boardMember.selected_title}
+                        </Box>
                       </Box>
-                    </Box>
-                  ))}
-              </Box>
+                    ))}
+                </Box>
+              </OverlayScrollbarsComponent>
             </Item>
           </Stack>
         </Box>

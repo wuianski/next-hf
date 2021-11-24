@@ -1,6 +1,6 @@
 import Layout from "../../components/layout";
 import Nav from "../../components/nav";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { fetchAPI } from "../../lib/api";
 import Image from "next/image";
 import AwesomeSlider from "react-awesome-slider";
@@ -23,6 +23,7 @@ import _ from "lodash";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useQueryState } from "next-usequerystate";
 
 function Publication({ books: dataset, bookCat, archiveImg, contact }) {
   /** organize all books data **/
@@ -100,9 +101,13 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
   /** /(sub categories of 刊物) filting dataCat by id **/
 
   /** filter by categories**/
-  const [filter, setFilter] = useState("書評書目");
-  const [projects, setProjects] = useState([]);
   const router = useRouter();
+  //const ref = useRef("書評書目");
+
+  const [filter, setFilter] = useQueryState("filter", {
+    defaultValue: "書評書目",
+  });
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     setProjects(pub);
@@ -110,14 +115,17 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
 
   useEffect(() => {
     setProjects([]);
-
     const filtered = pub.map((p) => ({
       ...p,
       filtered: p.catName.includes(filter),
     }));
     setProjects(filtered);
-    //router.push("/publications", undefined, { shallow: true });
+    //router.replace(`/publications?${filter}`);
+    /*router.replace(`/publications?${filter}`, undefined, {
+      shallow: true,
+    });*/
   }, [filter]);
+
   /** /filter by categories**/
 
   /** grid **/
@@ -146,10 +154,11 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
   /** /grid **/
 
   /** tab **/
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    //console.log(newValue);
   };
 
   const StyledTab = styled(Tab)(({ theme }) => ({
@@ -310,7 +319,16 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                           sx={{ cursor: "pointer" }}
                           /* add ? 1 : 0 for pass a boolean in a custom attribute */
                           active={filter === cat.catName ? 1 : 0}
-                          onClick={() => setFilter(cat.catName)}
+                          onClick={() => {
+                            setFilter(cat.catName);
+                            //console.log(router.push);
+                            /*router.push(
+                              `/publications?${cat.catName}`,
+                              undefined,
+                              { shallow: true }
+                            );*/
+                          }}
+                          //ref={cat.catName}
                         >
                           <Box
                             component="span"
@@ -1776,7 +1794,6 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                       case "年報":
                         return (
                           <>
-                            {console.log(item)}
                             <Grid item xs={2} sm={4} md={2} key={item.id}>
                               <a href={item.file} target="_blank" key={item.id}>
                                 <Item>

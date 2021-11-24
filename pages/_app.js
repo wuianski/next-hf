@@ -10,6 +10,10 @@ import "react-awesome-slider/dist/styles.css";
 /** next-seo **/
 import { DefaultSeo } from "next-seo";
 
+import "overlayscrollbars/css/OverlayScrollbars.css";
+import "../styles/os-theme-block-dark.css";
+import "../styles/os-theme-block-dark-timeline.css";
+
 export default function MyApp({ Component, pageProps, router }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page);

@@ -61,81 +61,81 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
                 width: { xs: "80vw", md: "30vw" },
               }}
             >
-              <AnimatePresence initial={{ x: -600 }}>
-                {activeSecI && (
-                  <motion.div
-                    initial={{ x: -600 }}
-                    animate={{ x: 0 }}
-                    exit={{ x: -600 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <Box>
-                      <Stack
-                        direction="column"
-                        spacing={6}
-                        sx={{
-                          scale: { xs: "0.5", md: "0.75", xl: "1" },
-                        }}
-                      >
-                        <Item>
-                          <Box
-                            sx={{
-                              width: 349,
-                              height: 74,
-                              background:
-                                "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
-                            }}
-                          ></Box>
-                        </Item>
-                        <Item>
-                          <Box
-                            sx={{
-                              width: 349,
-                              height: 74,
-                              background:
-                                "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
-                            }}
-                          ></Box>
-                        </Item>
-                      </Stack>
-                    </Box>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </Item>
-            <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
-              <AnimatePresence initial={{ x: 60 }}>
-                {activeSecI && (
-                  <motion.div
-                    initial={{ x: 60 }}
-                    animate={{ x: 0 }}
-                    exit={{ x: 60 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <Box
+              {/*<AnimatePresence initial={{ x: -600 }}>*/}
+              {activeSecI && (
+                <motion.div
+                  initial={{ x: -600 }}
+                  animate={{ x: 0 }}
+                  exit={{ x: -600 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Box>
+                    <Stack
+                      direction="column"
+                      spacing={6}
                       sx={{
-                        fontSize: { md: 17, xl: 19 },
-                        lineHeight: 1.3,
-                        display: "flex",
-                        justifyContent: "flex-end",
+                        scale: { xs: "0.5", md: "0.75", xl: "1" },
                       }}
                     >
-                      <Box
-                        variant="text"
-                        onClick={() => fullpageApi.moveTo(2, 1)}
-                        sx={{
-                          lineHeight: "38px",
-                          borderBottom: "3px solid #000",
-                          cursor: "pointer",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        更多 more
-                      </Box>
+                      <Item>
+                        <Box
+                          sx={{
+                            width: 349,
+                            height: 74,
+                            background:
+                              "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
+                          }}
+                        ></Box>
+                      </Item>
+                      <Item>
+                        <Box
+                          sx={{
+                            width: 349,
+                            height: 74,
+                            background:
+                              "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
+                          }}
+                        ></Box>
+                      </Item>
+                    </Stack>
+                  </Box>
+                </motion.div>
+              )}
+              {/*</AnimatePresence>*/}
+            </Item>
+            <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
+              {/*<AnimatePresence initial={{ x: 60 }}>*/}
+              {activeSecI && (
+                <motion.div
+                  initial={{ x: 60 }}
+                  animate={{ x: 0 }}
+                  exit={{ x: 60 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: { md: 17, xl: 19 },
+                      lineHeight: 1.3,
+                      display: "flex",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <Box
+                      variant="text"
+                      onClick={() => fullpageApi.moveTo(2, 1)}
+                      sx={{
+                        lineHeight: "38px",
+                        borderBottom: "3px solid #000",
+                        cursor: "pointer",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      更多 more
                     </Box>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </Box>
+                </motion.div>
+              )}
+              {/*</AnimatePresence>*/}
             </Item>
           </Stack>
         </Box>

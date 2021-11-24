@@ -145,7 +145,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 0 600 400">
+          <svg viewBox="0 30 600 400">
             <defs>
               <linearGradient
                 id="myGradient1_bar1"
@@ -219,6 +219,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   axis: { stroke: "none" },
                   axisLabel: { fontSize: 17, fontWeight: 700 },
                 }}
+                offsetY={33}
               />
               <VictoryAxis
                 tickFormat={[
@@ -449,7 +450,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 0 600 400">
+          <svg viewBox="0 30 600 400">
             <defs>
               <linearGradient
                 id="myGradient1_bar2"
@@ -523,6 +524,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   axis: { stroke: "none" },
                   axisLabel: { fontSize: 17, fontWeight: 700 },
                 }}
+                offsetY={33}
               />
               <VictoryAxis
                 tickFormat={["2016", "2017", "2018", "2019", "2020"]}
@@ -651,14 +653,129 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 6 }} mr={{ xs: 2, md: 12 }} mt={5}>
+      <Box ml={{ xs: 8, md: 0 }} mr={{ xs: 2, md: 12 }} mt={10}>
         {/** vvv desktop **/}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <Stack direction="row" spacing={-12}>
+          <Box sx={{ width: "60vw" }} ml={1} mr={1}>
+            {/* vvv color demo */}
+            <Stack direction="row" sx={{ justifyContent: "center" }}>
+              <Item>
+                <Box sx={{ width: "73px", height: "4vh", marginLeft: "100px" }}>
+                  <Stack direction="row">
+                    <Item>
+                      <Box
+                        mt={0.5}
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          background: "rgba(176, 147, 54, 1)",
+                          display: "inline-block",
+                          borderRadius: 5,
+                        }}
+                      ></Box>
+                    </Item>
+                    <Item>
+                      <Box
+                        sx={{
+                          fontSize: { md: 14, xl: 14 },
+                          lineHeight: { md: "14px", xl: "14px" },
+                        }}
+                      >
+                        教育
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </Item>
+              <Item>
+                <Box sx={{ width: "73px" }}>
+                  <Stack direction="row">
+                    <Item>
+                      <Box
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          background: "rgba(0, 0, 0, 1)",
+                          display: "inline-block",
+                          borderRadius: 5,
+                        }}
+                      ></Box>
+                    </Item>
+                    <Item>
+                      <Box
+                        sx={{
+                          fontSize: { md: 14, xl: 14 },
+                          lineHeight: { md: "14px", xl: "14px" },
+                        }}
+                      >
+                        藝術
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </Item>
+              <Item>
+                <Box sx={{ width: "73px" }}>
+                  <Stack direction="row">
+                    <Item>
+                      <Box
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          background: "rgba(196, 173, 50, 1)",
+                          display: "inline-block",
+                          borderRadius: 5,
+                        }}
+                      ></Box>
+                    </Item>
+                    <Item>
+                      <Box
+                        sx={{
+                          fontSize: { md: 14, xl: 14 },
+                          lineHeight: { md: "14px", xl: "14px" },
+                        }}
+                      >
+                        助學
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </Item>
+              <Item>
+                <Box sx={{ width: "73px" }}>
+                  <Stack direction="row">
+                    <Item>
+                      <Box
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          background: "rgba(187, 187, 187, 1)",
+                          display: "inline-block",
+                          borderRadius: 5,
+                        }}
+                      ></Box>
+                    </Item>
+                    <Item>
+                      <Box
+                        sx={{
+                          fontSize: { md: 14, xl: 14 },
+                          lineHeight: { md: "14px", xl: "14px" },
+                        }}
+                      >
+                        文哲
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </Item>
+            </Stack>
+          </Box>
+
+          <Stack direction="row" spacing={0}>
             <Item>
-              <Box sx={{ height: "60vh", width: "60vw" }}>
+              <Box sx={{ height: "40vh", width: "60vw" }}>
                 {/* vvv pie */}
-                <svg viewBox="-100 0 600 600">
+                <svg viewBox="-100 30 550 600">
                   <defs>
                     <linearGradient
                       id="myGradient1"
@@ -758,130 +875,10 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             </Item>
 
             <Item>
-              <Box sx={{ height: "60vh", marginTop: { md: 0, xl: 0 } }}>
+              <Box sx={{ height: "60vh", width: "30vw" }}>
                 <Stack spacing={{ sm: 2, md: 2 }}>
                   {/* vvv color demo, set marginBottom for the distance with down ele */}
-                  <Item
-                    sx={{
-                      marginBottom: { md: -13, xl: -20 },
-                      paddingTop: { md: "7vh", xl: "7vh" },
-                    }}
-                  >
-                    <Box>
-                      {/* vvv color demo */}
-                      <Stack direction="row">
-                        <Item>
-                          <Box ml={3} sx={{ width: "73px", height: "4vh" }}>
-                            <Stack direction="row">
-                              <Item>
-                                <Box
-                                  mt={0.5}
-                                  sx={{
-                                    width: 10,
-                                    height: 10,
-                                    background: "rgba(176, 147, 54, 1)",
-                                    display: "inline-block",
-                                    borderRadius: 5,
-                                  }}
-                                ></Box>
-                              </Item>
-                              <Item>
-                                <Box
-                                  sx={{
-                                    fontSize: { md: 14, xl: 14 },
-                                    lineHeight: { md: "14px", xl: "14px" },
-                                  }}
-                                >
-                                  教育
-                                </Box>
-                              </Item>
-                            </Stack>
-                          </Box>
-                        </Item>
-                        <Item>
-                          <Box sx={{ width: "73px" }}>
-                            <Stack direction="row">
-                              <Item>
-                                <Box
-                                  sx={{
-                                    width: 10,
-                                    height: 10,
-                                    background: "rgba(0, 0, 0, 1)",
-                                    display: "inline-block",
-                                    borderRadius: 5,
-                                  }}
-                                ></Box>
-                              </Item>
-                              <Item>
-                                <Box
-                                  sx={{
-                                    fontSize: { md: 14, xl: 14 },
-                                    lineHeight: { md: "14px", xl: "14px" },
-                                  }}
-                                >
-                                  藝術
-                                </Box>
-                              </Item>
-                            </Stack>
-                          </Box>
-                        </Item>
-                        <Item>
-                          <Box sx={{ width: "73px" }}>
-                            <Stack direction="row">
-                              <Item>
-                                <Box
-                                  sx={{
-                                    width: 10,
-                                    height: 10,
-                                    background: "rgba(196, 173, 50, 1)",
-                                    display: "inline-block",
-                                    borderRadius: 5,
-                                  }}
-                                ></Box>
-                              </Item>
-                              <Item>
-                                <Box
-                                  sx={{
-                                    fontSize: { md: 14, xl: 14 },
-                                    lineHeight: { md: "14px", xl: "14px" },
-                                  }}
-                                >
-                                  助學
-                                </Box>
-                              </Item>
-                            </Stack>
-                          </Box>
-                        </Item>
-                        <Item>
-                          <Box sx={{ width: "73px" }}>
-                            <Stack direction="row">
-                              <Item>
-                                <Box
-                                  sx={{
-                                    width: 10,
-                                    height: 10,
-                                    background: "rgba(187, 187, 187, 1)",
-                                    display: "inline-block",
-                                    borderRadius: 5,
-                                  }}
-                                ></Box>
-                              </Item>
-                              <Item>
-                                <Box
-                                  sx={{
-                                    fontSize: { md: 14, xl: 14 },
-                                    lineHeight: { md: "14px", xl: "14px" },
-                                  }}
-                                >
-                                  文哲
-                                </Box>
-                              </Item>
-                            </Stack>
-                          </Box>
-                        </Item>
-                      </Stack>
-                    </Box>
-                  </Item>
+
                   <Item>
                     <Box sx={{ height: "20vh" }}>
                       <Bar2 />
@@ -1301,7 +1298,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   justifyContent: "flex-end",
                 }}
                 height={"38px"}
-                mt={{ xs: "10vh", md: 12 }}
+                mt={{ xs: "10vh", md: 6 }}
               >
                 <Divider
                   orientation="vertical"

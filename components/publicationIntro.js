@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 
 const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
   /** stack Item setting **/
@@ -51,30 +52,36 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   關於出版
                 </Box>
               </Item>
-              <Item
-                sx={{
-                  width: { xs: "100%", md: "100vw" },
-                  /* height of scroll area on mobile */
-                  height: { xs: "38vh", md: "38vh" },
-                  overflow: "scroll",
-                }}
-                //in order to make element can scroll normally, give a className and use it in fullPage options
-                className="scrollEle"
-              >
-                <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
+              <Item className="scrollEle">
+                <OverlayScrollbarsComponent
+                  options={{ className: "os-theme-block-dark" }}
+                >
                   <Box
-                    component="div"
-                    mb={2}
-                    sx={{ textAlign: "justify", textJustify: "distribute" }}
-                    //in order to make first <P/> of markdown margin top equal zero
-                    className="markdownP"
+                    sx={{
+                      width: { xs: "100%", md: "50vw" },
+                      /* height of scroll area on mobile */
+                      height: { xs: "38vh", md: "38vh" },
+                      //overflow: "scroll",
+                    }}
+                    //className="scrollEle"
+                    pr={3}
                   >
-                    <ReactMarkdown>{dataset.content_tw}</ReactMarkdown>
+                    <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
+                      <Box
+                        component="div"
+                        mb={2}
+                        sx={{ textAlign: "justify", textJustify: "distribute" }}
+                        //in order to make first <P/> of markdown margin top equal zero
+                        className="markdownP"
+                      >
+                        <ReactMarkdown>{dataset.content_tw}</ReactMarkdown>
+                      </Box>
+                      <Box component="div">
+                        <ReactMarkdown>{dataset.content_en}</ReactMarkdown>
+                      </Box>
+                    </Box>
                   </Box>
-                  <Box component="div">
-                    <ReactMarkdown>{dataset.content_en}</ReactMarkdown>
-                  </Box>
-                </Box>
+                </OverlayScrollbarsComponent>
               </Item>
             </Stack>
           </Item>
@@ -145,25 +152,25 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                         ></Box>
                       </Item>
                       <Item>
-                        <AnimatePresence initial={{ rotate: 0 }}>
-                          {activeSecI && (
-                            <motion.div
-                              initial={{ rotate: 0 }}
-                              animate={{ rotate: 30 }}
-                              exit={{ rotate: 0 }}
-                              transition={{ duration: 0.5, delay: 1 }}
-                            >
-                              <Box
-                                sx={{
-                                  width: 52,
-                                  height: 154,
-                                  background:
-                                    "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, #B09336 99.99%)",
-                                }}
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                        {/*<AnimatePresence initial={{ rotate: 0 }}>*/}
+                        {activeSecI && (
+                          <motion.div
+                            initial={{ rotate: 0 }}
+                            animate={{ rotate: 30 }}
+                            exit={{ rotate: 0 }}
+                            transition={{ duration: 0.5, delay: 1 }}
+                          >
+                            <Box
+                              sx={{
+                                width: 52,
+                                height: 154,
+                                background:
+                                  "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, #B09336 99.99%)",
+                              }}
+                            />
+                          </motion.div>
+                        )}
+                        {/*</AnimatePresence>*/}
                       </Item>
                       <Item>
                         <Box

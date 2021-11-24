@@ -188,7 +188,7 @@ function Index({ summary, contact }) {
         >
           <motion.div
             initial={{ x: "100vw" }}
-            animate={{ x: [null, "10vw", "-100vw"] }}
+            animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
             transition={{ duration: 5, times: [0, 0.8, 1] }}
           >
@@ -228,7 +228,7 @@ function Index({ summary, contact }) {
         >
           <motion.div
             initial={{ x: "100vw" }}
-            animate={{ x: [null, "10vw", "-100vw"] }}
+            animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
             transition={{ duration: 5, times: [0, 0.8, 1], delay: 5 }}
           >
@@ -261,7 +261,7 @@ function Index({ summary, contact }) {
         >
           <motion.div
             initial={{ x: "100vw" }}
-            animate={{ x: [null, "10vw", "-100vw"] }}
+            animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
             transition={{ duration: 5, times: [0, 0.8, 1], delay: 10 }}
           >

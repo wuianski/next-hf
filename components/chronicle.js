@@ -122,6 +122,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         fontSize: { xs: 12, md: 14, xl: 15 },
                                         fontWeight: 700,
                                         color: "#000",
+                                        marginTop: "87px",
                                       }}
                                     >
                                       {y.year}
@@ -133,7 +134,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         height: "12vh",
                                         //bottom: 0,
                                         marginBottom: "-250px", //for mobile
-                                        marginTop: "87px",
+                                        //marginTop: "87px",
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.5) 60%, rgba(255, 255, 255, 0) 100%)",
                                       }}

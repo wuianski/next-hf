@@ -42,7 +42,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
       <Box
         ml={{ xs: 8, md: 22 }}
         mr={{ xs: 2, md: 13 }}
-        mt={{ xs: 6, md: 13 }}
+        mt={{ xs: 2, md: 13 }}
         mb={1}
       >
         <Box>
@@ -73,7 +73,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                     //textJustify: "distribute",
                     //in order to make element can scroll normally, give element a specific height.
                     width: { xs: "70vw", md: "60vw" },
-                    height: { xs: "35vh", md: "418px" },
+                    height: { xs: "30vh", md: "418px" },
                     //overflow: "scroll",
                     paddingRight: { xs: "3px", md: "60px" },
                   }}
@@ -126,7 +126,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
         >
           <Stack
             direction={{ xs: "column", md: "row" }}
-            spacing={0}
+            spacing={1}
             height={"38px"}
           >
             <Divider

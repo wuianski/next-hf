@@ -17,6 +17,7 @@
   position: fixed;
   top: 32px;
 	right: 32px;
+  cursor:pointer;
   /*padding: 18px;*/
 }
 .menuTitleBlk{

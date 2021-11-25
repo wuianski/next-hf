@@ -188,9 +188,11 @@ h3 {
   top:0;
 }
                   
-
+#container {display:block;}
+#turn { display:none; }
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {
+
   /* section name in main page */
   #myMenu{
     width: 40px;
@@ -248,6 +250,14 @@ h3 {
   .MuiTabs-flexContainer{
     display: grid !important;
   }
-
-  
 }
+
+@media only screen and (max-width: 900px) and (orientation:landscape) {
+  #container {display:none;}
+  #turn { display:block; }
+}
+  /*
+@media only screen and (orientation:portrait) {
+  #container {display:block;}
+  #turn { display:none; }
+  }*/

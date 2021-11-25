@@ -16,8 +16,11 @@ export default function Layout({ children }) {
           <Image src="/IMGs/logo_w.png" alt="logo" width={185} height={75} />
         </div>
       </Link>
+      <div id="turn">Please rotate your device!</div>
       {/*<Nav />*/}
-      <main className={styles.main}>{children}</main>
+      <div id="container">
+        <main className={styles.main}>{children}</main>
+      </div>
     </>
   );
 }

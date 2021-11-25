@@ -60,7 +60,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                     sx={{
                       width: { xs: "100%", md: "50vw" },
                       /* height of scroll area on mobile */
-                      height: { xs: "38vh", md: "38vh" },
+                      height: { xs: "30vh", md: "38vh" },
                       //overflow: "scroll",
                     }}
                     //className="scrollEle"
@@ -229,7 +229,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                                     display: { xs: "block", md: "inline" },
                                   }}
                                 >
-                                  焦點新書
+                                  新發表
                                 </Box>
                                 <Box ml={{ xs: 0, md: 1 }} component="span">
                                   New Release
@@ -271,10 +271,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                                     display: { xs: "block", md: "inline" },
                                   }}
                                 >
-                                  經典館藏
+                                  出版
                                 </Box>
                                 <Box ml={{ xs: 0, md: 1 }} component="span">
-                                  Archive
+                                  Publication
                                 </Box>
                               </Box>
                             </Item>

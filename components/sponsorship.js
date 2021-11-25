@@ -517,7 +517,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
               </VictoryStack>
               <VictoryAxis
                 orientation="bottom"
-                label="2015-2019 各年度贊助比例"
+                label="2016-2020 各年度贊助比例"
                 dependentAxis
                 style={{
                   tickLabels: { fill: "none" },

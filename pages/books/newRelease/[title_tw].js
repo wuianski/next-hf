@@ -203,7 +203,7 @@ function Book({ book, contact }) {
                       width: 68,
                     }}
                   >
-                    售價
+                    NTD
                   </Box>
                   <Box
                     component="span"
@@ -213,13 +213,6 @@ function Book({ book, contact }) {
                     }}
                   >
                     {book.price}
-                  </Box>
-                  <Box
-                    component="span"
-                    ml={0.5}
-                    sx={{ fontSize: { xs: "12px", xl: "15px" } }}
-                  >
-                    NTD
                   </Box>
                 </Box>
               )}

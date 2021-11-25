@@ -146,8 +146,8 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
         }}
       >
         <Box
-          ml={{ xs: 8, md: 28 }}
-          mr={{ xs: 2, md: 6 }}
+          ml={{ xs: 8, md: 26 }}
+          mr={{ xs: 2, md: 8 }}
           mt={{ xs: 12, md: -12 }}
         >
           {/* banner */}

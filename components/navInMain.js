@@ -181,7 +181,7 @@ export default function NavInMain({ contact }) {
                   setOpen2(false);
                 }}
               >
-                <span className={styles.menuTitle}>焦點新書</span>
+                <span className={styles.menuTitle}>新發表</span>
                 <span className={styles.menuTitleEn}>New Release</span>
               </div>
             </Link>
@@ -193,8 +193,8 @@ export default function NavInMain({ contact }) {
                   setOpen2(false);
                 }}
               >
-                <span className={styles.menuTitle}>經典館藏</span>
-                <span className={styles.menuTitleEn}>Archive</span>
+                <span className={styles.menuTitle}>出版</span>
+                <span className={styles.menuTitleEn}>Publication</span>
               </div>
             </Link>
             <Box onClick={handleClose2} className={styles.menuBack}>

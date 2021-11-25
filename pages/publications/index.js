@@ -249,8 +249,8 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
       >
       */}
       <Box
-        ml={{ xs: 8, md: 28 }}
-        mr={{ xs: 2, md: 6 }}
+        ml={{ xs: 8, md: 26 }}
+        mr={{ xs: 2, md: 8 }}
         mt={{ xs: 12, md: -12 }}
       >
         {/* banner */}
@@ -298,13 +298,56 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                   active={filter === "書評書目" ? 1 : 0}
                   onClick={() => setFilter("書評書目")}
                 />
-                <StyledTab label="圖書" value="2" />
-                <StyledTab label="刊物" value="3" />
-                <StyledTab label="影音" value="4" />
+                <StyledTab label="影音" value="2" />
+                <StyledTab label="圖書" value="3" />
+                <StyledTab label="刊物" value="4" />
               </StyledTabList>
             </Box>
             <TabPanel value="1"></TabPanel>
             <TabPanel value="2" sx={{ marginTop: 3 }}>
+              <Box sx={{ color: "#fff" }}>
+                <Grid
+                  container
+                  rowSpacing={1.5}
+                  columnSpacing={{ sm: 6, md: 6 }}
+                >
+                  {subCat_media.map((cat) => (
+                    <Grid item xs={12} sm={6} md={3} key={cat.id}>
+                      <ItemTab key={cat.id}>
+                        <Box
+                          key={cat.id}
+                          sx={{ cursor: "pointer" }}
+                          /* add ? 1 : 0 for pass a boolean in a custom attribute */
+                          active={filter === cat.catName ? 1 : 0}
+                          onClick={() => setFilter(cat.catName)}
+                        >
+                          <Box
+                            component="span"
+                            sx={{ fontSize: { xs: 14, md: 14, xl: 17 } }}
+                          >
+                            {cat.catName}
+                          </Box>
+                          <Box
+                            component="span"
+                            sx={{ float: "right", color: "#828282" }}
+                          >
+                            <Box component="span">{cat.booksNum}</Box>
+                            <Box
+                              component="span"
+                              ml={0.5}
+                              sx={{ fontSize: "11px" }}
+                            >
+                              張
+                            </Box>
+                          </Box>
+                        </Box>
+                      </ItemTab>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </TabPanel>
+            <TabPanel value="3" sx={{ marginTop: 3 }}>
               <Box sx={{ color: "#fff" }}>
                 <Grid
                   container
@@ -356,7 +399,7 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                 </Grid>
               </Box>
             </TabPanel>
-            <TabPanel value="3" sx={{ marginTop: 3 }}>
+            <TabPanel value="4" sx={{ marginTop: 3 }}>
               <Box sx={{ color: "#fff" }}>
                 <Grid
                   container
@@ -390,49 +433,6 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
                               sx={{ fontSize: "11px" }}
                             >
                               本
-                            </Box>
-                          </Box>
-                        </Box>
-                      </ItemTab>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
-            </TabPanel>
-            <TabPanel value="4" sx={{ marginTop: 3 }}>
-              <Box sx={{ color: "#fff" }}>
-                <Grid
-                  container
-                  rowSpacing={1.5}
-                  columnSpacing={{ sm: 6, md: 6 }}
-                >
-                  {subCat_media.map((cat) => (
-                    <Grid item xs={12} sm={6} md={3} key={cat.id}>
-                      <ItemTab key={cat.id}>
-                        <Box
-                          key={cat.id}
-                          sx={{ cursor: "pointer" }}
-                          /* add ? 1 : 0 for pass a boolean in a custom attribute */
-                          active={filter === cat.catName ? 1 : 0}
-                          onClick={() => setFilter(cat.catName)}
-                        >
-                          <Box
-                            component="span"
-                            sx={{ fontSize: { xs: 14, md: 14, xl: 17 } }}
-                          >
-                            {cat.catName}
-                          </Box>
-                          <Box
-                            component="span"
-                            sx={{ float: "right", color: "#828282" }}
-                          >
-                            <Box component="span">{cat.booksNum}</Box>
-                            <Box
-                              component="span"
-                              ml={0.5}
-                              sx={{ fontSize: "11px" }}
-                            >
-                              張
                             </Box>
                           </Box>
                         </Box>

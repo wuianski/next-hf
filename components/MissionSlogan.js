@@ -74,7 +74,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
                       direction="column"
                       spacing={6}
                       sx={{
-                        scale: { xs: "0.5", md: "0.75", xl: "1" },
+                        scale: { xs: "0.4", md: "0.75", xl: "1" },
                       }}
                     >
                       <Item>

@@ -94,7 +94,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                   sx={{
                                     width: "10px",
                                     height: "8vh",
-                                    marginTop: "18vh", //stay bottom 8vh, 13.5vh
+                                    marginTop: "38vh", //stay bottom 8vh, 13.5vh
                                     background:
                                       "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                   }}
@@ -129,6 +129,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         cursor: "pointer",
                                         width: "30px",
                                         height: "15vh",
+                                        marginTop: "8vh",
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                       }}
@@ -157,7 +158,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                     fontWeight: 500,
                                     color: "#000",
                                     marginLeft: "-17px",
-                                    marginBottom: "-24vh", //short shift distance?
+                                    marginBottom: "-24vh", //short shift distance? -24vh
                                   }}
                                 ></Box>
                                 <Box

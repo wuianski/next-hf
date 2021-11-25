@@ -94,7 +94,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                   sx={{
                                     width: "10px",
                                     height: "6vh",
-                                    //marginTop: "8vh", //stay bottom 8vh, 13.5vh, 38vh
+                                    marginTop: "8vh", //stay bottom 8vh, 13.5vh, 38vh
                                     background:
                                       "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                   }}
@@ -129,7 +129,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         cursor: "pointer",
                                         width: "30px",
                                         height: "13vh",
-                                        //marginBottom: "-38vh", //for mobile
+                                        marginBottom: "-48vh", //for mobile
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                       }}
@@ -297,7 +297,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                             animate="visible"
                                             variants={{
                                               hidden: {
-                                                height: "40vh",
+                                                height: "50vh",
                                               },
                                               visible: {
                                                 height: "50vh",
@@ -314,7 +314,10 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                   xs: "33px",
                                                   xl: "36px",
                                                 },
-                                                height: "50vh",
+                                                height: {
+                                                  xs: "50vh",
+                                                  ml: "50vh",
+                                                },
                                                 marginTop: "-87px", //-87px
                                                 background:
                                                   "linear-gradient(0deg, rgba(255, 255, 255, 1) 0.01%, rgba(176, 147, 54, 1) 99.99%)",

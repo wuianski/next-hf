@@ -94,7 +94,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                   sx={{
                                     width: "10px",
                                     height: "8vh",
-                                    marginTop: "38vh", //stay bottom 8vh, 13.5vh
+                                    marginTop: "8vh", //stay bottom 8vh, 13.5vh, 38vh
                                     background:
                                       "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                   }}

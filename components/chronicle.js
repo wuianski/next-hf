@@ -130,8 +130,8 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         cursor: "pointer",
                                         width: "30px",
                                         height: "12vh",
-                                        bottom: 0,
-                                        marginBottom: "-8vh", //for mobile
+                                        //bottom: 0,
+                                        marginBottom: "-60px", //for mobile
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.5) 60%, rgba(255, 255, 255, 0) 100%)",
                                       }}

@@ -67,7 +67,7 @@ const Chronicle = ({ chronicle: dataset }) => {
           options={{ className: "os-theme-block-dark-timeline" }}
         >
           <Box
-            pt={16}
+            pt={32} //16
             pl={{ xs: 3, md: 10 }}
             sx={{
               height: { xs: "80vh", md: "80vh" },

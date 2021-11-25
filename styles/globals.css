@@ -189,7 +189,9 @@ h3 {
 }
                   
 #container {display:block;}
+#logo {display:block;}
 #turn { display:none; }
+
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {
 
@@ -254,6 +256,7 @@ h3 {
 
 @media only screen and (max-width: 900px) and (orientation:landscape) {
   #container {display:none;}
+  #logo {display:none;}
   #turn { display:block; }
 }
   /*

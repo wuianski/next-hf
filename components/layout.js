@@ -12,7 +12,7 @@ export default function Layout({ children }) {
         <title>Layouts Example</title>
       </Head>*/}
       <Link href="/">
-        <div className={styles.logoFixed}>
+        <div className={styles.logoFixed} id="logo">
           <Image src="/IMGs/logo_w.png" alt="logo" width={185} height={75} />
         </div>
       </Link>

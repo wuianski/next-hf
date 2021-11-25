@@ -67,7 +67,7 @@ const Chronicle = ({ chronicle: dataset }) => {
           options={{ className: "os-theme-block-dark-timeline" }}
         >
           <Box
-            pt={13} //16
+            pt={33} //16
             pl={{ xs: 3, md: 10 }}
             sx={{
               height: { xs: "80vh", md: "80vh" },
@@ -132,7 +132,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         width: "30px",
                                         height: "12vh",
                                         //bottom: 0,
-                                        marginBottom: "-160px", //for mobile
+                                        marginBottom: "-200px", //for mobile
                                         //marginTop: "87px",
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.5) 60%, rgba(255, 255, 255, 0) 100%)",

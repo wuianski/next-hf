@@ -129,7 +129,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         cursor: "pointer",
                                         width: "30px",
                                         height: "15vh",
-                                        marginTop: "8vh",
+                                        marginBottom: "-8vh", //for mobile
                                         background:
                                           "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                       }}
@@ -315,7 +315,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                   xl: "36px",
                                                 },
                                                 height: "50vh",
-                                                marginTop: "-87px",
+                                                marginTop: "-87px", //-87px
                                                 background:
                                                   "linear-gradient(0deg, rgba(255, 255, 255, 1) 0.01%, rgba(176, 147, 54, 1) 99.99%)",
                                                 //marginTop: "calc(-30vh - 87px)",

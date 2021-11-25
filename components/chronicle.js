@@ -93,8 +93,8 @@ const Chronicle = ({ chronicle: dataset }) => {
                                   ml={0.8}
                                   sx={{
                                     width: "10px",
-                                    height: "6vh",
-                                    marginTop: "13.5vh", //stay bottom 8vh, 13.5vh, 38vh
+                                    height: "5vh",
+                                    marginTop: "8vh", //stay bottom 8vh, 13.5vh, 38vh
                                     background:
                                       "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
                                   }}
@@ -128,10 +128,10 @@ const Chronicle = ({ chronicle: dataset }) => {
                                       sx={{
                                         cursor: "pointer",
                                         width: "30px",
-                                        height: "13vh",
-                                        marginBottom: "-48vh", //for mobile
+                                        height: "10vh",
+                                        marginBottom: "-50vh", //for mobile
                                         background:
-                                          "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.453125) 44.79%, rgba(255, 255, 255, 0) 100%)",
+                                          "linear-gradient(180deg, #000000 0%, rgba(139, 139, 139, 0.5) 60%, rgba(255, 255, 255, 0) 100%)",
                                       }}
                                     ></Box>
                                   </>
@@ -297,10 +297,10 @@ const Chronicle = ({ chronicle: dataset }) => {
                                             animate="visible"
                                             variants={{
                                               hidden: {
-                                                height: "50vh",
+                                                height: "55vh",
                                               },
                                               visible: {
-                                                height: "50vh",
+                                                height: "55vh",
                                                 transition: {
                                                   delay: 0.6,
                                                 },
@@ -316,7 +316,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                 },
                                                 height: {
                                                   xs: "55vh",
-                                                  ml: "50vh",
+                                                  ml: "55vh",
                                                 },
                                                 marginTop: "-87px", //-87px
                                                 background:

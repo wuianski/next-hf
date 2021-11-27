@@ -23,7 +23,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
 
   return (
     <div>
-      <Box ml={{ xs: 10, md: 23 }} mr={{ xs: 0, md: 8 }} mt={13}>
+      <Box ml={{ xs: 10, md: 23 }} mr={{ xs: 0, md: 8 }} mt={{ xs: 6, md: 13 }}>
         {/* 1st row */}
 
         <Box
@@ -55,7 +55,10 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
 
         {/* 2nd row */}
         <Box>
-          <Stack direction={{ xs: "column-reverse", md: "row" }}>
+          <Stack
+            direction={{ xs: "column-reverse", md: "row" }}
+            spacing={{ xs: 3, md: 0 }}
+          >
             <Item
               sx={{
                 width: { xs: "80vw", md: "30vw" },
@@ -72,16 +75,17 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
                   <Box>
                     <Stack
                       direction="column"
-                      spacing={6}
-                      sx={{
+                      spacing={{ xs: 2, md: 5 }}
+                      /*sx={{
                         scale: { xs: "0.4", md: "0.75", xl: "1" },
-                      }}
+                      }}*/
+                      ml={{ xs: -2, md: -2 }}
                     >
                       <Item>
                         <Box
                           sx={{
-                            width: 349,
-                            height: 74,
+                            width: { xs: "80px", md: "210px" },
+                            height: { xs: "20px", md: "55px" },
                             background:
                               "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -90,8 +94,8 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 349,
-                            height: 74,
+                            width: { xs: "80px", md: "210px" },
+                            height: { xs: "20px", md: "55px" },
                             background:
                               "linear-gradient(180deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}

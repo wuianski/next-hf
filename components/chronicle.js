@@ -58,19 +58,15 @@ const Chronicle = ({ chronicle: dataset }) => {
 
   return (
     <>
-      <Box
-        ml={{ xs: 8, md: 23 }}
-        mr={{ xs: 2, md: 6 }}
-        pt={13} /*sx={{ marginTop: "60vh" }}*/
-      >
+      <Box ml={{ xs: 8, md: 23 }} mr={{ xs: 2, md: 6 }} pt={{ xs: 10, md: 13 }}>
         <OverlayScrollbarsComponent
           options={{ className: "os-theme-block-dark-timeline" }}
         >
           <Box
-            pt={{ xs: "38vh", md: "38vh", xl: "38vh" }} //16
+            pt={{ xs: "31vh", md: "39vh" }} //16
             pl={{ xs: 3, md: 10 }}
             sx={{
-              height: { xs: "80vh", md: "80vh" },
+              height: { xs: "73vh", md: "80vh" },
               //in order to make element can scroll normally, give element a specific height.
               width: { xs: "80vw", md: "80vw" },
               //overflow: "scroll",
@@ -326,6 +322,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                   "linear-gradient(0deg, rgba(255, 255, 255, 1) 0.01%, rgba(176, 147, 54, 1) 99.99%)",
                                                 //marginTop: "calc(-30vh - 87px)",
                                               }}
+                                              ml={-0.2}
                                             >
                                               <motion.div
                                                 initial="hidden"

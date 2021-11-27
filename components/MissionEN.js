@@ -6,7 +6,7 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 const MissionEN = ({ mission: dataset, fullpageApi }) => {
   return (
     <>
-      <Box ml={{ xs: 10, md: 13 }} mr={{ xs: 2, md: 6 }} mt={10}>
+      <Box ml={{ xs: 10, md: 13 }} mr={{ xs: 2, md: 6 }} mt={{ xs: 6, md: 10 }}>
         <OverlayScrollbarsComponent
           options={{ className: "os-theme-block-dark" }}
         >
@@ -17,7 +17,7 @@ const MissionEN = ({ mission: dataset, fullpageApi }) => {
               display: "flex",
               justifyContent: { xs: "flex-start", md: "flex-end" },
               //in order to make element can scroll normally, give element a specific height.
-              height: { xs: "55vh", md: "45vh" },
+              height: { xs: "50vh", md: "45vh" },
               //overflow: "scroll",
             }}
             //in order to make element can scroll normally, give a className and use it in fullPage options
@@ -77,11 +77,10 @@ const MissionEN = ({ mission: dataset, fullpageApi }) => {
         >
           <Box
             sx={{
-              width: 74,
-              height: 74,
+              width: { xs: "20px", md: "55px", xl: "74px" },
+              height: { xs: "20px", md: "55px", xl: "74px" },
               background:
                 "linear-gradient(180deg, #B09336 0%, rgba(176, 147, 54, 0.5) 60%, rgba(176, 147, 54, 0.1) 100%)",
-              scale: { xs: "0.5", md: "0.75", xl: "1" },
             }}
           />
         </Box>

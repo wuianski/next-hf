@@ -518,11 +518,11 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     >
                       {project.title_en}
                     </Box>
-                    <Box sx={{ fontSize: 18, mb: 1 }}>{project.title_tw}</Box>
+                    <Box sx={{ fontSize: 18, mb: 0.8 }}>{project.title_tw}</Box>
                     <Box
-                      mb={"5vh"}
+                      mb={"4vh"}
                       sx={{
-                        height: 24,
+                        height: 22,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}

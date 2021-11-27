@@ -35,7 +35,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 30 }} mr={{ xs: 2, md: 10 }} mt={{ xs: 6, md: 13 }}>
+      <Box ml={{ xs: 8, md: 30 }} mr={{ xs: 2, md: 10 }} mt={{ xs: 8, md: 13 }}>
         <Stack>
           <Item>
             <Stack

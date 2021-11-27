@@ -909,7 +909,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                     {/* vvv color demo */}
                     <Stack direction="row">
                       <Item>
-                        <Box ml={2} sx={{ width: "73px", height: "4vh" }}>
+                        <Box ml={2} sx={{ width: "73px", height: "3vh" }}>
                           <Stack direction="row">
                             <Item>
                               <Box
@@ -1122,14 +1122,14 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                       textAnchor="middle"
                       style={{ fontSize: 30, fontWeight: 700 }}
                       x={180}
-                      y={385}
+                      y={370}
                       text="1971~2020"
                     />
                     <VictoryLabel
                       textAnchor="middle"
                       style={{ fontSize: 23, fontWeight: 700 }}
                       x={180}
-                      y={420}
+                      y={410}
                       text="贊助概覽"
                     />
                   </svg>
@@ -1139,7 +1139,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <Box>
               <Stack
                 /* set up the distance between two Item, and vertical center of Stack */
-                spacing={-10}
+                spacing={-11}
                 sx={{ marginTop: "-20px", marginLeft: "-30px" }}
               >
                 <Item sx={{ marginBottom: 0, paddingTop: "2vh" }}>
@@ -1147,7 +1147,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                     {/* vvv color demo */}
                     <Stack direction="row">
                       <Item>
-                        <Box ml={2} sx={{ width: "73px", height: "4vh" }}>
+                        <Box ml={2} sx={{ width: "73px", height: "3vh" }}>
                           <Stack direction="row">
                             <Item>
                               <Box

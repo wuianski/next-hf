@@ -35,14 +35,14 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 25 }} mr={{ xs: 2, md: 8 }} mt={{ xs: 10, md: 13 }}>
+      <Box ml={{ xs: 8, md: 30 }} mr={{ xs: 2, md: 10 }} mt={{ xs: 6, md: 13 }}>
         <Stack>
           <Item>
             <Stack
               direction={{ xs: "column", md: "row" }}
               spacing={{ xs: 3, md: 3 }}
             >
-              <Item sx={{ width: { xs: "100%", md: "18vw" } }}>
+              <Item sx={{ width: { xs: "100%", md: "20vw" } }}>
                 <Box
                   sx={{
                     fontSize: { xs: 20, md: 30, xl: 33 },
@@ -52,7 +52,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   關於出版
                 </Box>
               </Item>
-              <Item className="scrollEle">
+              <Item
+                className="scrollEle"
+                //sx={{ width: { xs: "100%", md: "51vw" } }}
+              >
                 <OverlayScrollbarsComponent
                   options={{ className: "os-theme-block-dark" }}
                 >
@@ -93,12 +96,12 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   display: { xs: "flex", md: "flex" },
                   alignItems: { xs: "flex-start", md: "flex-end" },
                   /* set up the distance between two Box */
-                  height: { md: "25vh", xl: "30vh" },
+                  height: { md: "25vh", xl: "25vh" },
                   minHeight: 200,
                 }}
               >
-                <Item sx={{ width: { xs: "0vw", md: "40vw" } }}>
-                  <Box sx={{ marginLeft: { xs: 0, md: -8, xl: -1 } }}>
+                <Item sx={{ width: { xs: "0vw", md: "20vw" } }}>
+                  <Box sx={{ marginLeft: { xs: -1, md: -1, xl: -1 } }}>
                     <Stack
                       direction="row"
                       spacing={-2}
@@ -106,16 +109,17 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                         display: "flex",
                         justifyContent: "left",
                         alignItems: "flex-end",
-                        height: "22vh",
-                        scale: { xs: "0.3", md: "0.65", xl: "1" },
-                        marginBottom: { xs: "-3vh", md: "-3.1vh", xl: "0" },
                       }}
+                      mt={3}
+                      mb={{ xs: 4, md: 0 }}
                     >
                       <Item>
                         <Box
                           sx={{
-                            width: 43,
-                            height: 199,
+                            width: { xs: "13px", md: "28px" },
+                            height: { xs: "60px", md: "130px" },
+                            //width: 43,
+                            //height: 199,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -124,8 +128,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 54,
-                            height: 228,
+                            width: { xs: "16px", md: "35px" },
+                            height: { xs: "68px", md: "148px" },
+                            //width: 54,
+                            //height: 228,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -134,8 +140,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 60,
-                            height: 228,
+                            width: { xs: "18px", md: "39px" },
+                            height: { xs: "68px", md: "148px" },
+                            //width: 60,
+                            //height: 228,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -144,8 +152,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 39,
-                            height: 161,
+                            width: { xs: "12px", md: "25px" },
+                            height: { xs: "48px", md: "105px" },
+                            //width: 39,
+                            //height: 161,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -162,8 +172,13 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                           >
                             <Box
                               sx={{
-                                width: 52,
-                                height: 154,
+                                width: { xs: "15px", md: "34px" },
+                                height: {
+                                  xs: "46px",
+                                  md: "100px",
+                                },
+                                //width: 52,
+                                //height: 154,
                                 background:
                                   "linear-gradient(269.98deg, rgba(176, 147, 54, 0) 0.01%, #B09336 99.99%)",
                               }}
@@ -175,8 +190,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 44,
-                            height: 182,
+                            width: { xs: "13px", md: "28px" },
+                            height: { xs: "55px", md: "118px" },
+                            //width: 44,
+                            //height: 182,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}
@@ -185,8 +202,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: 35,
-                            height: 187,
+                            width: { xs: "10.5px", md: "23px" },
+                            height: { xs: "26px", md: "121px" },
+                            //width: 35,
+                            //height: 187,
                             background:
                               "linear-gradient(90deg, #000000 0%, #A6A6A6 58.33%, #FFFFFF 100%)",
                           }}

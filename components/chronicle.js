@@ -67,7 +67,7 @@ const Chronicle = ({ chronicle: dataset }) => {
           options={{ className: "os-theme-block-dark-timeline" }}
         >
           <Box
-            pt={33} //16
+            pt={{ xs: "38vh", md: "38vh", xl: "38vh" }} //16
             pl={{ xs: 3, md: 10 }}
             sx={{
               height: { xs: "80vh", md: "80vh" },
@@ -122,7 +122,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                         fontSize: { xs: 12, md: 14, xl: 15 },
                                         fontWeight: 700,
                                         color: "#000",
-                                        marginTop: "77px", // important to make unclick item down
+                                        marginTop: "60px", // important to make unclick item down
                                       }}
                                     >
                                       {y.year}
@@ -314,7 +314,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                               key={chronicle2.id}
                                               sx={{
                                                 width: {
-                                                  xs: "33px",
+                                                  xs: "36px",
                                                   xl: "36px",
                                                 },
                                                 height: {

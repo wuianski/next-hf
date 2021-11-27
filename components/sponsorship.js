@@ -1298,7 +1298,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   justifyContent: "flex-end",
                 }}
                 height={"38px"}
-                mt={{ xs: "10vh", md: 6 }}
+                mt={{ xs: 6, md: 6 }}
               >
                 <Divider
                   orientation="vertical"

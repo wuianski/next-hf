@@ -493,7 +493,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
         sx={{ display: { xs: "block", md: "none" } }}
       >
         <Box
-          mt={8}
+          mt={10}
           sx={{
             display: { xs: "block" },
             justifyContent: "end",

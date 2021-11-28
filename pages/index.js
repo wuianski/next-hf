@@ -136,7 +136,11 @@ function Index({ summary, contact }) {
             initial={{ scale: 1.2 }}
             animate={{ scale: [1.2, 0.8, 0.8, 1] }}
             exit={{ scale: 1 }}
-            transition={{ duration: 15, times: [0, 0.05, 0.96, 1], delay: 0 }}
+            transition={{
+              duration: 17.5,
+              times: [0, 0.05, 0.96, 1],
+              delay: 0.3,
+            }}
           >
             <Box>
               <Image
@@ -164,7 +168,11 @@ function Index({ summary, contact }) {
             initial={{ scale: 1.2, y: 0 }}
             animate={{ scale: [1.2, 0.8, 0.8, 1], y: [0, 0, 0, 100] }}
             exit={{ scale: 1, y: 0 }}
-            transition={{ duration: 15, times: [0, 0.05, 0.96, 1], delay: 0 }}
+            transition={{
+              duration: 17.5,
+              times: [0, 0.05, 0.96, 1],
+              delay: 0.3,
+            }}
           >
             <Box>
               <Image
@@ -190,7 +198,7 @@ function Index({ summary, contact }) {
             initial={{ x: "100vw" }}
             animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
-            transition={{ duration: 5, times: [0, 0.8, 1] }}
+            transition={{ duration: 8, times: [0, 0.8, 1], delay: 0.3 }}
           >
             <Box>
               <Box sx={{ color: "#fff" }}>
@@ -230,7 +238,7 @@ function Index({ summary, contact }) {
             initial={{ x: "100vw" }}
             animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
-            transition={{ duration: 5, times: [0, 0.8, 1], delay: 5 }}
+            transition={{ duration: 8, times: [0, 0.8, 1], delay: 5 }}
           >
             <Box>
               <Box sx={{ color: "#fff" }}>
@@ -263,7 +271,7 @@ function Index({ summary, contact }) {
             initial={{ x: "100vw" }}
             animate={{ x: ["100vw", "10vw", "-100vw"] }}
             exit={{ x: "-100vw" }}
-            transition={{ duration: 5, times: [0, 0.8, 1], delay: 10 }}
+            transition={{ duration: 8, times: [0, 0.8, 1], delay: 10 }}
           >
             <Box>
               <Box sx={{ color: "#fff" }}>

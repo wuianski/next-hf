@@ -188,7 +188,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                 scale: 1,
                                                 opacity: 1,
                                                 transition: {
-                                                  delay: 0.2,
+                                                  delay: 0.1,
                                                 },
                                               },
                                             }}
@@ -221,7 +221,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                 scale: 1,
                                                 opacity: 1,
                                                 transition: {
-                                                  delay: 0.6,
+                                                  delay: 0.5,
                                                 },
                                               },
                                             }}
@@ -301,7 +301,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                               visible: {
                                                 height: "50vh",
                                                 transition: {
-                                                  delay: 0.6,
+                                                  delay: 0.5,
                                                 },
                                               },
                                             }}
@@ -336,7 +336,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                     scale: 1,
                                                     opacity: 1,
                                                     transition: {
-                                                      delay: 0.6,
+                                                      delay: 0.5,
                                                     },
                                                   },
                                                 }}
@@ -417,7 +417,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                 scale: 1,
                                                 opacity: 1,
                                                 transition: {
-                                                  delay: 0.2,
+                                                  delay: 0.1,
                                                 },
                                               },
                                             }}
@@ -447,7 +447,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                               visible: {
                                                 height: "50vh",
                                                 transition: {
-                                                  delay: 0.6,
+                                                  delay: 0.5,
                                                 },
                                               },
                                             }}
@@ -477,7 +477,7 @@ const Chronicle = ({ chronicle: dataset }) => {
                                                     scale: 1,
                                                     opacity: 1,
                                                     transition: {
-                                                      delay: 0.6,
+                                                      delay: 0.5,
                                                     },
                                                   },
                                                 }}

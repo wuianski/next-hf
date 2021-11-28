@@ -8,6 +8,8 @@ import { styled } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
   /* CHANGE ARRAY SORTING BY ID*/
@@ -71,47 +73,35 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
         sx={{ display: { xs: "none", md: "block" } }}
       >
         <Box
-          ml={{ xs: 13, md: -8 }}
+          ml={{ xs: 13, md: 0 }}
           sx={{
             display: { xs: "block", md: "flex" },
             justifyContent: "start",
             alignItems: "flex-end",
-            width: "120%",
+            width: "100%",
           }}
         >
-          <Box pr={5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+          <Box pr={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset0 &&
               dataset0.map((project) => (
                 <Box key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h5.fontSize",
-                          xl: "h4.fontSize",
-                        },
-                        lineHeight: 1.2,
-                        whiteSpace: "pre-line",
-                        textTransform: "uppercase",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_en}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h6.fontSize",
-                          xl: "h5.fontSize",
-                        },
-                        mb: 2,
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_tw}
+                    <Box mb={2}>
+                      <Image
+                        src="/IMGs/ps_logo.png"
+                        alt="download icon"
+                        width={240}
+                        height={96}
+                      />
                     </Box>
 
-                    <Collapse in={open[project.id]}>
+                    <Collapse
+                      in={open[project.id]}
+                      style={{ transformOrigin: "0 0 0" }}
+                      {...(open[project.id]
+                        ? { easing: 200, timeout: 0 }
+                        : { easing: 500, timeout: 500 })}
+                    >
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                         <OverlayScrollbarsComponent
                           options={{ className: "os-theme-block-dark" }}
@@ -147,7 +137,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             sx={{
                               height: 48,
                               backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                             }}
                           >
                             <a
@@ -180,39 +170,27 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               ))}
           </Box>
 
-          <Box sx={{ width: { xs: "60vw", md: "30vw" } }}>
+          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset1 &&
               dataset1.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h5.fontSize",
-                          xl: "h4.fontSize",
-                        },
-                        lineHeight: 1.2,
-                        whiteSpace: "pre-line",
-                        textTransform: "uppercase",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_en}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h6.fontSize",
-                          xl: "h5.fontSize",
-                        },
-                        mb: 2,
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_tw}
+                    <Box mb={2}>
+                      <Image
+                        src="/IMGs/ml_logo.png"
+                        alt="download icon"
+                        width={240}
+                        height={96}
+                      />
                     </Box>
 
-                    <Collapse in={open[project.id]}>
+                    <Collapse
+                      in={open[project.id]}
+                      style={{ transformOrigin: "0 0 0" }}
+                      {...(open[project.id]
+                        ? { easing: 200, timeout: 0 }
+                        : { easing: 500, timeout: 500 })}
+                    >
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                         <OverlayScrollbarsComponent
                           options={{ className: "os-theme-block-dark" }}
@@ -248,7 +226,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             sx={{
                               height: 48,
                               backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                             }}
                           >
                             <a
@@ -290,41 +268,27 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
             alignItems: "flex-end",
           }}
         >
-          <Box pr={5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+          <Box pr={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset2 &&
               dataset2.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h5.fontSize",
-                          xl: "h4.fontSize",
-                        },
-                        lineHeight: 1.2,
-                      }}
-                      style={{
-                        whiteSpace: "pre-line",
-                        textTransform: "uppercase",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_en}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h6.fontSize",
-                          xl: "h5.fontSize",
-                        },
-                        mb: 3,
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {project.title_tw}
+                    <Box mb={2}>
+                      <Image
+                        src="/IMGs/php_logo.png"
+                        alt="download icon"
+                        width={240}
+                        height={96}
+                      />
                     </Box>
 
-                    <Collapse in={open[project.id]}>
+                    <Collapse
+                      in={open[project.id]}
+                      style={{ transformOrigin: "0 0 0" }}
+                      {...(open[project.id]
+                        ? { easing: 200, timeout: 0 }
+                        : { easing: 500, timeout: 500 })}
+                    >
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                         <OverlayScrollbarsComponent
                           options={{ className: "os-theme-block-dark" }}
@@ -360,7 +324,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             sx={{
                               height: 48,
                               backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                             }}
                           >
                             <a
@@ -392,41 +356,27 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               ))}
           </Box>
 
-          <Box sx={{ width: { xs: "60vw", md: "30vw" } }}>
+          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset3 &&
               dataset3.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h5.fontSize",
-                          xl: "h4.fontSize",
-                        },
-                        lineHeight: 1.2,
-                      }}
-                      style={{
-                        whiteSpace: "pre-line",
-                        textTransform: "uppercase",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {project.title_en}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: {
-                          md: "h6.fontSize",
-                          xl: "h5.fontSize",
-                        },
-                        mb: 3,
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {project.title_tw}
+                    <Box mb={2}>
+                      <Image
+                        src="/IMGs/g_logo.png"
+                        alt="download icon"
+                        width={240}
+                        height={24}
+                      />
                     </Box>
 
-                    <Collapse in={open[project.id]}>
+                    <Collapse
+                      in={open[project.id]}
+                      style={{ transformOrigin: "0 0 0" }}
+                      {...(open[project.id]
+                        ? { easing: 200, timeout: 0 }
+                        : { easing: 500, timeout: 500 })}
+                    >
                       <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                         <Box
                           pb={1}
@@ -452,7 +402,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             sx={{
                               height: 48,
                               backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                             }}
                           >
                             <a
@@ -493,7 +443,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
         sx={{ display: { xs: "block", md: "none" } }}
       >
         <Box
-          mt={10}
+          mt={12}
           sx={{
             display: { xs: "block" },
             justifyContent: "end",
@@ -508,6 +458,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     // toggle drawer
                     onClick={toggleDrawer(project.id, true)}
                   >
+                    {/*
                     <Box
                       sx={{
                         fontSize: 20,
@@ -527,6 +478,50 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
+                    */}
+                    {/*
+                    <Image
+                      src={
+                        !!project.cover && !!project.cover.url
+                          ? project.cover.url
+                          : ""
+                      }
+                      alt="project logo"
+                      layout="responsive"
+                      objectFit="cover"
+                      //objectPosition="left bottom"
+                      width={"45%"}
+                      height={"15%"}
+                    />
+                    <Box
+                      mt={2}
+                      mb={"4vh"}
+                      sx={{
+                        height: 22,
+                        backgroundImage:
+                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                      }}
+                    />
+                    */}
+                    <ImageList variant="masonry" cols={1} gap={"2.5vh"}>
+                      <ImageListItem key={project.cover.id}>
+                        <img
+                          src={`${project.cover.url}?w=136&fit=format`}
+                          srcSet={`${project.cover.url}?w=136&fit=format&dpr=2 2x`}
+                          //alt={item.title}
+                          loading="lazy"
+                        />
+                        <Box
+                          mt={1.5}
+                          //mb={"4vh"}
+                          sx={{
+                            height: 22,
+                            backgroundImage:
+                              "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                          }}
+                        />
+                      </ImageListItem>
+                    </ImageList>
                   </Box>
                   <Drawer
                     anchor={"right"}

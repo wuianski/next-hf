@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import Collapse from "@mui/material/Collapse";
+import Grow from "@mui/material/Grow";
 import Box from "@mui/material/Box";
 
 const Projects = ({ projects: dataset }) => {
@@ -120,7 +120,7 @@ const Projects = ({ projects: dataset }) => {
                     {project.title_tw}
                   </Box>
 
-                  <Collapse in={open_PS}>
+                  <Grow in={open_PS}>
                     <Box
                       pb={1}
                       sx={{
@@ -140,8 +140,8 @@ const Projects = ({ projects: dataset }) => {
                     >
                       {project.content_en}
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_PS}>
+                  </Grow>
+                  <Grow in={open_PS}>
                     <Box sx={{ mt: 3 }}>
                       <Box
                         sx={{
@@ -165,8 +165,8 @@ const Projects = ({ projects: dataset }) => {
                         </a>
                       </Box>
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_PSR}>
+                  </Grow>
+                  <Grow in={open_PSR}>
                     <Box
                       sx={{
                         height: 28,
@@ -174,7 +174,7 @@ const Projects = ({ projects: dataset }) => {
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
-                  </Collapse>
+                  </Grow>
                 </div>
               </div>
             ))}
@@ -220,7 +220,7 @@ const Projects = ({ projects: dataset }) => {
                     {project.title_tw}
                   </Box>
 
-                  <Collapse in={open_MF}>
+                  <Grow in={open_MF}>
                     <Box
                       pb={1}
                       sx={{
@@ -241,8 +241,8 @@ const Projects = ({ projects: dataset }) => {
                     >
                       {project.content_en}
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_MF}>
+                  </Grow>
+                  <Grow in={open_MF}>
                     <Box sx={{ mt: 3 }}>
                       <Box
                         sx={{
@@ -266,8 +266,8 @@ const Projects = ({ projects: dataset }) => {
                         </a>
                       </Box>
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_MFR}>
+                  </Grow>
+                  <Grow in={open_MFR}>
                     <Box
                       sx={{
                         height: 28,
@@ -275,7 +275,7 @@ const Projects = ({ projects: dataset }) => {
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
-                  </Collapse>
+                  </Grow>
                 </div>
               </div>
             ))}
@@ -322,7 +322,7 @@ const Projects = ({ projects: dataset }) => {
                     {project.title_tw}
                   </Box>
 
-                  <Collapse in={open_PHP}>
+                  <Grow in={open_PHP}>
                     <Box
                       pb={1}
                       sx={{
@@ -343,8 +343,8 @@ const Projects = ({ projects: dataset }) => {
                     >
                       {project.content_en}
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_PHP}>
+                  </Grow>
+                  <Grow in={open_PHP}>
                     <Box sx={{ mt: 3 }}>
                       <Box
                         sx={{
@@ -368,8 +368,8 @@ const Projects = ({ projects: dataset }) => {
                         </a>
                       </Box>
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_PHPR}>
+                  </Grow>
+                  <Grow in={open_PHPR}>
                     <Box
                       sx={{
                         height: 28,
@@ -377,7 +377,7 @@ const Projects = ({ projects: dataset }) => {
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
-                  </Collapse>
+                  </Grow>
                 </div>
               </div>
             ))}
@@ -423,7 +423,7 @@ const Projects = ({ projects: dataset }) => {
                     {project.title_tw}
                   </Box>
 
-                  <Collapse in={open_CH}>
+                  <Grow in={open_CH}>
                     <Box
                       sx={{
                         height: 48,
@@ -445,8 +445,8 @@ const Projects = ({ projects: dataset }) => {
                         />
                       </a>
                     </Box>
-                  </Collapse>
-                  <Collapse in={open_CHR}>
+                  </Grow>
+                  <Grow in={open_CHR}>
                     <Box
                       sx={{
                         height: 28,
@@ -454,7 +454,7 @@ const Projects = ({ projects: dataset }) => {
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
-                  </Collapse>
+                  </Grow>
                 </div>
               </div>
             ))}

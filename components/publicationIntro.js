@@ -42,7 +42,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
               direction={{ xs: "column", md: "row" }}
               spacing={{ xs: 3, md: 3 }}
             >
-              <Item sx={{ width: { xs: "100%", md: "20vw" } }}>
+              <Item sx={{ width: { xs: "100%", md: "15vw" } }}>
                 <Box
                   sx={{
                     fontSize: { xs: 20, md: 30, xl: 33 },
@@ -54,14 +54,14 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
               </Item>
               <Item
                 className="scrollEle"
-                //sx={{ width: { xs: "100%", md: "51vw" } }}
+                sx={{ width: { xs: "100%", md: "48vw" } }}
               >
                 <OverlayScrollbarsComponent
                   options={{ className: "os-theme-block-dark" }}
                 >
                   <Box
                     sx={{
-                      width: { xs: "100%", md: "50vw" },
+                      width: { xs: "100%", md: "100%" },
                       /* height of scroll area on mobile */
                       height: { xs: "30vh", md: "38vh" },
                       //overflow: "scroll",
@@ -100,7 +100,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   minHeight: 200,
                 }}
               >
-                <Item sx={{ width: { xs: "0vw", md: "20vw" } }}>
+                <Item sx={{ width: { xs: "0vw", md: "15vw" } }}>
                   <Box sx={{ marginLeft: { xs: -1, md: -1, xl: -1 } }}>
                     <Stack
                       direction="row"
@@ -214,7 +214,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                     </Stack>
                   </Box>
                 </Item>
-                <Item sx={{ width: { xs: "100vw", md: "60vw" } }}>
+                <Item sx={{ width: { xs: "100vw", md: "65vw" } }}>
                   <Box mt={{ xs: -2, md: 0 }}>
                     <Stack
                       direction={{ xs: "column", md: "row" }}

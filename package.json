@@ -28,6 +28,7 @@
     "react-lodash": "^0.1.2",
     "react-markdown": "^7.0.1",
     "react-responsive-modal": "^6.1.0",
+    "react-scroll-wheel-handler": "^2.1.0",
     "react-slick": "^0.28.1",
     "sass": "^1.43.3",
     "slick-carousel": "^1.8.1",

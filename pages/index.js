@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import LayoutIndex from "../components/layout";
 import Nav from "../components/nav";
@@ -10,8 +10,11 @@ import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
+import { useRouter } from "next/router";
 
 function Index({ summary, contact }) {
+  const router = useRouter();
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -41,7 +44,8 @@ function Index({ summary, contact }) {
   //const p10 = allPhase[9].split("，");
   //console.log(p2[0]);
 
-  /** animation **/
+  /**  **/
+  //const [goLink, setGoLink] = useState(false);
 
   return (
     <>
@@ -103,24 +107,31 @@ function Index({ summary, contact }) {
           }}
         />
         {/* /gradient black bg */}
+
         <Link href="/main#events">
-          <Box
-            sx={{
-              position: "absolute",
-              left: "calc(50vw - 12px)",
-              bottom: 40,
-              zIndex: 99,
-              cursor: "pointer",
-            }}
+          <ReactScrollWheelHandler
+            //upHandler={(e) => console.log("scroll up")}
+            downHandler={() => router.push("/main#events")}
           >
-            <Image
-              src="/IMGs/clickDown_icon.png"
-              alt="go to main page"
-              width={24}
-              height={55}
-            />
-          </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                left: "calc(50vw - 12px)",
+                bottom: 40,
+                zIndex: 99,
+                cursor: "pointer",
+              }}
+            >
+              <Image
+                src="/IMGs/clickDown_icon.png"
+                alt="go to main page"
+                width={24}
+                height={55}
+              />
+            </Box>
+          </ReactScrollWheelHandler>
         </Link>
+
         {/* logo ani */}
         <Box
           sx={{

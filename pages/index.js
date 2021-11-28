@@ -76,13 +76,18 @@ function Index({ summary, contact }) {
         downHandler={() => router.push("/main#events")}
       >
         <Box
-          sx={{ backgroundColor: "#000000", width: "100vw", height: "100vh" }}
+          sx={{
+            backgroundColor: "#000000",
+            width: "100vw",
+            height: "100vh",
+            position: "fixed",
+          }}
         >
           <Box
             sx={{
               width: { xs: "100vw", md: "50vw" },
               height: { xs: "100vw", md: "50vw" },
-              position: "absolute",
+              position: "fixed",
               top: { xs: "8vh", md: "0px" },
               right: { xs: "0px", md: "50px" },
               zIndex: 0,
@@ -117,7 +122,7 @@ function Index({ summary, contact }) {
           <Link href="/main#events">
             <Box
               sx={{
-                position: "absolute",
+                position: "fixed",
                 left: "calc(50vw - 12px)",
                 bottom: 40,
                 zIndex: 99,

@@ -164,7 +164,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               <a href={leadership_doc.board_members.url} target="_blank">
                 <Stack direction="row" spacing={0}>
                   <Item>
-                    <Box>歷年董事會成員</Box>
+                    <Box>歷屆董事會成員</Box>
                     <Box>Board Members</Box>
                   </Item>
                   <Item>

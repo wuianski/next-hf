@@ -505,12 +505,14 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                     */}
                     <ImageList variant="masonry" cols={1} gap={"2.5vh"}>
                       <ImageListItem key={project.cover.id}>
-                        <img
-                          src={`${project.cover.url}?w=136&fit=format`}
-                          srcSet={`${project.cover.url}?w=136&fit=format&dpr=2 2x`}
-                          //alt={item.title}
-                          loading="lazy"
-                        />
+                        <Box ml={0.1}>
+                          <img
+                            src={`${project.cover.url}?w=180&fit=format`}
+                            srcSet={`${project.cover.url}?w=180&fit=format&dpr=2 2x`}
+                            //alt={item.title}
+                            loading="lazy"
+                          />
+                        </Box>
                         <Box
                           mt={1.5}
                           //mb={"4vh"}

@@ -55,9 +55,10 @@ function Index({ summary, contact }) {
         canonical="https://hongfoundation.org.tw/"
         openGraph={{
           url: "https://hongfoundation.org.tw/",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
-          site_name: "Hong Foundation",
+          title: "Hong Foundation 洪建全基金會",
+          description:
+            "Hong Foundation 洪建全基金會 : 讓前衛創作的力量滲透到社會中，使「原創文化」成為社會和產業的養分與動力。",
+          site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
           handle: "@handle",
@@ -83,26 +84,45 @@ function Index({ summary, contact }) {
             position: "fixed",
           }}
         >
-          <Box
-            sx={{
-              width: { xs: "100vw", md: "50vw" },
-              height: { xs: "100vw", md: "50vw" },
-              position: "fixed",
-              top: { xs: "8vh", md: "0px" },
-              right: { xs: "0px", md: "50px" },
-              zIndex: 0,
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                scale: 0.8,
+                opacity: 0,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                  delay: 0.5,
+                },
+              },
             }}
           >
-            <Image
-              layout="responsive"
-              src="/IMGs/frontPage_bg.png"
-              alt="front page background image"
-              objectFit="cover"
-              objectPosition="center"
-              width={500}
-              height={500}
-            />
-          </Box>
+            <Box
+              sx={{
+                width: { xs: "100vw", md: "50vw" },
+                height: { xs: "100vw", md: "50vw" },
+                position: "fixed",
+                top: { xs: "8vh", md: "0px" },
+                right: { xs: "0px", md: "50px" },
+                zIndex: 0,
+              }}
+            >
+              <Image
+                layout="responsive"
+                src="/IMGs/frontPage_bg.png"
+                alt="front page background image"
+                objectFit="cover"
+                objectPosition="center"
+                width={500}
+                height={500}
+              />
+            </Box>
+          </motion.div>
           {/* gradient black bg */}
           <Box
             sx={{
@@ -117,26 +137,45 @@ function Index({ summary, contact }) {
                 "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 1.0) 60%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%)",
             }}
           />
-          {/* /gradient black bg */}
 
-          <Link href="/main#events">
-            <Box
-              sx={{
-                position: "fixed",
-                left: "calc(50vw - 12px)",
-                bottom: 40,
-                zIndex: 99,
-                cursor: "pointer",
-              }}
-            >
-              <Image
-                src="/IMGs/clickDown_icon.png"
-                alt="go to main page"
-                width={24}
-                height={55}
-              />
-            </Box>
-          </Link>
+          {/* /gradient black bg */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                scale: 0.8,
+                opacity: 0,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 16,
+                  duration: 1.5,
+                },
+              },
+            }}
+          >
+            <Link href="/main#events">
+              <Box
+                sx={{
+                  position: "fixed",
+                  left: "calc(50vw - 12px)",
+                  bottom: 40,
+                  zIndex: 99,
+                  cursor: "pointer",
+                }}
+              >
+                <Image
+                  src="/IMGs/clickDown_icon.png"
+                  alt="go to main page"
+                  width={24}
+                  height={55}
+                />
+              </Box>
+            </Link>
+          </motion.div>
 
           {/* logo ani */}
           <Box
@@ -154,9 +193,9 @@ function Index({ summary, contact }) {
               animate={{ scale: [1.2, 0.8, 0.8, 1] }}
               exit={{ scale: 1 }}
               transition={{
-                duration: 17.5,
+                duration: 16,
                 times: [0, 0.05, 0.96, 1],
-                delay: 0.3,
+                delay: 1.5,
               }}
             >
               <Box>
@@ -186,9 +225,9 @@ function Index({ summary, contact }) {
               animate={{ scale: [1.2, 0.8, 0.8, 1], y: [0, 0, 0, 100] }}
               exit={{ scale: 1, y: 0 }}
               transition={{
-                duration: 17.5,
+                duration: 16,
                 times: [0, 0.05, 0.96, 1],
-                delay: 0.3,
+                delay: 1.5,
               }}
             >
               <Box>
@@ -213,31 +252,43 @@ function Index({ summary, contact }) {
           >
             <motion.div
               initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "-100vw"] }}
+              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
               exit={{ x: "-100vw" }}
-              transition={{ duration: 8, times: [0, 0.8, 1], delay: 0.3 }}
+              transition={{ duration: 7, delay: 1 }}
             >
               <Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p1[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p1[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p1[1]}
                   </Box>
-                  <Box component="span">{p1[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p1[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p2[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p2[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p2[1]}
                   </Box>
-                  <Box component="span">{p2[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p2[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p3[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p3[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p3[1]}
                   </Box>
-                  <Box component="span">{p3[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p3[2]}
+                  </Box>
                 </Box>
               </Box>
             </motion.div>
@@ -253,24 +304,32 @@ function Index({ summary, contact }) {
           >
             <motion.div
               initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "-100vw"] }}
+              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
               exit={{ x: "-100vw" }}
-              transition={{ duration: 8, times: [0, 0.8, 1], delay: 5 }}
+              transition={{ duration: 7, delay: 6 }}
             >
               <Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p4[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p4[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p4[1]}
                   </Box>
-                  <Box component="span">{p4[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p4[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p5[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p5[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p5[1]}
                   </Box>
-                  <Box component="span">{p5[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p5[2]}
+                  </Box>
                 </Box>
               </Box>
             </motion.div>
@@ -286,38 +345,54 @@ function Index({ summary, contact }) {
           >
             <motion.div
               initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "-100vw"] }}
+              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
               exit={{ x: "-100vw" }}
-              transition={{ duration: 8, times: [0, 0.8, 1], delay: 10 }}
+              transition={{ duration: 7, delay: 11 }}
             >
               <Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p6[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p6[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p6[1]}
                   </Box>
-                  <Box component="span">{p6[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p6[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p7[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p7[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p7[1]}
                   </Box>
-                  <Box component="span">{p7[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p7[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p8[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p8[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p8[1]}
                   </Box>
-                  <Box component="span">{p8[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p8[2]}
+                  </Box>
                 </Box>
                 <Box sx={{ color: "#fff" }}>
-                  <Box component="span">{p9[0]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p9[0]}
+                  </Box>
                   <Box component="span" className="textAniNumber">
                     {p9[1]}
                   </Box>
-                  <Box component="span">{p9[2]}</Box>
+                  <Box component="span" className="textAniText">
+                    {p9[2]}
+                  </Box>
                 </Box>
               </Box>
             </motion.div>

@@ -220,9 +220,10 @@ function Publication({ books: dataset, bookCat, archiveImg, contact }) {
         canonical="https://hongfoundation.org.tw/publication"
         openGraph={{
           url: "https://hongfoundation.org.tw/",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
-          site_name: "Hong Foundation",
+          title: "Hong Foundation 洪建全基金會",
+          description:
+            "洪建全基金會自 1972 年成立書評書目出版社至今，包括《書評書目》雜誌、兒童文學創作獎得獎作品的出版或專為孩童策畫出版的本土童書系列等，與 PHP 研究所合作出版的 PHP 叢書，以及各類自製策畫出版的本土作家如陳怡安、傅佩榮、林清玄等人的作品，一共出版將近八百本刊物，除了內容豐富多樣，亦曾獲得各式獎項。如 1977 年，兒童文學創作獎作品榮獲金鼎獎優良圖書類獎項；1979 年，《書評書目》 榮獲金鼎獎雜誌類獎項；1985 年，榮獲金鼎獎頒贈「獎助出版事業及出版有功」； 2007 年，榮獲金鼎三十給予「老字號金招牌」資優出版事業特別獎。 除了書籍之外，洪建全基金會也接連發行膾炙人口的音樂唱片。1975年，楊弦的《中國現代民歌集》是台灣發行的第一張現代民歌唱片， 《民族樂手─陳達和他的歌》於1977年榮獲首屆金鼎獎「唱片類」獎項。",
+          site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
           handle: "@handle",

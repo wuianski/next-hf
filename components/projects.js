@@ -86,14 +86,33 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               dataset0.map((project) => (
                 <Box key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box mb={2}>
-                      <Image
-                        src="/IMGs/ps_logo.png"
-                        alt="download icon"
-                        width={240}
-                        height={96}
-                      />
-                    </Box>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {
+                          scale: 0.8,
+                          opacity: 0,
+                        },
+                        visible: {
+                          scale: 1,
+                          opacity: 1,
+                          transition: {
+                            delay: 0.4,
+                          },
+                        },
+                      }}
+                      exit="hidden"
+                    >
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/ps_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
+                    </motion.div>
 
                     <Collapse
                       in={open[project.id]}
@@ -175,14 +194,33 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               dataset1.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box mb={2}>
-                      <Image
-                        src="/IMGs/ml_logo.png"
-                        alt="download icon"
-                        width={240}
-                        height={96}
-                      />
-                    </Box>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {
+                          scale: 0.8,
+                          opacity: 0,
+                        },
+                        visible: {
+                          scale: 1,
+                          opacity: 1,
+                          transition: {
+                            delay: 0.4,
+                          },
+                        },
+                      }}
+                      exit="hidden"
+                    >
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/ml_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
+                    </motion.div>
 
                     <Collapse
                       in={open[project.id]}
@@ -273,14 +311,33 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               dataset2.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box mb={2}>
-                      <Image
-                        src="/IMGs/php_logo.png"
-                        alt="download icon"
-                        width={240}
-                        height={96}
-                      />
-                    </Box>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {
+                          scale: 0.8,
+                          opacity: 0,
+                        },
+                        visible: {
+                          scale: 1,
+                          opacity: 1,
+                          transition: {
+                            delay: 0.4,
+                          },
+                        },
+                      }}
+                      exit="hidden"
+                    >
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/php_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
+                    </motion.div>
 
                     <Collapse
                       in={open[project.id]}
@@ -356,19 +413,37 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
               ))}
           </Box>
 
-          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "20vw" } }}>
             {dataset3 &&
               dataset3.map((project) => (
                 <div key={project.id}>
                   <Box onClick={handleClick(project.id, true)}>
-                    <Box mb={2}>
-                      <Image
-                        src="/IMGs/g_logo.png"
-                        alt="download icon"
-                        width={240}
-                        height={24}
-                      />
-                    </Box>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: {
+                          scale: 0.8,
+                          opacity: 0,
+                        },
+                        visible: {
+                          scale: 1,
+                          opacity: 1,
+                          transition: {
+                            delay: 0.4,
+                          },
+                        },
+                      }}
+                    >
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/g_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={24}
+                        />
+                      </Box>
+                    </motion.div>
 
                     <Collapse
                       in={open[project.id]}

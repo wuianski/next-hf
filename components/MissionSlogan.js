@@ -44,11 +44,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
               <Box sx={{ whiteSpace: { xs: "unset", md: "pre-line" } }}>
                 {dataset.slogan_tw}
               </Box>
-              <Box
-                sx={{
-                  whiteSpace: { xs: "unset", md: "pre-line" },
-                }}
-              >
+              <Box sx={{ whiteSpace: { xs: "unset", md: "pre-line" } }} mt={2}>
                 {dataset.slogan_en}
               </Box>
             </Box>

@@ -38,6 +38,7 @@
   color:#fff;
 }
 .menuTitle{
+  font-family: 'Noto Sans TC', Helvetica Neue, sans-serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 48px;
@@ -46,7 +47,7 @@
   width: 130px;
 }
 .menuTitleEn{
-  font-family: Helvetica Neue;
+  font-family: Helvetica Neue, sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 25px;

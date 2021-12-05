@@ -109,9 +109,9 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
         canonical="https://hongfoundation.org.tw/publication"
         openGraph={{
           url: "https://hongfoundation.org.tw/",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
-          site_name: "Hong Foundation",
+          title: "Hong Foundation 洪建全基金會",
+          description: "洪建全基金會的新發表出版 。",
+          site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
           handle: "@handle",

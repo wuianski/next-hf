@@ -42,10 +42,10 @@ function Event({ event, contact }) {
         description={`Hong Foundation 洪建全基金會： ` + event.title_tw}
         canonical={`https://hongfoundation.org.tw/events/` + event.id}
         openGraph={{
-          url: "https://hongfoundation.org.tw/main#events",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
-          site_name: "Hong Foundation",
+          url: "https://hongfoundation.org.tw/",
+          title: "Hong Foundation 洪建全基金會",
+          description: "Hong Foundation 洪建全基金會",
+          site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
           handle: "@handle",

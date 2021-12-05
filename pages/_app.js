@@ -32,7 +32,7 @@ export default function MyApp({ Component, pageProps, router }) {
           type: "website",
           locale: "zh_TW",
           url: "https://hongfoundation.org.tw/",
-          site_name: "Hong Foundation",
+          site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
           handle: "@handle",

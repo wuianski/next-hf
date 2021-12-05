@@ -54,7 +54,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
               <Box
                 sx={{
                   whiteSpace: "pre-line",
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: 700,
                 }}
               >
@@ -68,14 +68,14 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                 <Box
                   sx={{
                     columnCount: { md: "1", md: "2" },
-                    columnGap: "25px",
+                    columnGap: "5px",
                     //textAlign: "justify",
                     //textJustify: "distribute",
                     //in order to make element can scroll normally, give element a specific height.
                     width: { xs: "70vw", md: "60vw" },
-                    height: { xs: "30vh", md: "418px" },
+                    height: { xs: "30vh", md: "348px" },
                     //overflow: "scroll",
-                    paddingRight: { xs: "3px", md: "60px" },
+                    paddingRight: { xs: "3px", md: "90px" },
                   }}
                   //in order to make element can scroll normally, give a className and use it in fullPage options
                   className="scrollEle"
@@ -86,13 +86,14 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                         key={boardMember.id}
                         mb={{ xs: 3, md: 2 }}
                         sx={{
-                          height: { xs: "auto", md: "120px" },
+                          height: { xs: "auto", md: "100px" },
+                          width: { xs: "auto", md: "300px" },
                           //maxHeight: { xs: "80px", md: "120px" },
                         }}
                       >
                         <Box
-                          mb={{ xs: 1, md: 1.5 }}
-                          sx={{ fontSize: { xs: 20, xl: 20 } }}
+                          mb={{ xs: 1, md: 1 }}
+                          sx={{ fontSize: { xs: 18, xl: 18 } }}
                         >
                           <Box component="span" sx={{ fontWeight: 700 }}>
                             {boardMember.name_tw}
@@ -104,7 +105,7 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                         <Box
                           sx={{
                             whiteSpace: { xs: "pre-line", md: "pre-line" },
-                            fontSize: { xs: 15, xl: 15 },
+                            fontSize: { xs: 14, xl: 14 },
                           }}
                         >
                           {boardMember.selected_title}

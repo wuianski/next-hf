@@ -145,7 +145,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 30 600 400">
+          <svg viewBox="0 60 600 400">
             <defs>
               <linearGradient
                 id="myGradient1_bar1"
@@ -450,7 +450,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
       //const dataset = this.transformData(myDataset);
       return (
         <div>
-          <svg viewBox="0 30 600 400">
+          <svg viewBox="0 60 600 400">
             <defs>
               <linearGradient
                 id="myGradient1_bar2"
@@ -653,10 +653,10 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 0 }} mr={{ xs: 2, md: 12 }} mt={10}>
+      <Box ml={{ xs: 8, md: 3 }} mr={{ xs: 2, md: 10 }} mt={13}>
         {/** vvv desktop **/}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <Box sx={{ width: "60vw" }} ml={1} mr={1}>
+          <Box sx={{ width: "55vw" }} ml={1} mr={1}>
             {/* vvv color demo */}
             <Stack direction="row" sx={{ justifyContent: "center" }}>
               <Item>
@@ -773,9 +773,9 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
           <Stack direction="row" spacing={0}>
             <Item>
-              <Box sx={{ height: "40vh", width: "60vw" }}>
+              <Box sx={{ height: "30vh", width: "55vw" }}>
                 {/* vvv pie */}
-                <svg viewBox="-100 30 550 600">
+                <svg viewBox="-110 30 550 550">
                   <defs>
                     <linearGradient
                       id="myGradient1"
@@ -858,14 +858,14 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
                   />
                   <VictoryLabel
                     textAnchor="middle"
-                    style={{ fontSize: 30, fontWeight: 600 }}
+                    style={{ fontSize: 26, fontWeight: 600 }}
                     x={200}
                     y={190}
                     text="1971~2020"
                   />
                   <VictoryLabel
                     textAnchor="middle"
-                    style={{ fontSize: 15, fontWeight: 500 }}
+                    style={{ fontSize: 14, fontWeight: 500 }}
                     x={200}
                     y={220}
                     text="贊助概覽"

@@ -212,7 +212,7 @@ export default function NavInMain({ contact }) {
   }
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
+    //...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -335,29 +335,52 @@ export default function NavInMain({ contact }) {
                   }}
                 >
                   <Box pb={3}>
-                    <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
+                    <Box
+                      pb={1}
+                      sx={{
+                        fontSize: { xs: 12, md: 12, xl: 15 },
+                        textTransform: "uppercase",
+                      }}
+                    >
                       地址 Address
                     </Box>
-                    <Box sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}>
+                    <Box
+                      sx={{
+                        fontSize: { xs: 16, md: 16, xl: 19 },
+                        fontWeight: 200,
+                      }}
+                    >
                       {contact.address_tw}
                     </Box>
                     <Box
                       sx={{
                         fontSize: { xs: 16, md: 16, xl: 19 },
+                        fontWeight: 200,
                         whiteSpace: "pre-line",
+                        textTransform: "uppercase",
+                        lineHeight: "137%",
                       }}
                     >
                       {contact.address_en}
                     </Box>
                   </Box>
                   <Box pb={3}>
-                    <Box pb={1} sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}>
+                    <Box
+                      pb={1}
+                      sx={{
+                        fontSize: { xs: 12, md: 12, xl: 15 },
+                        textTransform: "uppercase",
+                      }}
+                    >
                       上班時間 Opening Hours
                     </Box>
                     <Box
                       sx={{
                         fontSize: { xs: 16, md: 16, xl: 19 },
+                        fontWeight: 200,
                         whiteSpace: "pre-line",
+                        textTransform: "uppercase",
+                        lineHeight: "137%",
                       }}
                     >
                       {contact.opening_time}
@@ -366,14 +389,17 @@ export default function NavInMain({ contact }) {
                   <Box pb={3}>
                     <Box
                       pb={1}
-                      sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
+                      sx={{ fontSize: { xs: 12, md: 12, xl: 15 } }}
                       component="span"
                     >
                       電話 TEL
                     </Box>
                     <Box
                       pl={2}
-                      sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
+                      sx={{
+                        fontSize: { xs: 16, md: 16, xl: 19 },
+                        fontWeight: 200,
+                      }}
                       component="span"
                     >
                       {contact.phone}
@@ -382,20 +408,28 @@ export default function NavInMain({ contact }) {
                   <Box pb={3}>
                     <Box
                       pb={1}
-                      sx={{ fontSize: { xs: 13, md: 13, xl: 16 } }}
+                      sx={{ fontSize: { xs: 12, md: 12, xl: 15 } }}
                       component="span"
                     >
                       傳真 FAX
                     </Box>
                     <Box
                       pl={2}
-                      sx={{ fontSize: { xs: 16, md: 16, xl: 19 } }}
+                      sx={{
+                        fontSize: { xs: 16, md: 16, xl: 19 },
+                        fontWeight: 200,
+                      }}
                       component="span"
                     >
                       {contact.fax}
                     </Box>
                   </Box>
-                  <Box sx={{ fontSize: { xs: 10, md: 10, xl: 13 } }}>
+                  <Box
+                    sx={{
+                      fontSize: { xs: 10, md: 10, xl: 13 },
+                      textTransform: "uppercase",
+                    }}
+                  >
                     2021©財團法人洪建全教育文化基金會 All Rights Reserved.
                   </Box>
                 </Box>

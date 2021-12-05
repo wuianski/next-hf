@@ -132,16 +132,10 @@ class App extends React.Component {
           canonical="https://hongfoundation.org.tw/main"
           openGraph={{
             url: "https://hongfoundation.org.tw/",
-            title: "Open Graph Title",
-            description: "Open Graph Description",
-            /*images: [
-            {
-              url: "/IMGs/frontPage_bg.png",
-              alt: "Og Image Alt",
-              type: "image/jpeg",
-            },
-          ],*/
-            site_name: "Hong Foundation",
+            title: "Hong Foundation 洪建全基金會",
+            description:
+              "Hong Foundation 洪建全基金會 : 讓前衛創作的力量滲透到社會中，使「原創文化」成為社會和產業的養分與動力。",
+            site_name: "Hong Foundation 洪建全基金會",
           }}
           twitter={{
             handle: "@handle",

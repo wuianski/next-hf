@@ -73,7 +73,7 @@ const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 13,
     //verticalAlign: "top",
-    //paddingTop: 0,
+    paddingBottom: 0,
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
@@ -81,6 +81,7 @@ const StyledTableCell = styled(TableCell)(() => ({
   },
 }));
 const StyledTableRow = styled(TableRow)(() => ({
+  height: "83px",
   "&:nth-of-type(odd)": {
     background:
       "linear-gradient(270deg, rgba(176, 147, 54, 0) 1%, rgba(176, 147, 54, 0.8) 99%)",
@@ -183,9 +184,9 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                   : sorted
                 ).map((news) => (
                   <StyledTableRow key={news.id}>
-                    <StyledTableCell style={{ width: "30vw" }} align="left">
+                    <StyledTableCell style={{ width: "20vw" }} align="left">
                       <Box
-                        ml={13}
+                        ml={10.5}
                         sx={{
                           fontSize: { md: 15, xl: 18 },
                           fontWeight: 600,
@@ -201,7 +202,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                         </Box>
                       </Box>
                     </StyledTableCell>
-                    <StyledTableCell style={{ width: "50vw" }} align="left">
+                    <StyledTableCell style={{ width: "55vw" }} align="left">
                       <Box
                         sx={{
                           fontSize: { md: 14, xl: 17 },
@@ -297,7 +298,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
         ml={{ xs: 8, md: 33 }}
         mr={{ xs: 2, md: 13 }}
         sx={{
-          marginTop: { xs: "2vh", md: "3vh", xl: "8vh" },
+          marginTop: { xs: "2vh", md: "1vh", xl: "8vh" },
           height: { xs: "20vh", md: "10vh" },
         }}
       >

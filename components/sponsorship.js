@@ -26,7 +26,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
+    //...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -653,7 +653,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 3 }} mr={{ xs: 2, md: 10 }} mt={13}>
+      <Box ml={{ xs: 8, md: 3 }} mr={{ xs: 2, md: 4 }} mt={13}>
         {/** vvv desktop **/}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <Box sx={{ width: "55vw" }} ml={1} mr={1}>
@@ -1290,7 +1290,7 @@ const Sponsorship = ({ sponsorship: datasetS, fullpageApi }) => {
             <Link href="/reports">
               <Stack
                 direction="row"
-                spacing={0}
+                spacing={1}
                 sx={{
                   width: "auto",
                   position: "relative",

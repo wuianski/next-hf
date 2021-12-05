@@ -250,7 +250,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} mt={2} ml={8} pb={6}>
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={2} ml={9} pb={6}>
         <Slider {...settingsMobile}>
           {sorted &&
             sorted.map((news) => (
@@ -295,7 +295,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       {/* /mobile */}
 
       <Box
-        ml={{ xs: 8, md: 33 }}
+        ml={{ xs: 9, md: 33 }}
         mr={{ xs: 2, md: 13 }}
         sx={{
           marginTop: { xs: "2vh", md: "1vh", xl: "8vh" },

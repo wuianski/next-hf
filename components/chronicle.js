@@ -58,7 +58,7 @@ const Chronicle = ({ chronicle: dataset }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 23 }} mr={{ xs: 2, md: 6 }} pt={{ xs: 10, md: 13 }}>
+      <Box ml={{ xs: 8, md: 23 }} mr={{ xs: 2, md: 4 }} pt={{ xs: 10, md: 13 }}>
         <OverlayScrollbarsComponent
           options={{ className: "os-theme-block-dark-timeline" }}
         >

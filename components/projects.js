@@ -23,7 +23,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
 
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
+    //...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -66,9 +66,10 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
   return (
     <>
       {/** vvv desktop collapse mode **/}
+
       <Box
         ml={{ xs: 13, md: 33 }}
-        mr={{ xs: 2, md: 13 }}
+        mr={{ xs: 2, md: 13, xl: 33 }}
         mt={{ xs: 5, md: 6 }}
         sx={{ display: { xs: "none", md: "block" } }}
       >
@@ -85,25 +86,26 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
             {dataset0 &&
               dataset0.map((project) => (
                 <Box key={project.id}>
-                  <Box onClick={handleClick(project.id, true)}>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 0.8,
-                          opacity: 0,
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
                         },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 0.4,
-                          },
-                        },
-                      }}
-                      exit="hidden"
-                    >
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
                       <Box mb={2} sx={{ cursor: "pointer" }}>
                         <Image
                           src="/IMGs/ps_logo.png"
@@ -112,79 +114,79 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           height={96}
                         />
                       </Box>
-                    </motion.div>
 
-                    <Collapse
-                      in={open[project.id]}
-                      style={{ transformOrigin: "0 0 0" }}
-                      {...(open[project.id]
-                        ? { easing: 200, timeout: 0 }
-                        : { easing: 500, timeout: 500 })}
-                    >
-                      <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <OverlayScrollbarsComponent
-                          options={{ className: "os-theme-block-dark" }}
-                        >
-                          <Box
-                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                            className="scrollEle"
-                            pr={3}
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { easing: 200, timeout: 0 }
+                          : { easing: 500, timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
                           >
                             <Box
-                              pb={1}
-                              sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
-                                textAlign: "justify",
-                                textJustify: "distribute",
-                              }}
+                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
                             >
-                              {project.content_tw}
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
                             </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
                             <Box
                               sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                               }}
                             >
-                              {project.content_en}
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
                             </Box>
-                          </Box>
-                        </OverlayScrollbarsComponent>
-                        <Box sx={{ mt: 2 }}>
-                          <Box
-                            sx={{
-                              height: 48,
-                              backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
-                            }}
-                          >
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <Image
-                                src="/IMGs/externalLink_icon.png"
-                                alt="deco"
-                                width={48}
-                                height={48}
-                              />
-                            </a>
                           </Box>
                         </Box>
-                      </Box>
-                    </Collapse>
+                      </Collapse>
 
-                    <Box
-                      sx={{
-                        height: 32,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    />
-                  </Box>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      />
+                    </Box>
+                  </motion.div>
                 </Box>
               ))}
           </Box>
@@ -192,26 +194,27 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
           <Box pl={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset1 &&
               dataset1.map((project) => (
-                <div key={project.id}>
-                  <Box onClick={handleClick(project.id, true)}>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 0.8,
-                          opacity: 0,
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
                         },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 0.4,
-                          },
-                        },
-                      }}
-                      exit="hidden"
-                    >
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
                       <Box mb={2} sx={{ cursor: "pointer" }}>
                         <Image
                           src="/IMGs/ml_logo.png"
@@ -220,79 +223,79 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           height={96}
                         />
                       </Box>
-                    </motion.div>
 
-                    <Collapse
-                      in={open[project.id]}
-                      style={{ transformOrigin: "0 0 0" }}
-                      {...(open[project.id]
-                        ? { easing: 200, timeout: 0 }
-                        : { easing: 500, timeout: 500 })}
-                    >
-                      <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <OverlayScrollbarsComponent
-                          options={{ className: "os-theme-block-dark" }}
-                        >
-                          <Box
-                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                            className="scrollEle"
-                            pr={3}
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { easing: 200, timeout: 0 }
+                          : { easing: 500, timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
                           >
                             <Box
-                              pb={1}
-                              sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
-                                textAlign: "justify",
-                                textJustify: "distribute",
-                              }}
+                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
                             >
-                              {project.content_tw}
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
                             </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
                             <Box
                               sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                               }}
                             >
-                              {project.content_en}
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
                             </Box>
-                          </Box>
-                        </OverlayScrollbarsComponent>
-                        <Box sx={{ mt: 2 }}>
-                          <Box
-                            sx={{
-                              height: 48,
-                              backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
-                            }}
-                          >
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <Image
-                                src="/IMGs/externalLink_icon.png"
-                                alt="deco"
-                                width={48}
-                                height={48}
-                              />
-                            </a>
                           </Box>
                         </Box>
-                      </Box>
-                    </Collapse>
-                    <Box
-                      sx={{
-                        height: 32,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    ></Box>
-                  </Box>
-                </div>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      ></Box>
+                    </Box>
+                  </motion.div>
+                </Box>
               ))}
           </Box>
         </Box>
@@ -309,26 +312,27 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
           <Box pr={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
             {dataset2 &&
               dataset2.map((project) => (
-                <div key={project.id}>
-                  <Box onClick={handleClick(project.id, true)}>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 0.8,
-                          opacity: 0,
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
                         },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 0.4,
-                          },
-                        },
-                      }}
-                      exit="hidden"
-                    >
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
                       <Box mb={2} sx={{ cursor: "pointer" }}>
                         <Image
                           src="/IMGs/php_logo.png"
@@ -337,104 +341,106 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           height={96}
                         />
                       </Box>
-                    </motion.div>
 
-                    <Collapse
-                      in={open[project.id]}
-                      style={{ transformOrigin: "0 0 0" }}
-                      {...(open[project.id]
-                        ? { easing: 200, timeout: 0 }
-                        : { easing: 500, timeout: 500 })}
-                    >
-                      <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <OverlayScrollbarsComponent
-                          options={{ className: "os-theme-block-dark" }}
-                        >
-                          <Box
-                            sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
-                            className="scrollEle"
-                            pr={3}
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { easing: 200, timeout: 0 }
+                          : { easing: 500, timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
                           >
                             <Box
-                              pb={1}
-                              sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
-                                textAlign: "justify",
-                                textJustify: "distribute",
-                              }}
+                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
                             >
-                              {project.content_tw}
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
                             </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
                             <Box
                               sx={{
-                                fontSize: { md: 14, xl: 17 },
-                                lineHeight: { md: 1.4, xl: 1.6 },
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
                               }}
                             >
-                              {project.content_en}
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
                             </Box>
-                          </Box>
-                        </OverlayScrollbarsComponent>
-                        <Box sx={{ mt: 2 }}>
-                          <Box
-                            sx={{
-                              height: 48,
-                              backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
-                            }}
-                          >
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <Image
-                                src="/IMGs/externalLink_icon.png"
-                                alt="deco"
-                                width={48}
-                                height={48}
-                              />
-                            </a>
                           </Box>
                         </Box>
-                      </Box>
-                    </Collapse>
-                    <Box
-                      sx={{
-                        height: 32,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    ></Box>
-                  </Box>
-                </div>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      ></Box>
+                    </Box>
+                  </motion.div>
+                </Box>
               ))}
           </Box>
 
           <Box pl={2.5} sx={{ width: { xs: "60vw", md: "20vw" } }}>
             {dataset3 &&
               dataset3.map((project) => (
-                <div key={project.id}>
-                  <Box onClick={handleClick(project.id, true)}>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={{
-                        hidden: {
-                          scale: 0.8,
-                          opacity: 0,
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
                         },
-                        visible: {
-                          scale: 1,
-                          opacity: 1,
-                          transition: {
-                            delay: 0.4,
-                          },
-                        },
-                      }}
-                    >
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
                       <Box mb={2} sx={{ cursor: "pointer" }}>
                         <Image
                           src="/IMGs/g_logo.png"
@@ -443,76 +449,77 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                           height={24}
                         />
                       </Box>
-                    </motion.div>
 
-                    <Collapse
-                      in={open[project.id]}
-                      style={{ transformOrigin: "0 0 0" }}
-                      {...(open[project.id]
-                        ? { easing: 200, timeout: 0 }
-                        : { easing: 500, timeout: 500 })}
-                    >
-                      <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
-                        <Box
-                          pb={1}
-                          sx={{
-                            fontSize: { md: 14, xl: 17 },
-                            lineHeight: { md: 1.4, xl: 1.6 },
-                            textAlign: "justify",
-                            textJustify: "distribute",
-                          }}
-                        >
-                          {project.content_tw}
-                        </Box>
-                        <Box
-                          sx={{
-                            fontSize: { md: 14, xl: 17 },
-                            lineHeight: { md: 1.4, xl: 1.6 },
-                          }}
-                        >
-                          {project.content_en}
-                        </Box>
-                        <Box sx={{ mt: 2 }}>
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { easing: 200, timeout: 0 }
+                          : { easing: 500, timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                           <Box
+                            pb={1}
                             sx={{
-                              height: 48,
-                              backgroundImage:
-                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              fontSize: { md: 14, xl: 17 },
+                              lineHeight: { md: 1.4, xl: 1.6 },
+                              textAlign: "justify",
+                              textJustify: "distribute",
                             }}
                           >
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noreferrer"
-                              style={{ cursor: "pointer" }}
+                            {project.content_tw}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontSize: { md: 14, xl: 17 },
+                              lineHeight: { md: 1.4, xl: 1.6 },
+                            }}
+                          >
+                            {project.content_en}
+                          </Box>
+                          <Box sx={{ mt: 2 }}>
+                            <Box
+                              sx={{
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              }}
                             >
-                              <Image
-                                src="/IMGs/externalLink_icon.png"
-                                alt="deco"
-                                width={48}
-                                height={48}
-                              />
-                            </a>
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
+                            </Box>
                           </Box>
                         </Box>
-                      </Box>
-                    </Collapse>
-                    <Box
-                      sx={{
-                        height: 32,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    ></Box>
-                  </Box>
-                </div>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      />
+                    </Box>
+                  </motion.div>
+                </Box>
               ))}
           </Box>
         </Box>
       </Box>
+
       {/** vvv mobile drawer mode **/}
       <Box
-        ml={{ xs: 10 }}
+        ml={{ xs: 9 }}
         mr={{ xs: 2 }}
         mt={{ xs: 5 }}
         sx={{ display: { xs: "block", md: "none" } }}

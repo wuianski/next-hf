@@ -13,7 +13,7 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
+    //...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -35,19 +35,24 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
 
   return (
     <>
-      <Box ml={{ xs: 8, md: 30 }} mr={{ xs: 2, md: 10 }} mt={{ xs: 8, md: 13 }}>
+      <Box
+        ml={{ xs: 7, md: 21, xl: 32 }}
+        mr={{ xs: 2, md: 2 }}
+        mt={{ xs: 8, md: 13 }}
+      >
         <Stack>
           <Item>
             <Stack
               direction={{ xs: "column", md: "row" }}
               spacing={{ xs: 3, md: 3 }}
             >
-              <Item sx={{ width: { xs: "100%", md: "15vw" } }}>
+              <Item sx={{ width: { xs: "100%", md: "18vw", xl: "20vw" } }}>
                 <Box
                   sx={{
                     fontSize: { xs: 20, md: 30, xl: 33 },
                     fontWeight: { xs: 700, md: 400, xl: 400 },
                   }}
+                  mt={-1}
                 >
                   關於出版
                 </Box>
@@ -63,7 +68,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                     sx={{
                       width: { xs: "100%", md: "100%" },
                       /* height of scroll area on mobile */
-                      height: { xs: "30vh", md: "38vh" },
+                      height: { xs: "29vh", md: "35vh", xl: "38vh" },
                       //overflow: "scroll",
                     }}
                     //className="scrollEle"
@@ -94,13 +99,16 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                 direction={{ xs: "column", md: "row" }}
                 sx={{
                   display: { xs: "flex", md: "flex" },
-                  alignItems: { xs: "flex-start", md: "flex-end" },
+                  alignItems: {
+                    xs: "flex-start",
+                    md: "flex-end",
+                  },
                   /* set up the distance between two Box */
                   height: { md: "25vh", xl: "25vh" },
                   minHeight: 200,
                 }}
               >
-                <Item sx={{ width: { xs: "0vw", md: "15vw" } }}>
+                <Item sx={{ width: { xs: "0vw", md: "15vw", xl: "20vw" } }}>
                   <Box sx={{ marginLeft: { xs: -1, md: -1, xl: -1 } }}>
                     <Stack
                       direction="row"
@@ -116,8 +124,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "13px", md: "28px" },
-                            height: { xs: "60px", md: "130px" },
+                            width: { xs: "13px", md: "28px", xl: "39px" },
+                            height: { xs: "60px", md: "130px", xl: "180px" },
                             //width: 43,
                             //height: 199,
                             background:
@@ -128,8 +136,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "16px", md: "35px" },
-                            height: { xs: "68px", md: "148px" },
+                            width: { xs: "16px", md: "35px", xl: "48px" },
+                            height: { xs: "68px", md: "148px", xl: "204px" },
                             //width: 54,
                             //height: 228,
                             background:
@@ -140,8 +148,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "18px", md: "39px" },
-                            height: { xs: "68px", md: "148px" },
+                            width: { xs: "18px", md: "39px", xl: "54px" },
+                            height: { xs: "68px", md: "148px", xl: "204px" },
                             //width: 60,
                             //height: 228,
                             background:
@@ -152,8 +160,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "12px", md: "25px" },
-                            height: { xs: "48px", md: "105px" },
+                            width: { xs: "12px", md: "25px", xl: "36px" },
+                            height: { xs: "48px", md: "105px", xl: "144px" },
                             //width: 39,
                             //height: 161,
                             background:
@@ -172,10 +180,11 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                           >
                             <Box
                               sx={{
-                                width: { xs: "15px", md: "34px" },
+                                width: { xs: "15px", md: "34px", xl: "45px" },
                                 height: {
                                   xs: "46px",
                                   md: "100px",
+                                  xl: "138px",
                                 },
                                 //width: 52,
                                 //height: 154,
@@ -190,8 +199,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "13px", md: "28px" },
-                            height: { xs: "55px", md: "118px" },
+                            width: { xs: "13px", md: "28px", xl: "39px" },
+                            height: { xs: "55px", md: "118px", xl: "165px" },
                             //width: 44,
                             //height: 182,
                             background:
@@ -202,8 +211,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       <Item>
                         <Box
                           sx={{
-                            width: { xs: "10.5px", md: "23px" },
-                            height: { xs: "26px", md: "121px" },
+                            width: { xs: "10.5px", md: "23px", xl: "31.5px" },
+                            height: { xs: "26px", md: "121px", xl: "78px" },
                             //width: 35,
                             //height: 187,
                             background:
@@ -214,7 +223,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                     </Stack>
                   </Box>
                 </Item>
-                <Item sx={{ width: { xs: "100vw", md: "65vw" } }}>
+                <Item sx={{ width: { xs: "100vw", md: "65vw", lg: "80vw" } }}>
                   <Box mt={{ xs: -2, md: 0 }}>
                     <Stack
                       direction={{ xs: "column", md: "row" }}

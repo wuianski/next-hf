@@ -40,8 +40,8 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
   return (
     <>
       <Box
-        ml={{ xs: 8, md: 22 }}
-        mr={{ xs: 2, md: 13 }}
+        ml={{ xs: 8, md: 22, xl: 33 }}
+        mr={{ xs: 2, md: 4 }}
         mt={{ xs: 2, md: 13 }}
         mb={1}
       >
@@ -61,7 +61,11 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                 {leadership_doc.years_of_board_members}
               </Box>
             </Item>
-            <Item sx={{ width: { xs: "80vw", md: "50vw" } }}>
+            <Item
+              sx={{
+                width: { xs: "80vw", md: "80vw", xl: "80vw" },
+              }}
+            >
               <OverlayScrollbarsComponent
                 options={{ className: "os-theme-block-dark-timeline" }}
               >
@@ -72,13 +76,14 @@ const Leadership = ({ leadership: dataset, fullpageApi, leadership_doc }) => {
                     //textAlign: "justify",
                     //textJustify: "distribute",
                     //in order to make element can scroll normally, give element a specific height.
-                    width: { xs: "70vw", md: "60vw" },
+                    width: { xs: "70vw", md: "65vw", xl: "50vw" },
                     height: { xs: "30vh", md: "348px" },
                     //overflow: "scroll",
-                    paddingRight: { xs: "3px", md: "90px" },
+                    //paddingRight: { xs: "3px", md: "120px" },
                   }}
                   //in order to make element can scroll normally, give a className and use it in fullPage options
                   className="scrollEle"
+                  mb={4}
                 >
                   {boardMembers &&
                     boardMembers.map((boardMember) => (

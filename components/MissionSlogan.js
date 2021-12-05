@@ -23,7 +23,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
 
   return (
     <div>
-      <Box ml={{ xs: 10, md: 23 }} mr={{ xs: 0, md: 8 }} mt={{ xs: 6, md: 13 }}>
+      <Box ml={{ xs: 10, md: 23 }} mr={{ xs: 0, md: 4 }} mt={{ xs: 6, md: 13 }}>
         {/* 1st row */}
 
         <Box
@@ -36,7 +36,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
             height: { xs: "30vh", md: "40vh" },
             textTransform: "uppercase",
           }}
-          mr={13}
+          mr={0}
           mb={{ xs: 12, md: 6 }}
         >
           {dataset && (
@@ -77,7 +77,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
                       /*sx={{
                         scale: { xs: "0.4", md: "0.75", xl: "1" },
                       }}*/
-                      ml={{ xs: -2, md: -2 }}
+                      ml={{ xs: -2, md: -2, xl: 10 }}
                     >
                       <Item>
                         <Box
@@ -105,7 +105,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
               )}
               {/*</AnimatePresence>*/}
             </Item>
-            <Item sx={{ width: { xs: "70vw", md: "50vw" } }}>
+            <Item sx={{ width: { xs: "70vw", md: "70vw" } }}>
               {/*<AnimatePresence initial={{ x: 60 }}>*/}
               {activeSecI && (
                 <motion.div

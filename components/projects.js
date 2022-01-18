@@ -119,15 +119,18 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                         in={open[project.id]}
                         style={{ transformOrigin: "0 0 0" }}
                         {...(open[project.id]
-                          ? { easing: 200, timeout: 0 }
-                          : { easing: 500, timeout: 500 })}
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
                       >
                         <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                           <OverlayScrollbarsComponent
                             options={{ className: "os-theme-block-dark" }}
                           >
                             <Box
-                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              sx={{
+                                height: "20vh",
+                                /*overflow: "scroll"*/
+                              }} //in order to make element can scroll normally, give a className and use it in fullPage options
                               className="scrollEle"
                               pr={3}
                             >
@@ -228,8 +231,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                         in={open[project.id]}
                         style={{ transformOrigin: "0 0 0" }}
                         {...(open[project.id]
-                          ? { easing: 200, timeout: 0 }
-                          : { easing: 500, timeout: 500 })}
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
                       >
                         <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                           <OverlayScrollbarsComponent
@@ -346,8 +349,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                         in={open[project.id]}
                         style={{ transformOrigin: "0 0 0" }}
                         {...(open[project.id]
-                          ? { easing: 200, timeout: 0 }
-                          : { easing: 500, timeout: 500 })}
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
                       >
                         <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                           <OverlayScrollbarsComponent
@@ -454,8 +457,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                         in={open[project.id]}
                         style={{ transformOrigin: "0 0 0" }}
                         {...(open[project.id]
-                          ? { easing: 200, timeout: 0 }
-                          : { easing: 500, timeout: 500 })}
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
                       >
                         <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
                           <Box
@@ -585,7 +588,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                       }}
                     />
                     */}
-                    <ImageList variant="masonry" cols={1} gap={"2.5vh"}>
+                    <ImageList variant="masonry" cols={1} gap={8}>
                       <ImageListItem key={project.cover.id}>
                         <Box ml={0.1}>
                           <img

@@ -183,8 +183,11 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                     )
                   : sorted
                 ).map((news) => (
+                  
                   <StyledTableRow key={news.id}>
+                    
                     <StyledTableCell style={{ width: "20vw" }} align="left">
+                    <a href={news.link} target="_blank">
                       <Box
                         ml={10.5}
                         sx={{
@@ -201,7 +204,9 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                             format(new Date(news.end_date), "yyyy.MM.dd")}
                         </Box>
                       </Box>
+                      </a>
                     </StyledTableCell>
+                    
                     <StyledTableCell style={{ width: "55vw" }} align="left">
                       <Box
                         sx={{
@@ -221,6 +226,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                       </Box>
                     </StyledTableCell>
                   </StyledTableRow>
+                  
                 ))}
 
                 {emptyRows > 0 && (

@@ -129,6 +129,7 @@ function Reports({ reports: dataset, contact }) {
     },
     [theme.breakpoints.up("md")]: {
       width: "25%",
+      padding: "16px",
     },
     [theme.breakpoints.down("md")]: {
       width: "100%",
@@ -159,11 +160,11 @@ function Reports({ reports: dataset, contact }) {
     color: "#B2B2B2",
     borderBottom: "1px solid black",
     [theme.breakpoints.up("md")]: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: 17,
     },
     [theme.breakpoints.down("md")]: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: 14,
     },
   }));
@@ -181,11 +182,11 @@ function Reports({ reports: dataset, contact }) {
     },
 
     [theme.breakpoints.up("md")]: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: 17,
     },
     [theme.breakpoints.down("md")]: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: 14,
     },
   }));
@@ -261,9 +262,10 @@ function Reports({ reports: dataset, contact }) {
         }}
       >
         <Box
-          ml={{ xs: 8, md: 28 }}
+          ml={{ xs: 8, sm: "20vw", md: "20vw" }}
           mr={{ xs: 2, md: 8 }}
-          mt={{ xs: 13, md: 20 }}
+          mt={{ xs: 15, sm: 22, md: 22 }}
+          mb={10}
         >
           <Box sx={{ width: { xs: "74vw", md: "74vw" } }}>
             <TabContext value={value}>
@@ -279,7 +281,7 @@ function Reports({ reports: dataset, contact }) {
                   <StyledTab label="工作報告" value="4" />
                 </TabList>
               </Box>
-              <TabPanel value="1" sx={{ padding: 0, marginTop: 3 }}>
+              <TabPanel value="1" sx={{ padding: 0, marginTop: 6 }}>
                 <StyledTableContainer
                   component={Paper}
                   //below control the height of table
@@ -362,7 +364,7 @@ function Reports({ reports: dataset, contact }) {
                   </Table>
                 </StyledTableContainer>
               </TabPanel>
-              <TabPanel value="2" sx={{ padding: 0, marginTop: 3 }}>
+              <TabPanel value="2" sx={{ padding: 0, marginTop: 6 }}>
                 <StyledTableContainer
                   component={Paper}
                   //below control the height of table
@@ -445,7 +447,7 @@ function Reports({ reports: dataset, contact }) {
                   </Table>
                 </StyledTableContainer>
               </TabPanel>
-              <TabPanel value="3" sx={{ padding: 0, marginTop: 3 }}>
+              <TabPanel value="3" sx={{ padding: 0, marginTop: 6 }}>
                 <StyledTableContainer
                   component={Paper}
                   //below control the height of table
@@ -528,7 +530,7 @@ function Reports({ reports: dataset, contact }) {
                   </Table>
                 </StyledTableContainer>
               </TabPanel>
-              <TabPanel value="4" sx={{ padding: 0, marginTop: 3 }}>
+              <TabPanel value="4" sx={{ padding: 0, marginTop: 6 }}>
                 <StyledTableContainer
                   component={Paper}
                   //below control the height of table
@@ -612,63 +614,6 @@ function Reports({ reports: dataset, contact }) {
                 </StyledTableContainer>
               </TabPanel>
             </TabContext>
-          </Box>
-          <Box
-            sx={{
-              //lineHeight: 1.3,
-              display: "flex",
-              justifyContent: "flex-end",
-              cursor: "pointer",
-              //width: { xs: "74vw", md: "74vw" },
-            }}
-          >
-            <Link href="/main#facts">
-              <Stack
-                direction="row"
-                spacing={0}
-                sx={{
-                  position: { xs: "relative", md: "relative" },
-                  marginBottom: { xs: "130px", md: "130px" },
-                  //bottom: { md: 38, xl: 38 },
-                  top: { xs: 60, md: 60 },
-                }}
-                height={"38px"}
-              >
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  sx={{ borderColor: "#000" }}
-                />
-                <Item>
-                  <Box
-                    pl={1}
-                    sx={{
-                      lineHeight: "38px",
-                      textTransform: "uppercase",
-                      fontSize: { md: 12, xl: 15 },
-                      fontWeight: 700,
-                    }}
-                  >
-                    返回 back
-                  </Box>
-                </Item>
-                <Item>
-                  <Box pr={1}>
-                    <Image
-                      src="/IMGs/back_icon.png"
-                      alt="back icon"
-                      width={38}
-                      height={38}
-                    />
-                  </Box>
-                </Item>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  sx={{ borderColor: "#000" }}
-                />
-              </Stack>
-            </Link>
           </Box>
         </Box>
       </motion.div>

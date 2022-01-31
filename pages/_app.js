@@ -26,7 +26,8 @@ export default function MyApp({ Component, pageProps, router }) {
   }, []);
 
   return getLayout(
-    <AnimatePresence exitBeforeEnter>
+    /*<AnimatePresence exitBeforeEnter>*/
+    <>
       <DefaultSeo
         openGraph={{
           type: "website",
@@ -41,6 +42,7 @@ export default function MyApp({ Component, pageProps, router }) {
         }}
       />
       <Component {...pageProps} key={router.route} />
-    </AnimatePresence>
+    </>
+    /*</AnimatePresence>*/
   );
 }

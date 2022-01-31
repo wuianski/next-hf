@@ -77,11 +77,11 @@ const StyledTableCell = styled(TableCell)(() => ({
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
-    borderBottom: "8px solid rgba(255, 255, 255, 1)",
+    borderBottom: "18px solid rgba(255, 255, 255, 1)",
   },
 }));
 const StyledTableRow = styled(TableRow)(() => ({
-  height: "83px",
+  height: "100px",
   "&:nth-of-type(odd)": {
     background:
       "linear-gradient(270deg, rgba(176, 147, 54, 0) 1%, rgba(176, 147, 54, 0.8) 99%)",
@@ -103,7 +103,7 @@ const settings = {
   centerMode: false,
   dots: true,
   //centerPadding: "500px",
-  slidesToShow: 1.5,
+  slidesToShow: 2,
   slidesToScroll: 1,
   speed: 700,
   swipeToSlide: true,
@@ -118,12 +118,14 @@ const settingsMobile = {
   centerMode: false,
   dots: true,
   //centerPadding: "500px",
-  slidesToShow: 1.3,
+  slidesToShow: 1.5,
   slidesToScroll: 1,
   speed: 700,
   swipeToSlide: true,
   //nextArrow: <SampleNextArrow />,
   //prevArrow: <SamplePrevArrow />,
+  adaptiveHeight: true,
+  //infinite: true,
 };
 
 /** stack Item setting **/
@@ -173,7 +175,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
           component={Paper}
           sx={{ border: "none", boxShadow: "none" }}
         >
-          <Box ml={33} mr={13} mt={10}>
+          <Box ml={33} mr={8} mt={18}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
               <TableBody>
                 {(rowsPerPage > 0
@@ -183,42 +185,37 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                     )
                   : sorted
                 ).map((news) => (
-                  
                   <StyledTableRow key={news.id}>
-                    
-                    <StyledTableCell style={{ width: "20vw" }} align="left">
-                    <a href={news.link} target="_blank">
-                      <Box
-                        ml={10.5}
-                        sx={{
-                          fontSize: { md: 15, xl: 18 },
-                          fontWeight: 600,
-                        }}
-                      >
-                        <Box component="span">
-                          {format(new Date(news.start_date), "yyyy.MM.dd")}
+                    <StyledTableCell style={{ width: "15%" }} align="left">
+                      <a href={news.link} target="_blank">
+                        <Box
+                          ml={1}
+                          sx={{
+                            fontSize: { md: 15, xl: 18 },
+                            fontWeight: 600,
+                          }}
+                        >
+                          <Box component="span">
+                            {format(new Date(news.start_date), "yyyy.MM.dd")}
+                          </Box>
+                          <Box component="span">{news.end_date && `-`}</Box>
+                          <Box>
+                            {news.end_date &&
+                              format(new Date(news.end_date), "yyyy.MM.dd")}
+                          </Box>
                         </Box>
-                        <Box component="span">{news.end_date && ` - `}</Box>
-                        <Box>
-                          {news.end_date &&
-                            format(new Date(news.end_date), "yyyy.MM.dd")}
-                        </Box>
-                      </Box>
                       </a>
                     </StyledTableCell>
-                    
-                    <StyledTableCell style={{ width: "55vw" }} align="left">
-                      <Box
-                        sx={{
-                          fontSize: { md: 14, xl: 17 },
-                          //marginTop: 0.5,
-                        }}
-                      >
-                        <ReactMarkdown>{news.title}</ReactMarkdown>
-                      </Box>
+
+                    <StyledTableCell style={{ width: "60%" }} align="left">
+                      <a href={news.link} target="_blank">
+                        <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
+                          <ReactMarkdown>{news.title}</ReactMarkdown>
+                        </Box>
+                      </a>
                     </StyledTableCell>
-                    <StyledTableCell style={{ width: "20vw" }} align="right">
-                      <Box sx={{ textAlign: "right" }}>
+                    <StyledTableCell style={{ width: "15%" }} align="left">
+                      <Box sx={{ textAlign: "left" }}>
                         {news.news_categories &&
                           news.news_categories.map((cat) => (
                             <Box key={cat.id}>{cat.name}</Box>
@@ -226,7 +223,6 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                       </Box>
                     </StyledTableCell>
                   </StyledTableRow>
-                  
                 ))}
 
                 {emptyRows > 0 && (
@@ -256,7 +252,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} mt={2} ml={9} pb={6}>
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={12} ml={9} pb={6}>
         <Slider {...settingsMobile}>
           {sorted &&
             sorted.map((news) => (
@@ -265,7 +261,10 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                 sx={{ width: "100vw" }}
                 //className={styles.slideBg}
               >
-                <Box className={styles.slideBg} sx={{ height: "33vh" }}>
+                <Box
+                  className={styles.slideBg}
+                  sx={{ height: "100%", padding: 1 }}
+                >
                   <Stack direction="column" spacing={1}>
                     <Item>
                       <Box sx={{ fontSize: 21, fontWeight: 700 }}>
@@ -302,11 +301,12 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
 
       <Box
         ml={{ xs: 9, md: 33 }}
-        mr={{ xs: 2, md: 13 }}
+        mr={{ xs: 2, md: 16 }}
         sx={{
-          marginTop: { xs: "2vh", md: "1vh", xl: "8vh" },
-          height: { xs: "20vh", md: "10vh" },
+          marginTop: { xs: "2vh", md: "5vh", xl: "8vh" },
+          height: { xs: "30vh", md: "20vh" },
         }}
+        mb={{ xs: 0, md: 0 }}
       >
         <Slider {...settings}>
           {dataset2 &&
@@ -316,10 +316,14 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                   sx={{
                     border: "1px solid #000",
                     padding: 1,
-                    minHeight: { xs: "140px", md: "68px" },
+                    minHeight: { xs: "30vh", md: "68px" },
                   }}
                 >
-                  <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
+                  <Stack
+                    direction={{ xs: "column", md: "column" }}
+                    spacing={2}
+                    mb={2}
+                  >
                     <Item>
                       <Box
                         sx={{

@@ -74,7 +74,7 @@ function Index({ summary, contact }) {
       </Link>*/}
       <ReactScrollWheelHandler
         //upHandler={(e) => console.log("scroll up")}
-        downHandler={() => router.push("/main#events")}
+        downHandler={() => router.push("/main#mission")}
       >
         <Box
           sx={{
@@ -96,8 +96,8 @@ function Index({ summary, contact }) {
                 scale: 1,
                 opacity: 1,
                 transition: {
-                  duration: 0.5,
-                  delay: 0.5,
+                  duration: 0,
+                  delay: 0,
                 },
               },
             }}
@@ -151,13 +151,13 @@ function Index({ summary, contact }) {
                 scale: 1,
                 opacity: 1,
                 transition: {
-                  delay: 16,
-                  duration: 1.5,
+                  delay: 0,
+                  duration: 0,
                 },
               },
             }}
           >
-            <Link href="/main#events">
+            <Link href="/main#mission">
               <Box
                 sx={{
                   position: "fixed",
@@ -189,13 +189,21 @@ function Index({ summary, contact }) {
             }}
           >
             <motion.div
-              initial={{ scale: 1.2 }}
-              animate={{ scale: [1.2, 0.8, 0.8, 1] }}
-              exit={{ scale: 1 }}
-              transition={{
-                duration: 16,
-                times: [0, 0.05, 0.96, 1],
-                delay: 1.5,
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  scale: 0.8,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    duration: 0.5,
+                    delay: 0.5,
+                  },
+                },
               }}
             >
               <Box>
@@ -221,13 +229,21 @@ function Index({ summary, contact }) {
             }}
           >
             <motion.div
-              initial={{ scale: 1.2, y: 0 }}
-              animate={{ scale: [1.2, 0.8, 0.8, 1], y: [0, 0, 0, 100] }}
-              exit={{ scale: 1, y: 0 }}
-              transition={{
-                duration: 16,
-                times: [0, 0.05, 0.96, 1],
-                delay: 1.5,
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  scale: 0.8,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    duration: 0.5,
+                    delay: 0.5,
+                  },
+                },
               }}
             >
               <Box>
@@ -241,162 +257,6 @@ function Index({ summary, contact }) {
             </motion.div>
           </Box>
           {/* /logo ani (mobile) */}
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: "18vh",
-              right: 0,
-              overflow: { xs: "hidden", md: "unset" },
-              width: { xs: "100vw", md: "50vw" },
-            }}
-          >
-            <motion.div
-              initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
-              exit={{ x: "-100vw" }}
-              transition={{ duration: 7, delay: 1 }}
-            >
-              <Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p1[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p1[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p1[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p2[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p2[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p2[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p3[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p3[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p3[2]}
-                  </Box>
-                </Box>
-              </Box>
-            </motion.div>
-          </Box>
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: "18vh",
-              right: 0,
-              overflow: { xs: "hidden", md: "unset" },
-              width: { xs: "100vw", md: "50vw" },
-            }}
-          >
-            <motion.div
-              initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
-              exit={{ x: "-100vw" }}
-              transition={{ duration: 7, delay: 6 }}
-            >
-              <Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p4[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p4[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p4[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p5[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p5[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p5[2]}
-                  </Box>
-                </Box>
-              </Box>
-            </motion.div>
-          </Box>
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: "18vh",
-              right: 0,
-              overflow: { xs: "hidden", md: "unset" },
-              width: { xs: "100vw", md: "50vw" },
-            }}
-          >
-            <motion.div
-              initial={{ x: "100vw" }}
-              animate={{ x: ["100vw", "10vw", "10vw", "10vw", "-100vw"] }}
-              exit={{ x: "-100vw" }}
-              transition={{ duration: 7, delay: 11 }}
-            >
-              <Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p6[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p6[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p6[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p7[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p7[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p7[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p8[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p8[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p8[2]}
-                  </Box>
-                </Box>
-                <Box sx={{ color: "#fff" }}>
-                  <Box component="span" className="textAniText">
-                    {p9[0]}
-                  </Box>
-                  <Box component="span" className="textAniNumber">
-                    {p9[1]}
-                  </Box>
-                  <Box component="span" className="textAniText">
-                    {p9[2]}
-                  </Box>
-                </Box>
-              </Box>
-            </motion.div>
-          </Box>
         </Box>
       </ReactScrollWheelHandler>
     </>

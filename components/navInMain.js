@@ -34,9 +34,6 @@ const subStyle = {
 };
 
 export default function NavInMain({ contact }) {
-  //console.log(fullpageApi);
-  //const sec2slide1 = fullpageApi.moveTo(2, 1);
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -45,174 +42,6 @@ export default function NavInMain({ contact }) {
     setOpen(false);
   };
 
-  function ChildModal() {
-    const [open2, setOpen2] = React.useState(false);
-    const handleOpen2 = () => {
-      setOpen2(true);
-    };
-    const handleClose2 = () => {
-      setOpen2(false);
-    };
-
-    return (
-      <React.Fragment>
-        <Box
-          onClick={handleOpen2}
-          className={styles.menuTitleList}
-          //sx={{ color: "#fff" }}
-        >
-          <Box component="span" className={styles.menuTitle}>
-            公開資訊
-          </Box>
-          <Box component="span" className={styles.menuTitleEn}>
-            Resource
-          </Box>
-        </Box>
-        <Modal
-          hideBackdrop
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="child-modal-title"
-          aria-describedby="child-modal-description"
-        >
-          <Slide direction="left" in={open2} mountOnEnter unmountOnExit>
-            <Box sx={{ ...subStyle }}>
-              <a
-                href="#facts"
-                onClick={() => {
-                  setOpen(false);
-                  setOpen2(false);
-                }}
-              >
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>公開資訊</span>
-                  <span className={styles.menuTitleEn}>FUN FACTS</span>
-                </div>
-              </a>
-              <Link href="/reports">
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>財務報表</span>
-                  <span className={styles.menuTitleEn}>
-                    Financial Statements
-                  </span>
-                </div>
-              </Link>
-              <Link href="/reports">
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>贊助明細</span>
-                  <span className={styles.menuTitleEn}>Sponsorship sheet</span>
-                </div>
-              </Link>
-              <Link href="/reports">
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>捐款明細</span>
-                  <span className={styles.menuTitleEn}>Donation sheet</span>
-                </div>
-              </Link>
-              <Link href="/reports">
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>工作報告</span>
-                  <span className={styles.menuTitleEn}>work report</span>
-                </div>
-              </Link>
-              <Box onClick={handleClose2} className={styles.menuBack}>
-                <Image
-                  src="/IMGs/menuBack.png"
-                  alt="icon of menu back"
-                  width={73}
-                  height={33}
-                />
-              </Box>
-            </Box>
-          </Slide>
-        </Modal>
-      </React.Fragment>
-    );
-  }
-
-  function ChildModal2() {
-    const [open2, setOpen2] = React.useState(false);
-    const handleOpen2 = () => {
-      setOpen2(true);
-    };
-    const handleClose2 = () => {
-      setOpen2(false);
-    };
-
-    return (
-      <React.Fragment>
-        <Box
-          onClick={handleOpen2}
-          className={styles.menuTitleList}
-          //sx={{ color: "#fff" }}
-        >
-          <Box component="span" className={styles.menuTitle}>
-            出版
-          </Box>
-          <Box component="span" className={styles.menuTitleEn}>
-            Publicaiton
-          </Box>
-        </Box>
-        <Modal
-          hideBackdrop
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="child-modal-title"
-          aria-describedby="child-modal-description"
-        >
-          <Slide direction="left" in={open2} mountOnEnter unmountOnExit>
-            <Box sx={{ ...subStyle }}>
-              <a
-                href="#publication"
-                //onClick={handleClose2}
-                onClick={() => {
-                  setOpen(false);
-                  setOpen2(false);
-                }}
-              >
-                <div className={styles.menuTitleList}>
-                  <span className={styles.menuTitle}>關於出版</span>
-                  <span className={styles.menuTitleEn}>ABOUT PUBLICATION</span>
-                </div>
-              </a>
-              <Link href="/publications_new" passHref>
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => {
-                    setOpen(false);
-                    setOpen2(false);
-                  }}
-                >
-                  <span className={styles.menuTitle}>新發表</span>
-                  <span className={styles.menuTitleEn}>New Release</span>
-                </div>
-              </Link>
-              <Link href="/publications" passHref>
-                <div
-                  className={styles.menuTitleList}
-                  onClick={() => {
-                    setOpen(false);
-                    setOpen2(false);
-                  }}
-                >
-                  <span className={styles.menuTitle}>出版</span>
-                  <span className={styles.menuTitleEn}>Publication</span>
-                </div>
-              </Link>
-              <Box onClick={handleClose2} className={styles.menuBack}>
-                <Image
-                  src="/IMGs/menuBack.png"
-                  alt="icon of menu back"
-                  width={73}
-                  height={33}
-                />
-              </Box>
-            </Box>
-          </Slide>
-        </Modal>
-      </React.Fragment>
-    );
-  }
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     //...theme.typography.body2,
@@ -255,18 +84,9 @@ export default function NavInMain({ contact }) {
               direction={{ xs: "column", md: "row" }}
               spacing={{ xs: 6, md: 1 }}
             >
+              {/* menu item */}
               <Item sx={{ width: { xs: "80vw", md: "calc(50% + 60px)" } }}>
                 <Box className={styles.menuTitleBlk}>
-                  <a href="#events" onClick={handleClose}>
-                    <Box className={styles.menuTitleList}>
-                      <Box component="span" className={styles.menuTitle}>
-                        活動
-                      </Box>
-                      <Box component="span" className={styles.menuTitleEn}>
-                        Events
-                      </Box>
-                    </Box>
-                  </a>
                   <a href="#mission" onClick={handleClose}>
                     <Box className={styles.menuTitleList}>
                       <Box component="span" className={styles.menuTitle}>
@@ -277,7 +97,8 @@ export default function NavInMain({ contact }) {
                       </Box>
                     </Box>
                   </a>
-                  <a href="#chronicle" onClick={handleClose}>
+
+                  <Link href="/timeline">
                     <Box className={styles.menuTitleList}>
                       <Box component="span" className={styles.menuTitle}>
                         大事記
@@ -286,7 +107,8 @@ export default function NavInMain({ contact }) {
                         Timeline
                       </Box>
                     </Box>
-                  </a>
+                  </Link>
+
                   <a href="#projects" onClick={handleClose}>
                     <Box className={styles.menuTitleList}>
                       <Box component="span" className={styles.menuTitle}>
@@ -297,16 +119,18 @@ export default function NavInMain({ contact }) {
                       </Box>
                     </Box>
                   </a>
-                  <a href="#leadership" onClick={handleClose}>
+
+                  <a href="#events" onClick={handleClose}>
                     <Box className={styles.menuTitleList}>
                       <Box component="span" className={styles.menuTitle}>
-                        組織
+                        活動
                       </Box>
                       <Box component="span" className={styles.menuTitleEn}>
-                        Leadership
+                        Events
                       </Box>
                     </Box>
                   </a>
+
                   <a href="#news" onClick={handleClose}>
                     <Box className={styles.menuTitleList}>
                       <Box component="span" className={styles.menuTitle}>
@@ -317,10 +141,31 @@ export default function NavInMain({ contact }) {
                       </Box>
                     </Box>
                   </a>
-                  <ChildModal />
-                  <ChildModal2 />
+
+                  <Link href="/resource">
+                    <Box className={styles.menuTitleList}>
+                      <Box component="span" className={styles.menuTitle}>
+                        公開資訊
+                      </Box>
+                      <Box component="span" className={styles.menuTitleEn}>
+                        Resource
+                      </Box>
+                    </Box>
+                  </Link>
+
+                  <a href="#publication" onClick={handleClose}>
+                    <Box className={styles.menuTitleList}>
+                      <Box component="span" className={styles.menuTitle}>
+                        出版
+                      </Box>
+                      <Box component="span" className={styles.menuTitleEn}>
+                        Publicaiton
+                      </Box>
+                    </Box>
+                  </a>
                 </Box>
               </Item>
+              {/* contact item */}
               <Item sx={{ width: { xs: "80vw", md: "38vw" } }}>
                 <Box>
                   <Box
@@ -342,100 +187,46 @@ export default function NavInMain({ contact }) {
                       bottom: { xs: "74px", md: "74px" },
                     }}
                   >
-                    <Box pb={3}>
-                      <Box
-                        pb={1}
-                        sx={{
-                          fontSize: { xs: 12, md: 12, xl: 15 },
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        地址 Address
-                      </Box>
+                    <Box pb={2}>
                       <Box
                         sx={{
+                          fontFamily: "Helvetica Neue",
                           fontSize: { xs: 16, md: 16, xl: 19 },
-                          fontWeight: 200,
+                          fontWeight: 500,
                         }}
                       >
                         {contact.address_tw}
                       </Box>
                       <Box
                         sx={{
+                          fontFamily: "Helvetica Neue",
                           fontSize: { xs: 16, md: 16, xl: 19 },
-                          fontWeight: 200,
+                          fontWeight: 500,
                           whiteSpace: "pre-line",
-                          textTransform: "uppercase",
                           lineHeight: "137%",
                         }}
                       >
                         {contact.address_en}
                       </Box>
                     </Box>
-                    <Box pb={3}>
-                      <Box
-                        pb={1}
-                        sx={{
-                          fontSize: { xs: 12, md: 12, xl: 15 },
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        上班時間 Opening Hours
-                      </Box>
+
+                    <Box pb={6}>
                       <Box
                         sx={{
+                          fontFamily: "Helvetica Neue",
                           fontSize: { xs: 16, md: 16, xl: 19 },
-                          fontWeight: 200,
-                          whiteSpace: "pre-line",
-                          textTransform: "uppercase",
-                          lineHeight: "137%",
-                        }}
-                      >
-                        {contact.opening_time}
-                      </Box>
-                    </Box>
-                    <Box pb={3}>
-                      <Box
-                        pb={1}
-                        sx={{ fontSize: { xs: 12, md: 12, xl: 15 } }}
-                        component="span"
-                      >
-                        電話 TEL
-                      </Box>
-                      <Box
-                        pl={2}
-                        sx={{
-                          fontSize: { xs: 16, md: 16, xl: 19 },
-                          fontWeight: 200,
+                          fontWeight: 500,
                         }}
                         component="span"
                       >
                         {contact.phone}
                       </Box>
                     </Box>
-                    <Box pb={3}>
-                      <Box
-                        pb={1}
-                        sx={{ fontSize: { xs: 12, md: 12, xl: 15 } }}
-                        component="span"
-                      >
-                        傳真 FAX
-                      </Box>
-                      <Box
-                        pl={2}
-                        sx={{
-                          fontSize: { xs: 16, md: 16, xl: 19 },
-                          fontWeight: 200,
-                        }}
-                        component="span"
-                      >
-                        {contact.fax}
-                      </Box>
-                    </Box>
+
                     <Box
                       sx={{
+                        fontFamily: "Helvetica Neue",
                         fontSize: { xs: 10, md: 10, xl: 13 },
-                        textTransform: "uppercase",
                       }}
                     >
                       2021©財團法人洪建全教育文化基金會 All Rights Reserved.
@@ -454,7 +245,7 @@ export default function NavInMain({ contact }) {
                   <a href={`mailto:` + contact.email} target="_blank">
                     <Box
                       sx={{ width: 20, height: 20 }}
-                      mt={{ xs: 6, md: 20 }}
+                      mt={{ xs: 4, md: 10 }}
                       mr={{ xs: 6, md: 0 }}
                     >
                       <Image
@@ -471,7 +262,7 @@ export default function NavInMain({ contact }) {
                   <a href={contact.facebook} target="_blank">
                     <Box
                       sx={{ width: 20, height: 20 }}
-                      mt={6}
+                      mt={3.5}
                       mr={{ xs: 6, md: 0 }}
                     >
                       <Image
@@ -488,7 +279,7 @@ export default function NavInMain({ contact }) {
                   <a href={contact.youtube} target="_blank">
                     <Box
                       sx={{ width: 20, height: 20 }}
-                      mt={6}
+                      mt={4}
                       mr={{ xs: 6, md: 0 }}
                     >
                       <Image
@@ -505,7 +296,7 @@ export default function NavInMain({ contact }) {
                   <a href={contact.instagram} target="_blank">
                     <Box
                       sx={{ width: 20, height: 20 }}
-                      mt={6}
+                      mt={3.5}
                       mr={{ xs: 6, md: 0 }}
                     >
                       <Image

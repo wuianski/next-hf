@@ -1,536 +1,697 @@
 import React from "react";
 import Image from "next/image";
-
-import Grow from "@mui/material/Grow";
+import Collapse from "@mui/material/Collapse";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import Drawer from "@mui/material/Drawer";
+import { motion, AnimatePresence } from "framer-motion";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
-const Projects = ({ projects: dataset }) => {
-  //console.log(events);
-
+const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
   /* CHANGE ARRAY SORTING BY ID*/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
+
   /* SEPERATE DATASET INTO 4*/
   const dataset0 = dataset.slice(0, 1);
   const dataset1 = dataset.slice(1, 2);
   const dataset2 = dataset.slice(2, 3);
   const dataset3 = dataset.slice(3, 4);
-  /* SET UP HOVER PROJECT SEEK*/
-  const [anchorEl_PS, setAnchorEl_PS] = React.useState(null);
-  const [anchorEl_PSR, setAnchorEl_PSR] = React.useState(true);
-  const handlePopoverOpenPS = (event) => {
-    setAnchorEl_PS(event.currentTarget);
-    setAnchorEl_PSR(false);
+
+  /** stack Item setting **/
+  const Item = styled(Paper)(({ theme }) => ({
+    //...theme.typography.body2,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    textAlign: "left",
+    color: "#000",
+    background: "none",
+    boxShadow: "none",
+  }));
+
+  /* desktop toggle setting */
+  const [open, setOpen] = React.useState(false);
+  //const [openR, setopenR] = React.useState(true);
+  const handleClick = (project, open) => (event) => {
+    setOpen({ ...open, [project]: open });
+    //setopenR({ ...!openR, [project]: !openR });
   };
-  const handlePopoverClosePS = () => {
-    setAnchorEl_PS(null);
-    setAnchorEl_PSR(true);
+
+  /** mobile Drawer setting **/
+  const [state, setState] = React.useState({
+    right: false,
+    right: false,
+    right: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    setState({ ...state, [anchor]: open });
+
+    /* when drawer open, set fullPage cannot scroll */
+    if (open == true) {
+      fullpageApi.setAllowScrolling(false);
+    } else {
+      fullpageApi.setAllowScrolling(true);
+    }
   };
-  const open_PS = Boolean(anchorEl_PS);
-  const open_PSR = Boolean(anchorEl_PSR);
-  /* SET UP HOVER MINLONG FORUM*/
-  const [anchorEl_MF, setAnchorEl_MF] = React.useState(null);
-  const [anchorEl_MFR, setAnchorEl_MFR] = React.useState(true);
-  const handlePopoverOpenMF = (event) => {
-    setAnchorEl_MF(event.currentTarget);
-    setAnchorEl_MFR(false);
-  };
-  const handlePopoverCloseMF = () => {
-    setAnchorEl_MF(null);
-    setAnchorEl_MFR(true);
-  };
-  const open_MF = Boolean(anchorEl_MF);
-  const open_MFR = Boolean(anchorEl_MFR);
-  /* SET UP HOVER PHP SUNAO COMMUNITY*/
-  const [anchorEl_PHP, setAnchorEl_PHP] = React.useState(null);
-  const [anchorEl_PHPR, setAnchorEl_PHPR] = React.useState(true);
-  const handlePopoverOpenPHP = (event) => {
-    setAnchorEl_PHP(event.currentTarget);
-    setAnchorEl_PHPR(false);
-  };
-  const handlePopoverClosePHP = () => {
-    setAnchorEl_PHP(null);
-    setAnchorEl_PHPR(true);
-  };
-  const open_PHP = Boolean(anchorEl_PHP);
-  const open_PHPR = Boolean(anchorEl_PHPR);
-  /* SET UP HOVER CH*/
-  const [anchorEl_CH, setAnchorEl_CH] = React.useState(null);
-  const [anchorEl_CHR, setAnchorEl_CHR] = React.useState(true);
-  const handlePopoverOpenCH = (event) => {
-    setAnchorEl_CH(event.currentTarget);
-    setAnchorEl_CHR(false);
-  };
-  const handlePopoverCloseCH = () => {
-    setAnchorEl_CH(null);
-    setAnchorEl_CHR(true);
-  };
-  const open_CH = Boolean(anchorEl_CH);
-  const open_CHR = Boolean(anchorEl_CHR);
+
+  /** fullPage onLeave trigger motion framer **/
+  const activeSec = secIndex;
+  const activeSecI = activeSec.destination;
 
   return (
-    <div>
+    <>
+      {/** vvv desktop collapse mode **/}
+
       <Box
-        ml={{ xs: 13, md: 13 }}
-        sx={{
-          display: { xs: "block", md: "flex" },
-          justifyContent: "center",
-          alignItems: "flex-start",
-          height: "38vh",
-          minHeight: 380,
-        }}
+        ml={{ xs: 13, md: 33 }}
+        mr={{ xs: 2, md: 13, xl: 33 }}
+        mt={{ xs: 5, md: 6 }}
+        sx={{ display: { xs: "none", md: "block" } }}
       >
         <Box
+          ml={{ xs: 13, md: 0 }}
           sx={{
-            width: { xs: "60vw", md: "1 / 5" },
-            marginRight: 3,
-            "&:hover": {
-              width: 2 / 3,
-            },
+            display: { xs: "block", md: "flex" },
+            justifyContent: "start",
+            alignItems: "flex-end",
+            width: "100%",
           }}
         >
-          {dataset0 &&
-            dataset0.map((project) => (
-              <div key={project.id}>
-                <div
-                  aria-owns={open_PS ? "mouse-over-popover" : null}
-                  aria-haspopup="true"
-                  onMouseOver={handlePopoverOpenPS}
-                  onMouseOut={handlePopoverClosePS}
-                >
-                  <Box
-                    sx={{
-                      fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
-                      lineHeight: 1.2,
+          <Box pr={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+            {dataset0 &&
+              dataset0.map((project) => (
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
+                        },
+                      },
                     }}
-                    style={{
-                      whiteSpace: "pre-line",
-                      textTransform: "uppercase",
-                      cursor: "pointer",
-                    }}
+                    exit="hidden"
                   >
-                    {project.title_en}
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
-                      mb: 3,
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {project.title_tw}
-                  </Box>
+                    <Box onClick={handleClick(project.id, true)}>
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/ps_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
 
-                  <Grow in={open_PS}>
-                    <Box
-                      pb={1}
-                      sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                        textAlign: "justify",
-                        textJustify: "distribute",
-                      }}
-                    >
-                      {project.content_tw}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                      }}
-                    >
-                      {project.content_en}
-                    </Box>
-                  </Grow>
-                  <Grow in={open_PS}>
-                    <Box sx={{ mt: 3 }}>
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
+                          >
+                            <Box
+                              sx={{
+                                height: "20vh",
+                                /*overflow: "scroll"*/
+                              }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
+                            >
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
+                            </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
+                            <Box
+                              sx={{
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              }}
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Collapse>
+
                       <Box
                         sx={{
-                          height: 48,
+                          height: 32,
                           backgroundImage:
-                            "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                         }}
-                      >
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ cursor: "pointer" }}
-                        >
-                          <Image
-                            src="/IMGs/externalLink_icon.png"
-                            alt="deco"
-                            width={48}
-                            height={48}
-                          />
-                        </a>
-                      </Box>
+                      />
                     </Box>
-                  </Grow>
-                  <Grow in={open_PSR}>
+                  </motion.div>
+                </Box>
+              ))}
+          </Box>
+
+          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+            {dataset1 &&
+              dataset1.map((project) => (
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
+                        },
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/ml_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
+
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
+                          >
+                            <Box
+                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
+                            >
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
+                            </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
+                            <Box
+                              sx={{
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              }}
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      ></Box>
+                    </Box>
+                  </motion.div>
+                </Box>
+              ))}
+          </Box>
+        </Box>
+
+        <Box
+          //ml={{ xs: 13, md: 13 }}
+          mt={8}
+          sx={{
+            display: { xs: "block", md: "flex" },
+            justifyContent: "end",
+            alignItems: "flex-end",
+          }}
+        >
+          <Box pr={2.5} sx={{ width: { xs: "60vw", md: "30vw" } }}>
+            {dataset2 &&
+              dataset2.map((project) => (
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
+                        },
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/php_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={96}
+                        />
+                      </Box>
+
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <OverlayScrollbarsComponent
+                            options={{ className: "os-theme-block-dark" }}
+                          >
+                            <Box
+                              sx={{ height: "20vh" /*overflow: "scroll"*/ }} //in order to make element can scroll normally, give a className and use it in fullPage options
+                              className="scrollEle"
+                              pr={3}
+                            >
+                              <Box
+                                pb={1}
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                  textAlign: "justify",
+                                  textJustify: "distribute",
+                                }}
+                              >
+                                {project.content_tw}
+                              </Box>
+                              <Box
+                                sx={{
+                                  fontSize: { md: 14, xl: 17 },
+                                  lineHeight: { md: 1.4, xl: 1.6 },
+                                }}
+                              >
+                                {project.content_en}
+                              </Box>
+                            </Box>
+                          </OverlayScrollbarsComponent>
+                          <Box sx={{ mt: 2 }}>
+                            <Box
+                              sx={{
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              }}
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      ></Box>
+                    </Box>
+                  </motion.div>
+                </Box>
+              ))}
+          </Box>
+
+          <Box pl={2.5} sx={{ width: { xs: "60vw", md: "20vw" } }}>
+            {dataset3 &&
+              dataset3.map((project) => (
+                <Box key={project.id}>
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {
+                        scale: 0.8,
+                        opacity: 0,
+                      },
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                          duration: 1,
+                          delay: 0.4,
+                        },
+                      },
+                    }}
+                    exit="hidden"
+                  >
+                    <Box onClick={handleClick(project.id, true)}>
+                      <Box mb={2} sx={{ cursor: "pointer" }}>
+                        <Image
+                          src="/IMGs/g_logo.png"
+                          alt="download icon"
+                          width={240}
+                          height={24}
+                        />
+                      </Box>
+
+                      <Collapse
+                        in={open[project.id]}
+                        style={{ transformOrigin: "0 0 0" }}
+                        {...(open[project.id]
+                          ? { timeout: 0 }
+                          : { timeout: 500 })}
+                      >
+                        <Box mb={-4} sx={{ backgroundColor: "#fff" }}>
+                          <Box
+                            pb={1}
+                            sx={{
+                              fontSize: { md: 14, xl: 17 },
+                              lineHeight: { md: 1.4, xl: 1.6 },
+                              textAlign: "justify",
+                              textJustify: "distribute",
+                            }}
+                          >
+                            {project.content_tw}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontSize: { md: 14, xl: 17 },
+                              lineHeight: { md: 1.4, xl: 1.6 },
+                            }}
+                          >
+                            {project.content_en}
+                          </Box>
+                          <Box sx={{ mt: 2 }}>
+                            <Box
+                              sx={{
+                                height: 48,
+                                backgroundImage:
+                                  "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 30%, rgba(176, 147, 54, 0.3) 60%, rgba(176, 147, 54, 0) 100%)",
+                              }}
+                            >
+                              <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ cursor: "pointer" }}
+                              >
+                                <Image
+                                  src="/IMGs/externalLink_icon.png"
+                                  alt="deco"
+                                  width={48}
+                                  height={48}
+                                />
+                              </a>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Collapse>
+                      <Box
+                        sx={{
+                          height: 32,
+                          backgroundImage:
+                            "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                        }}
+                      />
+                    </Box>
+                  </motion.div>
+                </Box>
+              ))}
+          </Box>
+        </Box>
+      </Box>
+
+      {/** vvv mobile drawer mode **/}
+      <Box
+        ml={{ xs: 9 }}
+        mr={{ xs: 2 }}
+        mt={{ xs: 5 }}
+        sx={{ display: { xs: "block", md: "none" } }}
+      >
+        <Box
+          mt={12}
+          sx={{
+            display: { xs: "block" },
+            justifyContent: "end",
+            alignItems: "flex-end",
+          }}
+        >
+          <Box pr={5} sx={{ width: { xs: "60vw", md: "60vw" } }}>
+            {dataset &&
+              dataset.map((project) => (
+                <div key={project.id}>
+                  <Box
+                    // toggle drawer
+                    onClick={toggleDrawer(project.id, true)}
+                  >
+                    {/*
                     <Box
                       sx={{
-                        height: 28,
+                        fontSize: 20,
+                        lineHeight: 1.2,
+                        whiteSpace: "pre-line",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {project.title_en}
+                    </Box>
+                    <Box sx={{ fontSize: 18, mb: 0.8 }}>{project.title_tw}</Box>
+                    <Box
+                      mb={"4vh"}
+                      sx={{
+                        height: 22,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
                     ></Box>
-                  </Grow>
-                </div>
-              </div>
-            ))}
-        </Box>
-        <Box
-          mr={3}
-          sx={{
-            width: { xs: "60vw", md: "1 / 5" },
-            "&:hover": {
-              width: 1 / 3,
-            },
-          }}
-        >
-          {dataset1 &&
-            dataset1.map((project) => (
-              <div key={project.id}>
-                <div
-                  aria-owns={open_MF ? "mouse-over-popover" : undefined}
-                  aria-haspopup="true"
-                  onMouseOver={handlePopoverOpenMF}
-                  onMouseOut={handlePopoverCloseMF}
-                >
-                  <Box
-                    sx={{
-                      fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
-                      lineHeight: 1.2,
-                    }}
-                    style={{
-                      whiteSpace: "pre-line",
-                      textTransform: "uppercase",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {project.title_en}
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
-                      mb: 3,
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {project.title_tw}
-                  </Box>
-
-                  <Grow in={open_MF}>
+                    */}
+                    {/*
+                    <Image
+                      src={
+                        !!project.cover && !!project.cover.url
+                          ? project.cover.url
+                          : ""
+                      }
+                      alt="project logo"
+                      layout="responsive"
+                      objectFit="cover"
+                      //objectPosition="left bottom"
+                      width={"45%"}
+                      height={"15%"}
+                    />
                     <Box
-                      pb={1}
+                      mt={2}
+                      mb={"4vh"}
                       sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                        textAlign: "justify",
-                        textJustify: "distribute",
-                      }}
-                    >
-                      {project.content_tw}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {project.content_en}
-                    </Box>
-                  </Grow>
-                  <Grow in={open_MF}>
-                    <Box sx={{ mt: 3 }}>
-                      <Box
-                        sx={{
-                          height: 48,
-                          backgroundImage:
-                            "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
-                        }}
-                      >
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ cursor: "pointer" }}
-                        >
-                          <Image
-                            src="/IMGs/externalLink_icon.png"
-                            alt="deco"
-                            width={48}
-                            height={48}
-                          />
-                        </a>
-                      </Box>
-                    </Box>
-                  </Grow>
-                  <Grow in={open_MFR}>
-                    <Box
-                      sx={{
-                        height: 28,
+                        height: 22,
                         backgroundImage:
                           "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
                       }}
-                    ></Box>
-                  </Grow>
-                </div>
-              </div>
-            ))}
-        </Box>
-        <Box
-          mr={3}
-          sx={{
-            alignSelf: "flex-end",
-            width: { xs: "50vw", md: "1 / 5" },
-            "&:hover": {
-              width: 2 / 3,
-            },
-          }}
-        >
-          {dataset2 &&
-            dataset2.map((project) => (
-              <div key={project.id}>
-                <div
-                  aria-owns={open_PHP ? "mouse-over-popover" : undefined}
-                  aria-haspopup="true"
-                  onMouseOver={handlePopoverOpenPHP}
-                  onMouseOut={handlePopoverClosePHP}
-                >
-                  <Box
-                    sx={{
-                      fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
-                      lineHeight: 1.2,
-                    }}
-                    style={{
-                      whiteSpace: "pre-line",
-                      textTransform: "uppercase",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {project.title_en}
-                  </Box>
-                  <Box
-                    sx={{
-                      fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
-                      mb: 3,
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {project.title_tw}
-                  </Box>
-
-                  <Grow in={open_PHP}>
-                    <Box
-                      pb={1}
-                      sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                        textAlign: "justify",
-                        textJustify: "distribute",
-                      }}
-                    >
-                      {project.content_tw}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontSize: { md: 15, xl: 17 },
-                        lineHeight: { md: 1.4, xl: 1.6 },
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {project.content_en}
-                    </Box>
-                  </Grow>
-                  <Grow in={open_PHP}>
-                    <Box sx={{ mt: 3 }}>
-                      <Box
-                        sx={{
-                          height: 48,
-                          backgroundImage:
-                            "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
-                        }}
-                      >
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ cursor: "pointer" }}
-                        >
-                          <Image
-                            src="/IMGs/externalLink_fb.png"
-                            alt="deco"
-                            width={48}
-                            height={48}
+                    />
+                    */}
+                    <ImageList variant="masonry" cols={1} gap={8}>
+                      <ImageListItem key={project.cover.id}>
+                        <Box ml={0.1}>
+                          <img
+                            src={`${project.cover.url}?w=180&fit=format`}
+                            srcSet={`${project.cover.url}?w=180&fit=format&dpr=2 2x`}
+                            //alt={item.title}
+                            loading="lazy"
                           />
-                        </a>
-                      </Box>
-                    </Box>
-                  </Grow>
-                  <Grow in={open_PHPR}>
-                    <Box
-                      sx={{
-                        height: 28,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    ></Box>
-                  </Grow>
-                </div>
-              </div>
-            ))}
-        </Box>
-        <Box
-          sx={{
-            alignSelf: "flex-end",
-            width: { xs: "30vw", md: "1 / 5" },
-            "&:hover": {
-              width: 1 / 6,
-            },
-          }}
-        >
-          {dataset3 &&
-            dataset3.map((project) => (
-              <div key={project.id}>
-                <div
-                  aria-owns={open_CH ? "mouse-over-popover" : undefined}
-                  aria-haspopup="true"
-                  onMouseOver={handlePopoverOpenCH}
-                  onMouseOut={handlePopoverCloseCH}
-                >
-                  <Box
-                    sx={{
-                      fontSize: { md: "h5.fontSize", xl: "h4.fontSize" },
-                      lineHeight: 1.2,
-                    }}
-                    style={{
-                      whiteSpace: "pre-line",
-                      textTransform: "uppercase",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {project.title_en}
+                        </Box>
+                        <Box
+                          mt={1.5}
+                          //mb={"4vh"}
+                          sx={{
+                            height: 22,
+                            backgroundImage:
+                              "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
+                          }}
+                        />
+                      </ImageListItem>
+                    </ImageList>
                   </Box>
-                  <Box
-                    sx={{
-                      fontSize: { md: "h6.fontSize", xl: "h5.fontSize" },
-                      mb: 3,
-                    }}
-                    style={{ cursor: "pointer" }}
+                  <Drawer
+                    anchor={"right"}
+                    open={state[project.id]}
+                    //onClose={toggleDrawer(project.id, false)}
                   >
-                    {project.title_tw}
-                  </Box>
-
-                  <Grow in={open_CH}>
-                    <Box
-                      sx={{
-                        height: 48,
-                        backgroundImage:
-                          "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
-                      }}
-                    >
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ cursor: "pointer" }}
+                    {/* content inside of drawer */}
+                    <Box>
+                      <Box
+                        role="presentation"
+                        onClick={toggleDrawer(project.id, false)}
+                        sx={{ textAlign: "right", cursor: "pointer" }}
                       >
                         <Image
-                          src="/IMGs/externalLink_fb.png"
-                          alt="deco"
+                          src="/IMGs/drawerClose_icon.png"
+                          alt="close medal"
                           width={48}
                           height={48}
                         />
-                      </a>
+                      </Box>
+                      <OverlayScrollbarsComponent
+                        options={{ className: "os-theme-block-dark" }}
+                      >
+                        <Box
+                          sx={{
+                            width: "80vw",
+                            backgroundColor: "#fff",
+                            padding: 2,
+                            /* height of scroll area on mobile */
+                            height: { xs: "80vh" },
+                            //overflow: "scroll",
+                          }}
+                          //in order to make element can scroll normally, give a className and use it in fullPage options
+                          className="scrollEle"
+                          pr={3}
+                        >
+                          <Box
+                            sx={{
+                              fontSize: 33,
+                              lineHeight: 1.2,
+                              whiteSpace: "pre-line",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {project.title_en}
+                          </Box>
+                          <Box sx={{ fontSize: 30 }}>{project.title_tw}</Box>
+                          <Box
+                            mt={2}
+                            mb={2}
+                            sx={{
+                              height: 48,
+                              backgroundImage:
+                                "linear-gradient(90deg, #B09336 0%, rgba(176, 147, 54, 0.5) 51.56%, rgba(176, 147, 54, 0.3) 81.25%, rgba(176, 147, 54, 0) 100%)",
+                            }}
+                          >
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{ cursor: "pointer" }}
+                            >
+                              <Image
+                                src="/IMGs/externalLink_icon.png"
+                                alt="deco"
+                                width={48}
+                                height={48}
+                              />
+                            </a>
+                          </Box>
+                          <Box>{project.content_tw}</Box>
+                          <Box>{project.content_en}</Box>
+                        </Box>
+                      </OverlayScrollbarsComponent>
                     </Box>
-                  </Grow>
-                  <Grow in={open_CHR}>
-                    <Box
-                      sx={{
-                        height: 28,
-                        backgroundImage:
-                          "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.63) 51.56%, rgba(0, 0, 0, 0.15) 81.25%, rgba(0, 0, 0, 0) 100%)",
-                      }}
-                    ></Box>
-                  </Grow>
+                  </Drawer>
                 </div>
-              </div>
-            ))}
+              ))}
+          </Box>
         </Box>
       </Box>
-    </div>
+    </>
   );
 };
 
 export default Projects;
-
-/*<div>{project.id}</div>
-            <div>{project.title.tw}</div>
-            <div>{project.title.en}</div>
-            <div>{project.content.tw}</div>
-            <div>{project.content.en}</div> 
-                          
-              <Card.Description>{project.content.en}</Card.Description>*/
-/*
-<Card.Group itemsPerRow={4}>
-            {dataset &&
-              dataset.map((project) => (
-                <>
-                  <Card>
-                    <Card.Content>
-                      <Card.Header>{project.title.tw}</Card.Header>
-                      <Card.Header>{project.title.en}</Card.Header>
-                      <Card.Description>{project.content.tw}</Card.Description>
-                      <Card.Description>{project.content.en}</Card.Description>
-                    </Card.Content>
-                  </Card>
-                </>
-              ))}
-          </Card.Group>
-*/
-
-/*
-return (
-    <>
-      <div>
-        {dataset0 &&
-          dataset0.map((project) => (
-            <div>
-              <div>{project.title.tw}</div>
-              <div>{project.title.en}</div>
-              <div>
-                <Reveal animated="fade">
-                  <Reveal.Content visible>
-                    <div className={styles.big}>{project.content.en}</div>
-                  </Reveal.Content>
-                  <Reveal.Content hidden>
-                    <div>{project.content.tw}</div>
-                  </Reveal.Content>
-                </Reveal>
-              </div>
-            </div>
-          ))}
-      </div>
-      <div>
-        {dataset1 &&
-          dataset1.map((project) => (
-            <div key={project.id}>
-              <div>{project.title.tw}</div>
-              <div>{project.title.en}</div>
-            </div>
-          ))}
-      </div>
-      <div>
-        {dataset2 &&
-          dataset2.map((project) => (
-            <div key={project.id}>
-              <div>{project.title.tw}</div>
-              <div>{project.title.en}</div>
-            </div>
-          ))}
-      </div>
-    </>
-  );
-*/

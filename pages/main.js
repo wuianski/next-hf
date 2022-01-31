@@ -37,15 +37,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     let {
-      events,
       mission,
-      chronicle,
       projects,
-      leadership,
-      leadership_doc,
+      events,
       news,
       news_announce,
-      sponsorship,
       publication,
       contact,
     } = props;
@@ -53,45 +49,23 @@ class App extends React.Component {
     this.state = {
       //initialActiveSection: null,
       sectionsColor: [...originalColors],
-      anchors: [
-        "events",
-        "mission",
-        "chronicle",
-        "projects",
-        "leadership",
-        "news",
-        "facts",
-        "publication",
-      ],
-      events: {
-        title: "specail events",
-        data: events,
-      },
+      anchors: ["mission", "projects", "events", "news", "publication"],
       mission: {
         title: "mission",
         data: mission,
-      },
-      chronicle: {
-        title: "chronicle",
-        data: chronicle,
       },
       projects: {
         title: "projects",
         data: projects,
       },
-      leadership: {
-        title: "leadership",
-        data: leadership,
-        data2: leadership_doc,
+      events: {
+        title: "specail events",
+        data: events,
       },
       news: {
         title: "news",
         data: news,
         data2: news_announce,
-      },
-      sponsorship: {
-        title: "sponsorship",
-        data: sponsorship,
       },
       publication: {
         title: "publication",
@@ -112,13 +86,10 @@ class App extends React.Component {
 
   render() {
     const {
-      events,
       mission,
-      chronicle,
       projects,
-      leadership,
+      events,
       news,
-      sponsorship,
       publication,
       contact,
       //initialActiveSection,
@@ -146,19 +117,9 @@ class App extends React.Component {
         <NavInMain contact={contact} />
         <div className="App">
           <Box id="myMenu">
-            <div data-menuanchor="events" className="active secName">
-              <div className="secName_tw">活動</div>
-              <div className="secName_en">events</div>
-            </div>
-
-            <div data-menuanchor="mission" className="secName">
+            <div data-menuanchor="mission" className="active secName">
               <div className="secName_tw">使命</div>
               <div className="secName_en">mission</div>
-            </div>
-
-            <div data-menuanchor="chronicle" className="secName">
-              <div className="secName_tw">大事記</div>
-              <div className="secName_en">timeline</div>
             </div>
 
             <div data-menuanchor="projects" className="secName">
@@ -166,19 +127,14 @@ class App extends React.Component {
               <div className="secName_en">program</div>
             </div>
 
-            <div data-menuanchor="leadership" className="secName">
-              <div className="secName_tw">組織</div>
-              <div className="secName_en">leadership</div>
+            <div data-menuanchor="events" className="secName">
+              <div className="secName_tw">活動</div>
+              <div className="secName_en">events</div>
             </div>
 
             <div data-menuanchor="news" className="secName">
               <div className="secName_tw">消息</div>
               <div className="secName_en">news</div>
-            </div>
-
-            <div data-menuanchor="facts" className="secName">
-              <div className="secName_tw">公開資訊</div>
-              <div className="secName_en">resource</div>
             </div>
 
             <div data-menuanchor="publication" className="secName">
@@ -195,109 +151,74 @@ class App extends React.Component {
             menu={"#myMenu"}
             slidesNavigation={false}
             lockAnchors={false}
-            //autoScrolling={false}
+            //below two for scrolling like a normal page
+            autoScrolling={false}
+            fitToSection={false}
             //recordHistory={false}
             //scrollBar={true}
             controlArrows={false}
             sectionsColor={this.state.sectionsColor}
             anchors={this.state.anchors}
             //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
-            //scrollOverflow={true}
+            //scrollOverflow={false}
             //using below to use normal scroll elements
             normalScrollElements={".scrollEle"}
             //verticalCentered={false}
             onLeave={this.onLeave.bind(this)}
-            render={({ state, fullpageApi }) =>
-              console.log("render") || (
-                <>
-                  <ReactFullpage.Wrapper>
-                    {events && (
-                      <div className="section" data-anchor="section1">
-                        <Box>
-                          <Events events={events.data} secIndex={state} />
-                        </Box>
-                      </div>
-                    )}
+            render={({ state, fullpageApi }) => (
+              <>
+                <ReactFullpage.Wrapper>
+                  {mission && (
+                    <div className="section" data-anchor="section1">
+                      <MissionSlogan
+                        mission={mission.data}
+                        fullpageApi={fullpageApi}
+                        secIndex={state}
+                      />
+                    </div>
+                  )}
 
-                    {mission && (
-                      <div className="section" data-anchor="section2">
-                        <div className="slide">
-                          <MissionSlogan
-                            mission={mission.data}
-                            fullpageApi={fullpageApi}
-                            secIndex={state}
-                          />
-                        </div>
-                        <div className="slide">
-                          <MissionTW
-                            mission={mission.data}
-                            fullpageApi={fullpageApi}
-                          />
-                        </div>
-                        <div className="slide">
-                          <MissionEN
-                            mission={mission.data}
-                            fullpageApi={fullpageApi}
-                          />
-                        </div>
-                      </div>
-                    )}
+                  {projects && (
+                    <div className="section" data-anchor="section2">
+                      <Projects
+                        projects={projects.data}
+                        fullpageApi={fullpageApi}
+                        secIndex={state}
+                      />
+                    </div>
+                  )}
 
-                    {chronicle && (
-                      <div className="section" data-anchor="section4">
-                        <Chronicle chronicle={chronicle.data} />
-                      </div>
-                    )}
+                  {events && (
+                    <div className="section" data-anchor="section3">
+                      <Box>
+                        <Events events={events.data} secIndex={state} />
+                      </Box>
+                    </div>
+                  )}
 
-                    {projects && (
-                      <div className="section" data-anchor="section3">
-                        <Projects
-                          projects={projects.data}
-                          fullpageApi={fullpageApi}
-                          secIndex={state}
-                        />
-                      </div>
-                    )}
+                  {news && (
+                    <div className="section" data-anchor="section4">
+                      <News
+                        news={news.data}
+                        newsAnnounce={news.data2}
+                        secIndex={state}
+                      />
+                    </div>
+                  )}
 
-                    {leadership && (
-                      <div className="section" data-anchor="section5">
-                        <Leadership
-                          leadership={leadership.data}
-                          leadership_doc={leadership.data2}
-                          fullpageApi={fullpageApi}
-                        />
-                      </div>
-                    )}
-
-                    {news && (
-                      <div className="section" data-anchor="section6">
-                        <News news={news.data} newsAnnounce={news.data2} />
-                      </div>
-                    )}
-
-                    {sponsorship && (
-                      <div className="section" data-anchor="section7">
-                        <Sponsorship
-                          sponsorship={sponsorship.data}
-                          fullpageApi={fullpageApi}
-                        />
-                      </div>
-                    )}
-
-                    {publication && (
-                      <div className="section" data-anchor="section8">
-                        {/*console.log(fullpageApi.getActiveSection())*/}
-                        <PublicationIntro
-                          publication={publication.data}
-                          fullpageApi={fullpageApi}
-                          secIndex={state}
-                        />
-                      </div>
-                    )}
-                  </ReactFullpage.Wrapper>
-                </>
-              )
-            }
+                  {publication && (
+                    <div className="section" data-anchor="section5">
+                      {/*console.log(fullpageApi.getActiveSection())*/}
+                      <PublicationIntro
+                        publication={publication.data}
+                        fullpageApi={fullpageApi}
+                        secIndex={state}
+                      />
+                    </div>
+                  )}
+                </ReactFullpage.Wrapper>
+              </>
+            )}
           />
         </div>
       </>

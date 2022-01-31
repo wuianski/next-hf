@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans TC', Helvetica Neue, sans-serif;
+  font-family: "Noto Sans TC", Helvetica Neue, sans-serif;
 }
 
 a {
@@ -16,26 +16,26 @@ a {
   box-sizing: border-box;
 }
 /* Section Name in main page*/
-#myMenu{
+#myMenu {
   position: fixed;
   bottom: 68px;
   z-index: 999;
   height: 68vh;
-  width:93px;
+  width: 93px;
   border-right: 1px solid #fff;
   mix-blend-mode: difference;
 }
-div.secName{
+div.secName {
   color: #000;
   display: none;
 }
-.secName.active{
+.secName.active {
   color: #000;
   display: block;
   position: absolute;
   bottom: calc(50vh - 59px);
 }
-.secName_en{
+.secName_en {
   font-weight: 300;
   font-size: 17px;
   line-height: 26px;
@@ -53,7 +53,7 @@ div.secName{
   color: #fff;
   text-shadow: 0.2em 0.2em 0.8em #000;
 }
-.secName_tw{
+.secName_tw {
   font-weight: 300;
   font-size: 15px;
   line-height: 19px;
@@ -74,9 +74,12 @@ div.secName{
 .slick-arrow {
   display: none !important;
 }
-.image_bw{
+.image_bw {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+}
+.slick-dots li {
+  margin: 0 !important;
 }
 
 /* force h3 markdown css */
@@ -86,41 +89,43 @@ h3 {
 }
 
 /* react-awesome-slider bullets */
-.awssld__bullets button{
+.awssld__bullets button {
   width: 10px !important;
   height: 10px !important;
   border: 2px solid #fff !important;
   /*background:transparent !important;*/
 }
-.awssld__bullets{
+.awssld__bullets {
   bottom: 30px !important;
   z-index: 9;
 }
-.awssld__bullets--active{
-  background:#fff !important;
-
+.awssld__bullets--active {
+  background: #fff !important;
 }
-.awssld__controls__arrow-left::before, .awssld__controls__arrow-left::after, .awssld__controls__arrow-right::before, .awssld__controls__arrow-right::after{
+.awssld__controls__arrow-left::before,
+.awssld__controls__arrow-left::after,
+.awssld__controls__arrow-right::before,
+.awssld__controls__arrow-right::after {
   background-color: #fff !important;
 }
 /* /react-awesome-slider bullets */
 /* react-awesome-slider in publication */
-.awssld__content{
+.awssld__content {
   background-color: unset !important;
   align-items: end !important;
 }
 /* react-awesome-slider in publication */
 
 /* section name in other next page */
-#myMenuInPage{
+#myMenuInPage {
   position: fixed;
   bottom: 68px;
   z-index: 999;
   height: 68vh;
-  width:93px;
+  width: 93px;
   border-right: 1px solid #000;
 }
-.secName_enInPage{
+.secName_enInPage {
   font-weight: 400;
   font-size: 17px;
   line-height: 26px;
@@ -136,7 +141,7 @@ h3 {
   text-align: left;
   color: #000;
 }
-.secName_twInPage{
+.secName_twInPage {
   font-weight: 400;
   font-size: 15px;
   line-height: 19px;
@@ -145,69 +150,86 @@ h3 {
   height: 118px;
   position: absolute;
   left: 0px;
-  margin-left: 60px;
+  margin-left: 55px;
   text-align: left;
   color: #000;
 }
 /* /section name in other next page */
 
 /* MuiTabs Lab  */
-.Mui-selected{
+.Mui-selected {
   color: #000 !important;
 }
-.MuiTabs-indicator{
+.MuiTabs-indicator {
   /*background-color: #fff !important;*/
-  background:none !important;
-  height:5px;
+  background: none !important;
+  height: 5px;
   /*mix-blend-mode: difference;*/
 }
-.MuiTabs-flexContainer{
-    display: flex;
-  }
+.MuiTabs-flexContainer {
+  display: flex;
+}
 
 /* in order to make first <P/> of markdown margin top equal zero  */
-.markdownP p:nth-of-type(1){
-  margin-top:0;
+.markdownP p:nth-of-type(1) {
+  margin-top: 0;
 }
 
 /*  */
-.textAniBlk{
+.textAniBlk {
   color: #fff;
-  font-size:20px;
-  font-weight:700;
+  font-size: 20px;
+  font-weight: 700;
   display: flex;
   align-items: flex-end;
 }
-.textAniText{
-  font-size:20px;
+.textAniText {
+  font-size: 20px;
   letter-spacing: 2px;
 }
-.textAniNumber{
+.textAniNumber {
   color: #fff;
-  font-size:40px;
+  font-size: 40px;
   display: inline;
 }
 
-/**/
-.wrapImg{
-  position:absolute;
-  top:0;
+.textText {
+  font-size: 23px;
+  letter-spacing: 2px;
 }
-                  
-#container {display:block;}
-#logo {display:block;}
-#turn { display:none; }
+.textNumber {
+  color: #b09336;
+  font-size: 27px;
+  font-family: "Helvetica Neue";
+  display: inline;
+  margin: 0 3px;
+}
+
+/**/
+.wrapImg {
+  position: absolute;
+  top: 0;
+}
+
+#container {
+  display: block;
+}
+#logo {
+  display: block;
+}
+#turn {
+  display: none;
+}
 
 /* Large devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {
-
   /* section name in main page */
-  #myMenu{
+  #myMenu {
     width: 40px;
     top: calc(50vh - 30vh);
     bottom: unset;
   }
-  .secName_en{
+  .secName_en {
     font-size: 10px;
     margin-top: 45px;
     /*background-color: #fff;*/
@@ -215,14 +237,14 @@ h3 {
     text-align: start;
     margin-left: -41px;
   }
-  .secName_tw{
+  .secName_tw {
     font-size: 10px;
     margin-left: 13.5px; /*33.5px*/
     bottom: 0;
     height: inherit;
     /*background-color: #fff;*/
     padding-top: 50px;
-    } 
+  }
   /* /section name in main page */
 
   h3 {
@@ -231,12 +253,12 @@ h3 {
   }
 
   /* section name in other next page */
-  #myMenuInPage{
+  #myMenuInPage {
     width: 40px;
     top: calc(50vh - 30vh);
     bottom: unset;
-  }  
-  .secName_enInPage{
+  }
+  .secName_enInPage {
     font-size: 10px;
     margin-top: 45px;
     /*background-color: #fff;*/
@@ -244,28 +266,44 @@ h3 {
     text-align: start;
     margin-left: -41px;
   }
-  .secName_twInPage{
+  .secName_twInPage {
     font-size: 10px;
     margin-left: 13.5px; /*33.5px*/
     bottom: 0;
     height: inherit;
     /*background-color: #fff;*/
     padding-top: 50px;
-    } 
+  }
   /* section name in other next page */
 
   /* MuiTabs Lab  */
-  .MuiTabs-flexContainer{
+  .MuiTabs-flexContainer {
     display: grid !important;
+  }
+
+  /* Resource data text  */
+  .textText {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .textNumber {
+    font-size: 20px;
+    margin: 0 3px;
   }
 }
 
-@media only screen and (max-width: 900px) and (orientation:landscape) {
-  #container {display:none;}
-  #logo {display:none;}
-  #turn { display:block; }
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+  #container {
+    display: none;
+  }
+  #logo {
+    display: none;
+  }
+  #turn {
+    display: block;
+  }
 }
-  /*
+/*
 @media only screen and (orientation:portrait) {
   #container {display:block;}
   #turn { display:none; }

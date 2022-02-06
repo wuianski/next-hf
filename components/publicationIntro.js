@@ -36,9 +36,9 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
   return (
     <>
       <Box
-        ml={{ xs: 7, md: 28 }}
+        ml={{ xs: 7, md: 26, lg: 28, xl: 33 }}
         mr={{ xs: 2, md: 2 }}
-        mt={{ xs: 8, md: 18 }}
+        mt={{ xs: 23, md: 18 }}
         mb={5}
       >
         <Stack>
@@ -71,7 +71,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   }}
                   pr={{ md: 0, lg: 5, xl: 5 }}
                 >
-                  <Box sx={{ fontSize: { xs: 14, md: 15, lg: 15, xl: 17 } }}>
+                  <Box sx={{ fontSize: { xs: 14, md: 14, lg: 15, xl: 17 } }}>
                     <Box
                       component="div"
                       mb={2}
@@ -85,7 +85,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       component="div"
                       sx={{
                         textAlign: "justify",
-                        fontSize: { xs: 13, md: 14, lg: 14, xl: 16 },
+                        fontSize: { xs: 13, md: 13, lg: 14, xl: 16 },
                       }}
                     >
                       <ReactMarkdown>{dataset.content_en}</ReactMarkdown>
@@ -107,7 +107,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   },
                   /* set up the distance between two Box */
 
-                  height: { md: "20vh", xl: "25vh" },
+                  height: { md: "20vh", lg: "20vh" },
                   minHeight: 180,
                 }}
               >

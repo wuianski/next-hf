@@ -115,30 +115,30 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
             </Item>
             <Item sx={{ width: { xs: "70vw", md: "70vw" } }}>
               {/*<AnimatePresence initial={{ x: 60 }}>*/}
-              {activeSecI && (
-                <Box
-                  sx={{
-                    fontSize: { md: 17, xl: 19 },
-                    lineHeight: 1.3,
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <Link href="/about">
-                    <Box
-                      variant="text"
-                      sx={{
-                        lineHeight: "38px",
-                        borderBottom: "3px solid #000",
-                        cursor: "pointer",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      更多 more
-                    </Box>
-                  </Link>
-                </Box>
-              )}
+
+              <Box
+                sx={{
+                  fontSize: { md: 17, xl: 19 },
+                  lineHeight: 1.3,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Link href="/about">
+                  <Box
+                    variant="text"
+                    sx={{
+                      lineHeight: "38px",
+                      borderBottom: "3px solid #000",
+                      cursor: "pointer",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    更多 more
+                  </Box>
+                </Link>
+              </Box>
+
               {/*</AnimatePresence>*/}
             </Item>
           </Stack>

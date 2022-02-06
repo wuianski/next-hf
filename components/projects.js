@@ -11,7 +11,7 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 
-const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
+const Projects = ({ projects: dataset, fullpageApi }) => {
   /* CHANGE ARRAY SORTING BY ID*/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -45,13 +45,14 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
     right: false,
     right: false,
     right: false,
+    //right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
 
     /* when drawer open, set fullPage cannot scroll */
-    if (open == true) {
+    if (open === true) {
       fullpageApi.setAllowScrolling(false);
     } else {
       fullpageApi.setAllowScrolling(true);
@@ -79,10 +80,6 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
     },
   }));
 
-  /** fullPage onLeave trigger motion framer **/
-  const activeSec = secIndex;
-  const activeSecI = activeSec.destination;
-
   return (
     <>
       {/** vvv desktop collapse mode **/}
@@ -90,7 +87,7 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
       <Box
         ml={{ xs: 8.5, sm: "20vw" }}
         mr={{ xs: 2, md: 10 }}
-        mt={{ xs: 22, sm: 22, md: 23 }}
+        mt={{ xs: 18, sm: 22, md: 23 }}
         sx={{ width: { xs: "70vw", md: "70%" }, height: "80%" }}
       >
         {/* ps */}
@@ -158,8 +155,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                       <Stack
                         direction={{ xs: "column", md: "row" }}
                         spacing={{ xs: 2, md: 0 }}
-                        mb={10}
                         mt={13}
+                        pb={13}
                       >
                         <Item sx={{ width: { xs: "100%", md: "25vw" } }}>
                           <Box>
@@ -299,8 +296,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                       <Stack
                         direction={{ xs: "column", md: "row" }}
                         spacing={{ xs: 2, md: 0 }}
-                        mb={10}
                         mt={13}
+                        pb={13}
                       >
                         <Item sx={{ width: { xs: "100%", md: "25vw" } }}>
                           <Box>
@@ -515,8 +512,8 @@ const Projects = ({ projects: dataset, fullpageApi, secIndex }) => {
                             <Stack
                               direction={{ xs: "column", md: "row" }}
                               spacing={{ xs: 2, md: 0 }}
-                              mb={10}
                               mt={13}
+                              pb={13}
                             >
                               <Item sx={{ width: { xs: "100%", md: "25vw" } }}>
                                 <Box>

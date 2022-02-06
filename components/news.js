@@ -77,11 +77,11 @@ const StyledTableCell = styled(TableCell)(() => ({
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
-    borderBottom: "18px solid rgba(255, 255, 255, 1)",
+    borderBottom: "13px solid rgba(255, 255, 255, 1)",
   },
 }));
 const StyledTableRow = styled(TableRow)(() => ({
-  height: "100px",
+  height: "83px",
   "&:nth-of-type(odd)": {
     background:
       "linear-gradient(270deg, rgba(176, 147, 54, 0) 1%, rgba(176, 147, 54, 0.8) 99%)",
@@ -175,7 +175,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
           component={Paper}
           sx={{ border: "none", boxShadow: "none" }}
         >
-          <Box ml={33} mr={8} mt={18}>
+          <Box ml={28} mr={4} mt={18}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
               <TableBody>
                 {(rowsPerPage > 0
@@ -191,7 +191,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                         <Box
                           ml={1}
                           sx={{
-                            fontSize: { md: 15, xl: 18 },
+                            fontSize: { xs: 14, md: 14, lg: 15 },
                             fontWeight: 600,
                           }}
                         >
@@ -209,7 +209,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
 
                     <StyledTableCell style={{ width: "60%" }} align="left">
                       <a href={news.link} target="_blank">
-                        <Box sx={{ fontSize: { md: 14, xl: 17 } }}>
+                        <Box sx={{ fontSize: { xs: 12, md: 13, lg: 15 } }}>
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>
                       </a>
@@ -252,7 +252,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} mt={12} ml={9} pb={6}>
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={6} ml={9} pb={8}>
         <Slider {...settingsMobile}>
           {sorted &&
             sorted.map((news) => (
@@ -300,7 +300,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       {/* /mobile */}
 
       <Box
-        ml={{ xs: 9, md: 33 }}
+        ml={{ xs: 9, md: 28 }}
         mr={{ xs: 2, md: 16 }}
         sx={{
           marginTop: { xs: "2vh", md: "5vh", xl: "8vh" },
@@ -327,7 +327,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                     <Item>
                       <Box
                         sx={{
-                          fontSize: { xs: 15, xl: 15 },
+                          fontSize: { xs: 14, lg: 15 },
                           fontWeight: 700,
                           whiteSpace: "pre-line",
                         }}
@@ -336,7 +336,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                       </Box>
                     </Item>
                     <Item>
-                      <Box sx={{ fontSize: { xs: 12, xl: 13 } }}>
+                      <Box sx={{ fontSize: { xs: 12, lg: 13 } }}>
                         {announcement.content}
                       </Box>
                     </Item>

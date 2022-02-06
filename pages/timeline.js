@@ -145,6 +145,7 @@ function Timeline({ timeline: dataset, contact }) {
                                       fontWeight: 700,
                                       color: "#000",
                                       display: "inline-block",
+                                      cursor: "pointer",
                                     }}
                                   >
                                     {y.year}

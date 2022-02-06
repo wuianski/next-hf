@@ -152,7 +152,7 @@ class App extends React.Component {
             slidesNavigation={false}
             lockAnchors={false}
             //below two for scrolling like a normal page
-            autoScrolling={false}
+            //autoScrolling={false}
             fitToSection={false}
             //recordHistory={false}
             //scrollBar={true}
@@ -160,7 +160,7 @@ class App extends React.Component {
             sectionsColor={this.state.sectionsColor}
             anchors={this.state.anchors}
             //using below to make a scrollable section, and prevent scrollOverflow by using fp-noscroll for desktop, and fp-auto-height-responsive for mobile.
-            //scrollOverflow={false}
+            scrollOverflow={true}
             //using below to use normal scroll elements
             normalScrollElements={".scrollEle"}
             //verticalCentered={false}

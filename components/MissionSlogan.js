@@ -35,7 +35,7 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
             justifyContent: "flex-end",
             width: { xs: "90%", md: "70%", lg: "68%", xl: "60%" },
             height: { xs: "30vh", md: "40vh", lg: "34vh", xl: "38vh" },
-            textTransform: "uppercase",
+            //textTransform: "uppercase",
           }}
           mr={0}
           mb={{ xs: 12, md: 6 }}
@@ -49,7 +49,8 @@ const MissionSlogan = ({ mission: dataset, fullpageApi, secIndex }) => {
               <Box
                 sx={{
                   whiteSpace: { xs: "unset", md: "pre-line" },
-                  fontSize: { xs: 16, md: 20, xl: 23 },
+                  fontSize: { xs: 16, md: 22, xl: 23 },
+                  fontFamily: "Helvetica Neue",
                 }}
                 mt={2}
               >

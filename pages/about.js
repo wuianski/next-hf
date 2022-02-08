@@ -67,7 +67,7 @@ function About({ mission, contact }) {
               </Box>
             </Item>
             <Item sx={{ width: { xs: "77vw", md: "30vw" } }}>
-              <Box sx={{ textAlign: "justify" }}>
+              <Box sx={{ textAlign: "justify", fontFamily: "Helvetica Neue" }}>
                 <ReactMarkdown>{mission.content_en}</ReactMarkdown>
               </Box>
             </Item>
@@ -107,8 +107,10 @@ function About({ mission, contact }) {
               <Link href="/members">
                 <Stack direction="row" spacing={0}>
                   <Item sx={{ fontSize: 15, lineHeight: "19px" }}>
-                    <Box sx={{ fontWeight: 700 }}>成員</Box>
-                    <Box sx={{ fontWeight: 500 }}>Members</Box>
+                    <Box sx={{ fontWeight: 700 }}>組織</Box>
+                    <Box sx={{ fontWeight: 500, fontFamily: "Helvetica Neue" }}>
+                      Leadership
+                    </Box>
                   </Item>
                   <Item>
                     <Image
@@ -131,7 +133,9 @@ function About({ mission, contact }) {
                 <Stack direction="row" spacing={0}>
                   <Item sx={{ fontSize: 15, lineHeight: "19px" }}>
                     <Box sx={{ fontWeight: 700 }}>大事記</Box>
-                    <Box sx={{ fontWeight: 500 }}>Timeline</Box>
+                    <Box sx={{ fontWeight: 500, fontFamily: "Helvetica Neue" }}>
+                      Timeline
+                    </Box>
                   </Item>
                   <Item>
                     <Image
@@ -154,7 +158,9 @@ function About({ mission, contact }) {
                 <Stack direction="row" spacing={0}>
                   <Item sx={{ fontSize: 15, lineHeight: "19px" }}>
                     <Box sx={{ fontWeight: 700 }}>公開資訊</Box>
-                    <Box sx={{ fontWeight: 500 }}>Resource</Box>
+                    <Box sx={{ fontWeight: 500, fontFamily: "Helvetica Neue" }}>
+                      Resource
+                    </Box>
                   </Item>
                   <Item>
                     <Image

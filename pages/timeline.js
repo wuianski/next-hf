@@ -282,7 +282,14 @@ function Timeline({ timeline: dataset, contact }) {
                                                 <Box component="span">
                                                   {chronicle2.type_tw}
                                                 </Box>
-                                                <Box component="span" ml={1}>
+                                                <Box
+                                                  component="span"
+                                                  ml={1}
+                                                  sx={{
+                                                    fontFamily:
+                                                      "Helvetica Neue",
+                                                  }}
+                                                >
                                                   {chronicle2.type_en}
                                                 </Box>
                                               </Box>
@@ -310,6 +317,7 @@ function Timeline({ timeline: dataset, contact }) {
                                                   fontWeight: 500,
                                                   width: "70vw",
                                                   height: "auto",
+                                                  fontFamily: "Helvetica Neue",
                                                 }}
                                               >
                                                 {chronicle2.content_en}
@@ -389,7 +397,14 @@ function Timeline({ timeline: dataset, contact }) {
                                                   <Box component="span">
                                                     {chronicle2.type_tw}
                                                   </Box>
-                                                  <Box component="span" ml={1}>
+                                                  <Box
+                                                    component="span"
+                                                    ml={1}
+                                                    sx={{
+                                                      fontFamily:
+                                                        "Helvetica Neue",
+                                                    }}
+                                                  >
                                                     {chronicle2.type_en}
                                                   </Box>
                                                 </Box>
@@ -413,6 +428,8 @@ function Timeline({ timeline: dataset, contact }) {
                                                       xl: 20,
                                                     },
                                                     fontWeight: 500,
+                                                    fontFamily:
+                                                      "Helvetica Neue",
                                                   }}
                                                 >
                                                   {chronicle2.content_en}
@@ -526,7 +543,14 @@ function Timeline({ timeline: dataset, contact }) {
                                                   <Box component="span">
                                                     {chronicle2.type_tw}
                                                   </Box>
-                                                  <Box component="span" ml={1}>
+                                                  <Box
+                                                    component="span"
+                                                    ml={1}
+                                                    sx={{
+                                                      fontFamily:
+                                                        "Helvetica Neue",
+                                                    }}
+                                                  >
                                                     {chronicle2.type_en}
                                                   </Box>
                                                 </Box>
@@ -542,6 +566,8 @@ function Timeline({ timeline: dataset, contact }) {
                                                   sx={{
                                                     fontSize: "17px",
                                                     fontWeight: 500,
+                                                    fontFamily:
+                                                      "Helvetica Neue",
                                                   }}
                                                 >
                                                   {chronicle2.content_en}

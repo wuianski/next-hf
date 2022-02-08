@@ -94,36 +94,47 @@ function Members({ members: dataset, leadership_doc, contact }) {
                 </ReactMarkdown>
               </Box>
               <Box pt={{ xs: 4, md: 6 }} ml={-2}>
-                <Stack direction="row" spacing={0}>
-                  <StackItem>
-                    <Image
-                      src="/IMGs/download_icon.png"
-                      alt="download icon"
-                      width={38}
-                      height={38}
-                    />
-                  </StackItem>
-                  <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
-                    <Box>歷年董事會成員</Box>
-                    <Box>Board Members</Box>
-                  </StackItem>
-                </Stack>
+                <a href={leadership_doc.board_members.url} target="_blank">
+                  <Stack direction="row" spacing={0}>
+                    <StackItem>
+                      <Image
+                        src="/IMGs/download_icon.png"
+                        alt="download icon"
+                        width={38}
+                        height={38}
+                      />
+                    </StackItem>
+                    <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
+                      <Box>歷屆董事會成員</Box>
+                      <Box sx={{ fontFamily: "Helvetica Neue" }}>
+                        Board Members
+                      </Box>
+                    </StackItem>
+                  </Stack>
+                </a>
               </Box>
               <Box pt={2} ml={-2} pb={{ xs: 4, md: 0 }}>
-                <Stack direction="row" spacing={0}>
-                  <StackItem>
-                    <Image
-                      src="/IMGs/download_icon.png"
-                      alt="download icon"
-                      width={38}
-                      height={38}
-                    />
-                  </StackItem>
-                  <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
-                    <Box>組織章程</Box>
-                    <Box>Articles of Organization</Box>
-                  </StackItem>
-                </Stack>
+                <a
+                  href={leadership_doc.articles_of_organization.url}
+                  target="_blank"
+                >
+                  <Stack direction="row" spacing={0}>
+                    <StackItem>
+                      <Image
+                        src="/IMGs/download_icon.png"
+                        alt="download icon"
+                        width={38}
+                        height={38}
+                      />
+                    </StackItem>
+                    <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
+                      <Box>捐助章程</Box>
+                      <Box sx={{ fontFamily: "Helvetica Neue" }}>
+                        Foundation Bylaws
+                      </Box>
+                    </StackItem>
+                  </Stack>
+                </a>
               </Box>
             </StackItem>
             {/* members */}
@@ -175,6 +186,7 @@ function Members({ members: dataset, leadership_doc, contact }) {
                               sx={{
                                 whiteSpace: { xs: "pre-line", md: "pre-line" },
                                 fontSize: { xs: 14, xl: 14 },
+                                fontFamily: "Helvetica Neue",
                               }}
                             >
                               {boardMember.selected_title}

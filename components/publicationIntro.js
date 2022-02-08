@@ -71,7 +71,7 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                   }}
                   pr={{ md: 0, lg: 5, xl: 5 }}
                 >
-                  <Box sx={{ fontSize: { xs: 14, md: 14, lg: 15, xl: 17 } }}>
+                  <Box sx={{ fontSize: { xs: 14, md: 15, lg: 15, xl: 17 } }}>
                     <Box
                       component="div"
                       mb={2}
@@ -85,7 +85,8 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                       component="div"
                       sx={{
                         textAlign: "justify",
-                        fontSize: { xs: 13, md: 13, lg: 14, xl: 16 },
+                        fontSize: { xs: 14, md: 14, lg: 14, xl: 17 },
+                        fontFamily: "Helvetica Neue",
                       }}
                     >
                       <ReactMarkdown>{dataset.content_en}</ReactMarkdown>
@@ -258,7 +259,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                                 <Box
                                   ml={{ xs: 0, md: 1 }}
                                   component="span"
-                                  sx={{ fontWeight: 500 }}
+                                  sx={{
+                                    fontWeight: 500,
+                                    fontFamily: "Helvetica Neue",
+                                  }}
                                 >
                                   New Release
                                 </Box>
@@ -305,7 +309,10 @@ const PublicationIntro = ({ publication: dataset, fullpageApi, secIndex }) => {
                                 <Box
                                   ml={{ xs: 0, md: 1 }}
                                   component="span"
-                                  sx={{ fontWeight: 500 }}
+                                  sx={{
+                                    fontWeight: 500,
+                                    fontFamily: "Helvetica Neue",
+                                  }}
                                 >
                                   Publication
                                 </Box>

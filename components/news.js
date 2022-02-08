@@ -77,7 +77,7 @@ const StyledTableCell = styled(TableCell)(() => ({
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
-    borderBottom: "13px solid rgba(255, 255, 255, 1)",
+    borderBottom: "10px solid rgba(255, 255, 255, 1)",
   },
 }));
 const StyledTableRow = styled(TableRow)(() => ({
@@ -175,7 +175,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
           component={Paper}
           sx={{ border: "none", boxShadow: "none" }}
         >
-          <Box ml={28} mr={4} mt={18}>
+          <Box ml={28} mr={4} mt={14}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
               <TableBody>
                 {(rowsPerPage > 0
@@ -209,13 +209,23 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
 
                     <StyledTableCell style={{ width: "60%" }} align="left">
                       <a href={news.link} target="_blank">
-                        <Box sx={{ fontSize: { xs: 12, md: 13, lg: 15 } }}>
+                        <Box
+                          sx={{
+                            fontSize: { xs: 12, md: 13, lg: 13 },
+                            fontFamily: "Helvetica Neue",
+                          }}
+                        >
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>
                       </a>
                     </StyledTableCell>
                     <StyledTableCell style={{ width: "15%" }} align="left">
-                      <Box sx={{ textAlign: "left" }}>
+                      <Box
+                        sx={{
+                          textAlign: "left",
+                          fontSize: { xs: 12, md: 12, lg: 12 },
+                        }}
+                      >
                         {news.news_categories &&
                           news.news_categories.map((cat) => (
                             <Box key={cat.id}>{cat.name}</Box>
@@ -252,7 +262,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} mt={6} ml={9} pb={8}>
+      <Box sx={{ display: { xs: "block", md: "none" } }} mt={8} ml={9} pb={8}>
         <Slider {...settingsMobile}>
           {sorted &&
             sorted.map((news) => (
@@ -263,11 +273,11 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
               >
                 <Box
                   className={styles.slideBg}
-                  sx={{ height: "100%", padding: 1 }}
+                  sx={{ height: "100%", padding: 0.5 }}
                 >
-                  <Stack direction="column" spacing={1}>
+                  <Stack direction="column" spacing={0.5}>
                     <Item>
-                      <Box sx={{ fontSize: 21, fontWeight: 700 }}>
+                      <Box sx={{ fontSize: 15, fontWeight: 700 }}>
                         <Box component="span">
                           {format(new Date(news.start_date), "yyyy.MM.dd")}
                         </Box>
@@ -279,12 +289,18 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                       </Box>
                     </Item>
                     <Item>
-                      <Box sx={{ fontSize: 18, marginTop: 0.5 }}>
+                      <Box
+                        sx={{
+                          fontSize: 15,
+                          marginTop: 0.5,
+                          fontFamily: "Helvetica Neue",
+                        }}
+                      >
                         <ReactMarkdown>{news.title}</ReactMarkdown>
                       </Box>
                     </Item>
                     <Item>
-                      <Box sx={{ fontSize: 13 }}>
+                      <Box sx={{ fontSize: 12 }}>
                         {news.news_categories &&
                           news.news_categories.map((cat) => (
                             <Box key={cat.id}>{cat.name}</Box>
@@ -300,11 +316,11 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       {/* /mobile */}
 
       <Box
-        ml={{ xs: 9, md: 28 }}
-        mr={{ xs: 2, md: 16 }}
+        ml={{ xs: 6, md: 28 }}
+        mr={{ xs: 0, md: 16 }}
         sx={{
-          marginTop: { xs: "2vh", md: "5vh", xl: "8vh" },
-          height: { xs: "30vh", md: "20vh" },
+          marginTop: { xs: "0vh", md: "3vh", xl: "8vh" },
+          height: { xs: "35vh", md: "20vh" },
         }}
         mb={{ xs: 0, md: 0 }}
       >
@@ -315,14 +331,14 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                 <Box
                   sx={{
                     border: "1px solid #000",
-                    padding: 1,
-                    minHeight: { xs: "30vh", md: "68px" },
+                    padding: { xs: 0.5, md: 1 },
+                    minHeight: { xs: "35vh", md: "158px" },
                   }}
                 >
                   <Stack
                     direction={{ xs: "column", md: "column" }}
-                    spacing={2}
-                    mb={2}
+                    spacing={1}
+                    mb={1}
                   >
                     <Item>
                       <Box
@@ -332,12 +348,33 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                           whiteSpace: "pre-line",
                         }}
                       >
-                        {announcement.title}
+                        {announcement.title.split("、")[0]}
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: { xs: 14, lg: 15 },
+                          fontWeight: 700,
+                          whiteSpace: "pre-line",
+                          fontFamily: "Helvetica Neue",
+                        }}
+                      >
+                        {announcement.title.split("、")[1]}
                       </Box>
                     </Item>
                     <Item>
-                      <Box sx={{ fontSize: { xs: 12, lg: 13 } }}>
-                        {announcement.content}
+                      <Box
+                        sx={{ fontSize: { xs: 12, lg: 13 }, fontWeight: 400 }}
+                      >
+                        {announcement.content.split("、")[0]}
+                      </Box>
+                      <Box
+                        sx={{
+                          fontSize: { xs: 12, lg: 13 },
+                          fontFamily: "Helvetica Neue",
+                          fontWeight: 300,
+                        }}
+                      >
+                        {announcement.content.split("、")[1]}
                       </Box>
                     </Item>
                   </Stack>

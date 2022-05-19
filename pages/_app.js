@@ -44,13 +44,13 @@ export default function MyApp({ Component, pageProps, router }) {
           cardType: "summary_large_image",
         }}
       />
-      <AnimatePresence
+      {/* <AnimatePresence
         exitBeforeEnter
         initial={false}
         onExitComplete={() => window.scrollTo(0, 0)}
-      >
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
+      > */}
+      <Component {...pageProps} key={router.route} />
+      {/* </AnimatePresence> */}
     </>
   );
 }

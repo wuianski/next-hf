@@ -284,16 +284,16 @@ h3 {
 }
 
 /*front page*/
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
   grid-template-rows: 403px 229px;
   grid-gap: 20px;
   height: 100%;
-}
+} */
 .grid-container > div {
   /*background-color: #000000;*/
-  text-align: center;
+  /* text-align: center; */
   /*padding: 20px 0;*/
   font-size: 30px;
 }
@@ -325,7 +325,7 @@ h3 {
 }
 .progamName{
   color:#fff;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0px;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -338,13 +338,20 @@ h3 {
   width: 95%;
   white-space: pre-line;
   text-shadow: 0.06em 0.06em 0.24em #000;
+  position: relative;
+  z-index: 99;
 }
 .progamLogo{
-  position: absolute;
+  /* position: absolute; */
   top: 0px;
   padding-top: 20px;
   padding-left: 20px;
   filter: invert(1);
+  position: relative;
+  z-index: 99;
+}
+.progamCoverBg > div{
+  position: static !important;
 }
 
 

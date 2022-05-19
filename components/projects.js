@@ -40,6 +40,11 @@ const Projects = ({ projects: dataset }) => {
           sx={{
             width: { xs: "100%", sm: "100%", md: "calc(100% + 20px)" },
             height: "500px",
+            display: "grid",
+            gridTemplateColumns: "auto auto auto auto auto auto",
+            gridTemplateRows: "403px 229px",
+            rowGap: "20px",
+            columnGap: "20px",
           }}
         >
           {mydataset &&
@@ -55,32 +60,36 @@ const Projects = ({ projects: dataset }) => {
                 }}
               >
                 <a href={project.link} target="_blank">
-                  <Image
-                    //key={event.id}
-                    //className={styles.landingImage}
-                    src={project.cover2 && project.cover2.url}
-                    alt="cover image of projects"
-                    //layout="responsive"
-                    objectFit="cover"
-                    objectPosition="center"
-                    width="1000"
-                    height="1304"
-                  />
+                  <Box>
+                    {/* <Box className="progamBg" /> */}
+                    <Box className="progamLogo">
+                      <Image
+                        //key={event.id}
+                        //className={styles.landingImage}
+                        src={project.cover && project.cover.url}
+                        alt="logo image of projects"
+                        //layout="responsive"
+                        objectFit="contain"
+                        //objectPosition="center"
+                        width="215"
+                        height="89"
+                      />
+                    </Box>
+                    {/* <Box className="progamName">{project.short_content}</Box> */}
 
-                  <Box className="progamBg" />
-                  <Box className="progamName">{project.short_content}</Box>
-                  <Box className="progamLogo">
-                    <Image
-                      //key={event.id}
-                      //className={styles.landingImage}
-                      src={project.cover && project.cover.url}
-                      alt="logo image of projects"
-                      //layout="responsive"
-                      objectFit="contain"
-                      //objectPosition="center"
-                      width="215"
-                      height="89"
-                    />
+                    <Box className="progamCoverBg">
+                      <Image
+                        //key={event.id}
+                        //className={styles.landingImage}
+                        src={project.cover2 && project.cover2.url}
+                        alt="cover image of projects"
+                        //layout="responsive"
+                        objectFit="cover"
+                        objectPosition="center"
+                        width="1000"
+                        height="1304"
+                      />
+                    </Box>
                   </Box>
                 </a>
               </Box>

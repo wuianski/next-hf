@@ -1,7 +1,7 @@
 import * as React from "react";
-import { fetchAPI } from "../lib/api";
-import Layout from "../components/layout";
-import Nav from "../components/nav";
+import { fetchAPI } from "../../lib/api";
+import Layout from "../../components/layout";
+import Nav from "../../components/nav";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,9 +12,15 @@ import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import { NextSeo } from "next-seo";
+import { motion } from "framer-motion";
 
-function Members({ members: dataset, leadership_doc, contact }) {
-  /** sorting dataset by id **/
+function Members({
+  members: dataset,
+  leadership_doc,
+  contact,
+  projects: datasetP,
+}) {
+  /** sorting member dataset by id **/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
   /** (leaders) filting dataset by job_title.id **/
@@ -26,6 +32,10 @@ function Members({ members: dataset, leadership_doc, contact }) {
   const boardMembers = dataset.filter(function (leadership) {
     return leadership.job_title.id == 5;
   });
+
+  /* CHANGE programs ARRAY SORTING BY ID*/
+  !datasetP ? null : datasetP.sort((a, b) => a.id - b.id);
+  const mydataset = datasetP.slice(0, 3);
 
   /** stack Item setting **/
   const StackItem = styled(Paper)(({ theme }) => ({
@@ -66,32 +76,96 @@ function Members({ members: dataset, leadership_doc, contact }) {
           cardType: "summary_large_image",
         }}
       />
-      <Nav contact={contact} />
-      <Box id="myMenuInPage">
-        <div className="active secName">
-          <div className="secName_twInPage">成員</div>
-          <div className="secName_enInPage">members</div>
-        </div>
+      <Nav contact={contact} projects={datasetP} />
+      {/* sub-menu */}
+      <Box className="subMenuInAbooutPage">
+        <ul className="subMenuInAbooutPage_ul">
+          <li className="subMenuInAbooutPage_li">
+            <Link href="/about">關於</Link>
+          </li>
+          <li className="subMenuInAbooutPage_li active">
+            <Link href="/about/members">成員</Link>
+          </li>
+          <li className="subMenuInAbooutPage_li">
+            <a href="/about/resource">公開資訊</a>
+          </li>
+          <li className="subMenuInAbooutPage_li">
+            <a href="/about/timeline">大事記</a>
+          </li>
+          <li className="subMenuInAbooutPage_li">
+            <a href="/about/reports">報表</a>
+          </li>
+        </ul>
+        <Box
+          mt={{ xs: -0.2, sm: 2.2, md: 3 }}
+          ml={"auto"}
+          mr={"auto"}
+          sx={{
+            width: { xs: "90vw", sm: "93vw", md: "80vw" },
+            maxWidth: "954px",
+            height: 2,
+            backgroundImage:
+              "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000000 12.68%, #000000 87.11%, rgba(0, 0, 0, 0) 100%)",
+          }}
+        />
       </Box>
+      {/* member content */}
+      {/* <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {
+            scale: 0.8,
+            opacity: 0,
+          },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 100 },
+          },
+        }}
+      > */}
       <Box
-        ml={{ xs: 8.5, md: "20vw" }}
-        mr={{ xs: 2, md: 10 }}
-        mt={{ xs: 20, sm: 23, md: 23 }}
+        sx={{
+          width: { xs: "85%", sm: "90%", md: "80vw" },
+          maxWidth: { xs: "100%", md: "954px" },
+        }}
+        ml={"auto"}
+        mr={"auto"}
+        pt={{ xs: 24, sm: 30, md: 32 }}
       >
         <Box>
           <Stack
-            direction={{ xs: "column", sm: "row", md: "row" }}
+            direction={{ xs: "column", sm: "column", md: "row" }}
             spacing={{ xs: 4, md: 1 }}
           >
             {/* current year */}
-            <StackItem>
+            <StackItem
+              sx={{
+                width: { xs: "90vw", sm: "90vw", md: "25vw" },
+              }}
+            >
               <Box
+                sx={{
+                  fontSize: { xs: 24, md: 30 },
+                  fontWeight: 300,
+                  color: "#B09336",
+                }}
                 className="markdownP"
-                sx={{ width: "fit-content", borderBottom: "5px solid #000" }}
               >
                 <ReactMarkdown>
                   {leadership_doc.years_of_board_members}
                 </ReactMarkdown>
+                <Box
+                  sx={{
+                    width: { xs: "167px", md: "167px" },
+                    height: { xs: "7px", md: "7px" },
+                    background:
+                      "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
+                  }}
+                  mt={3}
+                  mr={6}
+                ></Box>
               </Box>
               <Box pt={{ xs: 4, md: 6 }} ml={-2}>
                 <a href={leadership_doc.board_members.url} target="_blank">
@@ -140,13 +214,14 @@ function Members({ members: dataset, leadership_doc, contact }) {
             {/* members */}
             <StackItem
               sx={{
-                width: { xs: "76vw", sm: "60vw", md: "50vw", xl: "50vw" },
+                width: { xs: "76vw", sm: "90vw", md: "55vw" },
               }}
             >
               <Box
                 sx={{ flexGrow: 1 }}
-                pl={{ xs: "0vw", md: "10vw" }}
+                pl={{ xs: "0vw", md: "2vw" }}
                 mb={{ xs: 10, sm: 30, md: 10 }}
+                pt={{ xs: 0, md: 3.5 }}
               >
                 <Grid
                   container
@@ -184,7 +259,10 @@ function Members({ members: dataset, leadership_doc, contact }) {
                             </Box>
                             <Box
                               sx={{
-                                whiteSpace: { xs: "pre-line", md: "pre-line" },
+                                whiteSpace: {
+                                  xs: "pre-line",
+                                  md: "pre-line",
+                                },
                                 fontSize: { xs: 14, xl: 14 },
                                 fontFamily: "Helvetica Neue",
                               }}
@@ -201,20 +279,22 @@ function Members({ members: dataset, leadership_doc, contact }) {
           </Stack>
         </Box>
       </Box>
+      {/* </motion.div> */}
     </>
   );
 }
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [members, leadership_doc, contact] = await Promise.all([
+  const [members, leadership_doc, contact, projects] = await Promise.all([
     await fetchAPI("/leadership-members"),
     await fetchAPI("/leadership"),
     await fetchAPI("/contact"),
+    await fetchAPI("/projects"),
   ]);
 
   return {
-    props: { members, leadership_doc, contact },
+    props: { members, leadership_doc, contact, projects },
     //revalidate: 1,
   };
 }

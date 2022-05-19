@@ -1,14 +1,14 @@
-.logoFixed{
-  position:fixed;
-  z-index:8;
+.logoFixed {
+  position: fixed;
+  z-index: 8;
   left: 32px;
   top: 36px;
   mix-blend-mode: difference;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .main {
-  display: flex;
+  /*display: flex;*/
   /*height: calc(100vh - 64px);*/
   background-color: white;
 }
@@ -18,8 +18,8 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .logoFixed{
-    width:110px;
-    top:32px;
+  .logoFixed {
+    width: 187px;
+    top: 32px;
   }
 }

@@ -23,24 +23,28 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-function Book({ book, contact }) {
+function Book({ book, contact, projects: datasetP }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => b.order - a.order);
   /** route each post **/
   const router = useRouter();
   //const data = router.query.id || [];
-
   //console.log(book);
+
+  /* CHANGE ARRAY SORTING BY ID*/
+  !datasetP ? null : datasetP.sort((a, b) => a.id - b.id);
+  const mydataset = datasetP.slice(0, 3);
+
   return (
     <>
-      <Nav contact={contact} />
+      <Nav contact={contact} projects={datasetP} />
       <Box id="myMenuInPage">
-        <div /*data-menuanchor="section1"*/ className="active secName">
+        <div className="activeInPage secNameInPage">
           <div className="secName_twInPage">出版</div>
           <div className="secName_enInPage">publication</div>
         </div>
       </Box>
-      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 28 }} mt={20} mb={4}>
+      <Box ml={{ xs: 8, md: 33 }} mr={{ xs: 2, md: 28 }} pt={20} mb={4}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={6}>
           <Item>
             <Box width={200}>
@@ -69,7 +73,13 @@ function Book({ book, contact }) {
                 <Box component="span"> / </Box>
                 <Box component="span">{book.book_categories[1].name}</Box>
               </Box>
-              <Box sx={{ fontSize: { xs: "44px", xl: "47px" } }}>
+              <Box
+                sx={{
+                  fontSize: { xs: "24px", md: "30px" },
+                  fontWeight: 600,
+                  whiteSpace: "pre-line",
+                }}
+              >
                 {book.title_tw}
               </Box>
               <Box
@@ -377,9 +387,10 @@ export async function getStaticProps({ params }) {
   // If the route is like /books/煙愁, then params.title_tw is 煙愁
   const books = await fetchAPI(`/books?title_tw=${encodeURI(params.title_tw)}`);
   const contact = await fetchAPI("/contact");
+  const projects = await fetchAPI("/projects");
 
   // Pass book data to the page via props
-  return { props: { book: books[0], contact } };
+  return { props: { book: books[0], contact, projects } };
 }
 
 export default Book;

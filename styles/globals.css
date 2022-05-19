@@ -33,8 +33,11 @@ div.secName {
 .secName.active {
   color: #000;
   display: block;
-  position: absolute;
-  bottom: calc(50vh - 59px);
+  /* position: absolute;
+  bottom: calc(50vh - 59px); */
+  position: fixed;
+  top: 160px;
+  border-bottom: none;
 }
 .secName_en {
   font-weight: 300;
@@ -70,6 +73,52 @@ div.secName {
   text-shadow: 0.2em 0.2em 0.8em #000;
 }
 /* /Section Name in main page*/
+
+/* section name in other next page (events content page, books content page) */
+#myMenuInPage {
+  position: fixed;
+  bottom: 68px;
+  z-index: 999;
+  height: 68vh;
+  width: 93px;
+  border-right: 1px solid #000;
+}
+.secNameInPage.activeInPage {
+  color: #000;
+  display: block;
+  position: absolute;
+  bottom: calc(50vh - 59px);
+}
+.secName_enInPage {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  width: 118px;
+  height: 27px;
+  position: absolute;
+  left: 0px;
+  margin-left: -21px;
+  margin-top: 48px;
+  text-align: left;
+  color: #000;
+}
+.secName_twInPage {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.5em;
+  width: 15px;
+  height: 118px;
+  position: absolute;
+  left: 0px;
+  margin-left: 50px;
+  text-align: left;
+  color: #000;
+}
+/* /section name in other next page */
 
 /* hide react-slick arrow */
 .slick-arrow {
@@ -117,45 +166,49 @@ h3 {
 }
 /* react-awesome-slider in publication */
 
-/* section name in other next page */
-#myMenuInPage {
+/* sub-menu in about page */
+.subMenuInAbooutPage {
   position: fixed;
-  bottom: 68px;
-  z-index: 999;
-  height: 68vh;
-  width: 93px;
-  border-right: 1px solid #000;
+  top: 0px;
+  height: 201px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
 }
-.secName_enInPage {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transform: rotate(90deg);
-  width: 118px;
-  height: 27px;
-  position: absolute;
-  left: 0px;
-  margin-left: -21px;
-  margin-top: 48px;
-  text-align: left;
+.subMenuInAbooutPage_ul {
+  list-style-type: none;
+  width: 80vw;
+  max-width: 954px; /*f ixed with of sub-menu when it goes bigger */
+  height: 23px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   color: #000;
-}
-.secName_twInPage {
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 19px;
   line-height: 19px;
-  letter-spacing: 0.5em;
-  width: 15px;
-  height: 118px;
-  position: absolute;
-  left: 0px;
-  margin-left: 50px;
-  text-align: left;
-  color: #000;
+  letter-spacing: 0.2em;
+  margin-top: 150px;
+  padding-left: 0px;
 }
-/* /section name in other next page */
+.subMenuInAbooutPage_li {
+  display: inline;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 18px;
+  opacity: 50%;
+}
+.subMenuInAbooutPage_li .active {
+  padding-bottom: 18px;
+  border-bottom: 5px solid #000;
+  opacity: 100%;
+}
+.active {
+  padding-bottom: 18px;
+  border-bottom: 5px solid #000;
+  opacity: 100%;
+}
+/* /sub-menu in about page */
 
 /* MuiTabs Lab  */
 .Mui-selected {
@@ -172,8 +225,16 @@ h3 {
 }
 
 /* in order to make first <P/> of markdown margin top equal zero  */
-.markdownP p:nth-of-type(1) {
-  margin-top: 0;
+.markdownP p strong {
+  font-size: 27.5px;
+  font-weight: 500;
+  font-family: "Noto Sans TC";
+  letter-spacing: 0.02em;
+}
+
+.markdownP p {
+  font-size: 21px;
+  font-family: "Helvetica Neue";
 }
 
 /*  */
@@ -222,38 +283,131 @@ h3 {
   display: none;
 }
 
-/* Large devices (phones, 900px and down) */
-@media only screen and (max-width: 900px) {
-  /* section name in main page */
-  #myMenu {
-    width: 40px;
-    top: calc(50vh - 30vh);
-    bottom: unset;
-  }
-  .secName_en {
-    font-size: 10px;
-    margin-top: 75px;
-    /*background-color: #fff;*/
-    padding: 0 5px;
-    text-align: start;
-    margin-left: -41px;
-  }
-  .secName_tw {
-    font-size: 10px;
-    margin-left: 13.5px; /*33.5px*/
-    bottom: -30px;
-    height: inherit;
-    /*background-color: #fff;*/
-    padding-top: 50px;
-  }
-  /* /section name in main page */
+/*front page*/
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-rows: 403px 229px;
+  grid-gap: 20px;
+  height: 100%;
+}
+.grid-container > div {
+  /*background-color: #000000;*/
+  text-align: center;
+  /*padding: 20px 0;*/
+  font-size: 30px;
+}
 
+.grid-container > div > div > img{
+  filter: brightness(95%) contrast(120%);
+}
+
+#item1 {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 3;
+  
+}
+#item2 {
+  grid-row: 1;
+  grid-column: 4 / span 2;
+  
+}
+#item3 {
+  grid-row: 2;
+  grid-column: 4 / span 2;
+}
+.progamBg{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: calc(100% - 0px);
+  background-color: #0000004d;
+}
+.progamName{
+  color:#fff;
+  position: absolute;
+  bottom: 0px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: left;
+  width: 95%;
+  white-space: pre-line;
+  text-shadow: 0.06em 0.06em 0.24em #000;
+}
+.progamLogo{
+  position: absolute;
+  top: 0px;
+  padding-top: 20px;
+  padding-left: 20px;
+  filter: invert(1);
+}
+
+
+/* Large devices (ipad, 1080px and down) */
+@media only screen and (max-width: 1080px) {
+  /* sub-menu in about page */
+  .subMenuInAbooutPage {
+    height: 180px;
+  }
+  .subMenuInAbooutPage_ul {
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    margin-top: 130px;
+  }
+  .subMenuInAbooutPage_li {
+    display: inline;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 18px;
+  }
+}
+
+/* Large devices (ipad, 900px and down) */
+@media only screen and (max-width: 900px) {
   h3 {
     margin: 0;
     line-height: initial;
   }
+  /* MuiTabs Lab  */
+  .MuiTabs-flexContainer {
+    display: grid !important;
+  }
 
-  /* section name in other next page */
+  /* Resource data text  */
+  .textText {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .textNumber {
+    font-size: 20px;
+    margin: 0 3px;
+  }
+
+  /*front page*/
+  .grid-container {
+    display: block;
+    height: 50%;
+  }
+  .grid-container > div {
+    margin-bottom: 20px;
+  }
+}
+/* Large devices (ipad, 810px and down) */
+@media only screen and (max-width: 810px) {
+  /* sub-menu in about page */
+  .subMenuInAbooutPage_ul {
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  /* section name in other next page (events content page, books content page) */
   #myMenuInPage {
     width: 40px;
     top: calc(50vh - 30vh);
@@ -276,20 +430,40 @@ h3 {
     padding-top: 50px;
   }
   /* section name in other next page */
+  
+}
 
-  /* MuiTabs Lab  */
-  .MuiTabs-flexContainer {
-    display: grid !important;
+/* Large devices (phones, 500px and down) */
+@media only screen and (max-width: 500px) {
+  /* sub-menu in about page */
+  .subMenuInAbooutPage_ul {
+    font-size: 16px;
+    line-height: 16px;
+    width: 100%;
+    /*margin-left: -5vw;*/
+    letter-spacing: 0.08em;
   }
+  .subMenuInAbooutPage_li {
+    display: inline;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding-bottom: 13px;
+  }
+}
 
-  /* Resource data text  */
-  .textText {
-    font-size: 18px;
-    letter-spacing: 2px;
+/* Large devices (phones, 390px and down) */
+@media only screen and (max-width: 390px) {
+  /* sub-menu in about page */
+  .subMenuInAbooutPage_ul {
+    font-size: 16px;
+    line-height: 16px;
+    width: 100%;
   }
-  .textNumber {
-    font-size: 20px;
-    margin: 0 3px;
+  .subMenuInAbooutPage_li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 13px;
   }
 }
 

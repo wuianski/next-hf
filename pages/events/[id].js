@@ -16,7 +16,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 
-function Event({ event, contact }) {
+function Event({ event, contact, projects: dataset }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -26,7 +26,6 @@ function Event({ event, contact }) {
 
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -34,6 +33,10 @@ function Event({ event, contact }) {
     background: "none",
     boxShadow: "none",
   }));
+
+  /* CHANGE ARRAY SORTING BY ID*/
+  !dataset ? null : dataset.sort((a, b) => a.id - b.id);
+  const mydataset = dataset.slice(0, 3);
 
   return (
     <>
@@ -53,18 +56,18 @@ function Event({ event, contact }) {
           cardType: "summary_large_image",
         }}
       />
-      <Nav contact={contact} />
+      <Nav contact={contact} projects={dataset} />
       <Box id="myMenuInPage">
-        <div /*data-menuanchor="section1"*/ className="active secName">
+        <div className="activeInPage secNameInPage">
           <div className="secName_twInPage">活動</div>
           <div className="secName_enInPage">events</div>
         </div>
       </Box>
 
       <Box mt={20}>
-        <Stack direction="column" spacing={{ xs: 8, md: 12 }}>
+        <Stack direction="column" spacing={{ xs: 3, md: 6 }}>
           <Item sx={{ width: "100vw" }}>
-            <motion.div
+            {/* <motion.div
               initial="hidden"
               animate="visible"
               variants={{
@@ -75,36 +78,36 @@ function Event({ event, contact }) {
                 visible: {
                   scale: 1,
                   opacity: 1,
-                  transition: {
-                    delay: 0.4,
-                  },
+                  transition: { delay: 0.4 },
                 },
               }}
-            >
-              <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
-                <Box
-                  sx={{
-                    fontSize: { xs: "34px", xl: "37px" },
-                    lineHeight: 1.3,
-                    textAlign: "end",
-                    whiteSpace: "pre-line",
-                    //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
-                  }}
-                >
-                  {event.title_tw}
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: { xs: "25px", xl: "28px" },
-                    lineHeight: 1.3,
-                    textAlign: "end",
-                    whiteSpace: "pre-line",
-                  }}
-                >
-                  {event.title_en}
-                </Box>
+            > */}
+            <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
+              <Box
+                sx={{
+                  fontSize: { xs: "24px", md: "30px" },
+                  lineHeight: 1.3,
+                  textAlign: { xs: "start", md: "end" },
+                  whiteSpace: "pre-line",
+                  fontWeight: 600,
+                  //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
+                }}
+              >
+                {event.title_tw}
               </Box>
-            </motion.div>
+              <Box
+                sx={{
+                  fontSize: { xs: "24px", md: "30px" },
+                  lineHeight: 1.3,
+                  textAlign: { xs: "start", md: "end" },
+                  whiteSpace: "pre-line",
+                  fontWeight: 400,
+                }}
+              >
+                {event.title_en}
+              </Box>
+            </Box>
+            {/* </motion.div> */}
           </Item>
           <Item>
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }}>
@@ -164,9 +167,9 @@ function Event({ event, contact }) {
                       pt={3}
                       sx={{
                         fontSize: { xs: "15px", xl: "15px" },
-                        fontWeight: { xs: 700, xl: 700 },
+                        fontWeight: 600,
                         lineHeight: 1.3,
-                        textAlign: { xs: "end", md: "start" },
+                        textAlign: { xs: "start", md: "start" },
                       }}
                     >
                       活動資訊
@@ -175,10 +178,10 @@ function Event({ event, contact }) {
                       pt={1}
                       sx={{
                         fontSize: { xs: "17px", xl: "17px" },
-                        fontWeight: { xs: 400, xl: 400 },
+                        fontWeight: 400,
                         lineHeight: 1.6,
                         whiteSpace: "pre-line",
-                        textAlign: { xs: "end", md: "start" },
+                        textAlign: { xs: "start", md: "start" },
                       }}
                     >
                       {event.sponsor && event.sponsor}
@@ -218,14 +221,20 @@ function Event({ event, contact }) {
                     pt={{ xs: 3, md: 0 }}
                     sx={{
                       fontSize: { xs: "15px", xl: "15px" },
-                      fontWeight: { xs: 700, xl: 700 },
+                      fontWeight: 600,
                       lineHeight: 1.3,
-                      textAlign: { xs: "end", md: "end" },
+                      textAlign: { xs: "start", md: "end" },
                     }}
                   >
                     活動概念
                   </Box>
-                  <Box sx={{ textAlign: "justify", textJustify: "distribute" }}>
+                  <Box
+                    sx={{
+                      textAlign: "justify",
+                      textJustify: "distribute",
+                      fontWeight: 400,
+                    }}
+                  >
                     <ReactMarkdown>{event.content_tw}</ReactMarkdown>
                   </Box>
                 </Item>
@@ -243,9 +252,10 @@ export async function getServerSideProps({ params }) {
   //const [events] = await Promise.all([await fetchAPI("/events")]);
   const events = await fetchAPI(`/events?id=${params.id}`);
   const contact = await fetchAPI("/contact");
+  const projects = await fetchAPI("/projects");
 
   return {
-    props: { event: events[0], contact },
+    props: { event: events[0], contact, projects },
     //revalidate: 1,
   };
 }

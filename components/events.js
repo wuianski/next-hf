@@ -6,10 +6,11 @@ import AwesomeSlider from "react-awesome-slider";
 import styles from "./events.module.css";
 import Nav from "./nav";
 import { motion, AnimatePresence } from "framer-motion";
+import Slider from "react-slick";
 
 import { format } from "date-fns";
 
-const Events = ({ events: dataset, secIndex }) => {
+const Events = ({ events: dataset }) => {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
 
@@ -47,128 +48,260 @@ const Events = ({ events: dataset, secIndex }) => {
   const sorted = dataset.sort(sortByDate);
   //console.log(sorted);
 
+  /** react-slick setting **/
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
+
+  /** react-slick setting for mobile **/
+  const settingsMobile = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const MAX_LENGTH = 130;
+
   return (
     <>
-      {secIndex.sectionCount == 5 && (
-        <Box>
-          <AwesomeSlider
-            bullets={true}
-            fillParent={true}
-            transitionDelay={500}
-            organicArrows={false}
-          >
+      <Box
+        sx={{
+          width: { xs: "100%", md: "79.7vw" },
+          maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+        }}
+        // ml={"auto"}
+        // mr={"auto"}
+        pt={{ xs: 0, sm: 5, md: 0 }}
+        pb={{ xs: 3, sm: 5, md: 10 }}
+        ml={{ xs: 1, sm: 1, md: -0.5 }}
+        pr={{ xs: 4, sm: 4, md: 0 }}
+      >
+        {/* desktop */}
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Slider {...settings}>
             {sorted &&
               sorted.map((event, i) => (
-                <Box key={event.id}>
+                <Box key={event.id} pl={3}>
                   <Box
-                    width={"100vw"}
-                    height={"100vh"}
-                    sx={{ position: "relative" }}
-                  >
-                    <Image
-                      //key={event.id}
-                      className={styles.landingImage}
-                      src={event.cover && event.cover.url}
-                      alt="download icon"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      //width={1080}
-                      //height={520}
-                    />
-                  </Box>
-
+                    sx={{
+                      width: { xs: "100%", md: "100%" },
+                      height: { xs: "7px", md: "7px" },
+                      background:
+                        "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
+                    }}
+                    mr={6}
+                  ></Box>
                   <Link href="/events/[id]" as={`/events/` + event.id}>
-                    <Box
-                      mr={{ xs: 4, md: 6 }}
-                      mb={{ xs: 10, md: 6 }}
-                      sx={{
-                        cursor: "pointer",
-                        color: "#fff",
-                        textAlign: "end",
-                        textShadow: "0.2em 0.2em 0.8em #000",
-                        whiteSpace: "pre-line",
-                        maxWidth: "78vw",
-                      }}
-                      className={styles.landingText}
-                    >
-                      <Box>
-                        <Box
-                          sx={{
-                            fontSize: { xs: 17, md: 37, xl: 40 },
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              fontSize: { xs: 20, md: 37, xl: 40 },
-                              fontWeight: { xs: 400, md: 500, xl: 700 },
-                            }}
-                          >
-                            {event.title_tw}
-                          </Box>
-                          <Box
-                            mt={1}
-                            sx={{
-                              fontWeight: { xs: 400, md: 400, xl: 500 },
-                              lineHeight: {
-                                xs: "21px",
-                                md: "45px",
-                                xl: "48px",
-                              },
-                            }}
-                          >
-                            {event.title_en}
-                          </Box>
-                        </Box>
+                    <Box sx={{ cursor: "pointer" }}>
+                      {/* image */}
+                      <Box mt={3}>
+                        <Image
+                          //key={event.id}
+                          className={styles.landingImage}
+                          src={event.cover && event.cover.url}
+                          alt="cover image"
+                          //layout="responsive"
+                          objectFit="cover"
+                          objectPosition="center"
+                          width={1035}
+                          height={750}
+                        />
+                      </Box>
+                      {/* title */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 17, md: 24 },
+                          fontWeight: { xs: 400, md: 700 },
+                          whiteSpace: "pre-line",
+                        }}
+                        mt={3}
+                      >
+                        {event.title_tw}
+                      </Box>
 
-                        <Box
-                          mt={1}
-                          sx={{
-                            fontSize: { xs: 15, md: 27, xl: 30 },
-                            fontWeight: { xs: 400, md: 400, xl: 500 },
-                          }}
-                        >
-                          <Box component="span">
-                            {event.start_time &&
-                            event.start_time == event.end_time
-                              ? ""
-                              : format(new Date(event.start_time), "MMM dd") +
-                                ` - `}
-                          </Box>
-                          <Box component="span">
-                            {event.end_time &&
-                              format(new Date(event.end_time), "MMM dd, yyyy")}
-                          </Box>
+                      {/*
+                      <Box
+                        mt={1}
+                        sx={{
+                          fontSize: { xs: 15, md: 27, xl: 30 },
+                          fontWeight: { xs: 400, md: 400, xl: 500 },
+                        }}
+                      >
+                        <Box component="span">
+                          {event.start_time &&
+                          event.start_time == event.end_time
+                            ? ""
+                            : format(new Date(event.start_time), "MMM dd") +
+                              ` - `}
                         </Box>
+                        <Box component="span">
+                          {event.end_time &&
+                            format(new Date(event.end_time), "MMM dd, yyyy")}
+                        </Box>
+                      </Box>
+                          */}
 
-                        <Box
-                          sx={{
-                            fontSize: { md: 17, xl: 19 },
-                            lineHeight: 1.3,
-                            display: "flex",
-                            justifyContent: "flex-end",
-                          }}
-                        >
-                          <Box
-                            mt={2}
-                            variant="text"
-                            sx={{
-                              lineHeight: "38px",
-                              borderBottom: "3px solid #fff",
-                              textTransform: "capitalize",
-                            }}
-                          >
-                            更多資訊 read more
+                      {/* info */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 13, md: 15 },
+                          fontWeight: { xs: 700, md: 700 },
+                          whiteSpace: "pre-line",
+                        }}
+                        mt={2}
+                      >
+                        {event.sponsor}
+                      </Box>
+
+                      {/* content */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 12, md: 17 },
+                          fontWeight: { xs: 400, md: 400 },
+                        }}
+                      >
+                        {event.content_tw.length > MAX_LENGTH ? (
+                          <Box mt={2}>
+                            {`${event.content_tw.substring(0, MAX_LENGTH)}...`}
+                            <Box
+                              sx={{
+                                lineHeight: "38px",
+                                borderBottom: "3px solid #000",
+                                textTransform: "none",
+                                opacity: 0.5,
+                                width: "fit-content",
+                              }}
+                            >
+                              more
+                            </Box>
                           </Box>
-                        </Box>
+                        ) : (
+                          <Box mt={2}>{event.content_tw}</Box>
+                        )}
                       </Box>
                     </Box>
                   </Link>
                 </Box>
               ))}
-          </AwesomeSlider>
+          </Slider>
         </Box>
-      )}
+
+        {/* mobile */}
+        <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <Slider {...settingsMobile}>
+            {sorted &&
+              sorted.map((event, i) => (
+                <Box key={event.id} pl={3}>
+                  <Box
+                    sx={{
+                      width: { xs: "100%", md: "100%" },
+                      height: { xs: "7px", md: "7px" },
+                      background:
+                        "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
+                    }}
+                    mr={6}
+                  ></Box>
+                  <Link href="/events/[id]" as={`/events/` + event.id}>
+                    <Box sx={{ cursor: "pointer" }}>
+                      {/* image */}
+                      <Box mt={3}>
+                        <Image
+                          //key={event.id}
+                          className={styles.landingImage}
+                          src={event.cover && event.cover.url}
+                          alt="cover image"
+                          //layout="responsive"
+                          objectFit="cover"
+                          objectPosition="center"
+                          width={1035}
+                          height={750}
+                        />
+                      </Box>
+                      {/* title */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 17, md: 24 },
+                          fontWeight: { xs: 400, md: 700 },
+                          whiteSpace: "pre-line",
+                        }}
+                        mt={3}
+                      >
+                        {event.title_tw}
+                      </Box>
+
+                      {/*
+                      <Box
+                        mt={1}
+                        sx={{
+                          fontSize: { xs: 15, md: 27, xl: 30 },
+                          fontWeight: { xs: 400, md: 400, xl: 500 },
+                        }}
+                      >
+                        <Box component="span">
+                          {event.start_time &&
+                          event.start_time == event.end_time
+                            ? ""
+                            : format(new Date(event.start_time), "MMM dd") +
+                              ` - `}
+                        </Box>
+                        <Box component="span">
+                          {event.end_time &&
+                            format(new Date(event.end_time), "MMM dd, yyyy")}
+                        </Box>
+                      </Box>
+                          */}
+
+                      {/* info */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 13, md: 15 },
+                          fontWeight: { xs: 700, md: 700 },
+                          whiteSpace: "pre-line",
+                        }}
+                        mt={2}
+                      >
+                        {event.sponsor}
+                      </Box>
+
+                      {/* content */}
+                      <Box
+                        sx={{
+                          fontSize: { xs: 12, md: 17 },
+                          fontWeight: { xs: 400, md: 400 },
+                        }}
+                      >
+                        {event.content_tw.length > MAX_LENGTH ? (
+                          <Box mt={2}>
+                            {`${event.content_tw.substring(0, MAX_LENGTH)}...`}
+                            <Box
+                              sx={{
+                                lineHeight: "38px",
+                                borderBottom: "3px solid #000",
+                                textTransform: "none",
+                                opacity: 0.5,
+                                width: "fit-content",
+                              }}
+                            >
+                              more
+                            </Box>
+                          </Box>
+                        ) : (
+                          <Box mt={2}>{event.content_tw}</Box>
+                        )}
+                      </Box>
+                    </Box>
+                  </Link>
+                </Box>
+              ))}
+          </Slider>
+        </Box>
+      </Box>
     </>
   );
 };

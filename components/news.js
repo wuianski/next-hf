@@ -74,26 +74,16 @@ const StyledTableCell = styled(TableCell)(() => ({
     fontSize: 13,
     //verticalAlign: "top",
     paddingBottom: 0,
+    paddingLeft: 0,
   },
   /* gap between table rows */
   [`&.${tableCellClasses.root}`]: {
-    borderBottom: "10px solid rgba(255, 255, 255, 1)",
+    borderBottom: "1px solid rgba(0, 0, 0, 1)",
   },
 }));
 const StyledTableRow = styled(TableRow)(() => ({
+  borderTop: "1px solid rgba(0, 0, 0, 1)",
   height: "83px",
-  "&:nth-of-type(odd)": {
-    background:
-      "linear-gradient(270deg, rgba(176, 147, 54, 0) 1%, rgba(176, 147, 54, 0.8) 99%)",
-  },
-  "&:nth-of-type(even)": {
-    background:
-      "linear-gradient(270deg, rgba(187, 187, 187, 0) 1%, rgba(187, 187, 187, 0.8) 99%)",
-  },
-  /* hide last border */
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
 }));
 
 /** react-slick setting **/
@@ -140,7 +130,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 /**  main function **/
-export default function News({ news: dataset, newsAnnounce: dataset2 }) {
+export default function News({ news: dataset }) {
   /** sorting dataset by start_date in the Object **/
   function sortByDate(a, b) {
     if (a.start_date < b.start_date) {
@@ -170,13 +160,27 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
 
   return (
     <>
-      <Box sx={{ display: { xs: "none", md: "block" } }}>
+      <Box sx={{ display: { xs: "block", md: "block" } }}>
         <TableContainer
           component={Paper}
           sx={{ border: "none", boxShadow: "none" }}
         >
-          <Box ml={28} mr={4} mt={14}>
-            <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+          <Box
+            sx={{
+              width: { xs: "100%", sm: "100%", md: "77.5vw" },
+              maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+            }}
+            // ml={"auto"}
+            // mr={"auto"}
+            pt={{ xs: 0, sm: 5, md: 0 }}
+            pb={{ xs: 3, sm: 5, md: 20 }}
+            ml={{ xs: 4, sm: 4, md: 2.5 }}
+            pr={{ xs: 7, sm: 7, md: 0 }}
+          >
+            <Table
+              sx={{ minWidth: { xs: "100%", md: 500 } }}
+              aria-label="custom pagination table"
+            >
               <TableBody>
                 {(rowsPerPage > 0
                   ? sorted.slice(
@@ -186,10 +190,10 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                   : sorted
                 ).map((news) => (
                   <StyledTableRow key={news.id}>
-                    <StyledTableCell style={{ width: "15%" }} align="left">
+                    <StyledTableCell style={{ width: "20%" }} align="left">
                       <a href={news.link} target="_blank">
                         <Box
-                          ml={1}
+                          ml={0}
                           sx={{
                             fontSize: { xs: 14, md: 14, lg: 15 },
                             fontWeight: 600,
@@ -202,6 +206,17 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                           <Box>
                             {news.end_date &&
                               format(new Date(news.end_date), "yyyy.MM.dd")}
+                          </Box>
+                          <Box
+                            sx={{
+                              textAlign: "left",
+                              fontSize: { xs: 12, md: 12, lg: 12 },
+                            }}
+                          >
+                            {news.news_categories &&
+                              news.news_categories.map((cat) => (
+                                <Box key={cat.id}>{cat.name}</Box>
+                              ))}
                           </Box>
                         </Box>
                       </a>
@@ -218,19 +233,6 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>
                       </a>
-                    </StyledTableCell>
-                    <StyledTableCell style={{ width: "15%" }} align="left">
-                      <Box
-                        sx={{
-                          textAlign: "left",
-                          fontSize: { xs: 12, md: 12, lg: 12 },
-                        }}
-                      >
-                        {news.news_categories &&
-                          news.news_categories.map((cat) => (
-                            <Box key={cat.id}>{cat.name}</Box>
-                          ))}
-                      </Box>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -262,6 +264,7 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
       </Box>
 
       {/* mobile */}
+      {/*
       <Box sx={{ display: { xs: "block", md: "none" } }} mt={8} ml={9} pb={8}>
         <Slider {...settingsMobile}>
           {sorted &&
@@ -312,77 +315,8 @@ export default function News({ news: dataset, newsAnnounce: dataset2 }) {
               </Box>
             ))}
         </Slider>
-      </Box>
+      </Box>*/}
       {/* /mobile */}
-
-      <Box
-        ml={{ xs: 6, md: 28 }}
-        mr={{ xs: 0, md: 16 }}
-        sx={{
-          marginTop: { xs: "0vh", md: "3vh", xl: "8vh" },
-          height: { xs: "35vh", md: "20vh" },
-        }}
-        mb={{ xs: 0, md: 0 }}
-      >
-        <Slider {...settings}>
-          {dataset2 &&
-            dataset2.map((announcement) => (
-              <Box pr={1} key={announcement.id}>
-                <Box
-                  sx={{
-                    border: "1px solid #000",
-                    padding: { xs: 0.5, md: 1 },
-                    minHeight: { xs: "35vh", md: "158px" },
-                  }}
-                >
-                  <Stack
-                    direction={{ xs: "column", md: "column" }}
-                    spacing={1}
-                    mb={1}
-                  >
-                    <Item>
-                      <Box
-                        sx={{
-                          fontSize: { xs: 14, lg: 15 },
-                          fontWeight: 700,
-                          whiteSpace: "pre-line",
-                        }}
-                      >
-                        {announcement.title.split("、")[0]}
-                      </Box>
-                      <Box
-                        sx={{
-                          fontSize: { xs: 14, lg: 15 },
-                          fontWeight: 700,
-                          whiteSpace: "pre-line",
-                          fontFamily: "Helvetica Neue",
-                        }}
-                      >
-                        {announcement.title.split("、")[1]}
-                      </Box>
-                    </Item>
-                    <Item>
-                      <Box
-                        sx={{ fontSize: { xs: 12, lg: 13 }, fontWeight: 400 }}
-                      >
-                        {announcement.content.split("、")[0]}
-                      </Box>
-                      <Box
-                        sx={{
-                          fontSize: { xs: 12, lg: 13 },
-                          fontFamily: "Helvetica Neue",
-                          fontWeight: 300,
-                        }}
-                      >
-                        {announcement.content.split("、")[1]}
-                      </Box>
-                    </Item>
-                  </Stack>
-                </Box>
-              </Box>
-            ))}
-        </Slider>
-      </Box>
     </>
   );
 }

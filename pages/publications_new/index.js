@@ -67,7 +67,6 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
 
   /** grid **/
   const ItemTab = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
     paddingBottom: 8,
     paddingTop: 0,
     textAlign: "left",
@@ -79,7 +78,6 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
   }));
 
   const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
     padding: 16,
     textAlign: "left",
     color: "#fff",
@@ -92,7 +90,6 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
 
   /** stack Item setting **/
   const ItemS = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textAlign: "left",
@@ -128,7 +125,7 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
         </Box>
       </Box>
 
-      <motion.div
+      {/* <motion.div
         initial="hidden"
         animate="visible"
         variants={{
@@ -144,151 +141,151 @@ function Publication_new({ books: dataset, bookCat, archiveImg, contact }) {
             },
           },
         }}
+      > */}
+      <Box
+        ml={{ xs: 8, md: 26 }}
+        mr={{ xs: 2, md: 8 }}
+        mt={{ xs: 12, md: -12 }}
       >
-        <Box
-          ml={{ xs: 8, md: 26 }}
-          mr={{ xs: 2, md: 8 }}
-          mt={{ xs: 12, md: -12 }}
-        >
-          {/* banner */}
-          <Box m={2} sx={{ display: { xs: "none", md: "block" } }}>
-            <AwesomeSlider
-              bullets={true}
-              //fillParent={true}
-              transitionDelay={500}
-              organicArrows={false}
-            >
-              {archiveImg.images_newbook &&
-                archiveImg.images_newbook.map((img) => (
-                  <Box key={img.id}>
-                    <Image
-                      src={img.url}
-                      alt="slider"
-                      //layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      width={1920}
-                      height={699}
-                    />
-                  </Box>
-                ))}
-            </AwesomeSlider>
-          </Box>
-          {/* books category */}
-          <Box
-            className="portfolio__labels"
-            mt={{ xs: 8, md: -3 }}
-            ml={2}
-            p={2}
-            sx={{ width: "calc(100% - 32px)", backgroundColor: "#000" }}
+        {/* banner */}
+        <Box m={2} sx={{ display: { xs: "none", md: "block" } }}>
+          <AwesomeSlider
+            bullets={true}
+            //fillParent={true}
+            transitionDelay={500}
+            organicArrows={false}
           >
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              justifyContent="left"
-              alignItems="center"
-              spacing={{ xs: 0, md: 3 }}
-              height={{ xs: "100%", md: "100px" }}
-            >
-              <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
-                <Box
-                  sx={{ cursor: "pointer" }}
-                  active={filter === "新發表" ? 1 : 0}
-                  onClick={() => setFilter("新發表")}
-                >
-                  <Box
-                    sx={{
-                      color: "#fff",
-                      fontSize: { xs: 17, xl: 20 },
-                      lineHeight: "49px",
-                      borderBottom: "5px solid #fff",
-                    }}
-                  >
-                    新發表
-                  </Box>
+            {archiveImg.images_newbook &&
+              archiveImg.images_newbook.map((img) => (
+                <Box key={img.id}>
+                  <Image
+                    src={img.url}
+                    alt="slider"
+                    //layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    width={1920}
+                    height={699}
+                  />
                 </Box>
-              </ItemS>
-            </Stack>
-          </Box>
-
-          {/* list books */}
-          <Box
-            sx={{
-              flexGrow: 1,
-              minWidth: { xs: "78vw", sm: "90vw", md: "78vw" },
-            }}
-            pt={{ xs: 4, md: 6 }}
-            pb={{ xs: 4, md: 6 }}
+              ))}
+          </AwesomeSlider>
+        </Box>
+        {/* books category */}
+        <Box
+          className="portfolio__labels"
+          mt={{ xs: 8, md: -3 }}
+          ml={2}
+          p={2}
+          sx={{ width: "calc(100% - 32px)", backgroundColor: "#000" }}
+        >
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            justifyContent="left"
+            alignItems="center"
+            spacing={{ xs: 0, md: 3 }}
+            height={{ xs: "100%", md: "100px" }}
           >
-            <Grid
-              className="portfolio__container"
-              container
-              spacing={{ xs: 2, md: 4 }}
-              columns={{ xs: 4, sm: 8, md: 10 }}
-            >
-              {projects.map((item) =>
-                item.filtered === true ? (
-                  <Grid item xs={2} sm={4} md={2} key={item.id}>
-                    <Link
-                      href={`/books/newRelease/${encodeURIComponent(
-                        item.bookName
-                      )}`}
-                      key={item.id}
-                    >
-                      <Item>
-                        <Box sx={{ cursor: "pointer" }}>
+            <ItemS sx={{ width: { xs: "100%", md: "25%" } }}>
+              <Box
+                sx={{ cursor: "pointer" }}
+                active={filter === "新發表" ? 1 : 0}
+                onClick={() => setFilter("新發表")}
+              >
+                <Box
+                  sx={{
+                    color: "#fff",
+                    fontSize: { xs: 17, xl: 20 },
+                    lineHeight: "49px",
+                    borderBottom: "5px solid #fff",
+                  }}
+                >
+                  新發表
+                </Box>
+              </Box>
+            </ItemS>
+          </Stack>
+        </Box>
+
+        {/* list books */}
+        <Box
+          sx={{
+            flexGrow: 1,
+            minWidth: { xs: "78vw", sm: "90vw", md: "78vw" },
+          }}
+          pt={{ xs: 4, md: 6 }}
+          pb={{ xs: 4, md: 6 }}
+        >
+          <Grid
+            className="portfolio__container"
+            container
+            spacing={{ xs: 2, md: 4 }}
+            columns={{ xs: 4, sm: 8, md: 10 }}
+          >
+            {projects.map((item) =>
+              item.filtered === true ? (
+                <Grid item xs={2} sm={4} md={2} key={item.id}>
+                  <Link
+                    href={`/books/newRelease/${encodeURIComponent(
+                      item.bookName
+                    )}`}
+                    key={item.id}
+                  >
+                    <Item>
+                      <Box sx={{ cursor: "pointer" }}>
+                        <Box>
+                          <Image
+                            src={item.bookCover}
+                            alt="book cover"
+                            layout="responsive"
+                            objectFit="cover"
+                            objectPosition="center"
+                            width={152}
+                            height={223}
+                          />
+                        </Box>
+                        <Box
+                          mt={2}
+                          mb={1}
+                          sx={{
+                            fontSize: 17,
+                            fontWeight: 600,
+                            color: "#000",
+                          }}
+                        >
+                          {item.bookName}
+                        </Box>
+                        <Box
+                          sx={{
+                            fontSize: 13,
+                            fontWeight: 500,
+                            color: "#666",
+                            lineHeight: "21px",
+                          }}
+                        >
                           <Box>
-                            <Image
-                              src={item.bookCover}
-                              alt="book cover"
-                              layout="responsive"
-                              objectFit="cover"
-                              objectPosition="center"
-                              width={152}
-                              height={223}
-                            />
+                            {item.authorName && `作者：` + item.authorName}
                           </Box>
-                          <Box
-                            mt={2}
-                            mb={1}
-                            sx={{
-                              fontSize: 17,
-                              fontWeight: 600,
-                              color: "#000",
-                            }}
-                          >
-                            {item.bookName}
+                          <Box>
+                            {item.translatorName &&
+                              `譯者：` + item.translatorName}
                           </Box>
-                          <Box
-                            sx={{
-                              fontSize: 13,
-                              fontWeight: 500,
-                              color: "#666",
-                              lineHeight: "21px",
-                            }}
-                          >
-                            <Box>
-                              {item.authorName && `作者：` + item.authorName}
-                            </Box>
-                            <Box>
-                              {item.translatorName &&
-                                `譯者：` + item.translatorName}
-                            </Box>
-                            <Box>
-                              {item.editorName && `編輯：` + item.editorName}
-                            </Box>
+                          <Box>
+                            {item.editorName && `編輯：` + item.editorName}
                           </Box>
                         </Box>
-                      </Item>
-                    </Link>
-                  </Grid>
-                ) : (
-                  ""
-                )
-              )}
-            </Grid>
-          </Box>
+                      </Box>
+                    </Item>
+                  </Link>
+                </Grid>
+              ) : (
+                ""
+              )
+            )}
+          </Grid>
         </Box>
-      </motion.div>
+      </Box>
+      {/* </motion.div> */}
     </>
   );
 }

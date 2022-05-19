@@ -13,6 +13,10 @@ import { DefaultSeo } from "next-seo";
 import "overlayscrollbars/css/OverlayScrollbars.css";
 import "../styles/os-theme-block-dark.css";
 import "../styles/os-theme-block-dark-timeline.css";
+import Box from "@mui/material/Box";
+import Link from "next/link";
+import styles from "../components/layout.module.css";
+import Image from "next/image";
 
 export default function MyApp({ Component, pageProps, router }) {
   // Use the layout defined at the page level, if available
@@ -26,7 +30,6 @@ export default function MyApp({ Component, pageProps, router }) {
   }, []);
 
   return getLayout(
-    /*<AnimatePresence exitBeforeEnter>*/
     <>
       <DefaultSeo
         openGraph={{
@@ -41,8 +44,13 @@ export default function MyApp({ Component, pageProps, router }) {
           cardType: "summary_large_image",
         }}
       />
-      <Component {...pageProps} key={router.route} />
+      <AnimatePresence
+        exitBeforeEnter
+        initial={false}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <Component {...pageProps} key={router.route} />
+      </AnimatePresence>
     </>
-    /*</AnimatePresence>*/
   );
 }

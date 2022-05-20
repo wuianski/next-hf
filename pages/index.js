@@ -46,7 +46,7 @@ function Index({ summary, contact, projects, events, news }) {
       />
       <Nav contact={contact} projects={projects} />
 
-      {/* <Box pt={{ xs: 15, md: 23 }} mb={"-7px"} pb={30}>
+      <Box pt={{ xs: 15, md: 23 }} mb={"-7px"} pb={{ xs: 0, md: 20 }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
           <Item>
             <Box
@@ -93,9 +93,9 @@ function Index({ summary, contact, projects, events, news }) {
             <Projects projects={projects} />
           </Item>
         </Stack>
-      </Box> */}
+      </Box>
 
-      <Box mb={"-7px"} pt={{ xs: 15, md: 23 }}>
+      <Box pt={10} mb={"-7px"} sx={{ position: "relative" }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
           <Item>
             <Box

@@ -284,22 +284,12 @@ h3 {
 }
 
 /*front page*/
-/* .grid-container {
+.grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
   grid-template-rows: 403px 229px;
   grid-gap: 20px;
-  height: 100%;
-} */
-.grid-container > div {
-  /*background-color: #000000;*/
-  /* text-align: center; */
-  /*padding: 20px 0;*/
-  font-size: 30px;
-}
-
-.grid-container > div > div > img{
-  filter: brightness(95%) contrast(120%);
+  height: 500px;
 }
 
 #item1 {
@@ -325,33 +315,40 @@ h3 {
 }
 .progamName{
   color:#fff;
-  /* position: absolute; */
+  position: relative;
   bottom: 0px;
   padding-bottom: 20px;
-  padding-left: 20px;
+  padding-left: 20px; 
   font-family: 'Noto Sans TC';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
   text-align: left;
-  width: 95%;
+  width: 88%;
   white-space: pre-line;
-  text-shadow: 0.06em 0.06em 0.24em #000;
-  position: relative;
-  z-index: 99;
+  text-shadow: 0.06em 0.06em 0.24em rgb(42, 41, 41);
+  /* position: relative;
+  z-index: 99; */
 }
 .progamLogo{
   /* position: absolute; */
-  top: 0px;
+  /* top: 0px; */
   padding-top: 20px;
   padding-left: 20px;
-  filter: invert(1);
-  position: relative;
-  z-index: 99;
+  filter: invert(1) drop-shadow(0.06em 0.06em 0.24em rgb(42, 41, 41));
+  /* position: relative;
+  z-index: 99; */
 }
-.progamCoverBg > div{
+/* .progamCoverBg > div{
   position: static !important;
+} */
+.progamCoverBg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
 

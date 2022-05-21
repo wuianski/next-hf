@@ -11,6 +11,9 @@ import News from "../../components/news";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
 
+import programs from "../../public/IMGs/programs.png";
+import externalLink_icon from "../../public/IMGs/externalLink_icon.png";
+
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
   //...theme.typography.body2,
@@ -58,6 +61,7 @@ function Index({ contact, projects: dataset }) {
                 height: { xs: "7px", md: "7px" },
                 background:
                   "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
+                position: "fixed",
               }}
             />
           </Item>
@@ -66,10 +70,13 @@ function Index({ contact, projects: dataset }) {
               sx={{
                 width: { xs: "100%", md: "42px" },
                 display: { xs: "none", md: "block" },
+                position: "fixed",
+                left: "130px",
               }}
             >
               <Image
-                src="/IMGs/programs.png"
+                src={programs}
+                placeholder="blur"
                 alt="name of program"
                 width={42}
                 height={91}
@@ -84,7 +91,7 @@ function Index({ contact, projects: dataset }) {
               }}
               pt={{ xs: 0, sm: 5, md: 0 }}
               pb={{ xs: 3, sm: 5, md: 10 }}
-              ml={{ xs: 4, sm: 4, md: 13 }}
+              ml={{ xs: 4, sm: 4, md: 28 }}
             >
               <Box>
                 {mydataset &&
@@ -99,9 +106,10 @@ function Index({ contact, projects: dataset }) {
                             {/* logo */}
                             <Box pb={2}>
                               <Image
-                                //key={event.id}
                                 //className={styles.landingImage}
                                 src={project.cover && project.cover.url}
+                                placeholder="blur"
+                                blurDataURL={project.cover.url}
                                 alt="logo of program"
                                 //layout="responsive"
                                 objectFit="contain"
@@ -113,7 +121,8 @@ function Index({ contact, projects: dataset }) {
                             <Box pt={2} pb={2}>
                               <a href={project.link} target="_blank">
                                 <Image
-                                  src="/IMGs/externalLink_icon.png"
+                                  src={externalLink_icon}
+                                  // placeholder="blur"
                                   alt="icon of external link"
                                   width={30}
                                   height={30}
@@ -131,6 +140,8 @@ function Index({ contact, projects: dataset }) {
                             <Box pb={2}>
                               <Image
                                 src={project.cover2 && project.cover2.url}
+                                placeholder="blur"
+                                blurDataURL={project.cover2.url}
                                 alt="cover photo of program"
                                 objectFit="cover"
                                 objectPosition="center"

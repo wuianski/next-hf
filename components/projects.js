@@ -33,7 +33,7 @@ const Projects = ({ projects: dataset }) => {
         }}
         pt={{ xs: 0, sm: 5, md: 0 }}
         pb={{ xs: 3, sm: 5, md: 10 }}
-        ml={{ xs: 0, sm: 0, md: 2.5 }}
+        ml={{ xs: 0, sm: 0, md: 2.5, xl: 13 }}
       >
         <Box
           className="grid-container"
@@ -72,9 +72,10 @@ const Projects = ({ projects: dataset }) => {
                     >
                       <Box className="progamLogo">
                         <Image
-                          //key={event.id}
                           //className={styles.landingImage}
                           src={project.cover && project.cover.url}
+                          placeholder="blur"
+                          blurDataURL={project.cover.url}
                           alt="logo image of projects"
                           //layout="responsive"
                           objectFit="contain"

@@ -15,6 +15,12 @@ import { VictoryPie, VictoryLabel } from "victory";
 import { VictoryChart, VictoryBar, VictoryStack, VictoryAxis } from "victory";
 import { NextSeo } from "next-seo";
 
+import ps_logo from "../../public/IMGs/ps_logo.png";
+import ml_logo from "../../public/IMGs/ml_logo.png";
+import php_logo from "../../public/IMGs/php_logo.png";
+import inR from "../../public/IMGs/inR.png";
+import inL from "../../public/IMGs/inL.png";
+
 function Resource({
   sponsorships: datasetS,
   summary,
@@ -718,7 +724,8 @@ function Resource({
         >
           <Box>
             <Image
-              src="/IMGs/ps_logo.png"
+              src={ps_logo}
+              placeholder="blur"
               alt="download icon"
               width={320}
               height={96}
@@ -726,7 +733,8 @@ function Resource({
           </Box>
           <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
             <Image
-              src="/IMGs/inR.png"
+              src={inR}
+              placeholder="blur"
               alt="indicator"
               width={473}
               height={115}
@@ -761,7 +769,8 @@ function Resource({
         <Box sx={{ width: { xs: "100%", md: "50%" } }}>
           <Box>
             <Image
-              src="/IMGs/ml_logo.png"
+              src={ml_logo}
+              placeholder="blur"
               alt="download icon"
               width={320}
               height={96}
@@ -769,7 +778,8 @@ function Resource({
           </Box>
           <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
             <Image
-              src="/IMGs/inL.png"
+              src={inL}
+              placeholder="blur"
               alt="indicator"
               width={473}
               height={115}
@@ -818,7 +828,8 @@ function Resource({
         >
           <Box>
             <Image
-              src="/IMGs/php_logo.png"
+              src={php_logo}
+              placeholder="blur"
               alt="download icon"
               width={320}
               height={96}
@@ -826,7 +837,8 @@ function Resource({
           </Box>
           <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
             <Image
-              src="/IMGs/inR.png"
+              src={inR}
+              placeholder="blur"
               alt="indicator"
               width={473}
               height={115}
@@ -891,7 +903,8 @@ function Resource({
           </Box>
           <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
             <Image
-              src="/IMGs/inL.png"
+              src={inL}
+              placeholder="blur"
               alt="indicator"
               width={473}
               height={115}

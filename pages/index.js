@@ -13,6 +13,13 @@ import News from "../components/news";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
 
+import i_programs from "../public/IMGs/programs.png";
+import i_programs_m from "../public/IMGs/programs_m.png";
+import i_events from "../public/IMGs/events.png";
+import i_events_m from "../public/IMGs/events_m.png";
+import i_news from "../public/IMGs/news.png";
+import i_news_m from "../public/IMGs/news_m.png";
+
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
   //...theme.typography.body2,
@@ -67,7 +74,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/programs.png"
+                src={i_programs}
+                placeholder="blur"
                 alt="icon of programs"
                 width={42}
                 height={91}
@@ -81,7 +89,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/programs_m.png"
+                src={i_programs_m}
+                placeholder="blur"
                 alt="icon of programs"
                 objectFit="contain"
                 width={139}
@@ -116,7 +125,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/events.png"
+                src={i_events}
+                placeholder="blur"
                 alt="icon of events"
                 width={42}
                 height={58}
@@ -130,7 +140,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/events_m.png"
+                src={i_events_m}
+                placeholder="blur"
                 alt="icon of events"
                 objectFit="contain"
                 width={106}
@@ -165,7 +176,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/news.png"
+                src={i_news}
+                placeholder="blur"
                 alt="icon of news"
                 width={42}
                 height={70}
@@ -179,7 +191,8 @@ function Index({ summary, contact, projects, events, news }) {
               }}
             >
               <Image
-                src="/IMGs/news_m.png"
+                src={i_news_m}
+                placeholder="blur"
                 alt="icon of news"
                 objectFit="contain"
                 width={128}

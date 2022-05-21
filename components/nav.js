@@ -16,6 +16,13 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import menuOpen_w from "../public/IMGs/menuOpen_w.png";
+import menuClose from "../public/IMGs/menuClose.png";
+import email_icon from "../public/IMGs/email_icon.png";
+import fb_icon from "../public/IMGs/fb_icon.png";
+import yt_icon from "../public/IMGs/yt_icon.png";
+import ig_icon from "../public/IMGs/ig_icon.png";
+
 const style = {
   position: "absolute",
   right: 0,
@@ -99,7 +106,8 @@ export default function Nav({ contact, projects: dataset }) {
     <div>
       <Box onClick={handleOpen} className={styles.menuOpen}>
         <Image
-          src="/IMGs/menuOpen_w.png"
+          src={menuOpen_w}
+          // placeholder="blur"
           alt="icon of menu open"
           width={40}
           height={28}
@@ -126,7 +134,8 @@ export default function Nav({ contact, projects: dataset }) {
             >
               <Box onClick={handleClose} className={styles.menuClose}>
                 <Image
-                  src="/IMGs/menuClose.png"
+                  src={menuClose}
+                  placeholder="blur"
                   alt="icon of menu close"
                   width={42}
                   height={42}
@@ -262,9 +271,10 @@ export default function Nav({ contact, projects: dataset }) {
                               <a href={project.link} target="_blank">
                                 <Box mt={3} sx={{ filter: "invert(1)" }}>
                                   <Image
-                                    //key={event.id}
                                     //className={styles.landingImage}
                                     src={project.cover && project.cover.url}
+                                    placeholder="blur"
+                                    blurDataURL={project.cover.url}
                                     alt="logo image of projects"
                                     //layout="responsive"
                                     objectFit="contain"
@@ -333,7 +343,8 @@ export default function Nav({ contact, projects: dataset }) {
                               mr={{ xs: 6, md: 2 }}
                             >
                               <Image
-                                src="/IMGs/email_icon.png"
+                                src={email_icon}
+                                // placeholder="blur"
                                 alt="icon of email"
                                 layout="responsive"
                                 objectFit="contain"
@@ -350,7 +361,8 @@ export default function Nav({ contact, projects: dataset }) {
                               mr={{ xs: 6, md: 2 }}
                             >
                               <Image
-                                src="/IMGs/fb_icon.png"
+                                src={fb_icon}
+                                // placeholder="blur"
                                 alt="icon of fb"
                                 layout="responsive"
                                 objectFit="contain"
@@ -367,7 +379,8 @@ export default function Nav({ contact, projects: dataset }) {
                               mr={{ xs: 6, md: 2 }}
                             >
                               <Image
-                                src="/IMGs/yt_icon.png"
+                                src={yt_icon}
+                                // placeholder="blur"
                                 alt="icon of youtube"
                                 layout="responsive"
                                 objectFit="contain"
@@ -384,7 +397,8 @@ export default function Nav({ contact, projects: dataset }) {
                               mr={{ xs: 6, md: 2 }}
                             >
                               <Image
-                                src="/IMGs/ig_icon.png"
+                                src={ig_icon}
+                                // placeholder="blur"
                                 alt="icon of instagram"
                                 layout="responsive"
                                 objectFit="contain"

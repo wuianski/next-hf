@@ -174,7 +174,7 @@ export default function News({ news: dataset }) {
             // mr={"auto"}
             pt={{ xs: 0, sm: 5, md: 0 }}
             pb={{ xs: 3, sm: 5, md: 20 }}
-            ml={{ xs: 4, sm: 4, md: 2.5 }}
+            ml={{ xs: 4, sm: 4, md: 2.5, xl: 13 }}
             pr={{ xs: 7, sm: 7, md: 0 }}
           >
             <Table

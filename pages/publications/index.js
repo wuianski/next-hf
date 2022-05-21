@@ -174,6 +174,8 @@ function Publication_about({
               <Box key={img.id}>
                 <Image
                   src={img.url}
+                  placeholder="blur"
+                  blurDataURL={img.url}
                   alt="slider"
                   //layout="fill"
                   objectFit="cover"

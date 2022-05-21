@@ -521,6 +521,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -582,6 +584,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -643,6 +647,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -704,6 +710,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -765,6 +773,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -826,6 +836,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -887,6 +899,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -948,6 +962,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1009,6 +1025,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1070,6 +1088,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1131,6 +1151,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1192,6 +1214,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1253,6 +1277,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1314,6 +1340,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1375,6 +1403,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1436,6 +1466,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1497,6 +1529,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1558,6 +1592,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1619,6 +1655,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1680,6 +1718,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1736,6 +1776,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1792,6 +1834,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1848,6 +1892,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1904,6 +1950,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -1960,6 +2008,8 @@ function Publication({
                                     <Box>
                                       <Image
                                         src={item.bookCover}
+                                        placeholder="blur"
+                                        blurDataURL={item.bookCover}
                                         alt="book cover"
                                         layout="responsive"
                                         objectFit="contain"
@@ -2015,6 +2065,8 @@ function Publication({
                                   <Box>
                                     <Image
                                       src={item.bookCover}
+                                      placeholder="blur"
+                                      blurDataURL={item.bookCover}
                                       alt="book cover"
                                       layout="responsive"
                                       objectFit="contain"
@@ -2077,7 +2129,7 @@ function Publication({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Run API calls in parallel
   const [books, bookCat, archiveImg, contact, projects] = await Promise.all([
     await fetchAPI("/books?_limit=-1"),

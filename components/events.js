@@ -7,24 +7,11 @@ import styles from "./events.module.css";
 import Nav from "./nav";
 import { motion, AnimatePresence } from "framer-motion";
 import Slider from "react-slick";
-
 import { format } from "date-fns";
 
 const Events = ({ events: dataset }) => {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
-
-  /** fullPage onLeave trigger motion framer **/
-  //const activeSec = secIndex;
-  //const activeSecI = activeSec.origin;
-  /*const activeSecIm =
-    secIndex[0] &&
-    secIndex[0].map((a) => {
-      let my = a.initialized;
-      return my;
-    });*/
-  //console.log(secIndex.sectionCount);
-
   const variants = {
     visible: (i) => ({
       opacity: 1,
@@ -79,7 +66,7 @@ const Events = ({ events: dataset }) => {
         // mr={"auto"}
         pt={{ xs: 0, sm: 5, md: 0 }}
         pb={{ xs: 3, sm: 5, md: 10 }}
-        ml={{ xs: 1, sm: 1, md: -0.5 }}
+        ml={{ xs: 1, sm: 1, md: -0.5, xl: 10 }}
         pr={{ xs: 4, sm: 4, md: 0 }}
       >
         {/* desktop */}
@@ -102,10 +89,11 @@ const Events = ({ events: dataset }) => {
                       {/* image */}
                       <Box mt={3}>
                         <Image
-                          //key={event.id}
                           className={styles.landingImage}
                           src={event.cover && event.cover.url}
-                          alt="cover image"
+                          placeholder="blur"
+                          blurDataURL={event.cover.url}
+                          alt="cover image of event"
                           //layout="responsive"
                           objectFit="cover"
                           objectPosition="center"
@@ -212,9 +200,10 @@ const Events = ({ events: dataset }) => {
                       {/* image */}
                       <Box mt={3}>
                         <Image
-                          //key={event.id}
                           className={styles.landingImage}
                           src={event.cover && event.cover.url}
+                          placeholder="blur"
+                          blurDataURL={event.cover.url}
                           alt="cover image"
                           //layout="responsive"
                           objectFit="cover"

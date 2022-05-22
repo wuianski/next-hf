@@ -104,7 +104,7 @@ function Index({ summary, contact, projects, events, news }) {
         </Stack>
       </Box>
 
-      <Box pt={10} mb={"-7px"} sx={{ position: "relative" }}>
+      <Box pt={0} mb={"-7px"} sx={{ position: "relative" }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
           <Item>
             <Box

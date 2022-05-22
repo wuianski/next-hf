@@ -86,7 +86,7 @@ function Index({ contact, projects: dataset }) {
           <Item>
             <Box
               sx={{
-                width: { xs: "100%", sm: "100%", md: "78vw" },
+                width: { xs: "auto", sm: "100%", md: "78vw" },
                 maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
               }}
               pt={{ xs: 0, sm: 5, md: 0 }}

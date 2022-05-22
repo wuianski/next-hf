@@ -176,7 +176,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                 <>
                                   <Box
                                     sx={{
-                                      fontSize: { xs: 12, md: 30, xl: 30 },
+                                      fontSize: { xs: 17, md: 30, xl: 30 },
                                       fontFamily: "Helvetica Neue",
                                       fontWeight: 700,
                                       color: "#000",
@@ -189,7 +189,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                   <Box
                                     sx={{
                                       cursor: "pointer",
-                                      width: "143px",
+                                      width: "131px",
                                       height: "20px",
                                       background:
                                         "linear-gradient(-90deg, #000000 0%, rgba(139, 139, 139, 0.45) 45%, rgba(255, 255, 255, 0) 100%)",

@@ -159,10 +159,12 @@ h3 {
   background-color: #fff !important;
 }
 /* /react-awesome-slider bullets */
+
 /* react-awesome-slider in publication */
 .awssld__content {
   background-color: unset !important;
   align-items: end !important;
+  display:grid !important; /* make layout work in safari */
 }
 /* react-awesome-slider in publication */
 
@@ -299,12 +301,12 @@ h3 {
 }
 #item2 {
   grid-row: 1;
-  grid-column: 4 / span 2;
+  grid-column:4 / span 2;
   
 }
 #item3 {
   grid-row: 2;
-  grid-column: 4 / span 2;
+  grid-column:4 / span 2;
 }
 .progamBg{
   position: absolute;
@@ -319,13 +321,14 @@ h3 {
   bottom: 0px;
   padding-bottom: 20px;
   padding-left: 20px; 
+  padding-right: 20px;
   font-family: 'Noto Sans TC';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 17px; */
   line-height: 26px;
   text-align: left;
-  width: 88%;
+  width: 46%;
   white-space: pre-line;
   text-shadow: 0.06em 0.06em 0.24em rgb(42, 41, 41);
   /* position: relative;

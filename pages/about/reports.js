@@ -274,7 +274,7 @@ function Reports({ reports: dataset, contact, projects: datasetP }) {
     },
     "&.Mui-selected": {
       /*color: "#000 !important",*/
-      borderBottom: "5px solid transparent",
+      borderBottom: "5px solid",
       borderImage:
         "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
       borderImageSlice: 1,

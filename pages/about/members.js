@@ -167,7 +167,7 @@ function Members({
                   mr={6}
                 ></Box>
               </Box>
-              <Box pt={{ xs: 4, md: 6 }} ml={-2}>
+              <Box pt={{ xs: 3, md: 6 }} ml={-2}>
                 <a href={leadership_doc.board_members.url} target="_blank">
                   <Stack direction="row" spacing={0}>
                     <StackItem>
@@ -220,7 +220,7 @@ function Members({
               <Box
                 sx={{ flexGrow: 1 }}
                 pl={{ xs: "0vw", md: "2vw" }}
-                mb={{ xs: 10, sm: 30, md: 10 }}
+                mb={{ xs: 0, sm: 30, md: 10 }}
                 pt={{ xs: 0, md: 3.5 }}
               >
                 <Grid
@@ -232,10 +232,10 @@ function Members({
                     boardMembers.map((boardMember, index) => (
                       <Grid item xs={2} sm={4} md={4} key={index}>
                         <GridItem>
-                          <Box key={boardMember.id} mb={{ xs: 3, md: 2 }}>
+                          <Box key={boardMember.id} mb={{ xs: 0, md: 2 }}>
                             <Box
                               mb={{ xs: 1, md: 1 }}
-                              sx={{ fontSize: { xs: 18, xl: 18 } }}
+                              sx={{ fontSize: { xs: 17, xl: 18 } }}
                             >
                               <Box
                                 component="span"

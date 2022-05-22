@@ -167,7 +167,12 @@ function About({ mission, contact, projects: dataset }) {
               maxWidth: { xs: "100%", md: "480px" },
             }}
           >
-            <Box sx={{ textAlign: "justify" }}>
+            <Box
+              sx={{
+                textAlign: "justify",
+                fontSize: { xs: 14, sm: 17 },
+              }}
+            >
               <ReactMarkdown>{mission.content_tw}</ReactMarkdown>
             </Box>
           </Item>
@@ -177,7 +182,13 @@ function About({ mission, contact, projects: dataset }) {
               maxWidth: { xs: "100%", md: "480px" },
             }}
           >
-            <Box sx={{ textAlign: "justify", fontFamily: "Helvetica Neue" }}>
+            <Box
+              sx={{
+                textAlign: "justify",
+                fontFamily: "Helvetica Neue",
+                fontSize: { xs: 14, sm: 17 },
+              }}
+            >
               <ReactMarkdown>{mission.content_en}</ReactMarkdown>
             </Box>
           </Item>

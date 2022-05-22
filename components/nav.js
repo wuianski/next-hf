@@ -204,7 +204,7 @@ export default function Nav({ contact, projects: dataset }) {
                       height: "30px",
                       cursor: "pointer",
                     }}
-                    mt={3}
+                    mt={2.5}
                   >
                     <Typography>
                       <Box component="span">計畫</Box>

@@ -29,17 +29,18 @@ const Projects = ({ projects: dataset }) => {
       <Box
         sx={{
           width: { xs: "100%", sm: "100%", md: "78vw" },
-          maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+          // maxWidth: { xs: "600px", md: "954px" },
+          maxWidth: { xs: "100%", md: "1180px", lg: "1180px" },
         }}
         pt={{ xs: 0, sm: 5, md: 0 }}
-        pb={{ xs: 3, sm: 5, md: 10 }}
-        ml={{ xs: 0, sm: 0, md: 2.5, xl: 13 }}
+        pb={{ xs: 0, sm: 5, md: 20 }}
+        ml={{ xs: 0, sm: 0, md: 6, xl: 16 }}
       >
         <Box
           className="grid-container"
           sx={{
             width: { xs: "100%", sm: "100%", md: "calc(100% + 20px)" },
-            height: "600px",
+            height: "800px",
           }}
         >
           {mydataset &&
@@ -65,7 +66,7 @@ const Projects = ({ projects: dataset }) => {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
-                        width: "100%",
+                        width: "810px",
                         height: "800px",
                         filter: "brightness(88%) contrast(105%)",
                       }}
@@ -84,7 +85,11 @@ const Projects = ({ projects: dataset }) => {
                           height="89"
                         />
                       </Box>
-                      <Box className="progamName" mt={2}>
+                      <Box
+                        className="progamName"
+                        mt={2}
+                        sx={{ fontSize: { xs: 14, md: 17, lg: 17 } }}
+                      >
                         {project.short_content}
                       </Box>
                     </Box>

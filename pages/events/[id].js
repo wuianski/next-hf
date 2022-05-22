@@ -166,7 +166,7 @@ function Event({ event, contact, projects: dataset }) {
                     <Box
                       pt={3}
                       sx={{
-                        fontSize: { xs: "15px", xl: "15px" },
+                        fontSize: { xs: "15px", sm: "18px" },
                         fontWeight: 600,
                         lineHeight: 1.3,
                         textAlign: { xs: "start", md: "start" },
@@ -177,7 +177,7 @@ function Event({ event, contact, projects: dataset }) {
                     <Box
                       pt={1}
                       sx={{
-                        fontSize: { xs: "17px", xl: "17px" },
+                        fontSize: { xs: "14px", sm: "17px" },
                         fontWeight: 400,
                         lineHeight: 1.6,
                         whiteSpace: "pre-line",
@@ -220,7 +220,7 @@ function Event({ event, contact, projects: dataset }) {
                   <Box
                     pt={{ xs: 3, md: 0 }}
                     sx={{
-                      fontSize: { xs: "15px", xl: "15px" },
+                      fontSize: { xs: "15px", sm: "18px" },
                       fontWeight: 600,
                       lineHeight: 1.3,
                       textAlign: { xs: "start", md: "end" },
@@ -233,6 +233,7 @@ function Event({ event, contact, projects: dataset }) {
                       textAlign: "justify",
                       textJustify: "distribute",
                       fontWeight: 400,
+                      fontSize: { xs: "14px", sm: "17px" },
                     }}
                   >
                     <ReactMarkdown>{event.content_tw}</ReactMarkdown>

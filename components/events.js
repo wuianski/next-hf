@@ -60,13 +60,14 @@ const Events = ({ events: dataset }) => {
       <Box
         sx={{
           width: { xs: "100%", md: "79.7vw" },
-          maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+          maxWidth: { xs: "100%", md: "1180px", lg: "1180px" },
+          // maxWidth: { xs: "600px", md: "954px" },
         }}
         // ml={"auto"}
         // mr={"auto"}
         pt={{ xs: 0, sm: 5, md: 0 }}
         pb={{ xs: 3, sm: 5, md: 10 }}
-        ml={{ xs: 1, sm: 1, md: -0.5, xl: 10 }}
+        ml={{ xs: 1, sm: 1, md: 3, xl: 13 }}
         pr={{ xs: 4, sm: 4, md: 0 }}
       >
         {/* desktop */}
@@ -74,7 +75,7 @@ const Events = ({ events: dataset }) => {
           <Slider {...settings}>
             {sorted &&
               sorted.map((event, i) => (
-                <Box key={event.id} pl={3}>
+                <Box key={event.id} pl={3.4}>
                   <Box
                     sx={{
                       width: { xs: "100%", md: "100%" },
@@ -138,7 +139,7 @@ const Events = ({ events: dataset }) => {
                       {/* info */}
                       <Box
                         sx={{
-                          fontSize: { xs: 13, md: 15 },
+                          fontSize: { xs: 14, md: 15 },
                           fontWeight: { xs: 700, md: 700 },
                           whiteSpace: "pre-line",
                         }}
@@ -150,7 +151,7 @@ const Events = ({ events: dataset }) => {
                       {/* content */}
                       <Box
                         sx={{
-                          fontSize: { xs: 12, md: 17 },
+                          fontSize: { xs: 14, md: 17 },
                           fontWeight: { xs: 400, md: 400 },
                         }}
                       >
@@ -215,7 +216,7 @@ const Events = ({ events: dataset }) => {
                       {/* title */}
                       <Box
                         sx={{
-                          fontSize: { xs: 17, md: 24 },
+                          fontSize: { xs: 18, md: 24 },
                           fontWeight: { xs: 400, md: 700 },
                           whiteSpace: "pre-line",
                         }}
@@ -249,7 +250,7 @@ const Events = ({ events: dataset }) => {
                       {/* info */}
                       <Box
                         sx={{
-                          fontSize: { xs: 13, md: 15 },
+                          fontSize: { xs: 14, md: 15 },
                           fontWeight: { xs: 700, md: 700 },
                           whiteSpace: "pre-line",
                         }}
@@ -261,7 +262,7 @@ const Events = ({ events: dataset }) => {
                       {/* content */}
                       <Box
                         sx={{
-                          fontSize: { xs: 12, md: 17 },
+                          fontSize: { xs: 14, md: 17 },
                           fontWeight: { xs: 400, md: 400 },
                         }}
                       >

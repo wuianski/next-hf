@@ -225,7 +225,7 @@ function Publication_about({
               }}
               pb={10}
             >
-              <Box sx={{ fontSize: { xs: 14, md: 15, lg: 15 } }}>
+              <Box sx={{ fontSize: { xs: 14, md: 17, lg: 17 } }}>
                 <Box component="div" mb={2} sx={{ textAlign: "justify" }}>
                   <ReactMarkdown>{archiveImg.content_tw}</ReactMarkdown>
                 </Box>
@@ -233,7 +233,7 @@ function Publication_about({
                   component="div"
                   sx={{
                     textAlign: "justify",
-                    fontSize: { xs: 14, md: 14, lg: 14 },
+                    fontSize: { xs: 14, md: 16, lg: 16 },
                     fontFamily: "Helvetica Neue",
                   }}
                 >

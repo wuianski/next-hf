@@ -83,7 +83,7 @@ const StyledTableCell = styled(TableCell)(() => ({
 }));
 const StyledTableRow = styled(TableRow)(() => ({
   borderTop: "1px solid rgba(0, 0, 0, 1)",
-  height: "83px",
+  height: "130px",
 }));
 
 /** react-slick setting **/
@@ -168,13 +168,14 @@ export default function News({ news: dataset }) {
           <Box
             sx={{
               width: { xs: "100%", sm: "100%", md: "77.5vw" },
-              maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+              maxWidth: { xs: "100%", md: "1180px", lg: "1180px" },
+              // maxWidth: { xs: "600px", md: "954px" },
             }}
             // ml={"auto"}
             // mr={"auto"}
             pt={{ xs: 0, sm: 5, md: 0 }}
             pb={{ xs: 3, sm: 5, md: 20 }}
-            ml={{ xs: 4, sm: 4, md: 2.5, xl: 13 }}
+            ml={{ xs: 4, sm: 4, md: 6, xl: 16 }}
             pr={{ xs: 7, sm: 7, md: 0 }}
           >
             <Table
@@ -195,7 +196,7 @@ export default function News({ news: dataset }) {
                         <Box
                           ml={0}
                           sx={{
-                            fontSize: { xs: 14, md: 14, lg: 15 },
+                            fontSize: { xs: 14, md: 17, lg: 17 },
                             fontWeight: 600,
                           }}
                         >
@@ -210,7 +211,7 @@ export default function News({ news: dataset }) {
                           <Box
                             sx={{
                               textAlign: "left",
-                              fontSize: { xs: 12, md: 12, lg: 12 },
+                              fontSize: { xs: 14, md: 17, lg: 17 },
                             }}
                           >
                             {news.news_categories &&
@@ -226,9 +227,10 @@ export default function News({ news: dataset }) {
                       <a href={news.link} target="_blank">
                         <Box
                           sx={{
-                            fontSize: { xs: 12, md: 13, lg: 13 },
+                            fontSize: { xs: 14, md: 20, lg: 20 },
                             fontFamily: "Helvetica Neue",
                           }}
+                          mt={{ xs: 2, md: 4 }}
                         >
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>

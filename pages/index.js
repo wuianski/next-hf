@@ -53,7 +53,7 @@ function Index({ summary, contact, projects, events, news }) {
       />
       <Nav contact={contact} projects={projects} />
 
-      <Box pt={{ xs: 15, md: 23 }} mb={"-7px"} pb={{ xs: 20, md: 10 }}>
+      <Box pt={{ xs: 15, md: 23 }} mb={"-7px"} pb={{ xs: 0, md: 10 }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
           <Item>
             <Box
@@ -141,7 +141,6 @@ function Index({ summary, contact, projects, events, news }) {
             >
               <Image
                 src={i_events_m}
-                placeholder="blur"
                 alt="icon of events"
                 objectFit="contain"
                 width={106}

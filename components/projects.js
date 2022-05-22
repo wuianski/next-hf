@@ -33,7 +33,7 @@ const Projects = ({ projects: dataset }) => {
           maxWidth: { xs: "100%", md: "1180px", lg: "1180px" },
         }}
         pt={{ xs: 0, sm: 5, md: 0 }}
-        pb={{ xs: 0, sm: 5, md: 20 }}
+        pb={{ xs: 0, sm: 5, md: 0 }}
         ml={{ xs: 0, sm: 0, md: 6, xl: 16 }}
       >
         <Box

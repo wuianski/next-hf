@@ -105,7 +105,7 @@ function Index({ summary, contact, projects, events, news }) {
       </Box>
 
       <Box
-        pt={{ xs: 0, sm: 80, md: 0 }}
+        pt={{ xs: 10, sm: 100, md: 0 }}
         mb={"-7px"}
         sx={{ position: "relative" }}
       >

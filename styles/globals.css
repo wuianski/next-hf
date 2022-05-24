@@ -133,10 +133,10 @@ div.secName {
 }
 
 /* force h3 markdown css */
-h3 {
+/* h3 {
   margin: 0;
   line-height: 0;
-}
+} */
 
 /* react-awesome-slider bullets */
 .awssld__bullets button {

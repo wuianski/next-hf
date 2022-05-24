@@ -69,7 +69,7 @@ TablePaginationActions.propTypes = {
 
 /** style table cell and table row **/
 const StyledTableCell = styled(TableCell)(() => ({
-  verticalAlign: "initial",
+  verticalAlign: "top",
   [`&.${tableCellClasses.body}`]: {
     fontSize: 13,
     //verticalAlign: "top",
@@ -195,6 +195,7 @@ export default function News({ news: dataset }) {
                       <a href={news.link} target="_blank">
                         <Box
                           ml={0}
+                          mt={{ xs: 2.5, md: 2 }}
                           sx={{
                             fontSize: { xs: 14, md: 17, lg: 17 },
                             fontWeight: 600,
@@ -230,7 +231,7 @@ export default function News({ news: dataset }) {
                             fontSize: { xs: 14, md: 20, lg: 20 },
                             fontFamily: "Helvetica Neue",
                           }}
-                          mt={{ xs: 2, md: 4 }}
+                          mt={{ xs: 2.5, md: -1 }}
                         >
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>

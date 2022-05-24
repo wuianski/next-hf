@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 function Index({ contact, projects: dataset }) {
   /* CHANGE ARRAY SORTING BY ID*/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
-  const mydataset = dataset.slice(0, 3);
+  const mydataset = dataset.slice(0, 4);
 
   return (
     <>
@@ -96,7 +96,7 @@ function Index({ contact, projects: dataset }) {
               <Box>
                 {mydataset &&
                   mydataset.map((project) => (
-                    <Box key={project.id} pb={13}>
+                    <Box key={project.id} pb={16}>
                       <Stack
                         direction={{ xs: "column", md: "row" }}
                         spacing={0.5}
@@ -109,7 +109,7 @@ function Index({ contact, projects: dataset }) {
                                 //className={styles.landingImage}
                                 src={project.cover && project.cover.url}
                                 placeholder="blur"
-                                blurDataURL={project.cover.url}
+                                blurDataURL={project.cover && project.cover.url}
                                 alt="logo of program"
                                 //layout="responsive"
                                 objectFit="contain"
@@ -137,22 +137,27 @@ function Index({ contact, projects: dataset }) {
                             sx={{ width: { xs: "92%", sm: "96%", md: "80%" } }}
                           >
                             {/* image */}
-                            <Box pb={2}>
-                              <Image
-                                src={project.cover2 && project.cover2.url}
-                                placeholder="blur"
-                                blurDataURL={project.cover2.url}
-                                alt="cover photo of program"
-                                objectFit="cover"
-                                objectPosition="center"
-                                width={1042}
-                                height={528}
-                              />
+                            <Box pb={0}>
+                              {project.cover2 && (
+                                <Image
+                                  src={project.cover2 && project.cover2.url}
+                                  placeholder="blur"
+                                  blurDataURL={
+                                    project.cover2 && project.cover2.url
+                                  }
+                                  alt="cover photo of program"
+                                  objectFit="cover"
+                                  objectPosition="center"
+                                  width={1042}
+                                  height={528}
+                                />
+                              )}
                             </Box>
                             {/* content */}
                             <Box sx={{ textAlign: "justify" }}>
                               <Box
                                 pb={1}
+                                mt={{ xs: 4, md: 8.5 }}
                                 sx={{
                                   fontFamily: "Noto Sans TC",
                                   fontSize: { xs: 15, md: 17 },
@@ -163,6 +168,7 @@ function Index({ contact, projects: dataset }) {
                                 {project.content_tw}
                               </Box>
                               <Box
+                                mt={2}
                                 sx={{
                                   fontFamily: "Helvetica Neue",
                                   fontSize: { xs: 15, md: 17 },
@@ -170,7 +176,7 @@ function Index({ contact, projects: dataset }) {
                                   lineHeight: "26px",
                                 }}
                               >
-                                {project.content_en}
+                                {project.content_en && project.content_en}
                               </Box>
                             </Box>
                           </Box>

@@ -473,7 +473,7 @@ function Publication({
                               ml={0.5}
                               sx={{ fontSize: "11px" }}
                             >
-                              本
+                              期
                             </Box>
                           </Box>
                         </Box>

@@ -257,7 +257,7 @@ export default function Nav({ contact, projects: dataset }) {
                   >
                     {/* logo item */}
                     <Item sx={{ width: { xs: "80vw", md: "40%" } }}>
-                      <Box mt={{ xs: 3, md: 0.5 }}>
+                      <Box mt={{ xs: 3, md: 2.8 }}>
                         {mydataset &&
                           mydataset.map((project) => (
                             <Box
@@ -269,7 +269,14 @@ export default function Nav({ contact, projects: dataset }) {
                               }}
                             >
                               <a href={project.link} target="_blank">
-                                <Box mt={3} sx={{ filter: "invert(1)" }}>
+                                <Box
+                                  mt={1}
+                                  sx={{
+                                    filter: "invert(1)",
+                                    width: "220px",
+                                    height: "89px",
+                                  }}
+                                >
                                   <Image
                                     //className={styles.landingImage}
                                     src={project.cover && project.cover.url}
@@ -279,8 +286,8 @@ export default function Nav({ contact, projects: dataset }) {
                                     //layout="responsive"
                                     objectFit="contain"
                                     //objectPosition="center"
-                                    width="168"
-                                    height="69"
+                                    width={1280}
+                                    height={384}
                                   />
                                 </Box>
                               </a>

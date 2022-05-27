@@ -66,7 +66,7 @@ const Projects = ({ projects: dataset }) => {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "bottom",
-                        width: "580px",
+                        width: "810px",
                         height: "720px",
                         filter: "brightness(88%) contrast(105%)",
                       }}

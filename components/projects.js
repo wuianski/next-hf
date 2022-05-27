@@ -65,9 +65,9 @@ const Projects = ({ projects: dataset }) => {
                         }')`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        width: "810px",
-                        height: "800px",
+                        backgroundPosition: "bottom",
+                        width: "580px",
+                        height: "720px",
                         filter: "brightness(88%) contrast(105%)",
                       }}
                     >

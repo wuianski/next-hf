@@ -328,11 +328,9 @@ div.secName {
   /* font-size: 17px; */
   line-height: 26px;
   text-align: left;
-  width: 48%;
+  width: 700px;
   white-space: pre-line;
   text-shadow: 0.06em 0.06em 0.24em rgb(42, 41, 41);
-  /* position: relative;
-  z-index: 99; */
 }
 .progamLogo{
   /* position: absolute; */

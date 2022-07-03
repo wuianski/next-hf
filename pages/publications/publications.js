@@ -25,6 +25,8 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useQueryState } from "next-usequerystate";
 
+import { format } from "date-fns";
+
 function Publication({
   books: dataset,
   bookCat,
@@ -48,6 +50,7 @@ function Publication({
           ? book.cover.url
           : "/IMGs/noBook_img.jpg",
       file: !!book.file && !!book.file.url ? book.file.url : "",
+      publication_date: book.publication_date,
     };
 
     return result;
@@ -1696,6 +1699,14 @@ function Publication({
                                         {item.editorName &&
                                           `編輯：` + item.editorName}
                                       </Box>
+                                      <Box>
+                                        {item.publication_date &&
+                                          `` +
+                                            format(
+                                              new Date(item.publication_date),
+                                              "yyyy"
+                                            )}
+                                      </Box>
                                     </Box>
                                   </Box>
                                 </Item>
@@ -2105,6 +2116,14 @@ function Publication({
                                     <Box>
                                       {item.editorName &&
                                         `編輯：` + item.editorName}
+                                    </Box>
+                                    <Box>
+                                      {item.publication_date &&
+                                        `` +
+                                          format(
+                                            new Date(item.publication_date),
+                                            "yyyy"
+                                          )}
                                     </Box>
                                   </Box>
                                 </Box>

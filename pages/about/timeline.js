@@ -67,6 +67,8 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
   !datasetP ? null : datasetP.sort((a, b) => a.id - b.id);
   const mydataset = datasetP.slice(0, 3);
 
+  //const p1 = allPhase[0].split("，");
+
   return (
     <>
       <NextSeo
@@ -130,502 +132,442 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
         pl={{ xs: 1, sm: 0, md: 0 }}
       >
         <Box>
-          <StyledStepper
-            nonLinear
-            activeStep={activeStep}
-            orientation="vertical"
-          >
-            {arrByYear.map((y, index) => (
-              <Step key={y.year} completed={completed[index]}>
-                <>
-                  <StyledStepLabel onClick={handleStep(index)}>
-                    <Box>
-                      {y.val.map((chronicle2) => (
-                        <Box key={chronicle2.id}>
-                          {chronicle2.content_en === null ? (
-                            <>
-                              {/* year without event */}
-                              <Box
-                                sx={{
-                                  fontSize: { xs: 10, md: 20, xl: 20 },
-                                  fontFamily: "Helvetica Neue",
-                                  fontWeight: 700,
-                                  color: "rgba(0, 0, 0, 0.38)",
-                                  display: "inline-block",
-                                }}
-                              >
-                                {y.year}
-                              </Box>
-                              <Box
-                                ml={0.8}
-                                sx={{
-                                  width: "50px",
-                                  height: "10px",
-                                  background:
-                                    "linear-gradient(-90deg, #000000 0%, rgba(139, 139, 139, 0.45) 45%, rgba(255, 255, 255, 0) 100%)",
-                                  display: "inline-block",
-                                }}
-                              ></Box>
-                            </>
-                          ) : (
-                            <>
-                              {/* year with event */}
-                              {chronicle2.order === 1 ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <Box
-                                    sx={{
-                                      fontSize: { xs: 17, md: 30, xl: 30 },
-                                      fontFamily: "Helvetica Neue",
-                                      fontWeight: 700,
-                                      color: "#000",
-                                      display: "inline-block",
-                                      cursor: "pointer",
+          {arrByYear.map((y, index) => (
+            <div key={index}>
+              <Box>
+                {y.val.map((chronicle2) => (
+                  <Box key={chronicle2.id}>
+                    {chronicle2.content_en === null ? (
+                      <></>
+                    ) : (
+                      <>
+                        {(() => {
+                          switch (chronicle2.order) {
+                            case 2: // for 1st of two items
+                              return (
+                                <div key={chronicle2.id}>
+                                  <motion.div
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                      hidden: { scale: 0.8, opacity: 0 },
+                                      visible: {
+                                        scale: 1,
+                                        opacity: 1,
+                                        transition: { delay: 0.1 },
+                                      },
                                     }}
                                   >
-                                    {y.year}
-                                  </Box>
-                                  <Box
-                                    sx={{
-                                      cursor: "pointer",
-                                      width: "131px",
-                                      height: "20px",
-                                      background:
-                                        "linear-gradient(-90deg, #000000 0%, rgba(139, 139, 139, 0.45) 45%, rgba(255, 255, 255, 0) 100%)",
-                                      display: "inline-block",
+                                    <Box
+                                      sx={{
+                                        fontSize: 44,
+                                        fontFamily: "Helvetica Neue",
+                                        fontWeight: 700,
+                                        color: "#B09336",
+                                        //marginTop: "-60px",
+                                      }}
+                                    >
+                                      {y.year}
+                                    </Box>
+                                  </motion.div>
+                                  <motion.div
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                      hidden: { scale: 0.8, opacity: 0 },
+                                      visible: {
+                                        scale: 1,
+                                        opacity: 1,
+                                        transition: { delay: 0.5 },
+                                      },
                                     }}
-                                    ml={2}
-                                  ></Box>
-                                </>
-                              )}
-                            </>
-                          )}
-                        </Box>
-                      ))}
-                    </Box>
-                  </StyledStepLabel>
-                  <StyledStepContent>
-                    <Box>
-                      {y.val.map((chronicle2) => (
-                        <Box key={chronicle2.id}>
-                          {chronicle2.content_en === null ? (
-                            <>
-                              <Box
-                                sx={{
-                                  fontSize: {
-                                    xs: 28,
-                                    md: 28,
-                                    xl: 31,
-                                  },
-                                  fontWeight: 500,
-                                  color: "#000",
-                                }}
-                              ></Box>
-                              <Box
-                                key={chronicle2.id}
-                                sx={{
-                                  width: "50vw",
-                                  height: "33px",
-                                  background: "none",
-                                }}
-                              ></Box>
-                            </>
-                          ) : (
-                            <>
-                              {(() => {
-                                switch (chronicle2.order) {
-                                  case 2: // for 1st of two items
-                                    return (
-                                      <>
-                                        <motion.div
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={{
-                                            hidden: {
-                                              scale: 0.8,
-                                              opacity: 0,
+                                  >
+                                    <Box
+                                      sx={{
+                                        width: "87px",
+                                        height: "30px",
+                                      }}
+                                    >
+                                      <Box
+                                        sx={{
+                                          position: "relative",
+                                          width: "max-content",
+                                        }}
+                                        pt={16}
+                                      >
+                                        <Box
+                                          sx={{
+                                            color: "#666",
+                                            fontSize: {
+                                              xs: 17,
+                                              md: 17,
+                                              xl: 20,
                                             },
-                                            visible: {
-                                              scale: 1,
-                                              opacity: 1,
-                                              transition: {
-                                                delay: 0.1,
-                                              },
-                                            },
+                                            fontWeight: 400,
+                                            lineHeight: "30px",
                                           }}
                                         >
+                                          <Box component="span">
+                                            {chronicle2.type_tw}
+                                          </Box>
+                                          <Box
+                                            component="span"
+                                            ml={1}
+                                            sx={{
+                                              fontFamily: "Helvetica Neue",
+                                            }}
+                                          >
+                                            {chronicle2.type_en}
+                                          </Box>
+                                        </Box>
+                                        <Box
+                                          sx={{
+                                            fontSize: {
+                                              xs: 17,
+                                              md: 17,
+                                              xl: 20,
+                                            },
+                                            fontWeight: 500,
+                                            width: "70vw",
+                                            height: "auto",
+                                            letterSpacing: "0.05em",
+                                          }}
+                                        >
+                                          <Box
+                                            component="span"
+                                            sx={{
+                                              fontSize: {
+                                                xs: 18,
+                                                md: 18,
+                                                xl: 21,
+                                              },
+                                              fontFamily: "Helvetica Neue",
+                                              letterSpacing: "0.01em",
+                                            }}
+                                          >
+                                            {
+                                              chronicle2.content_tw.split(
+                                                "、"
+                                              )[0]
+                                            }
+                                          </Box>
+                                          <Box component="span">
+                                            {
+                                              chronicle2.content_tw.split(
+                                                "、"
+                                              )[1]
+                                            }
+                                          </Box>
+                                        </Box>
+                                        <Box
+                                          sx={{
+                                            fontSize: {
+                                              xs: 18,
+                                              md: 18,
+                                              xl: 21,
+                                            },
+                                            fontWeight: 500,
+                                            width: "70vw",
+                                            height: "auto",
+                                            fontFamily: "Helvetica Neue",
+                                            letterSpacing: "0.01em",
+                                          }}
+                                        >
+                                          {chronicle2.content_en}
+                                        </Box>
+                                      </Box>
+                                    </Box>
+                                  </motion.div>
+                                </div>
+                              );
+                            case 1: // for 1nd of two items
+                              return (
+                                <div key={chronicle2.id}>
+                                  <motion.div
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                      hidden: {
+                                        height: "130px",
+                                      },
+                                      visible: {
+                                        //height: "50vh",
+                                        height: "350px",
+                                        transition: {
+                                          delay: 0.5,
+                                        },
+                                      },
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        width: "50vw",
+                                        height: "7px",
+                                        background:
+                                          "linear-gradient(270deg, rgba(255, 255, 255, 1) 20%, rgba(176, 147, 54, 1) 99.99%)",
+                                        marginTop: "-110px",
+                                      }}
+                                    >
+                                      <motion.div
+                                        initial="hidden"
+                                        animate="visible"
+                                        variants={{
+                                          hidden: { scale: 0.8, opacity: 0 },
+                                          visible: {
+                                            scale: 1,
+                                            opacity: 1,
+                                            transition: { delay: 0.5 },
+                                          },
+                                        }}
+                                      >
+                                        <Box
+                                          sx={{
+                                            position: "relative",
+                                            width: "max-content",
+                                          }}
+                                          pt={12}
+                                        >
+                                          <Box
+                                            sx={{
+                                              color: "#666",
+                                              fontSize: {
+                                                xs: 17,
+                                                md: 17,
+                                                xl: 20,
+                                              },
+                                              fontWeight: 400,
+                                              lineHeight: "30px",
+                                            }}
+                                          >
+                                            <Box component="span">
+                                              {chronicle2.type_tw}
+                                            </Box>
+                                            <Box
+                                              component="span"
+                                              ml={1}
+                                              sx={{
+                                                fontFamily: "Helvetica Neue",
+                                              }}
+                                            >
+                                              {chronicle2.type_en}
+                                            </Box>
+                                          </Box>
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 53,
-                                                md: 53,
-                                                xl: 53,
+                                                xs: 17,
+                                                md: 17,
+                                                xl: 20,
                                               },
-                                              fontFamily: "Helvetica Neue",
-                                              fontWeight: 700,
-                                              color: "#000",
-                                              marginTop: "-60px",
-                                            }}
-                                          >
-                                            {y.year}
-                                          </Box>
-                                        </motion.div>
-                                        <motion.div
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={{
-                                            hidden: {
-                                              scale: 0.8,
-                                              opacity: 0,
-                                            },
-                                            visible: {
-                                              scale: 1,
-                                              opacity: 1,
-                                              transition: {
-                                                delay: 0.5,
-                                              },
-                                            },
-                                          }}
-                                        >
-                                          <Box
-                                            key={chronicle2.id}
-                                            sx={{
-                                              width: "87px",
-                                              height: "30px",
+                                              fontWeight: 500,
+                                              letterSpacing: "0.05em",
                                             }}
                                           >
                                             <Box
+                                              component="span"
                                               sx={{
-                                                position: "relative",
-                                                //left: "50px",
-                                                width: "max-content",
+                                                fontSize: {
+                                                  xs: 18,
+                                                  md: 18,
+                                                  xl: 21,
+                                                },
+                                                fontFamily: "Helvetica Neue",
+                                                letterSpacing: "0.01em",
                                               }}
-                                              pt={18}
                                             >
-                                              <Box
-                                                sx={{
-                                                  color: "#666",
-                                                  fontSize: {
-                                                    xs: 14,
-                                                    md: 14,
-                                                    xl: 17,
-                                                  },
-                                                  fontWeight: 400,
-                                                  lineHeight: "30px",
-                                                }}
-                                              >
-                                                <Box component="span">
-                                                  {chronicle2.type_tw}
-                                                </Box>
-                                                <Box
-                                                  component="span"
-                                                  ml={1}
-                                                  sx={{
-                                                    fontFamily:
-                                                      "Helvetica Neue",
-                                                  }}
-                                                >
-                                                  {chronicle2.type_en}
-                                                </Box>
-                                              </Box>
-                                              <Box
-                                                sx={{
-                                                  fontSize: {
-                                                    xs: 17,
-                                                    md: 17,
-                                                    xl: 20,
-                                                  },
-                                                  fontWeight: 700,
-                                                  width: "70vw",
-                                                  height: "auto",
-                                                }}
-                                              >
-                                                {chronicle2.content_tw}
-                                              </Box>
-                                              <Box
-                                                sx={{
-                                                  fontSize: {
-                                                    xs: 17,
-                                                    md: 17,
-                                                    xl: 20,
-                                                  },
-                                                  fontWeight: 500,
-                                                  width: "70vw",
-                                                  height: "auto",
-                                                  fontFamily: "Helvetica Neue",
-                                                }}
-                                              >
-                                                {chronicle2.content_en}
-                                              </Box>
+                                              {
+                                                chronicle2.content_tw.split(
+                                                  "、"
+                                                )[0]
+                                              }
+                                            </Box>
+                                            <Box component="span">
+                                              {
+                                                chronicle2.content_tw.split(
+                                                  "、"
+                                                )[1]
+                                              }
                                             </Box>
                                           </Box>
-                                        </motion.div>
-                                      </>
-                                    );
-                                  case 1: // for 1nd of two items
-                                    return (
-                                      <>
-                                        <motion.div
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={{
-                                            hidden: {
-                                              //height: "50vh",
-                                            },
-                                            visible: {
-                                              //height: "50vh",
-                                              height: "380px",
-                                              transition: {
-                                                delay: 0.5,
-                                              },
-                                            },
-                                          }}
-                                        >
-                                          <Box
-                                            key={chronicle2.id}
-                                            sx={{
-                                              width: "50vw",
-                                              height: "33px",
-                                              background:
-                                                "linear-gradient(90deg, rgba(255, 255, 255, 1) 20%, rgba(176, 147, 54, 1) 99.99%)",
-                                              marginTop: "-80px",
-                                            }}
-                                            ml={-0.2}
-                                          >
-                                            <motion.div
-                                              initial="hidden"
-                                              animate="visible"
-                                              variants={{
-                                                hidden: {
-                                                  scale: 0.8,
-                                                  opacity: 0,
-                                                },
-                                                visible: {
-                                                  scale: 1,
-                                                  opacity: 1,
-                                                  transition: {
-                                                    delay: 0.5,
-                                                  },
-                                                },
-                                              }}
-                                            >
-                                              <Box
-                                                sx={{
-                                                  position: "relative",
-                                                  //left: "50px",
-                                                  width: "max-content",
-                                                }}
-                                                pt={10}
-                                              >
-                                                <Box
-                                                  sx={{
-                                                    color: "#666",
-                                                    fontSize: {
-                                                      xs: 14,
-                                                      md: 14,
-                                                      xl: 17,
-                                                    },
-                                                    fontWeight: 400,
-                                                    lineHeight: "30px",
-                                                  }}
-                                                >
-                                                  <Box component="span">
-                                                    {chronicle2.type_tw}
-                                                  </Box>
-                                                  <Box
-                                                    component="span"
-                                                    ml={1}
-                                                    sx={{
-                                                      fontFamily:
-                                                        "Helvetica Neue",
-                                                    }}
-                                                  >
-                                                    {chronicle2.type_en}
-                                                  </Box>
-                                                </Box>
-                                                <Box
-                                                  sx={{
-                                                    fontSize: {
-                                                      xs: 17,
-                                                      md: 17,
-                                                      xl: 20,
-                                                    },
-                                                    fontWeight: 700,
-                                                  }}
-                                                >
-                                                  {chronicle2.content_tw}
-                                                </Box>
-                                                <Box
-                                                  sx={{
-                                                    fontSize: {
-                                                      xs: 17,
-                                                      md: 17,
-                                                      xl: 20,
-                                                    },
-                                                    fontWeight: 500,
-                                                    fontFamily:
-                                                      "Helvetica Neue",
-                                                  }}
-                                                >
-                                                  {chronicle2.content_en}
-                                                </Box>
-                                              </Box>
-                                            </motion.div>
-                                          </Box>
-                                        </motion.div>
-                                      </>
-                                    );
-                                  default:
-                                    // for one item
-                                    return (
-                                      <>
-                                        <motion.div
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={{
-                                            hidden: {
-                                              scale: 0.8,
-                                              opacity: 0,
-                                            },
-                                            visible: {
-                                              scale: 1,
-                                              opacity: 1,
-                                              transition: {
-                                                delay: 0.1,
-                                              },
-                                            },
-                                          }}
-                                        >
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 53,
-                                                md: 53,
-                                                xl: 53,
+                                                xs: 18,
+                                                md: 18,
+                                                xl: 22,
                                               },
+                                              fontWeight: 500,
                                               fontFamily: "Helvetica Neue",
-                                              fontWeight: 700,
-                                              color: "#000",
-                                              marginTop: "-60px",
+                                              letterSpacing: "0.01em",
                                             }}
                                           >
-                                            {y.year}
+                                            {chronicle2.content_en}
                                           </Box>
-                                        </motion.div>
-                                        <motion.div
-                                          initial="hidden"
-                                          animate="visible"
-                                          variants={{
-                                            hidden: {
-                                              //height: "40vh",
-                                            },
-                                            visible: {
-                                              height: "200px",
-                                              transition: {
-                                                delay: 0.5,
-                                              },
-                                            },
+                                        </Box>
+                                      </motion.div>
+                                    </Box>
+                                  </motion.div>
+                                </div>
+                              );
+                            default:
+                              // for one item
+                              return (
+                                <>
+                                  <motion.div
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                      hidden: { scale: 0.8, opacity: 0 },
+                                      visible: {
+                                        scale: 1,
+                                        opacity: 1,
+                                        transition: { delay: 0.1 },
+                                      },
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        fontSize: 44,
+                                        fontFamily: "Helvetica Neue",
+                                        fontWeight: 700,
+                                        color: "#B09336",
+                                      }}
+                                    >
+                                      {y.year}
+                                    </Box>
+                                  </motion.div>
+                                  <motion.div
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={{
+                                      hidden: { height: "130px" },
+                                      visible: {
+                                        height: "240px",
+                                        transition: { delay: 0.5 },
+                                      },
+                                    }}
+                                  >
+                                    {/* golden bar */}
+                                    <Box
+                                      sx={{
+                                        width: "50vw",
+                                        height: "7px",
+                                        background:
+                                          "linear-gradient(270deg, rgba(255, 255, 255, 1) 20%, rgba(176, 147, 54, 1) 99.99%)",
+                                        marginTop: "-80px",
+                                      }}
+                                    >
+                                      <motion.div
+                                        initial="hidden"
+                                        animate="visible"
+                                        variants={{
+                                          hidden: { scale: 0.8, opacity: 0 },
+                                          visible: {
+                                            scale: 1,
+                                            opacity: 1,
+                                            transition: { delay: 0.5 },
+                                          },
+                                        }}
+                                      >
+                                        {/* content of event */}
+                                        <Box
+                                          sx={{
+                                            position: "relative",
+                                            width: "max-content",
                                           }}
+                                          pt={12}
                                         >
-                                          {/* golden bar */}
                                           <Box
-                                            key={chronicle2.id}
                                             sx={{
-                                              width: "50vw",
-                                              height: "33px",
-                                              background:
-                                                "linear-gradient(90deg, rgba(255, 255, 255, 1) 20%, rgba(176, 147, 54, 1) 99.99%)",
-                                              marginTop: "-50px",
+                                              color: "#666",
+                                              fontSize: {
+                                                xs: 17,
+                                                md: 17,
+                                                xl: 20,
+                                              },
+                                              fontWeight: 400,
+                                              lineHeight: "30px",
                                             }}
                                           >
-                                            <motion.div
-                                              initial="hidden"
-                                              animate="visible"
-                                              variants={{
-                                                hidden: {
-                                                  scale: 0.8,
-                                                  opacity: 0,
-                                                },
-                                                visible: {
-                                                  scale: 1,
-                                                  opacity: 1,
-                                                  transition: {
-                                                    delay: 0.5,
-                                                  },
-                                                },
+                                            <Box component="span">
+                                              {chronicle2.type_tw}
+                                            </Box>
+                                            <Box
+                                              component="span"
+                                              ml={1}
+                                              sx={{
+                                                fontFamily: "Helvetica Neue",
                                               }}
                                             >
-                                              {/* content of event */}
-                                              <Box
-                                                sx={{
-                                                  position: "relative",
-                                                  //top: "-50px",
-                                                  width: "max-content",
-                                                  //height: "200px",
-                                                  //backgroundColor: "#ff0000",
-                                                }}
-                                                pt={10}
-                                                //mb={10}
-                                              >
-                                                <Box
-                                                  sx={{
-                                                    color: "#666",
-                                                    fontSize: "15px",
-                                                    fontWeight: 400,
-                                                    lineHeight: "30px",
-                                                  }}
-                                                >
-                                                  <Box component="span">
-                                                    {chronicle2.type_tw}
-                                                  </Box>
-                                                  <Box
-                                                    component="span"
-                                                    ml={1}
-                                                    sx={{
-                                                      fontFamily:
-                                                        "Helvetica Neue",
-                                                    }}
-                                                  >
-                                                    {chronicle2.type_en}
-                                                  </Box>
-                                                </Box>
-                                                <Box
-                                                  sx={{
-                                                    fontSize: "20px",
-                                                    fontWeight: 700,
-                                                  }}
-                                                >
-                                                  {chronicle2.content_tw}
-                                                </Box>
-                                                <Box
-                                                  sx={{
-                                                    fontSize: "17px",
-                                                    fontWeight: 500,
-                                                    fontFamily:
-                                                      "Helvetica Neue",
-                                                  }}
-                                                >
-                                                  {chronicle2.content_en}
-                                                </Box>
-                                              </Box>
-                                            </motion.div>
+                                              {chronicle2.type_en}
+                                            </Box>
                                           </Box>
-                                        </motion.div>
-                                      </>
-                                    );
-                                }
-                              })()}
-                            </>
-                          )}
-                        </Box>
-                      ))}
-                    </Box>
-                  </StyledStepContent>
-                </>
-              </Step>
-            ))}
-          </StyledStepper>
+                                          <Box
+                                            sx={{
+                                              fontSize: {
+                                                xs: 17,
+                                                md: 17,
+                                                xl: 20,
+                                              },
+                                              fontWeight: 500,
+                                              letterSpacing: "0.05em",
+                                            }}
+                                          >
+                                            <Box
+                                              component="span"
+                                              sx={{
+                                                fontSize: {
+                                                  xs: 18,
+                                                  md: 18,
+                                                  xl: 21,
+                                                },
+                                                fontFamily: "Helvetica Neue",
+                                                letterSpacing: "0.01em",
+                                              }}
+                                            >
+                                              {
+                                                chronicle2.content_tw.split(
+                                                  "、"
+                                                )[0]
+                                              }
+                                            </Box>
+                                            <Box component="span">
+                                              {
+                                                chronicle2.content_tw.split(
+                                                  "、"
+                                                )[1]
+                                              }
+                                            </Box>
+                                          </Box>
+                                          <Box
+                                            sx={{
+                                              fontSize: {
+                                                xs: 18,
+                                                md: 18,
+                                                xl: 21,
+                                              },
+                                              fontWeight: 500,
+                                              fontFamily: "Helvetica Neue",
+                                              letterSpacing: "0.01em",
+                                            }}
+                                          >
+                                            {chronicle2.content_en}
+                                          </Box>
+                                        </Box>
+                                      </motion.div>
+                                    </Box>
+                                  </motion.div>
+                                </>
+                              );
+                          }
+                        })()}
+                      </>
+                    )}
+                  </Box>
+                ))}
+              </Box>
+            </div>
+          ))}
         </Box>
       </Box>
     </>

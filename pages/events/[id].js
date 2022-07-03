@@ -114,66 +114,6 @@ function Event({ event, contact, projects: dataset }) {
               <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
                 <Item sx={{ width: { xs: "100%", md: "40%" } }}>
                   <Box>
-                    {/* vvv comment out only for 活動資訊
-                    <Box
-                      sx={{
-                        fontSize: { xs: "15px", xl: "15px" },
-                        fontWeight: { xs: 700, xl: 700 },
-                        lineHeight: 1.3,
-                        textAlign: { xs: "end", md: "start" },
-                      }}
-                    >
-                      {event.start_time && +`活動時間`}
-                    </Box>
-                    <Box
-                      pt={1}
-                      sx={{
-                        fontSize: { xs: "17px", xl: "17px" },
-                        fontWeight: { xs: 400, xl: 400 },
-                        lineHeight: 1.6,
-                        textAlign: { xs: "end", md: "start" },
-                      }}
-                    >
-                      <Box component="span">{event.start_time}</Box>
-                      <Box component="span">{event.end_time && +` - `}</Box>
-                      <Box component="span" ml={1}>
-                        {event.end_time}
-                      </Box>
-                    </Box>
-                    <Box
-                      pt={3}
-                      sx={{
-                        fontSize: { xs: "15px", xl: "15px" },
-                        fontWeight: { xs: 700, xl: 700 },
-                        lineHeight: 1.3,
-                        textAlign: { xs: "end", md: "start" },
-                      }}
-                    >
-                      {event.place && +`活動地點`}
-                    </Box>
-                    <Box
-                      pt={1}
-                      sx={{
-                        fontSize: { xs: "17px", xl: "17px" },
-                        fontWeight: { xs: 400, xl: 400 },
-                        lineHeight: 1.6,
-                        textAlign: { xs: "end", md: "start" },
-                      }}
-                    >
-                      {event.place}
-                    </Box>
-                    */}
-                    <Box
-                      pt={3}
-                      sx={{
-                        fontSize: { xs: "15px", sm: "18px" },
-                        fontWeight: 600,
-                        lineHeight: 1.3,
-                        textAlign: { xs: "start", md: "start" },
-                      }}
-                    >
-                      活動資訊
-                    </Box>
                     <Box
                       pt={1}
                       sx={{
@@ -217,7 +157,7 @@ function Event({ event, contact, projects: dataset }) {
                   </Box>
                 </Item>
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
-                  <Box
+                  {/* <Box
                     pt={{ xs: 3, md: 0 }}
                     sx={{
                       fontSize: { xs: "15px", sm: "18px" },
@@ -227,7 +167,7 @@ function Event({ event, contact, projects: dataset }) {
                     }}
                   >
                     活動概念
-                  </Box>
+                  </Box> */}
                   <Box
                     sx={{
                       textAlign: "justify",

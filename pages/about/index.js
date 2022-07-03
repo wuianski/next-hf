@@ -170,7 +170,9 @@ function About({ mission, contact, projects: dataset }) {
             <Box
               sx={{
                 textAlign: "justify",
+                fontFamily: "Noto Sans TC",
                 fontSize: { xs: 14, sm: 17 },
+                lineHeight: { xs: "23px", sm: "26px" },
               }}
             >
               <ReactMarkdown>{mission.content_tw}</ReactMarkdown>
@@ -184,9 +186,10 @@ function About({ mission, contact, projects: dataset }) {
           >
             <Box
               sx={{
-                textAlign: "justify",
-                fontFamily: "Helvetica Neue",
+                //textAlign: "justify",
+                fontFamily: "Helvetica",
                 fontSize: { xs: 14, sm: 17 },
+                lineHeight: { xs: "23px", sm: "26px" },
               }}
             >
               <ReactMarkdown>{mission.content_en}</ReactMarkdown>

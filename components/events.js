@@ -81,7 +81,7 @@ const Events = ({ events: dataset }) => {
                       width: { xs: "100%", md: "100%" },
                       height: { xs: "7px", md: "7px" },
                       background:
-                        "linear-gradient(90deg, #B09336 27.08%, rgba(176, 147, 54, 0.5) 56.25%, rgba(176, 147, 54, 0.3) 80.28%, rgba(176, 147, 54, 0) 100%)",
+                        "linear-gradient(90deg, #000000 0%, rgba(139, 139, 139, 0.45) 45%, rgba(255, 255, 255, 0) 100%)",
                     }}
                     mr={6}
                   ></Box>

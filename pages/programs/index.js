@@ -170,7 +170,7 @@ function Index({ contact, projects: dataset }) {
                               <Box
                                 mt={2}
                                 sx={{
-                                  fontFamily: "Helvetica Neue",
+                                  fontFamily: "Helvetica, Noto Sans TC",
                                   fontSize: { xs: 15, md: 17 },
                                   fontWeight: 500,
                                   lineHeight: "26px",

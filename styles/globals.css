@@ -352,6 +352,17 @@ div.secName {
   z-index: -1;
 }
 
+/* react-player video player*/
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 
 /* Large devices (ipad, 1080px and down) */
 @media only screen and (max-width: 1080px) {

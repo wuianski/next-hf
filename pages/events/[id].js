@@ -16,6 +16,8 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 
+import ReactPlayer from "react-player";
+
 function Event({ event, contact, projects: dataset }) {
   /** sorting dataset by id **/
   //!dataset ? null : dataset.sort((a, b) => a.id - b.id);
@@ -26,8 +28,8 @@ function Event({ event, contact, projects: dataset }) {
 
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
+    //paddingLeft: theme.spacing(1),
+    //paddingRight: theme.spacing(1),
     textAlign: "left",
     color: "#000",
     background: "none",
@@ -112,7 +114,7 @@ function Event({ event, contact, projects: dataset }) {
           <Item>
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }}>
               <Stack direction={{ xs: "column", md: "row" }} spacing={1}>
-                <Item sx={{ width: { xs: "100%", md: "40%" } }}>
+                <Item sx={{ width: { xs: "100%", md: "50%" } }}>
                   <Box>
                     <Box
                       pt={1}
@@ -127,9 +129,6 @@ function Event({ event, contact, projects: dataset }) {
                       {event.sponsor && event.sponsor}
                     </Box>
                   </Box>
-                </Item>
-                <Item sx={{ width: { xs: "100%", md: "50%" } }}>
-                  <Box>{/*video*/}</Box>
                 </Item>
               </Stack>
             </Box>
@@ -157,27 +156,39 @@ function Event({ event, contact, projects: dataset }) {
                   </Box>
                 </Item>
                 <Item sx={{ width: { xs: "100%", md: "50%" } }}>
-                  {/* <Box
-                    pt={{ xs: 3, md: 0 }}
-                    sx={{
-                      fontSize: { xs: "15px", sm: "18px" },
-                      fontWeight: 600,
-                      lineHeight: 1.3,
-                      textAlign: { xs: "start", md: "end" },
-                    }}
-                  >
-                    活動概念
-                  </Box> */}
-                  <Box
-                    sx={{
-                      textAlign: "justify",
-                      textJustify: "distribute",
-                      fontWeight: 400,
-                      fontSize: { xs: "14px", sm: "17px" },
-                    }}
-                  >
-                    <ReactMarkdown>{event.content_tw}</ReactMarkdown>
-                  </Box>
+                  <Stack direction={{ xs: "column", md: "column" }} spacing={1}>
+                    <Item>
+                      <Box>
+                        {event.video_url && (
+                          <Box
+                            className="player-wrapper"
+                            mt={"15px"}
+                            mb={"15px"}
+                          >
+                            <ReactPlayer
+                              className="react-player"
+                              url={event.video_url}
+                              width="100%"
+                              height="100%"
+                            />
+                          </Box>
+                        )}
+                      </Box>
+                    </Item>
+                    <Item>
+                      <Box
+                        sx={{
+                          textAlign: "justify",
+                          textJustify: "distribute",
+                          fontWeight: 400,
+                          fontSize: { xs: "14px", sm: "17px" },
+                        }}
+                        mt={"-15px"}
+                      >
+                        <ReactMarkdown>{event.content_tw}</ReactMarkdown>
+                      </Box>
+                    </Item>
+                  </Stack>
                 </Item>
               </Stack>
             </Box>

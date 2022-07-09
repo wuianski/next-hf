@@ -170,6 +170,7 @@ function Event({ event, contact, projects: dataset }) {
                               url={event.video_url}
                               width="100%"
                               height="100%"
+                              controls="true"
                             />
                           </Box>
                         )}

@@ -200,7 +200,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                             display: "none",
                                             color: "#666",
                                             fontSize: {
-                                              xs: 17,
+                                              xs: 15,
                                               md: 17,
                                               xl: 20,
                                             },
@@ -224,12 +224,12 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         <Box
                                           sx={{
                                             fontSize: {
-                                              xs: 17,
+                                              xs: 15,
                                               md: 17,
                                               xl: 20,
                                             },
                                             fontWeight: 500,
-                                            width: "70vw",
+                                            width: "85vw",
                                             height: "auto",
                                             letterSpacing: "0.05em",
                                           }}
@@ -238,7 +238,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                             component="span"
                                             sx={{
                                               fontSize: {
-                                                xs: 18,
+                                                xs: 15,
                                                 md: 18,
                                                 xl: 21,
                                               },
@@ -263,12 +263,12 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         <Box
                                           sx={{
                                             fontSize: {
-                                              xs: 18,
+                                              xs: 15,
                                               md: 18,
                                               xl: 21,
                                             },
                                             fontWeight: 500,
-                                            width: "70vw",
+                                            width: "85vw",
                                             height: "auto",
                                             fontFamily: "Helvetica",
                                             letterSpacing: "0.01em",
@@ -333,7 +333,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               display: "none",
                                               color: "#666",
                                               fontSize: {
-                                                xs: 17,
+                                                xs: 15,
                                                 md: 17,
                                                 xl: 20,
                                               },
@@ -357,11 +357,13 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 17,
+                                                xs: 15,
                                                 md: 17,
                                                 xl: 20,
                                               },
                                               fontWeight: 500,
+                                              width: "85vw",
+                                              height: "auto",
                                               letterSpacing: "0.05em",
                                             }}
                                           >
@@ -369,7 +371,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               component="span"
                                               sx={{
                                                 fontSize: {
-                                                  xs: 18,
+                                                  xs: 15,
                                                   md: 18,
                                                   xl: 21,
                                                 },
@@ -394,11 +396,13 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 18,
+                                                xs: 15,
                                                 md: 18,
                                                 xl: 22,
                                               },
                                               fontWeight: 500,
+                                              width: "85vw",
+                                              height: "auto",
                                               fontFamily: "Helvetica",
                                               letterSpacing: "0.01em",
                                             }}
@@ -484,7 +488,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               display: "none",
                                               color: "#666",
                                               fontSize: {
-                                                xs: 17,
+                                                xs: 15,
                                                 md: 17,
                                                 xl: 20,
                                               },
@@ -508,11 +512,13 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 17,
+                                                xs: 15,
                                                 md: 17,
                                                 xl: 20,
                                               },
                                               fontWeight: 500,
+                                              width: "85vw",
+                                              height: "auto",
                                               letterSpacing: "0.05em",
                                             }}
                                           >
@@ -520,7 +526,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               component="span"
                                               sx={{
                                                 fontSize: {
-                                                  xs: 18,
+                                                  xs: 15,
                                                   md: 18,
                                                   xl: 21,
                                                 },
@@ -545,11 +551,13 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                           <Box
                                             sx={{
                                               fontSize: {
-                                                xs: 18,
+                                                xs: 15,
                                                 md: 18,
                                                 xl: 21,
                                               },
                                               fontWeight: 500,
+                                              width: "85vw",
+                                              height: "auto",
                                               fontFamily: "Helvetica",
                                               letterSpacing: "0.01em",
                                             }}

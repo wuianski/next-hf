@@ -161,7 +161,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                     <Box
                                       sx={{
                                         fontSize: 44,
-                                        fontFamily: "Helvetica Neue",
+                                        fontFamily: "Helvetica",
                                         fontWeight: 700,
                                         color: "#B09336",
                                         //marginTop: "-60px",
@@ -193,10 +193,11 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                           position: "relative",
                                           width: "max-content",
                                         }}
-                                        pt={16}
+                                        pt={12}
                                       >
                                         <Box
                                           sx={{
+                                            display: "none",
                                             color: "#666",
                                             fontSize: {
                                               xs: 17,
@@ -214,7 +215,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                             component="span"
                                             ml={1}
                                             sx={{
-                                              fontFamily: "Helvetica Neue",
+                                              fontFamily: "Helvetica",
                                             }}
                                           >
                                             {chronicle2.type_en}
@@ -241,7 +242,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                                 md: 18,
                                                 xl: 21,
                                               },
-                                              fontFamily: "Helvetica Neue",
+                                              fontFamily: "Helvetica",
                                               letterSpacing: "0.01em",
                                             }}
                                           >
@@ -269,7 +270,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                             fontWeight: 500,
                                             width: "70vw",
                                             height: "auto",
-                                            fontFamily: "Helvetica Neue",
+                                            fontFamily: "Helvetica",
                                             letterSpacing: "0.01em",
                                           }}
                                         >
@@ -292,7 +293,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                       },
                                       visible: {
                                         //height: "50vh",
-                                        height: "350px",
+                                        height: "300px",
                                         transition: {
                                           delay: 0.5,
                                         },
@@ -329,6 +330,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         >
                                           <Box
                                             sx={{
+                                              display: "none",
                                               color: "#666",
                                               fontSize: {
                                                 xs: 17,
@@ -346,7 +348,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               component="span"
                                               ml={1}
                                               sx={{
-                                                fontFamily: "Helvetica Neue",
+                                                fontFamily: "Helvetica",
                                               }}
                                             >
                                               {chronicle2.type_en}
@@ -371,7 +373,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                                   md: 18,
                                                   xl: 21,
                                                 },
-                                                fontFamily: "Helvetica Neue",
+                                                fontFamily: "Helvetica",
                                                 letterSpacing: "0.01em",
                                               }}
                                             >
@@ -397,7 +399,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                                 xl: 22,
                                               },
                                               fontWeight: 500,
-                                              fontFamily: "Helvetica Neue",
+                                              fontFamily: "Helvetica",
                                               letterSpacing: "0.01em",
                                             }}
                                           >
@@ -428,7 +430,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                     <Box
                                       sx={{
                                         fontSize: 44,
-                                        fontFamily: "Helvetica Neue",
+                                        fontFamily: "Helvetica",
                                         fontWeight: 700,
                                         color: "#B09336",
                                       }}
@@ -442,7 +444,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                     variants={{
                                       hidden: { height: "130px" },
                                       visible: {
-                                        height: "240px",
+                                        height: "220px",
                                         transition: { delay: 0.5 },
                                       },
                                     }}
@@ -479,6 +481,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         >
                                           <Box
                                             sx={{
+                                              display: "none",
                                               color: "#666",
                                               fontSize: {
                                                 xs: 17,
@@ -496,7 +499,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                               component="span"
                                               ml={1}
                                               sx={{
-                                                fontFamily: "Helvetica Neue",
+                                                fontFamily: "Helvetica",
                                               }}
                                             >
                                               {chronicle2.type_en}
@@ -521,7 +524,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                                   md: 18,
                                                   xl: 21,
                                                 },
-                                                fontFamily: "Helvetica Neue",
+                                                fontFamily: "Helvetica",
                                                 letterSpacing: "0.01em",
                                               }}
                                             >
@@ -547,7 +550,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                                 xl: 21,
                                               },
                                               fontWeight: 500,
-                                              fontFamily: "Helvetica Neue",
+                                              fontFamily: "Helvetica",
                                               letterSpacing: "0.01em",
                                             }}
                                           >

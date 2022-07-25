@@ -892,10 +892,10 @@ function Resource({
           </Box>
         </Box>
         {/* vvv 贊助概覽 */}
-        <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+        <Box sx={{ display: "none", width: { xs: "100%", md: "50%" } }}>
           <Box
             sx={{
-              fontFamily: "Helvetica Neue",
+              fontFamily: "Helvetica",
               fontSize: { xs: 30, sm: 34, md: 37 },
             }}
           >
@@ -920,6 +920,7 @@ function Resource({
         {/* vvv pie */}
         <Box
           sx={{
+            display: "none",
             height: { xs: "40vw", md: "30vw" },
             width: { xs: "160%", sm: "90%", md: "70%" },
           }}
@@ -1011,12 +1012,12 @@ function Resource({
         </Box>
         {/* vvv 各年度贊助比例 */}
         <Box
-          sx={{ width: { xs: "100%", md: "50%" } }}
+          sx={{ display: "none", width: { xs: "100%", md: "50%" } }}
           ml={{ xs: "0%", sm: "50%", md: "50%" }}
         >
           <Box
             sx={{
-              fontFamily: "Helvetica Neue",
+              fontFamily: "Helvetica",
               fontSize: { xs: 30, sm: 34, md: 37 },
             }}
           >
@@ -1039,7 +1040,7 @@ function Resource({
         </Box>
         {/* vvv Bar2 */}
         <Box
-          sx={{ width: { xs: "120%", sm: "80%", md: "50%" } }}
+          sx={{ display: "none", width: { xs: "120%", sm: "80%", md: "50%" } }}
           ml={{ xs: "-16%", sm: "44%", md: "46%" }}
           mt={{ xs: -8, sm: -10, md: -10 }}
         >
@@ -1047,7 +1048,7 @@ function Resource({
         </Box>
         {/* vvv color demo */}
         <Box
-          sx={{ width: "50%" }}
+          sx={{ display: "none", width: "50%" }}
           ml={{ xs: "-18%", sm: "44%", md: "46.5%" }}
           mb={12}
           mt={{ xs: -4, sm: -5, md: -5 }}
@@ -1177,7 +1178,7 @@ function Resource({
           </Stack>
         </Box>
         {/* vvv 每十年贊助比例 */}
-        <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+        <Box sx={{ display: "none", width: { xs: "100%", md: "50%" } }}>
           <Box sx={{ fontSize: { xs: 30, sm: 34, md: 37 } }}>每十年度</Box>
           <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
             <Image
@@ -1196,7 +1197,7 @@ function Resource({
         </Box>
         {/* vvv Bar1 */}
         <Box
-          sx={{ width: { xs: "120%", sm: "80%", md: "50%" } }}
+          sx={{ display: "none", width: { xs: "120%", sm: "80%", md: "50%" } }}
           ml={{ xs: "-16%", sm: "-6.5%", md: "-4%" }}
           mt={{ xs: -8, sm: -10, md: -10 }}
         >
@@ -1204,6 +1205,7 @@ function Resource({
         </Box>
         {/* vvv color demo */}
         <Box
+          sx={{ display: "none" }}
           mb={12}
           ml={{ xs: "-18%", sm: "-6.5%", md: "-3.5%" }}
           mt={{ xs: -4, sm: -5, md: -5 }}

@@ -120,7 +120,7 @@ function About({ mission, contact, projects: dataset }) {
         </Box>
         <Box
           sx={{
-            fontFamily: "Helvetica Neue",
+            fontFamily: "Helvetica",
             fontSize: { xs: 18, md: 21 },
             lineHeight: 1.3,
             color: "#B09336",
@@ -188,8 +188,8 @@ function About({ mission, contact, projects: dataset }) {
               sx={{
                 //textAlign: "justify",
                 fontFamily: "Helvetica",
-                fontSize: { xs: 14, sm: 17 },
-                lineHeight: { xs: "23px", sm: "26px" },
+                fontSize: { xs: 12, sm: 15 },
+                lineHeight: { xs: "18px", sm: "23px" },
               }}
             >
               <ReactMarkdown>{mission.content_en}</ReactMarkdown>

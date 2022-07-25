@@ -237,7 +237,7 @@ export default function Nav({ contact, projects: dataset }) {
                     </Link>
                     <Link href="/publications/publications">
                       <Box mb={1} sx={{ cursor: "pointer" }}>
-                        出版
+                        出版品
                       </Box>
                     </Link>
                   </AccordionDetails>

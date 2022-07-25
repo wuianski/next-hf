@@ -134,7 +134,7 @@ function Publication_about({
             <Link href="/publications">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
-            <Link href="/publications/publications">出版</Link>
+            <Link href="/publications/publications">出版品</Link>
           </li>
         </ul>
         <Box
@@ -226,7 +226,11 @@ function Publication_about({
               pb={10}
             >
               <Box sx={{ fontSize: { xs: 14, md: 17, lg: 17 } }}>
-                <Box component="div" mb={2} sx={{ textAlign: "justify" }}>
+                <Box
+                  component="div"
+                  mb={2}
+                  sx={{ textAlign: "justify", lineHeight: 1.5 }}
+                >
                   <ReactMarkdown>{archiveImg.content_tw}</ReactMarkdown>
                 </Box>
                 <Box
@@ -234,7 +238,8 @@ function Publication_about({
                   sx={{
                     textAlign: "justify",
                     fontSize: { xs: 14, md: 16, lg: 16 },
-                    fontFamily: "Helvetica Neue",
+                    fontFamily: "Helvetica",
+                    lineHeight: 1.3,
                   }}
                 >
                   <ReactMarkdown>{archiveImg.content_en}</ReactMarkdown>

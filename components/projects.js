@@ -85,7 +85,7 @@ const Projects = ({ projects: dataset }) => {
                         <Image
                           //className={styles.landingImage}
                           src={project.cover && project.cover.url}
-                          placeholder="blur"
+                          //placeholder="blur"
                           blurDataURL={project.cover.url}
                           alt="logo image of projects"
                           //layout="responsive"

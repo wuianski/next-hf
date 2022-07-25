@@ -260,7 +260,7 @@ function Publication({
             <Link href="/publications">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li active">
-            <Link href="/publications/publications">出版</Link>
+            <Link href="/publications/publications">出版品</Link>
           </li>
         </ul>
         <Box

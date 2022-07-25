@@ -236,7 +236,7 @@ div.secName {
 
 .markdownP p {
   font-size: 21px;
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica";
 }
 
 /*  */
@@ -330,14 +330,14 @@ div.secName {
   text-align: left;
   width: 700px;
   white-space: pre-line;
-  text-shadow: 0.06em 0.06em 0.24em rgb(42, 41, 41);
+  text-shadow: 0.06em 0.06em 0.15em rgb(42, 41, 41);
 }
 .progamLogo{
   /* position: absolute; */
   /* top: 0px; */
   padding-top: 20px;
   padding-left: 20px;
-  filter: invert(1) drop-shadow(0.06em 0.06em 0.24em rgb(42, 41, 41));
+  filter: invert(1) drop-shadow(0.06em 0.06em 0.15em rgb(42, 41, 41));
   /* position: relative;
   z-index: 99; */
 }

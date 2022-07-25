@@ -180,9 +180,7 @@ function Members({
                     </StackItem>
                     <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
                       <Box>歷屆董事會成員</Box>
-                      <Box sx={{ fontFamily: "Helvetica Neue" }}>
-                        Board Members
-                      </Box>
+                      <Box sx={{ fontFamily: "Helvetica" }}>Board Members</Box>
                     </StackItem>
                   </Stack>
                 </a>
@@ -203,7 +201,7 @@ function Members({
                     </StackItem>
                     <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
                       <Box>捐助章程</Box>
-                      <Box sx={{ fontFamily: "Helvetica Neue" }}>
+                      <Box sx={{ fontFamily: "Helvetica" }}>
                         Foundation Bylaws
                       </Box>
                     </StackItem>
@@ -249,7 +247,7 @@ function Members({
                               <Box
                                 component="span"
                                 sx={{
-                                  fontFamily: "Helvetica Neue",
+                                  fontFamily: "Helvetica",
                                   fontWeight: 500,
                                 }}
                                 ml={2}
@@ -264,7 +262,7 @@ function Members({
                                   md: "pre-line",
                                 },
                                 fontSize: { xs: 14, xl: 14 },
-                                fontFamily: "Helvetica Neue",
+                                fontFamily: "Helvetica",
                               }}
                             >
                               {boardMember.selected_title}

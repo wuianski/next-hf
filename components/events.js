@@ -25,10 +25,10 @@ const Events = ({ events: dataset }) => {
   /** sorting dataset by start_time in the Object **/
   function sortByDate(a, b) {
     if (a.start_time < b.start_time) {
-      return -1;
+      return 1;
     }
     if (a.start_time > b.start_time) {
-      return 1;
+      return -1;
     }
     return 0;
   }

@@ -56,16 +56,13 @@ function About({ mission, contact, projects: dataset }) {
             <Link href="/about">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
-            <Link href="/about/members">成員</Link>
+            <Link href="/about/members">董事</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/resource">公開資訊</a>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/timeline">大事記</a>
-          </li>
-          <li className="subMenuInAbooutPage_li">
-            <a href="/about/reports">報表</a>
           </li>
         </ul>
         <Box

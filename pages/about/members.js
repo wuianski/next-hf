@@ -61,13 +61,13 @@ function Members({
   return (
     <>
       <NextSeo
-        title="Hong Foundation 洪建全基金會 ｜ 成員"
-        description="Hong Foundation 洪建全基金會：成員"
+        title="Hong Foundation 洪建全基金會 ｜ 董事"
+        description="Hong Foundation 洪建全基金會：董事"
         canonical="https://hongfoundation.org.tw/members"
         openGraph={{
           url: "https://hongfoundation.org.tw/",
           title: "Hong Foundation 洪建全基金會",
-          description: "Hong Foundation 洪建全基金會：成員",
+          description: "Hong Foundation 洪建全基金會：董事",
           site_name: "Hong Foundation 洪建全基金會",
         }}
         twitter={{
@@ -84,16 +84,13 @@ function Members({
             <Link href="/about">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li active">
-            <Link href="/about/members">成員</Link>
+            <Link href="/about/members">董事</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/resource">公開資訊</a>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/timeline">大事記</a>
-          </li>
-          <li className="subMenuInAbooutPage_li">
-            <a href="/about/reports">報表</a>
           </li>
         </ul>
         <Box

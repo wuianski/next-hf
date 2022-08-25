@@ -177,7 +177,7 @@ export default function Nav({ contact, projects: dataset }) {
                     </Link>
                     <Link href="/about/members">
                       <Box mb={1} sx={{ cursor: "pointer" }}>
-                        成員
+                        董事
                       </Box>
                     </Link>
                     <Link href="/about/resource">
@@ -188,11 +188,6 @@ export default function Nav({ contact, projects: dataset }) {
                     <Link href="/about/timeline">
                       <Box mb={1} sx={{ cursor: "pointer" }}>
                         大事記
-                      </Box>
-                    </Link>
-                    <Link href="/about/reports">
-                      <Box mb={1} sx={{ cursor: "pointer" }}>
-                        報表
                       </Box>
                     </Link>
                   </AccordionDetails>

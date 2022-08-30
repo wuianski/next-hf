@@ -84,7 +84,7 @@ function Members({
             <Link href="/about">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li active">
-            <Link href="/about/members">董事</Link>
+            <Link href="/about/members">董事會</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/resource">公開資訊</a>

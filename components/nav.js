@@ -177,7 +177,7 @@ export default function Nav({ contact, projects: dataset }) {
                     </Link>
                     <Link href="/about/members">
                       <Box mb={1} sx={{ cursor: "pointer" }}>
-                        董事
+                        董事會
                       </Box>
                     </Link>
                     <Link href="/about/resource">

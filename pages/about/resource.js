@@ -224,7 +224,6 @@ TablePaginationActions4.propTypes = {
 
 function Resource({
   sponsorships: datasetS,
-  summary,
   contact,
   projects: datasetP,
   reports: dataset,
@@ -834,23 +833,6 @@ function Resource({
   }
   /** /stack bar2 chart **/
 
-  /** parsing sentence **/
-  const allPhase = summary.content.split("、");
-  //console.log(phase[0]);
-  const p1 = allPhase[0].split("，");
-  const p2 = allPhase[1].split("，");
-  const p3 = allPhase[2].split("，");
-
-  const p4 = allPhase[3].split("，");
-  const p5 = allPhase[4].split("，");
-
-  const p6 = allPhase[5].split("，");
-  const p7 = allPhase[6].split("，");
-  const p8 = allPhase[7].split("，");
-  const p9 = allPhase[8].split("，");
-  //const p10 = allPhase[9].split("，");
-  //console.log(p2[0]);
-
   // /* CHANGE programs ARRAY SORTING BY ID*/
   // !datasetP ? null : datasetP.sort((a, b) => a.id - b.id);
   // const mydataset = datasetP.slice(0, 3);
@@ -1057,7 +1039,7 @@ function Resource({
             <Link href="/about">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
-            <Link href="/about/members">董事</Link>
+            <Link href="/about/members">董事會</Link>
           </li>
           <li className="subMenuInAbooutPage_li active">
             <a href="/about/resource">公開資訊</a>
@@ -1090,180 +1072,6 @@ function Resource({
         pt={{ xs: 28, sm: 36, md: 36 }}
         pl={{ xs: 3, sm: 0, md: 6 }}
       >
-        {/* vvv project seek data */}
-        <Box
-          sx={{ width: { xs: "100%", md: "50%" } }}
-          ml={{ xs: "0%", sm: "50%", md: "50%" }}
-        >
-          <Box>
-            <Image
-              src={ps_logo}
-              placeholder="blur"
-              alt="download icon"
-              width={320}
-              height={96}
-            />
-          </Box>
-          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
-            <Image
-              src={inR}
-              placeholder="blur"
-              alt="indicator"
-              width={473}
-              height={115}
-            />
-          </Box>
-          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
-            <Box>
-              <Box component="span" className="textText">
-                {p4[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p4[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p4[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p5[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p5[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p5[2]}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        {/* vvv minlong forum data */}
-        <Box sx={{ width: { xs: "100%", md: "50%" } }}>
-          <Box>
-            <Image
-              src={ml_logo}
-              placeholder="blur"
-              alt="download icon"
-              width={320}
-              height={96}
-            />
-          </Box>
-          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
-            <Image
-              src={inL}
-              placeholder="blur"
-              alt="indicator"
-              width={473}
-              height={115}
-            />
-          </Box>
-          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
-            <Box>
-              <Box component="span" className="textText">
-                {p1[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p1[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p1[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p2[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p2[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p2[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p3[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p3[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p3[2]}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        {/* vvv php data */}
-        <Box
-          sx={{ width: { xs: "100%", md: "50%" } }}
-          ml={{ xs: "0%", sm: "50%", md: "50%" }}
-        >
-          <Box>
-            <Image
-              src={php_logo}
-              placeholder="blur"
-              alt="download icon"
-              width={320}
-              height={96}
-            />
-          </Box>
-          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
-            <Image
-              src={inR}
-              placeholder="blur"
-              alt="indicator"
-              width={473}
-              height={115}
-            />
-          </Box>
-          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
-            <Box>
-              <Box component="span" className="textText">
-                {p6[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p6[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p6[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p7[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p7[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p7[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p8[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p8[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p8[2]}
-              </Box>
-            </Box>
-            <Box>
-              <Box component="span" className="textText">
-                {p9[0]}
-              </Box>
-              <Box component="span" className="textNumber">
-                {p9[1]}
-              </Box>
-              <Box component="span" className="textText">
-                {p9[2]}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
         {/* vvv 贊助概覽 */}
         <Box sx={{ display: "none", width: { xs: "100%", md: "50%" } }}>
           <Box
@@ -1716,7 +1524,7 @@ function Resource({
         }}
         ml={"auto"}
         mr={"auto"}
-        pt={{ xs: 2, sm: 10, md: 10 }}
+        pt={{ xs: 0, sm: 0, md: 0 }}
         pl={{ xs: 1, sm: 0, md: 0 }}
         pb={20}
       >
@@ -2061,18 +1869,15 @@ function Resource({
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [sponsorships, summary, contact, projects, reports] = await Promise.all(
-    [
-      await fetchAPI("/sponsorships"),
-      await fetchAPI("/summary"),
-      await fetchAPI("/contact"),
-      await fetchAPI("/projects"),
-      await fetchAPI("/reports"),
-    ]
-  );
+  const [sponsorships, contact, projects, reports] = await Promise.all([
+    await fetchAPI("/sponsorships"),
+    await fetchAPI("/contact"),
+    await fetchAPI("/projects"),
+    await fetchAPI("/reports"),
+  ]);
 
   return {
-    props: { sponsorships, summary, contact, projects, reports },
+    props: { sponsorships, contact, projects, reports },
     //revalidate: 1,
   };
 }

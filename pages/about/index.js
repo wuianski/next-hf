@@ -13,7 +13,14 @@ import Divider from "@mui/material/Divider";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 
-function About({ mission, contact, projects: dataset }) {
+/*** previous resource ***/
+import ps_logo from "../../public/IMGs/ps_logo.png";
+import ml_logo from "../../public/IMGs/ml_logo.png";
+import php_logo from "../../public/IMGs/php_logo.png";
+import inR from "../../public/IMGs/inR.png";
+import inL from "../../public/IMGs/inL.png";
+
+function About({ mission, contact, projects: dataset, summary }) {
   /** stack Item setting **/
   const Item = styled(Paper)(({ theme }) => ({
     //...theme.typography.body2,
@@ -29,6 +36,22 @@ function About({ mission, contact, projects: dataset }) {
   /* CHANGE ARRAY SORTING BY ID*/
   !dataset ? null : dataset.sort((a, b) => a.id - b.id);
   const mydataset = dataset.slice(0, 3);
+
+  /*** previous resource ***/
+  /** parsing sentence **/
+  const allPhase = summary.content.split("、");
+  //console.log(phase[0]);
+  const p1 = allPhase[0].split("，");
+  const p2 = allPhase[1].split("，");
+  const p3 = allPhase[2].split("，");
+
+  const p4 = allPhase[3].split("，");
+  const p5 = allPhase[4].split("，");
+
+  const p6 = allPhase[5].split("，");
+  const p7 = allPhase[6].split("，");
+  const p8 = allPhase[7].split("，");
+  const p9 = allPhase[8].split("，");
 
   return (
     <>
@@ -56,7 +79,7 @@ function About({ mission, contact, projects: dataset }) {
             <Link href="/about">關於</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
-            <Link href="/about/members">董事</Link>
+            <Link href="/about/members">董事會</Link>
           </li>
           <li className="subMenuInAbooutPage_li">
             <a href="/about/resource">公開資訊</a>
@@ -79,21 +102,6 @@ function About({ mission, contact, projects: dataset }) {
         />
       </Box>
 
-      {/* <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {
-            scale: 0.9,
-            opacity: 0,
-          },
-          visible: {
-            scale: 1,
-            opacity: 1,
-            transition: { delay: 0.3 },
-          },
-        }}
-      > */}
       {/* about slogan */}
       <Box
         sx={{
@@ -194,21 +202,207 @@ function About({ mission, contact, projects: dataset }) {
           </Item>
         </Stack>
       </Box>
-      {/* </motion.div> */}
+      {/* resource content */}
+      <Box
+        sx={{
+          width: { xs: "85%", sm: "90%", md: "80vw" },
+          maxWidth: { xs: "100%", sm: "500px", md: "954px" },
+        }}
+        ml={"auto"}
+        mr={"auto"}
+        pt={{ xs: 8, sm: 10, md: 10 }}
+        pl={{ xs: 3, sm: 0, md: 6 }}
+      >
+        {/* vvv project seek data */}
+        <Box
+          sx={{ width: { xs: "100%", md: "50%" } }}
+          ml={{ xs: "0%", sm: "50%", md: "50%" }}
+        >
+          <Box>
+            <Image
+              src={ps_logo}
+              placeholder="blur"
+              alt="download icon"
+              width={320}
+              height={96}
+            />
+          </Box>
+          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
+            <Image
+              src={inR}
+              placeholder="blur"
+              alt="indicator"
+              width={473}
+              height={115}
+            />
+          </Box>
+          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
+            <Box>
+              <Box component="span" className="textText">
+                {p4[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p4[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p4[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p5[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p5[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p5[2]}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        {/* vvv minlong forum data */}
+        <Box sx={{ width: { xs: "100%", md: "50%" } }}>
+          <Box>
+            <Image
+              src={ml_logo}
+              placeholder="blur"
+              alt="download icon"
+              width={320}
+              height={96}
+            />
+          </Box>
+          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
+            <Image
+              src={inL}
+              placeholder="blur"
+              alt="indicator"
+              width={473}
+              height={115}
+            />
+          </Box>
+          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
+            <Box>
+              <Box component="span" className="textText">
+                {p1[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p1[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p1[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p2[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p2[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p2[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p3[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p3[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p3[2]}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        {/* vvv php data */}
+        <Box
+          sx={{ width: { xs: "100%", md: "50%" } }}
+          ml={{ xs: "0%", sm: "50%", md: "50%" }}
+        >
+          <Box>
+            <Image
+              src={php_logo}
+              placeholder="blur"
+              alt="download icon"
+              width={320}
+              height={96}
+            />
+          </Box>
+          <Box mt={{ xs: -2, sm: -4, md: -4 }} ml={{ xs: -3, sm: -6, md: -6 }}>
+            <Image
+              src={inR}
+              placeholder="blur"
+              alt="indicator"
+              width={473}
+              height={115}
+            />
+          </Box>
+          <Box mt={{ xs: -3, sm: -5, md: -5 }} mb={12}>
+            <Box>
+              <Box component="span" className="textText">
+                {p6[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p6[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p6[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p7[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p7[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p7[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p8[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p8[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p8[2]}
+              </Box>
+            </Box>
+            <Box>
+              <Box component="span" className="textText">
+                {p9[0]}
+              </Box>
+              <Box component="span" className="textNumber">
+                {p9[1]}
+              </Box>
+              <Box component="span" className="textText">
+                {p9[2]}
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 }
 
 export async function getServerSideProps() {
   // Run API calls in parallel
-  const [mission, contact, projects] = await Promise.all([
+  const [mission, contact, projects, summary] = await Promise.all([
     await fetchAPI("/mission"),
     await fetchAPI("/contact"),
     await fetchAPI("/projects"),
+    await fetchAPI("/summary"),
   ]);
 
   return {
-    props: { mission, contact, projects },
+    props: { mission, contact, projects, summary },
     //revalidate: 1,
   };
 }

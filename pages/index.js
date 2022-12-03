@@ -51,7 +51,7 @@ function Index({ summary, contact, projects, events, news }) {
           cardType: "summary_large_image",
         }}
       />
-      <Nav contact={contact} projects={projects} />
+      {/* <Nav contact={contact} projects={projects} /> */}
 
       <Box pt={{ xs: 15, md: 23 }} mb={"-7px"} pb={{ xs: 0, md: 0 }}>
         <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
@@ -98,9 +98,7 @@ function Index({ summary, contact, projects, events, news }) {
               />
             </Box>
           </Item>
-          <Item>
-            <Projects projects={projects} />
-          </Item>
+          <Item>{/* <Projects projects={projects} /> */}</Item>
         </Stack>
       </Box>
 
@@ -152,9 +150,7 @@ function Index({ summary, contact, projects, events, news }) {
               />
             </Box>
           </Item>
-          <Item>
-            <Events events={events} />
-          </Item>
+          <Item>{/* <Events events={events} /> */}</Item>
         </Stack>
       </Box>
 
@@ -203,9 +199,7 @@ function Index({ summary, contact, projects, events, news }) {
               />
             </Box>
           </Item>
-          <Item>
-            <News news={news} />
-          </Item>
+          <Item>{/* <News news={news} /> */}</Item>
         </Stack>
       </Box>
     </>

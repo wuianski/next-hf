@@ -54,7 +54,8 @@ export default function MyApp({ Component, pageProps, router }) {
           width: "100%",
           height: "130px",
           zIndex: 99,
-          backgroundColor: "#fff",
+          //backgroundColor: "#fff",
+          background: "none",
         }}
       >
         <Link href="/">

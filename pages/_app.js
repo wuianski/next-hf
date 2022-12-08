@@ -46,7 +46,7 @@ export default function MyApp({ Component, pageProps, router }) {
         }}
       />
       {/* main logo */}
-      <Box
+      {/* <Box
         sx={{
           position: "fixed",
           top: 0,
@@ -54,8 +54,8 @@ export default function MyApp({ Component, pageProps, router }) {
           width: "100%",
           height: "130px",
           zIndex: 99,
-          //backgroundColor: "#fff",
-          background: "none",
+          backgroundColor: "#fff",
+          //background: "none",
         }}
       >
         <Link href="/">
@@ -69,7 +69,7 @@ export default function MyApp({ Component, pageProps, router }) {
             />
           </div>
         </Link>
-      </Box>
+      </Box> */}
       {/* important to add key for make it work */}
       <AnimatePresence exitBeforeEnter>
         <motion.div

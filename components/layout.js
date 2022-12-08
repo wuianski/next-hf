@@ -21,6 +21,30 @@ export default function Layout({ children }) {
 
       {/* <div id="turn">Please rotate your device!</div> */}
       <div id="container">
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "130px",
+            zIndex: 99,
+            backgroundColor: "#fff",
+            //background: "none",
+          }}
+        >
+          <Link href="/">
+            <div className={styles.logoFixed} id="logo">
+              <Image
+                src={logo_w}
+                placeholder="blur"
+                alt="logo"
+                width={185}
+                height={75}
+              />
+            </div>
+          </Link>
+        </Box>
         {/* <motion.main
           initial="hidden"
           animate="enter"

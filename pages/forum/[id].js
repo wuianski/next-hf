@@ -289,12 +289,16 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       <ReactMarkdown>{forum.description}</ReactMarkdown>
                     </Box>
                     <Box sx={{ borderTop: "1px solid #000" }} />
-                    <Box
+                    {/* <Box
                       pt={{ xs: 2, sm: 4 }}
                       dangerouslySetInnerHTML={{
                         __html: forum.lecturerIntro,
                       }}
-                    />
+                    /> */}
+
+                    <Box>
+                      <ReactMarkdown>{forum.lecturerIntro}</ReactMarkdown>
+                    </Box>
                   </Item>
                 </Stack>
               </Box>

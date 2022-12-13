@@ -14,6 +14,7 @@ import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import Image from "next/image";
 import forumCover from "../../public/IMGs/forumCover.png";
+import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
 import Nav from "../../components/nav";
 import Link from "next/link";
 import styles from "../../components/layout.module.css";
@@ -31,6 +32,7 @@ const FilterItem = styled(Paper)(({ theme }) => ({
 
 /** Grid Item setting **/
 const GridItem = styled(Paper)(({ theme }) => ({
+  margin: 0,
   padding: 0,
   textAlign: "left",
   color: "#000",
@@ -42,6 +44,7 @@ const GridItem = styled(Paper)(({ theme }) => ({
 /** Stack Item setting **/
 const StackItem = styled(Paper)(({ theme }) => ({
   //...theme.typography.body2,
+  margin: 0,
   paddingLeft: theme.spacing(0),
   paddingRight: theme.spacing(0),
   textAlign: "left",
@@ -91,7 +94,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
         return lecturer.name;
       }),
       //coverImage: f.coverImage,
-      coverImage: f.coverImage ? f.coverImage.url : "/IMGs/noBook_img.jpg",
+      coverImage: f.coverImage ? f.coverImage.url : "/IMGs/noForumCover.png",
     };
 
     return result;
@@ -170,7 +173,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
           height: "130px",
           zIndex: 99,
           //backgroundColor: "#fff",
-          background: "none",
+          background: "#EDE9DF",
         }}
       >
         <Link href="/">
@@ -187,15 +190,20 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
       </Box>
       <Nav contact={contact} projects={projects} />
       <Box sx={{ minHeight: "100vh", backgroundColor: "#EDE9DF" }}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 6, md: 2 }}>
+        <Stack
+          direction={{ xs: "row", md: "row" }}
+          spacing={{ xs: 0, sm: 0, md: 2 }}
+        >
           {/* left: cover area */}
-          <StackItem sx={{ width: "225px" }}>
+          <StackItem sx={{ width: { xs: 125, sm: 225 } }}>
             <Box
               sx={{
+                display: { xs: "none", sm: "block" },
                 position: "fixed",
-                height: "100vh",
-                width: "225px",
                 left: 0,
+                bottom: 0,
+                width: { sm: 225, md: 225 },
+                height: "calc(100vh - 146px)",
               }}
             >
               <Image
@@ -204,21 +212,52 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
-                objectPosition="top"
+                objectPosition="center"
+              />
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "block", sm: "none" },
+                position: "fixed",
+                left: 0,
+                bottom: { xs: "0", sm: "unset" },
+                width: { xs: 125, md: 225 },
+                height: { xs: "calc(100vh - 130px)" },
+              }}
+            >
+              <Image
+                src={forumCover_mobile}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
               />
             </Box>
           </StackItem>
           {/* right: grid area */}
-          <StackItem sx={{ width: "82%" }}>
+          <StackItem
+            sx={{
+              width: { xs: "calc(100vw - 125px)", sm: "calc(100vw - 225px)" },
+            }}
+          >
             <Box
-              pt={{ xs: 15, md: 13 }}
-              ml={{ xs: 15, md: 23 }}
-              mr={{ xs: 4, md: 4 }}
+              sx={{
+                width: { xs: "85%", sm: "90%", md: "80vw" },
+                maxWidth: { xs: "600px", md: "954px" },
+                position: "relative",
+                zIndex: 0,
+              }}
+              pt={{ xs: "130px", md: "130px" }}
+              // ml={{ xs: 4, md: 23 }}
+              // mr={{ xs: 4, md: 4 }}
+              ml={"auto"}
+              mr={"auto"}
             >
-              <Box sx={{ flexGrow: 1 }} pt={4}>
-                <Grid container spacing={4} columns={3}>
+              <Box sx={{ flexGrow: 1 }} pt={{ xs: 0, sm: 2, md: 2 }}>
+                <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
                   {/* search component */}
-                  <Grid item xs={1}>
+                  <Grid item xs={4} sm={4} md={4}>
                     <FilterItem>
                       <div>
                         <label htmlFor="search-form">
@@ -234,7 +273,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                     </FilterItem>
                   </Grid>
                   {/* filter component */}
-                  <Grid item xs={1}>
+                  <Grid item xs={4} sm={4} md={4}>
                     <FilterItem>
                       <Box>
                         <FormControl fullWidth size="small">
@@ -274,7 +313,11 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                         >
                           <GridItem>
                             <Box sx={{ cursor: "pointer" }}>
-                              <Box>
+                              <Box
+                                sx={{
+                                  backgroundColor: "#fff",
+                                }}
+                              >
                                 {item.coverImage && (
                                   <Image
                                     placeholder="blur"
@@ -378,8 +421,8 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
 
               {/* load more component */}
               <Box sx={{ flexGrow: 1 }} pt={4} pb={4}>
-                <Grid container spacing={4} columns={3}>
-                  <Grid item xs={1}>
+                <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
+                  <Grid item xs={4} sm={4} md={4}>
                     <Box
                       sx={{
                         width: "100%",

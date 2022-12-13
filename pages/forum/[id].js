@@ -14,6 +14,8 @@ import Link from "next/link";
 import styles from "../../components/layout.module.css";
 import logo_w from "../../public/IMGs/logo_w.png";
 import forumCover from "../../public/IMGs/forumCover.png";
+import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
+import ReactMarkdown from "react-markdown";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -49,7 +51,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
           height: "130px",
           zIndex: 99,
           //backgroundColor: "#fff",
-          background: "none",
+          background: "#EDE9DF",
         }}
       >
         <Link href="/">
@@ -66,15 +68,20 @@ function ForumP({ forum, contact, projects: datasetP }) {
       </Box>
       <Nav contact={contact} projects={datasetP} />
       <Box sx={{ minHeight: "100vh", backgroundColor: "#EDE9DF" }}>
-        <Stack direction={{ xs: "row", md: "row" }} spacing={{ xs: 6, md: 2 }}>
+        <Stack
+          direction={{ xs: "row", md: "row" }}
+          spacing={{ xs: 0, sm: 0, md: 2 }}
+        >
           {/* left: cover area */}
-          <Item sx={{ width: "225px" }}>
+          <Item sx={{ width: { xs: 125, sm: 225 } }}>
             <Box
               sx={{
+                display: { xs: "none", sm: "block" },
                 position: "fixed",
-                height: "100vh",
-                width: "225px",
+                height: "calc(100vh - 146px)",
+                width: { sm: 225, md: 225 },
                 left: 0,
+                bottom: 0,
               }}
             >
               <Image
@@ -83,20 +90,56 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
-                objectPosition="top"
+                objectPosition="center"
+              />
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "block", sm: "none" },
+                position: "fixed",
+                height: { xs: "calc(100vh - 130px)" },
+                width: { xs: 125, md: 225 },
+                left: 0,
+                bottom: { xs: "0", sm: "unset" },
+              }}
+            >
+              <Image
+                src={forumCover_mobile}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
               />
             </Box>
           </Item>
           {/* right: content area */}
-          <Item sx={{ width: "82%" }}>
-            <Box pt={26} pr={2} pl={2} pb={16}>
+          <Item
+            sx={{
+              width: { xs: "calc(100vw - 125px)", sm: "calc(100vw - 225px)" },
+            }}
+          >
+            <Box
+              pt={{ xs: "130px", sm: "146px" }}
+              sx={{
+                width: { xs: "85%", sm: "90%", md: "80vw" },
+                maxWidth: { xs: "600px", md: "954px" },
+                position: "relative",
+                zIndex: 0,
+              }}
+              ml={"auto"}
+              mr={"auto"}
+              // pr={2}
+              // pl={2}
+              pb={16}
+            >
               {/* 1 row : infos and title*/}
               <Box>
                 <Stack
-                  direction={{ xs: "row", md: "row" }}
-                  spacing={{ xs: 6, md: 2 }}
+                  direction={{ xs: "column", md: "row" }}
+                  spacing={{ xs: 4, md: 0 }}
                 >
-                  <Item sx={{ width: "40%" }}>
+                  <Item sx={{ width: { xs: "100%", md: "40%" } }}>
                     <Box sx={{ borderLeft: "6px solid #000" }} pl={4}>
                       <Box>
                         <Box component="span">日期：</Box>
@@ -105,32 +148,36 @@ function ForumP({ forum, contact, projects: datasetP }) {
                         </Box>
                         <Box component="span">{forum.endDate && ` - `}</Box>
                         <Box component="span">
-                          {forum.startDate &&
+                          {forum.endDate &&
                             format(new Date(forum.endDate), "yyyy.MM.dd")}
                         </Box>
                       </Box>
                       <Box>
-                        <Box component="span">時間：</Box>
                         <Box component="span">
-                          {format(
-                            new Date(
-                              `${format(new Date(), "yyyy-MM-dd")} ${
-                                forum.startTime
-                              }`
-                            ),
-                            "HH:mm"
-                          )}
+                          {forum.startTime && ` 時間： `}
+                        </Box>
+                        <Box component="span">
+                          {forum.startTime &&
+                            format(
+                              new Date(
+                                `${format(new Date(), "yyyy-MM-dd")} ${
+                                  forum.startTime
+                                }`
+                              ),
+                              "HH:mm"
+                            )}
                         </Box>
                         <Box component="span">{forum.endTime && ` - `}</Box>
                         <Box component="span">
-                          {format(
-                            new Date(
-                              `${format(new Date(), "yyyy-MM-dd")} ${
-                                forum.endTime
-                              }`
-                            ),
-                            "HH:mm"
-                          )}
+                          {forum.endTime &&
+                            format(
+                              new Date(
+                                `${format(new Date(), "yyyy-MM-dd")} ${
+                                  forum.endTime
+                                }`
+                              ),
+                              "HH:mm"
+                            )}
                         </Box>
                       </Box>
                       <Box>
@@ -144,11 +191,11 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       </Box>
                     </Box>
                   </Item>
-                  <Item sx={{ width: "60%" }}>
+                  <Item sx={{ width: { xs: "100%", md: "60%" } }}>
                     <Box
                       sx={{
                         fontFamily: "Noto Serif HK",
-                        fontSize: 49,
+                        fontSize: { xs: 30, sm: 34, md: 37, lg: 46 },
                         lineHeight: 1.4,
                         fontWeight: 700,
                       }}
@@ -163,7 +210,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 sx={{ borderBottom: "1px solid #000" }}
                 m={1}
                 pb={1.2}
-                pt={9}
+                pt={{ xs: 0, md: 9 }}
               >
                 {forum.categories &&
                   forum.categories.map((category, i) => (
@@ -184,13 +231,15 @@ function ForumP({ forum, contact, projects: datasetP }) {
                   ))}
               </Box>
               {/* 3 row : image and description */}
-              <Box pt={4}>
+              <Box pt={{ xs: 0, sm: 4 }}>
                 <Stack
-                  direction={{ xs: "row", md: "row" }}
-                  spacing={{ xs: 6, md: 2 }}
+                  direction={{ xs: "column", md: "row" }}
+                  spacing={{ xs: 2, sm: 4 }}
                 >
-                  <Item sx={{ width: "40%" }}>
-                    <Box sx={{ width: 300 }}>
+                  <Item sx={{ width: { xs: "100%", md: "40%" } }}>
+                    <Box
+                      sx={{ width: 300, display: { xs: "none", sm: "block" } }}
+                    >
                       {forum.coverImage && (
                         <Image
                           placeholder="blur"
@@ -200,16 +249,48 @@ function ForumP({ forum, contact, projects: datasetP }) {
                           layout="responsive"
                           objectFit="contain"
                           objectPosition="center"
-                          width={300}
-                          height={200}
+                          width={300} /* 300 123*/
+                          height={200} /* 200 82*/
+                          //quality={100}
                         />
                       )}
                     </Box>
+                    <Box sx={{ display: { xs: "block", sm: "none" } }}>
+                      {forum.coverImage && (
+                        <Box
+                          sx={{
+                            position: "relative",
+                            width: "100%",
+                            height: 200,
+                          }}
+                        >
+                          <Image
+                            placeholder="blur"
+                            blurDataURL={forum.coverImage.url}
+                            src={forum.coverImage.url}
+                            alt="book cover"
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
+                            //width="80vw" /* 300 123*/
+                            //height={82} /* 200 82*/
+                            //quality={100}
+                          />
+                        </Box>
+                      )}
+                    </Box>
                   </Item>
-                  <Item sx={{ width: "60%" }}>
-                    <Box>{forum.description}</Box>
+                  <Item sx={{ width: { xs: "100%", md: "60%" } }}>
+                    <Box
+                      pb={{ xs: 2, sm: 4 }}
+                      mt={{ xs: "unset", md: -4 }}
+                      sx={{ backgroundColor: "none" }}
+                    >
+                      <ReactMarkdown>{forum.description}</ReactMarkdown>
+                    </Box>
                     <Box sx={{ borderTop: "1px solid #000" }} />
                     <Box
+                      pt={{ xs: 2, sm: 4 }}
                       dangerouslySetInnerHTML={{
                         __html: forum.lecturerIntro,
                       }}

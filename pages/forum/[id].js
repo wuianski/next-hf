@@ -16,6 +16,7 @@ import logo_w from "../../public/IMGs/logo_w.png";
 import forumCover from "../../public/IMGs/forumCover.png";
 import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -286,7 +287,11 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       mt={{ xs: "unset", md: -4 }}
                       sx={{ backgroundColor: "none" }}
                     >
-                      <ReactMarkdown>{forum.description}</ReactMarkdown>
+                      {/* <ReactMarkdown>{forum.description}</ReactMarkdown> */}
+                      <ReactMarkdown
+                        children={forum.description}
+                        rehypePlugins={[rehypeRaw]}
+                      />
                     </Box>
                     <Box sx={{ borderTop: "1px solid #000" }} />
                     {/* <Box
@@ -296,8 +301,12 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       }}
                     /> */}
 
-                    <Box>
-                      <ReactMarkdown>{forum.lecturerIntro}</ReactMarkdown>
+                    <Box pt={{ xs: 2, sm: 4 }}>
+                      {/* <ReactMarkdown >{forum.lecturerIntro}</ReactMarkdown> */}
+                      <ReactMarkdown
+                        children={forum.lecturerIntro}
+                        rehypePlugins={[rehypeRaw]}
+                      />
                     </Box>
                   </Item>
                 </Stack>

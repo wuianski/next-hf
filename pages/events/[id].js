@@ -69,21 +69,6 @@ function Event({ event, contact, projects: dataset }) {
       <Box mt={20}>
         <Stack direction="column" spacing={{ xs: 3, md: 6 }}>
           <Item sx={{ width: "100vw" }}>
-            {/* <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {
-                  scale: 0.8,
-                  opacity: 0,
-                },
-                visible: {
-                  scale: 1,
-                  opacity: 1,
-                  transition: { delay: 0.4 },
-                },
-              }}
-            > */}
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 3, md: 14 }}>
               <Box
                 sx={{
@@ -92,7 +77,6 @@ function Event({ event, contact, projects: dataset }) {
                   textAlign: { xs: "start", md: "end" },
                   whiteSpace: "pre-line",
                   fontWeight: 600,
-                  //maxWidth: { xs: "270px", md: "500px", xl: "600px" },
                 }}
               >
                 {event.title_tw}
@@ -109,7 +93,6 @@ function Event({ event, contact, projects: dataset }) {
                 {event.title_en}
               </Box>
             </Box>
-            {/* </motion.div> */}
           </Item>
           <Item>
             <Box ml={{ xs: 8, md: 28 }} mr={{ xs: 2, md: 13 }}>
@@ -183,6 +166,7 @@ function Event({ event, contact, projects: dataset }) {
                           textJustify: "distribute",
                           fontWeight: 400,
                           fontSize: { xs: "14px", sm: "17px" },
+                          letterSpacing: "0.025em",
                         }}
                         mt={"-15px"}
                       >

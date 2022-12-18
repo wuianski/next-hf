@@ -231,7 +231,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
-                objectPosition="center"
+                objectPosition="top"
               />
             </Box>
           </StackItem>

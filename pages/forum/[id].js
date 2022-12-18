@@ -17,6 +17,8 @@ import forumCover from "../../public/IMGs/forumCover.png";
 import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import Slider from "react-slick";
+import ReactPlayer from "react-player";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -40,6 +42,15 @@ function ForumP({ forum, contact, projects: datasetP }) {
   /* CHANGE ARRAY SORTING BY ID*/
   !datasetP ? null : datasetP.sort((a, b) => a.id - b.id);
   const mydataset = datasetP.slice(0, 3);
+
+  /** react-slick setting **/
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
@@ -110,7 +121,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
-                objectPosition="center"
+                objectPosition="top"
               />
             </Box>
           </Item>
@@ -218,6 +229,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
                     <Box
                       component="span"
                       key={i}
+                      mr={1}
                       sx={{
                         color: "#888",
                         fontFamily: "Noto Sans TC",
@@ -232,77 +244,85 @@ function ForumP({ forum, contact, projects: datasetP }) {
                   ))}
               </Box>
               {/* 3 row : image and description */}
-              <Box pt={{ xs: 0, sm: 4 }}>
+              <Box pt={{ xs: 2, sm: 4 }}>
                 <Stack
                   direction={{ xs: "column", md: "row" }}
                   spacing={{ xs: 2, sm: 4 }}
                 >
                   <Item sx={{ width: { xs: "100%", md: "40%" } }}>
-                    <Box
-                      sx={{ width: 300, display: { xs: "none", sm: "block" } }}
-                    >
-                      {forum.coverImage && (
-                        <Image
-                          placeholder="blur"
-                          blurDataURL={forum.coverImage.url}
-                          src={forum.coverImage.url}
-                          alt="book cover"
-                          layout="responsive"
-                          objectFit="contain"
-                          objectPosition="center"
-                          width={300} /* 300 123*/
-                          height={200} /* 200 82*/
-                          //quality={100}
-                        />
-                      )}
-                    </Box>
-                    <Box sx={{ display: { xs: "block", sm: "none" } }}>
-                      {forum.coverImage && (
+                    {/*** column: video ***/}
+                    {forum.videoLInk && (
+                      <Box pr={{ xs: 0, sm: 0, md: 4 }} pb={2} pt={2}>
                         <Box
                           sx={{
                             position: "relative",
                             width: "100%",
-                            height: 200,
+                            height: { xs: "auto", md: 150 },
+                            zIndex: 0,
                           }}
+                          className="player-wrapper"
                         >
-                          <Image
-                            placeholder="blur"
-                            blurDataURL={forum.coverImage.url}
-                            src={forum.coverImage.url}
-                            alt="book cover"
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                            //width="80vw" /* 300 123*/
-                            //height={82} /* 200 82*/
-                            //quality={100}
+                          <ReactPlayer
+                            className="react-player"
+                            url={forum.videoLInk}
+                            width="100%"
+                            height="100%"
+                            controls={true}
+                            config={{
+                              youtube: {
+                                playerVars: {
+                                  enablejsapi: 1,
+                                  origin: "https://www.youtube.com",
+                                },
+                              },
+                            }}
                           />
                         </Box>
-                      )}
+                      </Box>
+                    )}
+                    {/*** column: image slider ***/}
+                    <Box pr={{ xs: 0, sm: 0, md: 4 }}>
+                      <Slider {...settings}>
+                        {forum.images &&
+                          forum.images.map((img, i) => (
+                            <Box key={i}>
+                              <Image
+                                placeholder="blur"
+                                blurDataURL={img.url}
+                                src={img.url}
+                                alt="forum images"
+                                layout="responsive"
+                                objectFit="contain"
+                                objectPosition="center"
+                                width={300}
+                                height={200}
+                              />
+                            </Box>
+                          ))}
+                      </Slider>
                     </Box>
                   </Item>
                   <Item sx={{ width: { xs: "100%", md: "60%" } }}>
                     <Box
                       pb={{ xs: 2, sm: 4 }}
                       mt={{ xs: "unset", md: -4 }}
-                      sx={{ backgroundColor: "none" }}
+                      sx={{
+                        textAlign: "justify",
+                        textJustify: "distribute",
+                        fontWeight: 400,
+                        fontSize: { xs: "14px", sm: "17px" },
+                        letterSpacing: "0.025em",
+                      }}
+                      className="forumdDesVid"
                     >
-                      {/* <ReactMarkdown>{forum.description}</ReactMarkdown> */}
                       <ReactMarkdown
                         children={forum.description}
                         rehypePlugins={[rehypeRaw]}
                       />
                     </Box>
                     <Box sx={{ borderTop: "1px solid #000" }} />
-                    {/* <Box
-                      pt={{ xs: 2, sm: 4 }}
-                      dangerouslySetInnerHTML={{
-                        __html: forum.lecturerIntro,
-                      }}
-                    /> */}
 
                     <Box pt={{ xs: 2, sm: 4 }}>
-                      {/* <ReactMarkdown >{forum.lecturerIntro}</ReactMarkdown> */}
                       <ReactMarkdown
                         children={forum.lecturerIntro}
                         rehypePlugins={[rehypeRaw]}

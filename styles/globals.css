@@ -375,6 +375,13 @@ div.secName {
   color:#000;
   width: 100%;
   padding: 14px 26px 10px 12px;
+  border-radius: 0;
+}
+
+.forumdDesVid iframe{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 

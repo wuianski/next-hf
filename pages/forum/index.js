@@ -19,6 +19,8 @@ import Nav from "../../components/nav";
 import Link from "next/link";
 import styles from "../../components/layout.module.css";
 import logo_w from "../../public/IMGs/logo_w.png";
+import forumCoverBG from "../../public/IMGs/forumCoverBG.png";
+import forumCoverText from "../../public/IMGs/forumCoverText.png";
 
 /** Filter Item setting **/
 const FilterItem = styled(Paper)(({ theme }) => ({
@@ -196,18 +198,19 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
         >
           {/* left: cover area */}
           <StackItem sx={{ width: { xs: 125, sm: 225 } }}>
+            {/* desktop */}
             <Box
               sx={{
                 display: { xs: "none", sm: "block" },
                 position: "fixed",
+                height: "calc(100vh - 146px)",
+                width: { sm: 225, md: 225 },
                 left: 0,
                 bottom: 0,
-                width: { sm: 225, md: 225 },
-                height: "calc(100vh - 146px)",
               }}
             >
               <Image
-                src={forumCover}
+                src={forumCoverBG}
                 placeholder="blur"
                 alt="icon of instagram"
                 layout="fill"
@@ -217,21 +220,60 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
             </Box>
             <Box
               sx={{
-                display: { xs: "block", sm: "none" },
+                display: { xs: "none", sm: "block" },
                 position: "fixed",
+                height: "calc(100vh - 206px)",
+                width: { sm: 225, md: 225 },
                 left: 0,
-                bottom: { xs: "0", sm: "unset" },
-                width: { xs: 125, md: 225 },
-                height: { xs: "calc(100vh - 130px)" },
+                bottom: 30,
               }}
             >
               <Image
-                src={forumCover_mobile}
+                src={forumCoverText}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="right"
+              />
+            </Box>
+            {/* mobile */}
+            <Box
+              sx={{
+                display: { xs: "block", sm: "none" },
+                position: "fixed",
+                height: { xs: "calc(100vh - 130px)" },
+                width: { xs: 125, md: 225 },
+                left: 0,
+                bottom: { xs: "0", sm: "unset" },
+              }}
+            >
+              <Image
+                src={forumCoverBG}
                 placeholder="blur"
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="top"
+              />
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "block", sm: "none" },
+                position: "fixed",
+                height: { xs: "calc(100vh - 330px)" },
+                width: { xs: 125, md: 225 },
+                left: 0,
+                bottom: { xs: 100, sm: "unset" },
+              }}
+            >
+              <Image
+                src={forumCoverText}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="right"
               />
             </Box>
           </StackItem>

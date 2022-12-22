@@ -19,6 +19,8 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Slider from "react-slick";
 import ReactPlayer from "react-player";
+import forumCoverBG from "../../public/IMGs/forumCoverBG.png";
+import forumCoverText from "../../public/IMGs/forumCoverText.png";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -86,6 +88,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
         >
           {/* left: cover area */}
           <Item sx={{ width: { xs: 125, sm: 225 } }}>
+            {/* desktop */}
             <Box
               sx={{
                 display: { xs: "none", sm: "block" },
@@ -97,7 +100,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
               }}
             >
               <Image
-                src={forumCover}
+                src={forumCoverBG}
                 placeholder="blur"
                 alt="icon of instagram"
                 layout="fill"
@@ -105,6 +108,26 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 objectPosition="center"
               />
             </Box>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "block" },
+                position: "fixed",
+                height: "calc(100vh - 206px)",
+                width: { sm: 225, md: 225 },
+                left: 0,
+                bottom: 30,
+              }}
+            >
+              <Image
+                src={forumCoverText}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="right"
+              />
+            </Box>
+            {/* mobile */}
             <Box
               sx={{
                 display: { xs: "block", sm: "none" },
@@ -116,12 +139,31 @@ function ForumP({ forum, contact, projects: datasetP }) {
               }}
             >
               <Image
-                src={forumCover_mobile}
+                src={forumCoverBG}
                 placeholder="blur"
                 alt="icon of instagram"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="top"
+              />
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "block", sm: "none" },
+                position: "fixed",
+                height: { xs: "calc(100vh - 330px)" },
+                width: { xs: 125, md: 225 },
+                left: 0,
+                bottom: { xs: 100, sm: "unset" },
+              }}
+            >
+              <Image
+                src={forumCoverText}
+                placeholder="blur"
+                alt="icon of instagram"
+                layout="fill"
+                objectFit="contain"
+                objectPosition="right"
               />
             </Box>
           </Item>
@@ -193,7 +235,12 @@ function ForumP({ forum, contact, projects: datasetP }) {
                         </Box>
                       </Box>
                       <Box>
-                        <Box component="span">講師：</Box>
+                        <Box component="span">
+                          {forum.lecturers &&
+                            forum.lecturers.map(
+                              (lecturer, i) => lecturer && ` 講師： `
+                            )}
+                        </Box>
                         {forum.lecturers &&
                           forum.lecturers.map((lecturer, i) => (
                             <Box component="span" key={i}>

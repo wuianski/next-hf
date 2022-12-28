@@ -226,16 +226,19 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                 width: { sm: 225, md: 225 },
                 left: 0,
                 bottom: 30,
+                cursor: "pointer",
               }}
             >
-              <Image
-                src={forumCoverText}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="contain"
-                objectPosition="right"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverText}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="right"
+                />
+              </Link>
             </Box>
             {/* mobile */}
             <Box
@@ -437,7 +440,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                   item.lecturers.map((lecturer, i) => (
                                     <Box
                                       component="span"
-                                      mr={1}
+                                      //mr={1}
                                       sx={{
                                         color: "#000",
                                         fontSize: {
@@ -449,7 +452,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                       }}
                                       key={i}
                                     >
-                                      {lecturer}
+                                      {(i ? "、" : "") + lecturer}
                                     </Box>
                                   ))}
                               </Box>

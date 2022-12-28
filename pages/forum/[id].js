@@ -99,14 +99,16 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 bottom: 0,
               }}
             >
-              <Image
-                src={forumCoverBG}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverBG}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </Link>
             </Box>
             <Box
               sx={{
@@ -116,16 +118,19 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 width: { sm: 225, md: 225 },
                 left: 0,
                 bottom: 30,
+                cursor: "pointer",
               }}
             >
-              <Image
-                src={forumCoverText}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="contain"
-                objectPosition="right"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverText}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="right"
+                />
+              </Link>
             </Box>
             {/* mobile */}
             <Box
@@ -138,14 +143,16 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 bottom: { xs: "0", sm: "unset" },
               }}
             >
-              <Image
-                src={forumCoverBG}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverBG}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="top"
+                />
+              </Link>
             </Box>
             <Box
               sx={{
@@ -157,14 +164,16 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 bottom: { xs: 100, sm: "unset" },
               }}
             >
-              <Image
-                src={forumCoverText}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="contain"
-                objectPosition="right"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverText}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="right"
+                />
+              </Link>
             </Box>
           </Item>
           {/* right: content area */}
@@ -183,8 +192,6 @@ function ForumP({ forum, contact, projects: datasetP }) {
               }}
               ml={"auto"}
               mr={"auto"}
-              // pr={2}
-              // pl={2}
               pb={16}
             >
               {/* 1 row : infos and title*/}
@@ -195,6 +202,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
                 >
                   <Item sx={{ width: { xs: "100%", md: "40%" } }}>
                     <Box sx={{ borderLeft: "6px solid #000" }} pl={4}>
+                      {/* 1 row of infos : 日期 */}
                       <Box>
                         <Box component="span">日期：</Box>
                         <Box component="span">
@@ -206,6 +214,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
                             format(new Date(forum.endDate), "yyyy.MM.dd")}
                         </Box>
                       </Box>
+                      {/* 2 row of infos : 時間 */}
                       <Box>
                         <Box component="span">
                           {forum.startTime && ` 時間： `}
@@ -234,20 +243,37 @@ function ForumP({ forum, contact, projects: datasetP }) {
                             )}
                         </Box>
                       </Box>
+                      {/* 3 row of infos : 講師 */}
                       <Box>
-                        <Box component="span">
-                          {forum.lecturers &&
-                            forum.lecturers.map(
-                              (lecturer, i) => lecturer && ` 講師： `
-                            )}
-                        </Box>
+                        {/* <Box component="span">
+                          {forum.lecturers && ` 講師： `}
+                        </Box> */}
                         {forum.lecturers &&
                           forum.lecturers.map((lecturer, i) => (
                             <Box component="span" key={i}>
-                              {lecturer.name}
+                              {/* {lecturer.name} */}
+                              {(i ? "、" : "講師：") + lecturer.name}
                             </Box>
                           ))}
                       </Box>
+                      {/* 4 row of infos : 報名 */}
+                      {forum.signUpLInk && (
+                        <Box>
+                          <Box component="span">報名：</Box>
+                          <Box
+                            component="span"
+                            sx={{
+                              cursor: "pointer",
+                              color: "#666",
+                              textDecoration: "underline",
+                            }}
+                          >
+                            <a href={forum.signUpLInk} target="_blank">
+                              線上報名
+                            </a>
+                          </Box>
+                        </Box>
+                      )}
                     </Box>
                   </Item>
                   <Item sx={{ width: { xs: "100%", md: "60%" } }}>

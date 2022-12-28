@@ -4,7 +4,7 @@ import Layout from "../../components/layout";
 import { useRouter } from "next/router";
 import Box from "@mui/material/Box";
 import Nav from "../../components/nav";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
@@ -206,7 +206,8 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       <Box>
                         <Box component="span">日期：</Box>
                         <Box component="span">
-                          {format(new Date(forum.startDate), "yyyy.MM.dd")}
+                          {forum.startDate &&
+                            format(new Date(forum.startDate), "yyyy.MM.dd")}
                         </Box>
                         <Box component="span">{forum.endDate && ` - `}</Box>
                         <Box component="span">
@@ -222,10 +223,10 @@ function ForumP({ forum, contact, projects: datasetP }) {
                         <Box component="span">
                           {forum.startTime &&
                             format(
-                              new Date(
-                                `${format(new Date(), "yyyy-MM-dd")} ${
-                                  forum.startTime
-                                }`
+                              parse(
+                                `${forum.startTime}`.split(":", 2).join(":"),
+                                "HH:mm",
+                                new Date()
                               ),
                               "HH:mm"
                             )}
@@ -234,15 +235,16 @@ function ForumP({ forum, contact, projects: datasetP }) {
                         <Box component="span">
                           {forum.endTime &&
                             format(
-                              new Date(
-                                `${format(new Date(), "yyyy-MM-dd")} ${
-                                  forum.endTime
-                                }`
+                              parse(
+                                `${forum.endTime}`.split(":", 2).join(":"),
+                                "HH:mm",
+                                new Date()
                               ),
                               "HH:mm"
                             )}
                         </Box>
                       </Box>
+
                       {/* 3 row of infos : 講師 */}
                       <Box>
                         {/* <Box component="span">

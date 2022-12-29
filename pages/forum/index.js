@@ -197,7 +197,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
           spacing={{ xs: 0, sm: 0, md: 2 }}
         >
           {/* left: cover area */}
-          <StackItem sx={{ width: { xs: 125, sm: 225 } }}>
+          <StackItem sx={{ width: { xs: 40, sm: 225 } }}>
             {/* desktop */}
             <Box
               sx={{
@@ -245,57 +245,40 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
               sx={{
                 display: { xs: "block", sm: "none" },
                 position: "fixed",
-                height: { xs: "calc(100vh - 130px)" },
-                width: { xs: 125, md: 225 },
-                left: 0,
-                bottom: { xs: "0", sm: "unset" },
-              }}
-            >
-              <Image
-                src={forumCoverBG}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
-              />
-            </Box>
-            <Box
-              sx={{
-                display: { xs: "block", sm: "none" },
-                position: "fixed",
-                height: { xs: "calc(100vh - 330px)" },
-                width: { xs: 125, md: 225 },
+                width: { xs: 40, md: 225 },
+                height: "68vh",
                 left: 0,
                 bottom: { xs: 100, sm: "unset" },
+                borderRight: "1px solid #fff",
+                mixBlendMode: "difference",
               }}
             >
-              <Image
-                src={forumCoverText}
-                placeholder="blur"
-                alt="icon of instagram"
-                layout="fill"
-                objectFit="contain"
-                objectPosition="right"
-              />
+              <Link href="/forum">
+                <Image
+                  src={forumCoverText}
+                  placeholder="blur"
+                  alt="icon of instagram"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="right"
+                />
+              </Link>
             </Box>
           </StackItem>
           {/* right: grid area */}
           <StackItem
             sx={{
-              width: { xs: "calc(100vw - 125px)", sm: "calc(100vw - 225px)" },
+              width: { xs: "calc(100vw - 40px)", sm: "calc(100vw - 225px)" },
             }}
           >
             <Box
               sx={{
-                width: { xs: "85%", sm: "90%", md: "80vw" },
+                width: { xs: "80%", sm: "90%", md: "80vw" },
                 maxWidth: { xs: "600px", md: "954px" },
                 position: "relative",
                 zIndex: 0,
               }}
-              pt={{ xs: "130px", md: "130px" }}
-              // ml={{ xs: 4, md: 23 }}
-              // mr={{ xs: 4, md: 4 }}
+              pt={{ xs: "160px", md: "130px" }}
               ml={"auto"}
               mr={"auto"}
             >

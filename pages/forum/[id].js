@@ -87,7 +87,7 @@ function ForumP({ forum, contact, projects: datasetP }) {
           spacing={{ xs: 0, sm: 0, md: 2 }}
         >
           {/* left: cover area */}
-          <Item sx={{ width: { xs: 125, sm: 225 } }}>
+          <Item sx={{ width: { xs: 40, sm: 225 } }}>
             {/* desktop */}
             <Box
               sx={{
@@ -137,31 +137,12 @@ function ForumP({ forum, contact, projects: datasetP }) {
               sx={{
                 display: { xs: "block", sm: "none" },
                 position: "fixed",
-                height: { xs: "calc(100vh - 130px)" },
-                width: { xs: 125, md: 225 },
-                left: 0,
-                bottom: { xs: "0", sm: "unset" },
-              }}
-            >
-              <Link href="/forum">
-                <Image
-                  src={forumCoverBG}
-                  placeholder="blur"
-                  alt="icon of instagram"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="top"
-                />
-              </Link>
-            </Box>
-            <Box
-              sx={{
-                display: { xs: "block", sm: "none" },
-                position: "fixed",
                 height: { xs: "calc(100vh - 330px)" },
-                width: { xs: 125, md: 225 },
+                width: { xs: 40, md: 225 },
                 left: 0,
                 bottom: { xs: 100, sm: "unset" },
+                borderRight: "1px solid #fff",
+                mixBlendMode: "difference",
               }}
             >
               <Link href="/forum">
@@ -179,13 +160,13 @@ function ForumP({ forum, contact, projects: datasetP }) {
           {/* right: content area */}
           <Item
             sx={{
-              width: { xs: "calc(100vw - 125px)", sm: "calc(100vw - 225px)" },
+              width: { xs: "calc(100vw - 40px)", sm: "calc(100vw - 225px)" },
             }}
           >
             <Box
-              pt={{ xs: "130px", sm: "146px" }}
+              pt={{ xs: "160px", sm: "146px" }}
               sx={{
-                width: { xs: "85%", sm: "90%", md: "80vw" },
+                width: { xs: "90%", sm: "90%", md: "80vw" },
                 maxWidth: { xs: "600px", md: "954px" },
                 position: "relative",
                 zIndex: 0,

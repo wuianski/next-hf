@@ -8,19 +8,18 @@ import { format, parse } from "date-fns";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import Divider from "@mui/material/Divider";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../components/layout.module.css";
 import logo_w from "../../public/IMGs/logo_w.png";
-import forumCover from "../../public/IMGs/forumCover.png";
-import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
+
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Slider from "react-slick";
 import ReactPlayer from "react-player";
 import forumCoverBG from "../../public/IMGs/forumCoverBG.png";
 import forumCoverText from "../../public/IMGs/forumCoverText.png";
+import { motion } from "framer-motion";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,6 +31,48 @@ const Item = styled(Paper)(({ theme }) => ({
   background: "none",
   boxShadow: "none",
 }));
+
+/** block motion var **/
+const varRow1 = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      delay: 0.2,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 0.2,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+};
+const varRow2 = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      delay: 0.2,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 0.4,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+};
 
 function ForumP({ forum, contact, projects: datasetP }) {
   /** sorting dataset by id **/
@@ -64,7 +105,6 @@ function ForumP({ forum, contact, projects: datasetP }) {
           width: "100%",
           height: "130px",
           zIndex: 99,
-          //backgroundColor: "#fff",
           background: "#EDE9DF",
         }}
       >
@@ -176,217 +216,223 @@ function ForumP({ forum, contact, projects: datasetP }) {
               pb={16}
             >
               {/* 1 row : infos and title*/}
-              <Box>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  spacing={{ xs: 4, md: 0 }}
-                >
-                  <Item sx={{ width: { xs: "100%", md: "40%" } }}>
-                    <Box sx={{ borderLeft: "6px solid #000" }} pl={4}>
-                      {/* 1 row of infos : 日期 */}
-                      <Box>
-                        <Box component="span">日期：</Box>
-                        <Box component="span">
-                          {forum.startDate &&
-                            format(new Date(forum.startDate), "yyyy.MM.dd")}
+              <motion.div variants={varRow1} initial="hidden" animate="visible">
+                <Box>
+                  <Stack
+                    direction={{ xs: "column", md: "row" }}
+                    spacing={{ xs: 4, md: 0 }}
+                  >
+                    <Item sx={{ width: { xs: "100%", md: "40%" } }}>
+                      <Box sx={{ borderLeft: "6px solid #000" }} pl={4}>
+                        {/* 1 row of infos : 日期 */}
+                        <Box>
+                          <Box component="span">日期：</Box>
+                          <Box component="span">
+                            {forum.startDate &&
+                              format(new Date(forum.startDate), "yyyy.MM.dd")}
+                          </Box>
+                          <Box component="span">{forum.endDate && ` - `}</Box>
+                          <Box component="span">
+                            {forum.endDate &&
+                              format(new Date(forum.endDate), "yyyy.MM.dd")}
+                          </Box>
                         </Box>
-                        <Box component="span">{forum.endDate && ` - `}</Box>
-                        <Box component="span">
-                          {forum.endDate &&
-                            format(new Date(forum.endDate), "yyyy.MM.dd")}
+                        {/* 2 row of infos : 時間 */}
+                        <Box>
+                          <Box component="span">
+                            {forum.startTime && ` 時間： `}
+                          </Box>
+                          <Box component="span">
+                            {forum.startTime &&
+                              format(
+                                parse(
+                                  `${forum.startTime}`.split(":", 2).join(":"),
+                                  "HH:mm",
+                                  new Date()
+                                ),
+                                "HH:mm"
+                              )}
+                          </Box>
+                          <Box component="span">{forum.endTime && ` - `}</Box>
+                          <Box component="span">
+                            {forum.endTime &&
+                              format(
+                                parse(
+                                  `${forum.endTime}`.split(":", 2).join(":"),
+                                  "HH:mm",
+                                  new Date()
+                                ),
+                                "HH:mm"
+                              )}
+                          </Box>
                         </Box>
-                      </Box>
-                      {/* 2 row of infos : 時間 */}
-                      <Box>
-                        <Box component="span">
-                          {forum.startTime && ` 時間： `}
-                        </Box>
-                        <Box component="span">
-                          {forum.startTime &&
-                            format(
-                              parse(
-                                `${forum.startTime}`.split(":", 2).join(":"),
-                                "HH:mm",
-                                new Date()
-                              ),
-                              "HH:mm"
-                            )}
-                        </Box>
-                        <Box component="span">{forum.endTime && ` - `}</Box>
-                        <Box component="span">
-                          {forum.endTime &&
-                            format(
-                              parse(
-                                `${forum.endTime}`.split(":", 2).join(":"),
-                                "HH:mm",
-                                new Date()
-                              ),
-                              "HH:mm"
-                            )}
-                        </Box>
-                      </Box>
 
-                      {/* 3 row of infos : 講師 */}
-                      <Box>
-                        {/* <Box component="span">
+                        {/* 3 row of infos : 講師 */}
+                        <Box>
+                          {/* <Box component="span">
                           {forum.lecturers && ` 講師： `}
                         </Box> */}
-                        {forum.lecturers &&
-                          forum.lecturers.map((lecturer, i) => (
-                            <Box component="span" key={i}>
-                              {/* {lecturer.name} */}
-                              {(i ? "、" : "講師：") + lecturer.name}
+                          {forum.lecturers &&
+                            forum.lecturers.map((lecturer, i) => (
+                              <Box component="span" key={i}>
+                                {/* {lecturer.name} */}
+                                {(i ? "、" : "講師：") + lecturer.name}
+                              </Box>
+                            ))}
+                        </Box>
+                        {/* 4 row of infos : 報名 */}
+                        {forum.signUpLInk && (
+                          <Box>
+                            <Box component="span">報名：</Box>
+                            <Box
+                              component="span"
+                              sx={{
+                                cursor: "pointer",
+                                color: "#666",
+                                textDecoration: "underline",
+                              }}
+                            >
+                              <a href={forum.signUpLInk} target="_blank">
+                                線上報名
+                              </a>
                             </Box>
-                          ))}
+                          </Box>
+                        )}
                       </Box>
-                      {/* 4 row of infos : 報名 */}
-                      {forum.signUpLInk && (
-                        <Box>
-                          <Box component="span">報名：</Box>
+                    </Item>
+                    <Item sx={{ width: { xs: "100%", md: "60%" } }}>
+                      <Box
+                        sx={{
+                          fontFamily: "Noto Serif HK",
+                          fontSize: { xs: 30, sm: 34, md: 37, lg: 46 },
+                          lineHeight: 1.4,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {forum.title}
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </motion.div>
+              {/* 2 row : categories */}
+              <motion.div variants={varRow1} initial="hidden" animate="visible">
+                <Box
+                  sx={{ borderBottom: "1px solid #000" }}
+                  m={1}
+                  pb={1.2}
+                  pt={{ xs: 0, md: 9 }}
+                >
+                  {forum.categories &&
+                    forum.categories.map((category, i) => (
+                      <Box
+                        component="span"
+                        key={i}
+                        mr={1}
+                        sx={{
+                          color: "#888",
+                          fontFamily: "Noto Sans TC",
+                          fontSize: 12,
+                          lineHeight: "175%",
+                          fontWeight: 400,
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {category.name}
+                      </Box>
+                    ))}
+                </Box>
+              </motion.div>
+              {/* 3 row : image and description */}
+              <motion.div variants={varRow2} initial="hidden" animate="visible">
+                <Box pt={{ xs: 2, sm: 4 }}>
+                  <Stack
+                    direction={{ xs: "column", md: "row" }}
+                    spacing={{ xs: 2, sm: 4 }}
+                  >
+                    <Item sx={{ width: { xs: "100%", md: "40%" } }}>
+                      {/*** column: video ***/}
+                      {forum.videoLInk && (
+                        <Box pr={{ xs: 0, sm: 0, md: 4 }} pb={2} pt={2}>
                           <Box
-                            component="span"
                             sx={{
-                              cursor: "pointer",
-                              color: "#666",
-                              textDecoration: "underline",
+                              position: "relative",
+                              width: "100%",
+                              height: { xs: "auto", md: 150 },
+                              zIndex: 0,
                             }}
+                            className="player-wrapper"
                           >
-                            <a href={forum.signUpLInk} target="_blank">
-                              線上報名
-                            </a>
+                            <ReactPlayer
+                              className="react-player"
+                              url={forum.videoLInk}
+                              width="100%"
+                              height="100%"
+                              controls={true}
+                              config={{
+                                youtube: {
+                                  playerVars: {
+                                    enablejsapi: 1,
+                                    origin: "https://www.youtube.com",
+                                  },
+                                },
+                              }}
+                            />
                           </Box>
                         </Box>
                       )}
-                    </Box>
-                  </Item>
-                  <Item sx={{ width: { xs: "100%", md: "60%" } }}>
-                    <Box
-                      sx={{
-                        fontFamily: "Noto Serif HK",
-                        fontSize: { xs: 30, sm: 34, md: 37, lg: 46 },
-                        lineHeight: 1.4,
-                        fontWeight: 700,
-                      }}
-                    >
-                      {forum.title}
-                    </Box>
-                  </Item>
-                </Stack>
-              </Box>
-              {/* 2 row : categories */}
-              <Box
-                sx={{ borderBottom: "1px solid #000" }}
-                m={1}
-                pb={1.2}
-                pt={{ xs: 0, md: 9 }}
-              >
-                {forum.categories &&
-                  forum.categories.map((category, i) => (
-                    <Box
-                      component="span"
-                      key={i}
-                      mr={1}
-                      sx={{
-                        color: "#888",
-                        fontFamily: "Noto Sans TC",
-                        fontSize: 12,
-                        lineHeight: "175%",
-                        fontWeight: 400,
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      {category.name}
-                    </Box>
-                  ))}
-              </Box>
-              {/* 3 row : image and description */}
-              <Box pt={{ xs: 2, sm: 4 }}>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  spacing={{ xs: 2, sm: 4 }}
-                >
-                  <Item sx={{ width: { xs: "100%", md: "40%" } }}>
-                    {/*** column: video ***/}
-                    {forum.videoLInk && (
-                      <Box pr={{ xs: 0, sm: 0, md: 4 }} pb={2} pt={2}>
-                        <Box
-                          sx={{
-                            position: "relative",
-                            width: "100%",
-                            height: { xs: "auto", md: 150 },
-                            zIndex: 0,
-                          }}
-                          className="player-wrapper"
-                        >
-                          <ReactPlayer
-                            className="react-player"
-                            url={forum.videoLInk}
-                            width="100%"
-                            height="100%"
-                            controls={true}
-                            config={{
-                              youtube: {
-                                playerVars: {
-                                  enablejsapi: 1,
-                                  origin: "https://www.youtube.com",
-                                },
-                              },
-                            }}
-                          />
-                        </Box>
+                      {/*** column: image slider ***/}
+                      <Box pr={{ xs: 0, sm: 0, md: 4 }}>
+                        <Slider {...settings}>
+                          {forum.images &&
+                            forum.images.map((img, i) => (
+                              <Box key={i}>
+                                <Image
+                                  placeholder="blur"
+                                  blurDataURL={img.url}
+                                  src={img.url}
+                                  alt="forum images"
+                                  layout="responsive"
+                                  objectFit="contain"
+                                  objectPosition="center"
+                                  width={300}
+                                  height={200}
+                                />
+                              </Box>
+                            ))}
+                        </Slider>
                       </Box>
-                    )}
-                    {/*** column: image slider ***/}
-                    <Box pr={{ xs: 0, sm: 0, md: 4 }}>
-                      <Slider {...settings}>
-                        {forum.images &&
-                          forum.images.map((img, i) => (
-                            <Box key={i}>
-                              <Image
-                                placeholder="blur"
-                                blurDataURL={img.url}
-                                src={img.url}
-                                alt="forum images"
-                                layout="responsive"
-                                objectFit="contain"
-                                objectPosition="center"
-                                width={300}
-                                height={200}
-                              />
-                            </Box>
-                          ))}
-                      </Slider>
-                    </Box>
-                  </Item>
-                  <Item sx={{ width: { xs: "100%", md: "60%" } }}>
-                    <Box
-                      pb={{ xs: 2, sm: 4 }}
-                      mt={{ xs: "unset", md: -4 }}
-                      sx={{
-                        textAlign: "justify",
-                        textJustify: "distribute",
-                        fontWeight: 400,
-                        fontSize: { xs: "14px", sm: "17px" },
-                        letterSpacing: "0.025em",
-                      }}
-                      className="forumdDesVid"
-                    >
-                      <ReactMarkdown
-                        children={forum.description}
-                        rehypePlugins={[rehypeRaw]}
-                      />
-                    </Box>
-                    <Box sx={{ borderTop: "1px solid #000" }} />
+                    </Item>
+                    <Item sx={{ width: { xs: "100%", md: "60%" } }}>
+                      <Box
+                        pb={{ xs: 2, sm: 4 }}
+                        mt={{ xs: "unset", md: -4 }}
+                        sx={{
+                          textAlign: "justify",
+                          textJustify: "distribute",
+                          fontWeight: 400,
+                          fontSize: { xs: "14px", sm: "17px" },
+                          letterSpacing: "0.025em",
+                        }}
+                        className="forumdDesVid"
+                      >
+                        <ReactMarkdown
+                          children={forum.description}
+                          rehypePlugins={[rehypeRaw]}
+                        />
+                      </Box>
+                      <Box sx={{ borderTop: "1px solid #000" }} />
 
-                    <Box pt={{ xs: 2, sm: 4 }}>
-                      <ReactMarkdown
-                        children={forum.lecturerIntro}
-                        rehypePlugins={[rehypeRaw]}
-                      />
-                    </Box>
-                  </Item>
-                </Stack>
-              </Box>
+                      <Box pt={{ xs: 2, sm: 4 }}>
+                        <ReactMarkdown
+                          children={forum.lecturerIntro}
+                          rehypePlugins={[rehypeRaw]}
+                        />
+                      </Box>
+                    </Item>
+                  </Stack>
+                </Box>
+              </motion.div>
             </Box>
           </Item>
         </Stack>

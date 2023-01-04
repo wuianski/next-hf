@@ -19,6 +19,7 @@ import i_events from "../public/IMGs/events.png";
 import i_events_m from "../public/IMGs/events_m.png";
 import i_news from "../public/IMGs/news.png";
 import i_news_m from "../public/IMGs/news_m.png";
+import { motion } from "framer-motion";
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,6 +31,37 @@ const Item = styled(Paper)(({ theme }) => ({
   background: "none",
   boxShadow: "none",
 }));
+
+/** block motion var **/
+const variantPrograms = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 0.2,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+};
+
+const variantEvents = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 0.4,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+};
 
 function Index({ summary, contact, projects, events, news }) {
   return (
@@ -99,7 +131,13 @@ function Index({ summary, contact, projects, events, news }) {
             </Box>
           </Item>
           <Item>
-            <Projects projects={projects} />
+            <motion.div
+              variants={variantPrograms}
+              initial="hidden"
+              animate="visible"
+            >
+              <Projects projects={projects} />
+            </motion.div>
           </Item>
         </Stack>
       </Box>
@@ -153,7 +191,13 @@ function Index({ summary, contact, projects, events, news }) {
             </Box>
           </Item>
           <Item>
-            <Events events={events} />
+            <motion.div
+              variants={variantEvents}
+              initial="hidden"
+              animate="visible"
+            >
+              <Events events={events} />
+            </motion.div>
           </Item>
         </Stack>
       </Box>

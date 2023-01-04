@@ -13,14 +13,13 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import Image from "next/image";
-import forumCover from "../../public/IMGs/forumCover.png";
-import forumCover_mobile from "../../public/IMGs/forumCover_mobile.png";
 import Nav from "../../components/nav";
 import Link from "next/link";
 import styles from "../../components/layout.module.css";
 import logo_w from "../../public/IMGs/logo_w.png";
 import forumCoverBG from "../../public/IMGs/forumCoverBG.png";
 import forumCoverText from "../../public/IMGs/forumCoverText.png";
+import { motion } from "framer-motion";
 
 /** Filter Item setting **/
 const FilterItem = styled(Paper)(({ theme }) => ({
@@ -45,7 +44,6 @@ const GridItem = styled(Paper)(({ theme }) => ({
 
 /** Stack Item setting **/
 const StackItem = styled(Paper)(({ theme }) => ({
-  //...theme.typography.body2,
   margin: 0,
   paddingLeft: theme.spacing(0),
   paddingRight: theme.spacing(0),
@@ -58,7 +56,6 @@ const StackItem = styled(Paper)(({ theme }) => ({
 /** input setting **/
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "label + &": {
-    //marginTop: theme.spacing(3),
     fontSize: 16,
   },
   "& .MuiInputBase-input": {
@@ -95,7 +92,6 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
       lecturers: f.lecturers.map((lecturer) => {
         return lecturer.name;
       }),
-      //coverImage: f.coverImage,
       coverImage: f.coverImage ? f.coverImage.url : "/IMGs/noForumCover.png",
     };
 
@@ -109,6 +105,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
     return result_cat;
   });
   // console.log(forum);
+
   /** sorting dataset by StartDate in the Object **/
   function sortByDate(a, b) {
     if (a.startDate < b.startDate) {
@@ -164,6 +161,17 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
     setFilter("All");
   }, []);
 
+  /** grid motion var **/
+  const variants = {
+    visible: (i) => ({
+      opacity: 1,
+      transition: {
+        delay: i * 0.2,
+      },
+    }),
+    hidden: { opacity: 0 },
+  };
+
   return (
     <>
       <Box
@@ -174,7 +182,6 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
           width: "100%",
           height: "130px",
           zIndex: 99,
-          //backgroundColor: "#fff",
           background: "#EDE9DF",
         }}
       >
@@ -293,7 +300,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                             type="search"
                             name="search-form"
                             className="search-input"
-                            placeholder="Search..."
+                            placeholder="搜尋..."
                             onChange={(e) => setQuery(e.target.value)}
                           />
                         </label>
@@ -314,7 +321,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                             onChange={(e) => setFilter(e.target.value)}
                             input={<BootstrapInput />}
                           >
-                            <MenuItem value="All">All</MenuItem>
+                            <MenuItem value="All">全部</MenuItem>
                             {filter_items.map((filter_item, i) => (
                               <MenuItem value={filter_item} key={i}>
                                 {filter_item}
@@ -333,113 +340,120 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                 <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
                   {search(data)
                     .slice(0, paginate)
-                    .map((item) => (
+                    .map((item, i) => (
                       <Grid item xs={4} sm={4} md={4} key={item.id}>
                         <Link
                           href={`/forum/${encodeURIComponent(item.id)}`}
                           key={item.id}
                         >
                           <GridItem>
-                            <Box sx={{ cursor: "pointer" }}>
-                              <Box
-                                sx={{
-                                  backgroundColor: "#fff",
-                                }}
-                              >
-                                {item.coverImage && (
-                                  <Image
-                                    placeholder="blur"
-                                    blurDataURL={item.coverImage}
-                                    src={item.coverImage}
-                                    alt="forum cover"
-                                    layout="responsive"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                    width={300}
-                                    height={200}
-                                  />
-                                )}
-                              </Box>
-                              <Box sx={{ borderTop: "1px solid #000" }} />
-                              <Box
-                                mt={1}
-                                ml={1}
-                                mr={1}
-                                sx={{
-                                  color: "#888",
-                                  fontSize: { xs: 15, md: 15 },
-                                  fontWeight: { xs: 400, md: 700 },
-                                  fontFamily: "Noto Serif HK",
-                                  letterSpacing: "0.05em",
-                                }}
-                              >
-                                {item.startDate &&
-                                  format(
-                                    new Date(item.startDate),
-                                    "yyyy.MM.dd"
+                            <motion.div
+                              custom={i}
+                              initial="hidden"
+                              animate="visible"
+                              variants={variants}
+                            >
+                              <Box sx={{ cursor: "pointer" }}>
+                                <Box
+                                  sx={{
+                                    backgroundColor: "#fff",
+                                  }}
+                                >
+                                  {item.coverImage && (
+                                    <Image
+                                      placeholder="blur"
+                                      blurDataURL={item.coverImage}
+                                      src={item.coverImage}
+                                      alt="forum cover"
+                                      layout="responsive"
+                                      objectFit="cover"
+                                      objectPosition="center"
+                                      width={300}
+                                      height={200}
+                                    />
                                   )}
-                              </Box>
-                              <Box ml={1} mr={1} sx={{ minHeight: 72 }}>
-                                {item.catName &&
-                                  item.catName.map((category, i) => (
-                                    <Box
-                                      component="span"
-                                      mr={1}
-                                      sx={{
-                                        color: "#888",
-                                        fontSize: { xs: 12, md: 12 },
-                                        letterSpacing: "0.05em",
-                                      }}
-                                      key={i}
-                                    >
-                                      {category}
-                                    </Box>
-                                  ))}
-                              </Box>
-                              <Box
-                                mt={1}
-                                ml={1}
-                                mr={1}
-                                sx={{
-                                  fontSize: { xs: 21, md: 21 },
-                                  fontWeight: { xs: 400, md: 700 },
-                                  fontFamily: "Noto Serif HK",
-                                  minHeight: 102,
-                                }}
-                              >
-                                {item.title}
-                              </Box>
-                              <Box
-                                mt={1}
-                                ml={1}
-                                mr={1}
-                                pb={1}
-                                sx={{
-                                  fontSize: { xs: 15, md: 15 },
-                                  minHeight: 52,
-                                }}
-                              >
-                                {item.lecturers &&
-                                  item.lecturers.map((lecturer, i) => (
-                                    <Box
-                                      component="span"
-                                      //mr={1}
-                                      sx={{
-                                        color: "#000",
-                                        fontSize: {
-                                          xs: 15,
-                                          md: 15,
-                                          fontWeight: 700,
+                                </Box>
+                                <Box sx={{ borderTop: "1px solid #000" }} />
+                                <Box
+                                  mt={1}
+                                  ml={1}
+                                  mr={1}
+                                  sx={{
+                                    color: "#888",
+                                    fontSize: { xs: 15, md: 15 },
+                                    fontWeight: { xs: 400, md: 700 },
+                                    fontFamily: "Noto Serif HK",
+                                    letterSpacing: "0.05em",
+                                  }}
+                                >
+                                  {item.startDate &&
+                                    format(
+                                      new Date(item.startDate),
+                                      "yyyy.MM.dd"
+                                    )}
+                                </Box>
+                                <Box ml={1} mr={1} sx={{ minHeight: 72 }}>
+                                  {item.catName &&
+                                    item.catName.map((category, i) => (
+                                      <Box
+                                        component="span"
+                                        mr={1}
+                                        sx={{
+                                          color: "#888",
+                                          fontSize: { xs: 12, md: 12 },
                                           letterSpacing: "0.05em",
-                                        },
-                                      }}
-                                      key={i}
-                                    >
-                                      {(i ? "、" : "") + lecturer}
-                                    </Box>
-                                  ))}
+                                        }}
+                                        key={i}
+                                      >
+                                        {category}
+                                      </Box>
+                                    ))}
+                                </Box>
+                                <Box
+                                  mt={1}
+                                  ml={1}
+                                  mr={1}
+                                  sx={{
+                                    fontSize: { xs: 21, md: 21 },
+                                    fontWeight: { xs: 400, md: 700 },
+                                    fontFamily: "Noto Serif HK",
+                                    minHeight: 102,
+                                  }}
+                                >
+                                  {item.title}
+                                </Box>
+                                <Box
+                                  mt={1}
+                                  ml={1}
+                                  mr={1}
+                                  pb={1}
+                                  sx={{
+                                    fontSize: { xs: 15, md: 15 },
+                                    minHeight: 52,
+                                  }}
+                                >
+                                  {item.lecturers &&
+                                    item.lecturers.map((lecturer, i) => (
+                                      <Box
+                                        component="span"
+                                        //mr={1}
+                                        sx={{
+                                          color: "#000",
+                                          fontSize: {
+                                            xs: 15,
+                                            md: 15,
+                                            fontWeight: 700,
+                                            letterSpacing: "0.05em",
+                                          },
+                                        }}
+                                        key={i}
+                                      >
+                                        {(i ? "、" : "") + lecturer}
+                                      </Box>
+                                    ))}
+                                </Box>
                               </Box>
-                            </Box>
+                            </motion.div>
                           </GridItem>
                         </Link>
                       </Grid>

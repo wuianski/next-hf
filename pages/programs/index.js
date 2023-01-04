@@ -7,9 +7,9 @@ import Image from "next/image";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import News from "../../components/news";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
+import { motion } from "framer-motion";
 
 import programs from "../../public/IMGs/programs.png";
 import externalLink_icon from "../../public/IMGs/externalLink_icon.png";
@@ -24,6 +24,22 @@ const Item = styled(Paper)(({ theme }) => ({
   background: "none",
   boxShadow: "none",
 }));
+
+/** block motion var **/
+const varContent = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 0.2,
+      when: "beforeChildren",
+      duration: 1,
+    },
+  },
+};
 
 function Index({ contact, projects: dataset }) {
   /* CHANGE ARRAY SORTING BY ID*/
@@ -84,108 +100,118 @@ function Index({ contact, projects: dataset }) {
             </Box>
           </Item>
           <Item>
-            <Box
-              sx={{
-                width: { xs: "auto", sm: "100%", md: "78vw" },
-                maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
-              }}
-              pt={{ xs: 0, sm: 5, md: 0 }}
-              pb={{ xs: 3, sm: 5, md: 10 }}
-              ml={{ xs: 4, sm: 4, md: 28 }}
+            <motion.div
+              variants={varContent}
+              initial="hidden"
+              animate="visible"
             >
-              <Box>
-                {mydataset &&
-                  mydataset.map((project) => (
-                    <Box key={project.id} pb={16}>
-                      <Stack
-                        direction={{ xs: "column", md: "row" }}
-                        spacing={0.5}
-                      >
-                        <Item>
-                          <Box sx={{ width: { xs: "320px", md: "320px" } }}>
-                            {/* logo */}
-                            <Box pb={2}>
-                              <Image
-                                //className={styles.landingImage}
-                                src={project.cover && project.cover.url}
-                                placeholder="blur"
-                                blurDataURL={project.cover && project.cover.url}
-                                alt="logo of program"
-                                //layout="responsive"
-                                objectFit="contain"
-                                objectPosition="left"
-                                width={640}
-                                height={192}
-                              />
-                            </Box>
-                            <Box pt={2} pb={2}>
-                              <a href={project.link} target="_blank">
+              <Box
+                sx={{
+                  width: { xs: "auto", sm: "100%", md: "78vw" },
+                  maxWidth: { xs: "100%", md: "1180px", lg: "1300px" },
+                }}
+                pt={{ xs: 0, sm: 5, md: 0 }}
+                pb={{ xs: 3, sm: 5, md: 10 }}
+                ml={{ xs: 4, sm: 4, md: 28 }}
+              >
+                <Box>
+                  {mydataset &&
+                    mydataset.map((project) => (
+                      <Box key={project.id} pb={16}>
+                        <Stack
+                          direction={{ xs: "column", md: "row" }}
+                          spacing={0.5}
+                        >
+                          <Item>
+                            <Box sx={{ width: { xs: "320px", md: "320px" } }}>
+                              {/* logo */}
+                              <Box pb={2}>
                                 <Image
-                                  src={externalLink_icon}
-                                  // placeholder="blur"
-                                  alt="icon of external link"
-                                  width={30}
-                                  height={30}
-                                  sx={{ cursor: "pointer" }}
-                                />
-                              </a>
-                            </Box>
-                          </Box>
-                        </Item>
-                        <Item>
-                          <Box
-                            sx={{ width: { xs: "92%", sm: "96%", md: "80%" } }}
-                          >
-                            {/* image */}
-                            <Box pb={0}>
-                              {project.cover2 && (
-                                <Image
-                                  src={project.cover2 && project.cover2.url}
+                                  //className={styles.landingImage}
+                                  src={project.cover && project.cover.url}
                                   placeholder="blur"
                                   blurDataURL={
-                                    project.cover2 && project.cover2.url
+                                    project.cover && project.cover.url
                                   }
-                                  alt="cover photo of program"
-                                  objectFit="cover"
-                                  objectPosition="center"
-                                  width={1042}
-                                  height={528}
+                                  alt="logo of program"
+                                  //layout="responsive"
+                                  objectFit="contain"
+                                  objectPosition="left"
+                                  width={640}
+                                  height={192}
                                 />
-                              )}
-                            </Box>
-                            {/* content */}
-                            <Box sx={{ textAlign: "justify" }}>
-                              <Box
-                                pb={1}
-                                mt={{ xs: 4, md: 8.5 }}
-                                sx={{
-                                  fontFamily: "Noto Sans TC",
-                                  fontSize: { xs: 15, md: 17 },
-                                  fontWeight: 400,
-                                  lineHeight: "26px",
-                                }}
-                              >
-                                {project.content_tw}
                               </Box>
-                              <Box
-                                mt={2}
-                                sx={{
-                                  fontFamily: "Helvetica, Noto Sans TC",
-                                  fontSize: { xs: 15, md: 17 },
-                                  fontWeight: 500,
-                                  lineHeight: "26px",
-                                }}
-                              >
-                                {project.content_en && project.content_en}
+                              <Box pt={2} pb={2}>
+                                <a href={project.link} target="_blank">
+                                  <Image
+                                    src={externalLink_icon}
+                                    // placeholder="blur"
+                                    alt="icon of external link"
+                                    width={30}
+                                    height={30}
+                                    sx={{ cursor: "pointer" }}
+                                  />
+                                </a>
                               </Box>
                             </Box>
-                          </Box>
-                        </Item>
-                      </Stack>
-                    </Box>
-                  ))}
+                          </Item>
+                          <Item>
+                            <Box
+                              sx={{
+                                width: { xs: "92%", sm: "96%", md: "80%" },
+                              }}
+                            >
+                              {/* image */}
+                              <Box pb={0}>
+                                {project.cover2 && (
+                                  <Image
+                                    src={project.cover2 && project.cover2.url}
+                                    placeholder="blur"
+                                    blurDataURL={
+                                      project.cover2 && project.cover2.url
+                                    }
+                                    alt="cover photo of program"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                    width={1042}
+                                    height={528}
+                                  />
+                                )}
+                              </Box>
+                              {/* content */}
+                              <Box sx={{ textAlign: "justify" }}>
+                                <Box
+                                  pb={1}
+                                  mt={{ xs: 4, md: 8.5 }}
+                                  sx={{
+                                    fontFamily: "Noto Sans TC",
+                                    fontSize: { xs: 15, md: 17 },
+                                    fontWeight: 400,
+                                    lineHeight: "26px",
+                                  }}
+                                >
+                                  {project.content_tw}
+                                </Box>
+                                <Box
+                                  mt={2}
+                                  sx={{
+                                    fontFamily: "Helvetica, Noto Sans TC",
+                                    fontSize: { xs: 15, md: 17 },
+                                    fontWeight: 500,
+                                    lineHeight: "26px",
+                                  }}
+                                >
+                                  {project.content_en && project.content_en}
+                                </Box>
+                              </Box>
+                            </Box>
+                          </Item>
+                        </Stack>
+                      </Box>
+                    ))}
+                </Box>
               </Box>
-            </Box>
+            </motion.div>
           </Item>
         </Stack>
       </Box>

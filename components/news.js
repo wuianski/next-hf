@@ -15,9 +15,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { styled } from "@mui/material/styles";
 import ReactMarkdown from "react-markdown";
-import Slider from "react-slick";
-import Stack from "@mui/material/Stack";
-import styles from "./news.module.css";
+import Link from "next/link";
 
 import { format } from "date-fns";
 
@@ -72,7 +70,6 @@ const StyledTableCell = styled(TableCell)(() => ({
   verticalAlign: "top",
   [`&.${tableCellClasses.body}`]: {
     fontSize: 13,
-    //verticalAlign: "top",
     paddingBottom: 0,
     paddingLeft: 0,
   },
@@ -89,10 +86,8 @@ const StyledTableRow = styled(TableRow)(() => ({
 /** react-slick setting **/
 const settings = {
   infinite: false,
-  //className: "center",
   centerMode: false,
   dots: true,
-  //centerPadding: "500px",
   slidesToShow: 2,
   slidesToScroll: 1,
   speed: 700,
@@ -104,10 +99,8 @@ const settings = {
 /** react-slick setting for mobile **/
 const settingsMobile = {
   infinite: false,
-  //className: "center",
   centerMode: false,
   dots: true,
-  //centerPadding: "500px",
   slidesToShow: 1.5,
   slidesToScroll: 1,
   speed: 700,
@@ -120,7 +113,6 @@ const settingsMobile = {
 
 /** stack Item setting **/
 const Item = styled(Paper)(({ theme }) => ({
-  //...theme.typography.body2,
   paddingLeft: theme.spacing(1),
   paddingRight: theme.spacing(1),
   textAlign: "left",
@@ -171,8 +163,6 @@ export default function News({ news: dataset }) {
               maxWidth: { xs: "100%", md: "1180px", lg: "1180px" },
               // maxWidth: { xs: "600px", md: "954px" },
             }}
-            // ml={"auto"}
-            // mr={"auto"}
             pt={{ xs: 0, sm: 5, md: 0 }}
             pb={{ xs: 3, sm: 5, md: 20 }}
             ml={{ xs: 4, sm: 4, md: 6, xl: 16 }}
@@ -192,13 +182,14 @@ export default function News({ news: dataset }) {
                 ).map((news) => (
                   <StyledTableRow key={news.id}>
                     <StyledTableCell style={{ width: "20%" }} align="left">
-                      <a href={news.link} target="_blank">
+                      <Link href={news.link}>
                         <Box
                           ml={0}
                           mt={{ xs: 2.5, md: 2 }}
                           sx={{
                             fontSize: { xs: 14, md: 17, lg: 17 },
                             fontWeight: 600,
+                            cursor: "pointer",
                           }}
                         >
                           <Box component="span">
@@ -221,21 +212,22 @@ export default function News({ news: dataset }) {
                               ))}
                           </Box>
                         </Box>
-                      </a>
+                      </Link>
                     </StyledTableCell>
 
                     <StyledTableCell style={{ width: "60%" }} align="left">
-                      <a href={news.link} target="_blank">
+                      <Link href={news.link}>
                         <Box
                           sx={{
                             fontSize: { xs: 14, md: 20, lg: 20 },
                             fontFamily: "Helvetica Neue",
+                            cursor: "pointer",
                           }}
                           mt={{ xs: 2.5, md: -1 }}
                         >
                           <ReactMarkdown>{news.title}</ReactMarkdown>
                         </Box>
-                      </a>
+                      </Link>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}

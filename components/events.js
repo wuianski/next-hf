@@ -2,10 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import Link from "next/link";
-import AwesomeSlider from "react-awesome-slider";
 import styles from "./events.module.css";
-import Nav from "./nav";
-import { motion, AnimatePresence } from "framer-motion";
 import Slider from "react-slick";
 import { format } from "date-fns";
 

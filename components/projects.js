@@ -1,15 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Collapse from "@mui/material/Collapse";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
-import Drawer from "@mui/material/Drawer";
-import { motion, AnimatePresence } from "framer-motion";
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import Link from "next/link";
 
 const Projects = ({ projects: dataset }) => {
@@ -57,7 +48,7 @@ const Projects = ({ projects: dataset }) => {
                   filter: "brightness(100%) contrast(100%)",
                 }}
               >
-                <a href={project.link} target="_blank">
+                <Link href={project.link}>
                   <Box
                     sx={{
                       width: { xs: "100%", md: "100%" },
@@ -105,18 +96,10 @@ const Projects = ({ projects: dataset }) => {
                         {project.short_content.split("b").map((it, i) => (
                           <div key={"x" + i}>{it}</div>
                         ))}
-                        {/* {text.split(“\n”).map(function(item) {
-                          return (
-                            <>
-                            {item}
-                            <br/>
-                            </>
-                          )
-                        })} */}
                       </Box>
                     </Box>
                   </Box>
-                </a>
+                </Link>
               </Box>
             ))}
         </Box>

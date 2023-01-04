@@ -3,7 +3,6 @@ import Nav from "../../components/nav";
 import React, { useState, useEffect, useRef } from "react";
 import { fetchAPI } from "../../lib/api";
 import Image from "next/image";
-import AwesomeSlider from "react-awesome-slider";
 import Link from "next/link";
 /** grid **/
 import { experimentalStyled as styled } from "@mui/material/styles";
@@ -12,20 +11,27 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 /** tab **/
-
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-
 import _ from "lodash";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useQueryState } from "next-usequerystate";
-
 import { format } from "date-fns";
+
+/** grid motion var **/
+const variants = {
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 0.2,
+    },
+  }),
+  hidden: { opacity: 0 },
+};
 
 function Publication({
   books: dataset,
@@ -57,7 +63,6 @@ function Publication({
   });
   //console.log(pub);
   /** /organize all books data **/
-
   /** (sub categories of 書) filting dataCat by id **/
   const cat_books = bookCat.filter(function (cat) {
     // return cat.id <= 22 && cat.id >= 6;
@@ -504,7 +509,7 @@ function Publication({
             spacing={{ xs: 4, sm: 4, md: 6 }}
             columns={{ xs: 4, sm: 12, md: 10 }}
           >
-            {projects.map((item) =>
+            {projects.map((item, i) =>
               item.filtered === true ? (
                 <>
                   {(() => {
@@ -2072,6 +2077,12 @@ function Publication({
                           <>
                             <Grid item xs={2} sm={4} md={2} key={item.id}>
                               <Item key={item.id}>
+                                {/* <motion.div
+                                custom={i}
+                                initial="hidden"
+                                animate="visible"
+                                variants={variants}
+                              > */}
                                 <Box>
                                   <Box>
                                     <Image
@@ -2127,6 +2138,7 @@ function Publication({
                                     </Box>
                                   </Box>
                                 </Box>
+                                {/* </motion.div> */}
                               </Item>
                             </Grid>
                           </>

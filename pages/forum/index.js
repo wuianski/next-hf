@@ -104,7 +104,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
     };
     return result_cat;
   });
-  // console.log(forum);
+  //console.log(cat_forum);
 
   /** sorting dataset by StartDate in the Object **/
   function sortByDate(a, b) {
@@ -120,7 +120,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
   const sorted = forum.sort(sortByDate);
   //console.log(sorted);
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("熱門活動");
   const [paginate, setpaginate] = useState(6);
   const data = Object.values(sorted);
   const search_parameters = ["title", "lecturers", "startDate"];
@@ -158,7 +158,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
   };
 
   useEffect(() => {
-    setFilter("All");
+    setFilter("熱門活動");
   }, []);
 
   /** grid motion var **/
@@ -465,20 +465,24 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
               <Box sx={{ flexGrow: 1 }} pt={4} pb={4}>
                 <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
                   <Grid item xs={4} sm={4} md={4}>
-                    <Box
-                      sx={{
-                        width: "100%",
-                        cursor: "pointer",
-                        color: "#000",
-                        borderRight: "#000 solid 1px",
-                        borderTop: "#000 solid 1px",
-                        borderLeft: "#000 solid 1px",
-                        padding: "10px 26px 10px 12px",
-                        textAlign: "left",
-                      }}
-                    >
-                      <Box onClick={load_more}>Load More</Box>
-                    </Box>
+                    <div>
+                      {search(data).length > 6 && (
+                        <Box
+                          sx={{
+                            width: "100%",
+                            cursor: "pointer",
+                            color: "#000",
+                            borderRight: "#000 solid 1px",
+                            borderTop: "#000 solid 1px",
+                            borderLeft: "#000 solid 1px",
+                            padding: "10px 26px 10px 12px",
+                            textAlign: "left",
+                          }}
+                        >
+                          <Box onClick={load_more}>Load More</Box>
+                        </Box>
+                      )}
+                    </div>
                   </Grid>
                 </Grid>
               </Box>

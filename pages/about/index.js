@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
+import AboutSlider from "../../components/aboutSlider";
 
 /*** previous resource ***/
 import ps_logo from "../../public/IMGs/ps_logo.png";
@@ -136,6 +137,20 @@ function About({ mission, contact, projects: dataset, summary }) {
         >
           {mission.slogan_en}
         </Box>
+      </Box>
+      <Box
+        sx={{
+          width: { xs: "85%", sm: "90%", md: "80vw" },
+          height: { xs: 250, sm: 380, md: 500 },
+          maxWidth: { xs: "600px", md: "954px" },
+          //backgroundColor: "blue",
+        }}
+        ml={"auto"}
+        mr={"auto"}
+        mt={{ xs: 3, sm: 5, md: 5 }}
+        mb={{ xs: 3, sm: 5, md: 5 }}
+      >
+        <AboutSlider />
       </Box>
       {/* about content */}
       <Box

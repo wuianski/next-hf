@@ -49,7 +49,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -89,7 +89,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -129,7 +129,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -169,7 +169,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -209,7 +209,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -249,7 +249,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -289,7 +289,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -329,7 +329,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -369,7 +369,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{
@@ -409,7 +409,7 @@ export default function AboutSlider({ children }) {
               objectFit="contain"
               objectPosition="center"
               width={1035}
-              height={500}
+              height={400}
             />
             <Box
               sx={{

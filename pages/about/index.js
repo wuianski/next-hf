@@ -141,7 +141,7 @@ function About({ mission, contact, projects: dataset, summary }) {
       <Box
         sx={{
           width: { xs: "85%", sm: "90%", md: "80vw" },
-          height: { xs: 250, sm: 380, md: 500 },
+          height: { xs: 250, sm: 380, md: 400 },
           maxWidth: { xs: "600px", md: "954px" },
           //backgroundColor: "blue",
         }}

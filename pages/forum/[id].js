@@ -304,12 +304,24 @@ function ForumP({ forum, contact, projects: datasetP }) {
                       <Box
                         sx={{
                           fontFamily: "Noto Serif HK",
-                          fontSize: { xs: 30, sm: 34, md: 37, lg: 46 },
+                          fontSize: { xs: 21, sm: 34, md: 37, lg: 46 },
                           lineHeight: 1.4,
                           fontWeight: 700,
                         }}
                       >
-                        {forum.title}
+                        {/* split text before specific sign */}
+                        {forum.title.split("──")[0]}
+                      </Box>
+                      <Box
+                        sx={{
+                          fontFamily: "Noto Serif HK",
+                          fontSize: { xs: 21, sm: 34, md: 37, lg: 46 },
+                          lineHeight: 1.4,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {/* split text after specific sign */}
+                        {forum.title.split("──")[1]}
                       </Box>
                     </Item>
                   </Stack>

@@ -420,7 +420,14 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                     minHeight: 102,
                                   }}
                                 >
-                                  {item.title}
+                                  <Box>
+                                    {/* split text before specific sign */}
+                                    {item.title.split("──")[0]}
+                                  </Box>
+                                  <Box>
+                                    {/* split text after specific sign */}
+                                    {item.title.split("──")[1]}
+                                  </Box>
                                 </Box>
                                 <Box
                                   mt={1}

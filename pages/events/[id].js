@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import Nav from "../../components/nav";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -235,6 +236,25 @@ function Event({ event, contact, projects: dataset }) {
                         </Box>
                       </Item>
                       <Item>
+                        <Box>
+                          {event.short_info && (
+                            <Box
+                              className="player-wrapper"
+                              mt={"15px"}
+                              mb={"15px"}
+                            >
+                              <ReactPlayer
+                                className="react-player"
+                                url={event.short_info}
+                                width="100%"
+                                height="100%"
+                                controls="true"
+                              />
+                            </Box>
+                          )}
+                        </Box>
+                      </Item>
+                      <Item>
                         <Box
                           sx={{
                             textAlign: "justify",
@@ -245,7 +265,11 @@ function Event({ event, contact, projects: dataset }) {
                           }}
                           mt={"-15px"}
                         >
-                          <ReactMarkdown>{event.content_tw}</ReactMarkdown>
+                          {/* <ReactMarkdown>{event.content_tw}</ReactMarkdown> */}
+                          <ReactMarkdown
+                          children={event.content_tw}
+                          rehypePlugins={[rehypeRaw]}
+                        />
                         </Box>
                       </Item>
                     </Stack>

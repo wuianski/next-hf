@@ -222,6 +222,7 @@ export default function News({ news: dataset }) {
                             fontSize: { xs: 14, md: 20, lg: 20 },
                             fontFamily: "Helvetica Neue",
                             cursor: "pointer",
+                            letterSpacing: "0.05em",
                           }}
                           mt={{ xs: 2.5, md: -1 }}
                         >

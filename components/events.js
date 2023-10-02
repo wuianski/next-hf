@@ -35,7 +35,7 @@ const Events = ({ events: dataset }) => {
   /** react-slick setting **/
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -105,6 +105,7 @@ const Events = ({ events: dataset }) => {
                           fontSize: { xs: 17, md: 24 },
                           fontWeight: { xs: 400, md: 700 },
                           whiteSpace: "pre-line",
+                          letterSpacing: "0.05em",
                         }}
                         mt={3}
                       >
@@ -150,6 +151,7 @@ const Events = ({ events: dataset }) => {
                         sx={{
                           fontSize: { xs: 14, md: 17 },
                           fontWeight: { xs: 400, md: 400 },
+                          letterSpacing: "0.05em",
                         }}
                       >
                         {event.content_tw.length > MAX_LENGTH ? (

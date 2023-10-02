@@ -9,6 +9,8 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Slide from "@mui/material/Slide";
 
+import Backdrop from '@mui/material/Backdrop';
+
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
@@ -34,7 +36,7 @@ const style = {
   paddingRight: { xs: "32px", md: "40px" },
   paddingTop: { xs: "32px", md: "40px" },
   paddingBottom: { xs: "40px", md: "20px" },
-  overflowY: "scroll",
+  overflowY: { xs: "scroll", md: "auto" },
 };
 
 const Accordion = styled((props) => (
@@ -67,6 +69,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   marginBottom: theme.spacing(3),
   marginTop: theme.spacing(3),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
+  letterSpacing: "0.05em",
 }));
 
 export default function Nav({ contact, projects: dataset }) {
@@ -88,6 +91,7 @@ export default function Nav({ contact, projects: dataset }) {
     color: "#fff",
     background: "none",
     boxShadow: "none",
+    letterSpacing: "0.05em",
   }));
 
   /** accordion setting **/
@@ -118,12 +122,19 @@ export default function Nav({ contact, projects: dataset }) {
         onClose={handleClose}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 1000,
+          },
+        }}
       >
         <Slide direction="left" in={open} mountOnEnter unmountOnExit>
           <Box sx={{ ...style }}>
             <Box
               sx={{
-                backgroundColor: "#000",
+                backgroundColor: { xs: "#000", sm: "none" },
                 width: { xs: "100%", md: "50%" },
                 height: "82px",
                 position: "fixed",

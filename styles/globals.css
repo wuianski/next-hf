@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: "Noto Sans TC", 'Noto Serif HK', "Helvetica Neue", sans-serif,serif;
   /*overflow: visible !important;*/
+  letter-spacing: "0.5em";
 }
 
 a {

@@ -138,6 +138,8 @@ function Event({ event, contact, projects: dataset }) {
                     textAlign: { xs: "start", md: "end" },
                     whiteSpace: "pre-line",
                     fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    color:"rgb(0,0,0,0.87)",
                   }}
                 >
                   {event.title_tw}
@@ -149,6 +151,8 @@ function Event({ event, contact, projects: dataset }) {
                     textAlign: { xs: "start", md: "end" },
                     whiteSpace: "pre-line",
                     fontWeight: 400,
+                    letterSpacing: "0.05em",
+                    color:"rgb(0,0,0,0.87)",
                   }}
                 >
                   {event.title_en}
@@ -170,10 +174,11 @@ function Event({ event, contact, projects: dataset }) {
                         pt={1}
                         sx={{
                           fontSize: { xs: "14px", sm: "17px" },
-                          fontWeight: 400,
+                          fontWeight: 700,
                           lineHeight: 1.6,
                           whiteSpace: "pre-line",
                           textAlign: { xs: "start", md: "start" },
+                          color:"rgb(0,0,0,0.87)",
                         }}
                       >
                         {event.sponsor && event.sponsor}
@@ -261,7 +266,7 @@ function Event({ event, contact, projects: dataset }) {
                             textJustify: "distribute",
                             fontWeight: 400,
                             fontSize: { xs: "14px", sm: "17px" },
-                            letterSpacing: "0.025em",
+                            letterSpacing: "0.05em",
                           }}
                           mt={"-15px"}
                         >

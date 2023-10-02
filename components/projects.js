@@ -92,6 +92,7 @@ const Projects = ({ projects: dataset }) => {
                         sx={{
                           fontSize: { xs: 14, sm: 17, md: 17, lg: 17 },
                           letterSpacing: "0.05em",
+                          
                         }}
                       >
                         {project.short_content.split("b").map((it, i) => (

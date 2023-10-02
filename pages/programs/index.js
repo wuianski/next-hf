@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
   paddingLeft: theme.spacing(0),
   paddingRight: theme.spacing(0),
   textAlign: "left",
-  color: "#000",
+  color:"rgb(0,0,0,0.87)",
   background: "none",
   boxShadow: "none",
 }));
@@ -188,6 +188,7 @@ function Index({ contact, projects: dataset }) {
                                     fontSize: { xs: 15, md: 17 },
                                     fontWeight: 400,
                                     lineHeight: "26px",
+                                    letterSpacing: "0.05em",
                                   }}
                                 >
                                   {project.content_tw}
@@ -199,6 +200,7 @@ function Index({ contact, projects: dataset }) {
                                     fontSize: { xs: 15, md: 17 },
                                     fontWeight: 500,
                                     lineHeight: "26px",
+                                    letterSpacing: "0.05em",
                                   }}
                                 >
                                   {project.content_en && project.content_en}

@@ -415,9 +415,11 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                   mr={1}
                                   sx={{
                                     fontSize: { xs: 21, md: 21 },
-                                    fontWeight: { xs: 400, md: 700 },
+                                    fontWeight: { xs: 700, md: 700 },
                                     fontFamily: "Noto Serif HK",
                                     minHeight: 102,
+                                    letterSpacing: "0.05em",
+                                    color:"rgb(0,0,0,0.87)",
                                   }}
                                 >
                                   <Box>
@@ -437,6 +439,8 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                   sx={{
                                     fontSize: { xs: 15, md: 15 },
                                     minHeight: 52,
+                                    letterSpacing: "0.05em",
+                                    color:"rgb(0,0,0,0.87)",
                                   }}
                                 >
                                   {item.lecturers &&
@@ -445,7 +449,7 @@ function Forum({ forums: dataset, forumCat, contact, projects }) {
                                         component="span"
                                         //mr={1}
                                         sx={{
-                                          color: "#000",
+                                          color:"rgb(0,0,0,0.87)",
                                           fontSize: {
                                             xs: 15,
                                             md: 15,

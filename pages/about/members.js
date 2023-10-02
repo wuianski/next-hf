@@ -147,6 +147,7 @@ function Members({
                   fontSize: { xs: 24, md: 30 },
                   fontWeight: 300,
                   color: "#B09336",
+                  letterSpacing: "0.05em",
                 }}
                 className="markdownP"
               >
@@ -175,7 +176,7 @@ function Members({
                         height={38}
                       />
                     </StackItem>
-                    <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
+                    <StackItem sx={{ fontSize: 15, lineHeight: "19px", letterSpacing: "0.05em", }}>
                       <Box>歷屆董事會成員</Box>
                       <Box sx={{ fontFamily: "Helvetica" }}>Board Members</Box>
                     </StackItem>
@@ -196,7 +197,7 @@ function Members({
                         height={38}
                       />
                     </StackItem>
-                    <StackItem sx={{ fontSize: 15, lineHeight: "19px" }}>
+                    <StackItem sx={{ fontSize: 15, lineHeight: "19px", letterSpacing: "0.05em", }}>
                       <Box>捐助章程</Box>
                       <Box sx={{ fontFamily: "Helvetica" }}>
                         Foundation Bylaws
@@ -236,7 +237,7 @@ function Members({
                                 component="span"
                                 sx={{
                                   fontWeight: 700,
-                                  letterSpacing: "0.02em",
+                                  letterSpacing: "0.05em",
                                 }}
                               >
                                 {boardMember.name_tw}
@@ -246,6 +247,7 @@ function Members({
                                 sx={{
                                   fontFamily: "Helvetica",
                                   fontWeight: 500,
+                                  letterSpacing: "0.05em",
                                 }}
                                 ml={2}
                               >

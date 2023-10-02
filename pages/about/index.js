@@ -120,6 +120,7 @@ function About({ mission, contact, projects: dataset, summary }) {
             lineHeight: 1.4,
             color: "#B09336",
             whiteSpace: { xs: "unset", sm: "pre-line", md: "pre-line" },
+            letterSpacing: "0.05em",
           }}
         >
           {mission.slogan_tw}
@@ -131,6 +132,7 @@ function About({ mission, contact, projects: dataset, summary }) {
             lineHeight: 1.3,
             color: "#B09336",
             whiteSpace: { xs: "unset", sm: "pre-line", md: "pre-line" },
+            letterSpacing: "0.05em",
           }}
           mt={1}
           pr={{ xs: 0, sm: 0, md: 10 }}
@@ -193,6 +195,7 @@ function About({ mission, contact, projects: dataset, summary }) {
                 fontFamily: "Noto Sans TC",
                 fontSize: { xs: 14, sm: 17 },
                 lineHeight: { xs: "23px", sm: "26px" },
+                letterSpacing: "0.05em",
               }}
             >
               <ReactMarkdown>{mission.content_tw}</ReactMarkdown>
@@ -210,6 +213,7 @@ function About({ mission, contact, projects: dataset, summary }) {
                 fontFamily: "Helvetica",
                 fontSize: { xs: 12, sm: 15 },
                 lineHeight: { xs: "18px", sm: "23px" },
+                letterSpacing: "0.05em",
               }}
             >
               <ReactMarkdown>{mission.content_en}</ReactMarkdown>

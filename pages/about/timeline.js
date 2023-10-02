@@ -162,6 +162,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         fontWeight: 700,
                                         color: "#B09336",
                                         //marginTop: "-60px",
+                                        letterSpacing: "0.05em",
                                       }}
                                     >
                                       {y.year}
@@ -434,6 +435,7 @@ function Timeline({ timeline: dataset, contact, projects: datasetP }) {
                                         fontFamily: "Helvetica",
                                         fontWeight: 700,
                                         color: "#B09336",
+                                        letterSpacing: "0.05em",
                                       }}
                                     >
                                       {y.year}

@@ -106,6 +106,7 @@ const Events = ({ events: dataset }) => {
                           fontWeight: { xs: 400, md: 700 },
                           whiteSpace: "pre-line",
                           letterSpacing: "0.05em",
+                          color:"rgb(0,0,0,0.87)",
                         }}
                         mt={3}
                       >
@@ -140,6 +141,7 @@ const Events = ({ events: dataset }) => {
                           fontSize: { xs: 14, md: 15 },
                           fontWeight: { xs: 700, md: 700 },
                           whiteSpace: "pre-line",
+                          color:"rgb(0,0,0,0.87)",
                         }}
                         mt={2}
                       >
@@ -216,8 +218,10 @@ const Events = ({ events: dataset }) => {
                       <Box
                         sx={{
                           fontSize: { xs: 18, md: 24 },
-                          fontWeight: { xs: 400, md: 700 },
+                          fontWeight: { xs: 600, md: 700 },
                           whiteSpace: "pre-line",
+                          letterSpacing: "0.05em",
+                          color:"rgb(0,0,0,0.87)",
                         }}
                         mt={3}
                       >
@@ -250,8 +254,9 @@ const Events = ({ events: dataset }) => {
                       <Box
                         sx={{
                           fontSize: { xs: 14, md: 15 },
-                          fontWeight: { xs: 700, md: 700 },
+                          fontWeight: { xs: 600, md: 700 },
                           whiteSpace: "pre-line",
+                          color:"rgb(0,0,0,0.87)",
                         }}
                         mt={2}
                       >
@@ -263,6 +268,7 @@ const Events = ({ events: dataset }) => {
                         sx={{
                           fontSize: { xs: 14, md: 17 },
                           fontWeight: { xs: 400, md: 400 },
+                          letterSpacing: "0.05em",
                         }}
                       >
                         {event.content_tw.length > MAX_LENGTH ? (
